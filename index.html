@@ -54,8 +54,6 @@
         <li><a href="/tags">Tags</a></li>
         
         
-        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
-        
       </ul>
 
       <ul class="navbar-nav user-nav float-right desktop-only">
@@ -126,7 +124,7 @@
     <li class="selected">
       <a href="/">Overview</a></li>
     <li class>
-      <a href="/archives">Posts <span class="counter">2</span></a>
+      <a href="/archives">Posts <span class="counter">3</span></a>
     </li>
     <li class>
       <a href="/categories">Categories <span class="counter">0</span></a></li>
@@ -138,6 +136,26 @@
     <div class="body-secondary">
       <p class="right-title">Recent post</p>
       <ul class="recent-post clearfix">
+        
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2019/03/13/tags/">tags</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+              
+            </p>
+            <p class="post-info desktop-only">
+              <span>
+                
+                  <i class="fa fa-folder-open"></i> Uncategorized
+                
+              </span>
+              <span><i class="fa fa-tag"></i> 0 </span>
+            </p>
+          </div>
+        </li>
         
         <li class="recent-post-item">
           <div class="clearfix">
@@ -250,7 +268,7 @@
 
 
 <script>
-  var posts = [{"date":"2019-03-12","title":"Hello World","url":"https://boyanzh.github.io/2019/03/12/hello-world/"},{"date":"2019-03-12","title":"test","url":"https://boyanzh.github.io/2019/03/12/test/"}];
+  var posts = [{"date":"2019-03-12","title":"Hello World","url":"https://boyanzh.github.io/2019/03/12/hello-world/"},{"date":"2019-03-12","title":"test","url":"https://boyanzh.github.io/2019/03/12/test/"},{"date":"2019-03-13","title":"tags","url":"https://boyanzh.github.io/2019/03/13/tags/"}];
   var today = moment().format('YYYY-MM-DD');
   var oneYearAgo = moment(today).subtract(1, 'years');
   posts = posts.filter(function(post) {
