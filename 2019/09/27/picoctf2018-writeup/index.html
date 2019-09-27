@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    PicoCTF2018 Writeup | Nowhere
+  </title>
+  <meta name="description" content>
+  
+  <meta name="keywords" content="
+  
+  ">
+  
+  <meta name="author" content="BoYanZh">
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body id="replica-app">
+
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars1.githubusercontent.com/u/32470225"> <i class="fa fa-caret-down"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives" class="header-toolbar-right"> 5 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i class="fa fa-tags"></i> Tags </a>
+        <a href="/tags" class="header-toolbar-right"> 1 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories" class="header-toolbar-right"> 0 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Nowhere</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    BoYanZh
+
+    <span class="post-date float-right" title="{{moment(1569578089589).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1569578089589).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>PicoCTF2018 Writeup</h1>
+    <h2 id="用到的工具整理"><a href="#用到的工具整理" class="headerlink" title="用到的工具整理"></a>用到的工具整理</h2><ol>
+<li><a href="https://github.com/0Chencc/CTFCrackTools" target="_blank" rel="noopener">https://github.com/0Chencc/CTFCrackTools</a></li>
+<li><a href="https://www.mygeocachingprofile.com/codebreaker.vigenerecipher.aspx" target="_blank" rel="noopener">https://www.mygeocachingprofile.com/codebreaker.vigenerecipher.aspx</a></li>
+<li></li>
+</ol>
+<p>按做题顺序来：</p>
+<h2 id="Forensics-Warmup-1"><a href="#Forensics-Warmup-1" class="headerlink" title="Forensics Warmup 1:"></a>Forensics Warmup 1:</h2><p>直接解压查看图片，输入flag</p>
+<h2 id="Forensics-Warmup-2"><a href="#Forensics-Warmup-2" class="headerlink" title="Forensics Warmup 2:"></a>Forensics Warmup 2:</h2><p>听说文件格式被改过，但基本上所有的图片查看器都可以直接查看</p>
+<h2 id="General-Warmup-1"><a href="#General-Warmup-1" class="headerlink" title="General Warmup 1:"></a>General Warmup 1:</h2><p>转一下ASCII，可以用<a href="https://github.com/0Chencc/CTFCrackTools" target="_blank" rel="noopener">https://github.com/0Chencc/CTFCrackTools</a></p>
+<h2 id="General-Warmup-2"><a href="#General-Warmup-2" class="headerlink" title="General Warmup 2:"></a>General Warmup 2:</h2><p>进制转换，同上</p>
+<h2 id="General-Warmup-3"><a href="#General-Warmup-3" class="headerlink" title="General Warmup 3"></a>General Warmup 3</h2><p>同上</p>
+<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><p>浏览网页获取 flag</p>
+<h2 id="Reversing-Warmup-1"><a href="#Reversing-Warmup-1" class="headerlink" title="Reversing Warmup 1"></a>Reversing Warmup 1</h2><p>运行文件，注意一下目录权限给的很低，有一说一web shell并不好使，应该早点传自己的公钥上去换个 shell 来用</p>
+<h2 id="Reversing-Warmup-2"><a href="#Reversing-Warmup-2" class="headerlink" title="Reversing Warmup 2"></a>Reversing Warmup 2</h2><p>CTFCrackTools</p>
+<h2 id="Crypto-Warmup-1"><a href="#Crypto-Warmup-1" class="headerlink" title="Crypto Warmup 1"></a>Crypto Warmup 1</h2><p>对着密码表手动解，或者<a href="https://www.mygeocachingprofile.com/codebreaker.vigenerecipher.aspx" target="_blank" rel="noopener">https://www.mygeocachingprofile.com/codebreaker.vigenerecipher.aspx</a></p>
+<h2 id="Crypto-Warmup-2"><a href="#Crypto-Warmup-2" class="headerlink" title="Crypto Warmup 2"></a>Crypto Warmup 2</h2><p>rot13，偏移量 = 13 的凯撒密码，CTFCrackTools</p>
+<h2 id="grep-1"><a href="#grep-1" class="headerlink" title="grep 1"></a>grep 1</h2><p><code>cat xxx | grep picoCTF</code></p>
+<h2 id="net-cat"><a href="#net-cat" class="headerlink" title="net cat"></a>net cat</h2><p>windows下的版本报毒，略草。WSL 下直接 <code>nc 2018shell.picoctf.com 49387</code></p>
+<h2 id="HEEEEEEERE’S-Johnny"><a href="#HEEEEEEERE’S-Johnny" class="headerlink" title="HEEEEEEERE’S Johnny!"></a>HEEEEEEERE’S Johnny!</h2><p>查阅 passwd 文件和 shadow 文件的用处，发现是加密过后的 linux 用户 &amp; 密码，得知用户名 root，密码暴力破解 <code>john shadow --show</code></p>
+<h2 id="strings"><a href="#strings" class="headerlink" title="strings"></a>strings</h2><p>strings 获取文件中的字符串命令，配合 <code>grep</code> 可以解决不少问题</p>
+<h2 id="pipe"><a href="#pipe" class="headerlink" title="pipe"></a>pipe</h2><p><code>nc 2018shell.picoctf.com 48696 | grep picoCTF</code> 等待几秒</p>
+<h2 id="Inspect-Me"><a href="#Inspect-Me" class="headerlink" title="Inspect Me"></a>Inspect Me</h2><p>前端三大件依次看一遍 F12 或者 Ctrl+U 皆可，拼起来</p>
+<h2 id="grep-2"><a href="#grep-2" class="headerlink" title="grep 2"></a>grep 2</h2><p>grep 高级用法 <code>grep picoCTF . -r</code></p>
+<h2 id="Aca-Shell-A"><a href="#Aca-Shell-A" class="headerlink" title="Aca-Shell-A"></a>Aca-Shell-A</h2><p>按照他的提示拿一下 shell，一开始想通过 <code>pwd</code> 查看当前用户但他好像不认，得用 <code>whoami</code>，好像那个 10 s 的限制并没有用</p>
+<h2 id="Client-Side-is-Still-Bad"><a href="#Client-Side-is-Still-Bad" class="headerlink" title="Client Side is Still Bad"></a>Client Side is Still Bad</h2><p>看一眼 js，发现是前端小天才，拼接一下字符串</p>
+<h2 id="Desrouleaux"><a href="#Desrouleaux" class="headerlink" title="Desrouleaux"></a>Desrouleaux</h2><p>很迷惑的题目，差不多是语文题，看懂题目然后统计一下 IP 和文件的关系</p>
+<h2 id="Logon"><a href="#Logon" class="headerlink" title="Logon"></a>Logon</h2><p>先随意 log in，然后 log out的时候观察一下 header 里的 set-cookies 项，发现<code>admin=</code>，遂在 chrome 上用 editthiscookie 将 admin 设置为 True 并锁定，再登录</p>
+<h2 id="Reading-Between-the-Eyes"><a href="#Reading-Between-the-Eyes" class="headerlink" title="Reading Between the Eyes"></a>Reading Between the Eyes</h2><p>使用<code>StegSolve.jar</code>，查看RGB通道最低位，不清楚具体原理以及通道选择</p>
+<h2 id="Recovering-From-the-Snap"><a href="#Recovering-From-the-Snap" class="headerlink" title="Recovering From the Snap"></a>Recovering From the Snap</h2><p><code>binwalk</code> 发现由多个文件组合而成，<code>foremost</code>进行拆分</p>
+<h2 id="admin-panel"><a href="#admin-panel" class="headerlink" title="admin panel"></a>admin panel</h2><p><code>strings data.pcap | grep picoCTF</code></p>
+
+  </article>
+</div>
+
+
+    
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://boyanzh.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2019 BoYanZh</li>
+      <li><a href="https://boyanzh.github.io">Home</a></li>
+      
+      <li><a href="http://github.com/boyanzh">Github</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>
