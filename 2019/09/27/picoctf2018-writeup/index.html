@@ -128,7 +128,7 @@
     <h2 id="用到的工具整理"><a href="#用到的工具整理" class="headerlink" title="用到的工具整理"></a>用到的工具整理</h2><ol>
 <li><a href="https://github.com/0Chencc/CTFCrackTools" target="_blank" rel="noopener">https://github.com/0Chencc/CTFCrackTools</a></li>
 <li><a href="https://www.mygeocachingprofile.com/codebreaker.vigenerecipher.aspx" target="_blank" rel="noopener">https://www.mygeocachingprofile.com/codebreaker.vigenerecipher.aspx</a></li>
-<li></li>
+<li><a href="https://quipqiup.com" target="_blank" rel="noopener">https://quipqiup.com</a></li>
 </ol>
 <p>按做题顺序来：</p>
 <h2 id="Forensics-Warmup-1"><a href="#Forensics-Warmup-1" class="headerlink" title="Forensics Warmup 1:"></a>Forensics Warmup 1:</h2><p>直接解压查看图片，输入flag</p>
@@ -155,6 +155,19 @@
 <h2 id="Reading-Between-the-Eyes"><a href="#Reading-Between-the-Eyes" class="headerlink" title="Reading Between the Eyes"></a>Reading Between the Eyes</h2><p>使用<code>StegSolve.jar</code>，查看RGB通道最低位，不清楚具体原理以及通道选择</p>
 <h2 id="Recovering-From-the-Snap"><a href="#Recovering-From-the-Snap" class="headerlink" title="Recovering From the Snap"></a>Recovering From the Snap</h2><p><code>binwalk</code> 发现由多个文件组合而成，<code>foremost</code>进行拆分</p>
 <h2 id="admin-panel"><a href="#admin-panel" class="headerlink" title="admin panel"></a>admin panel</h2><p><code>strings data.pcap | grep picoCTF</code></p>
+<h2 id="assembly-0"><a href="#assembly-0" class="headerlink" title="assembly-0"></a>assembly-0</h2><p>汇编入门，源码看一眼，发现 ret 的值就是第二个输入的值。以及不知道为什么给的汇编源码是不能运行的，且在windows下要运行NASM还遇到了不少坑，卡了许久。</p>
+<h2 id="buffer-overflow-0"><a href="#buffer-overflow-0" class="headerlink" title="buffer overflow 0"></a>buffer overflow 0</h2><p>简单的溢出攻击，只要给的 argument 够长即可</p>
+<h2 id="caesar-cipher-1"><a href="#caesar-cipher-1" class="headerlink" title="caesar cipher 1"></a>caesar cipher 1</h2><p>CTFCrackTools 爆破一下，寻找到有意义的字符串</p>
+<h2 id="environ"><a href="#environ" class="headerlink" title="environ"></a>environ</h2><p><code>env | grep pico</code></p>
+<h2 id="hertz"><a href="#hertz" class="headerlink" title="hertz"></a>hertz</h2><p>quip解一下，但会有几个问号字符，手动对一下。</p>
+<h2 id="hex-editor"><a href="#hex-editor" class="headerlink" title="hex editor"></a>hex editor</h2><p>用<code>strings</code>可以处理，也可以hex editor查看末尾</p>
+<h2 id="ssh-keyz"><a href="#ssh-keyz" class="headerlink" title="ssh-keyz"></a>ssh-keyz</h2><p>ssh 登录 banner</p>
+<h2 id="Irish-Name-Repo"><a href="#Irish-Name-Repo" class="headerlink" title="Irish Name Repo"></a>Irish Name Repo</h2><p>简单的 sql 注入，上万能密码<code>&#39;or&#39;1&#39;=&#39;1</code></p>
+<h2 id="Mr-Robots"><a href="#Mr-Robots" class="headerlink" title="Mr.Robots"></a>Mr.Robots</h2><p>根据题目名称访问一下<code>robots.txt</code></p>
+<h2 id="No-Login"><a href="#No-Login" class="headerlink" title="No Login"></a>No Login</h2><p>同样是用 <code>edit this cookie</code> 改一下 cookies</p>
+<h2 id="Secret-Agent"><a href="#Secret-Agent" class="headerlink" title="Secret Agent"></a>Secret Agent</h2><p>chrome 修改一下 UA 改为google 爬虫即可</p>
+<h2 id="Truly-an-Artist"><a href="#Truly-an-Artist" class="headerlink" title="Truly an Artist"></a>Truly an Artist</h2><p>好像用 <code>strings</code> 也能解决</p>
+<h2 id="assembly-1"><a href="#assembly-1" class="headerlink" title="assembly-1"></a>assembly-1</h2><p>略微进阶的汇编，跟着跳转几次即可</p>
 
   </article>
 </div>
