@@ -3,7 +3,8 @@ subtitle: A Jekyll Theme Built for Developers
 description: >- # this means to ignore newlines until "baseurl:"
   devlopr-jekyll is a Jekyll Theme Built For Developers
 
-url: "" # the base hostname & protocol for your site, e.g. https://example.github.io
+githuburl: "https://github.com/tc-imba/tc-imba.github.io"
+url: "https://tc-imba.github.io" # the base hostname & protocol for your site, e.g. https://example.github.io
 baseurl: "" # the subpath of your site, e.g. /blog
 
 urls:
@@ -25,12 +26,12 @@ urls:
 # Edit these details
 
 author_logo: profile.png
-author: John Doe
-author_bio: Hi, my name is John Doe. I built this site using devlopr-jekyll :D
-author_email: "johndoe@gmail.com"
-author_location: India
+author: Yihao Liu
+author_bio: Hi, my name is Yihao Liu. I built this site using devlopr-jekyll :D
+author_email: "liuyh970615@gmail.com"
+author_location: Singapore
 author_website_url: "http://johndoe.com"
-typewrite-text: devlopr is a jekyll theme built for developers. You can edit this in _config.yml file
+typewrite-text: I'm Yihao Liu, a CS PhD Student in systems, also interested in full-stack web development.
 
 author_work_experiences:
             - company_name: Google
@@ -68,7 +69,7 @@ author_project_details:
 
 # social links
 twitter_username: johndoe
-github_username:  sujaykundu777
+github_username:  tc-imba
 facebook_username: johndoe
 linkedin_username: johndoe
 behance_username: johndoe
@@ -166,6 +167,7 @@ plugins:
 # their entries' file path in the `include:` list.
 #
 exclude:
+  - .idea/
   - .sass-cache/
   - .jekyll-cache/
   - gemfiles/
