@@ -4,7 +4,6 @@ import FeatherIcon from 'feather-icons-react';
 
 import Config from '../../../../config';
 
-import 'react-vertical-timeline-component/style.min.css';
 import './index.css';
 
 
