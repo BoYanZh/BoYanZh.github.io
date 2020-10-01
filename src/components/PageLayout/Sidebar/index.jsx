@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Affix, Layout, Row, Col, List
+  Affix, Layout, Row, Col, List,
 } from 'antd';
 import FA from 'react-fontawesome';
 import FeatherIcon from 'feather-icons-react';
@@ -63,7 +63,7 @@ const DomContent = () => (
         </List.Item>
       </List>
       <div className={style.resumeDownload}>
-        <a href="../resume.pdf" download target="_blank">Download CV</a>
+        <a href="../resume.pdf" target="_blank">Download CV</a>
       </div>
     </div>
   </aside>

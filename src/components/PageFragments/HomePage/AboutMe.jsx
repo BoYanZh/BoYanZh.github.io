@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Row, Col } from 'antd';
 // import AboutTile from '../../AbouTile';
-import { stripTags, domHtml } from '../../../utils/stripTags';
+// import { stripTags, domHtml } from '../../../utils/stripTags';
 
 import SEO from '../../Seo';
 import Config from '../../../../config';
