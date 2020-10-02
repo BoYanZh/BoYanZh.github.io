@@ -42,7 +42,7 @@ const DomContent = () => (
         <a href={github} target="_blank" label="button" rel="noopener noreferrer"><FA name="github" /></a>
         <a href={instagram} target="_blank" label="button" rel="noopener noreferrer"><FA name="instagram" /></a>
       </div>
-      <List itemLayout="horizontal" split={false}>
+      <List itemLayout="horizontal" split={false} style={{ width: '200px' }}>
         <List.Item>
           <List.Item.Meta
             avatar={<FeatherIcon size="19" icon="calendar" />}
@@ -62,9 +62,9 @@ const DomContent = () => (
           />
         </List.Item>
       </List>
-      <div className={style.resumeDownload}>
-        <a href="../resume.pdf" target="_blank">Download CV</a>
-      </div>
+      {/* <div className={style.resumeDownload}> */}
+      {/*  <a href="../resume.pdf" target="_blank">Download CV</a> */}
+      {/* </div> */}
     </div>
   </aside>
 );

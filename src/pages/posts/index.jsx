@@ -27,7 +27,7 @@ const Posts = ({ data }) => (
           {
             data.allMarkdownRemark && data.allMarkdownRemark.edges.map((val, key) => (
               // eslint-disable-next-line react/no-array-index-key
-              <Col key={key} xs={24} sm={24} md={12} lg={8}>
+              <Col key={key} xs={24} sm={24} md={24} lg={8}>
                 <PostCard data={val} />
               </Col>
             ))

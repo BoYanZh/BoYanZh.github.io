@@ -14,7 +14,7 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "antd": "^4.0.1",
+    "antd": "^4.6.6",
     "feather-icons-react": "^0.4.1",
     "font-awesome": "^4.7.0",
     "gatsby": "^2.20.7",

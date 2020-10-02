@@ -1,8 +1,15 @@
 import React from 'react';
 import moment from 'moment';
 import { Link } from 'gatsby';
+import { Tag } from 'antd';
 import style from './postCard.module.less';
 import Utils from '../../utils/pageUtils';
+
+const generateTag = (tag) => (
+  <Tag>
+    <a href={`/tags/${tag}`}>{tag}</a>
+  </Tag>
+);
 
 const PostCard = (props) => {
   const { data: { node } } = props;
@@ -24,13 +31,13 @@ const PostCard = (props) => {
           </p>
           <h3>{frontmatter ? frontmatter.title : ''}</h3>
           <p>{frontmatter ? frontmatter.excerpt : ''}</p>
-          <p style={{ color: '#ce6d96', wordSpacing: '10px' }}>
-            {
-                `#${frontmatter.tags.join(' #')}`
-            }
-          </p>
         </div>
       </Link>
+      <p style={{ color: '#ce6d96', wordSpacing: '10px' }}>
+        {
+          frontmatter.tags.map(generateTag)
+        }
+      </p>
     </div>
   );
 };
