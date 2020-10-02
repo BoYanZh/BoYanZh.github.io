@@ -2,8 +2,8 @@ import React from 'react';
 import {
   Affix, Layout, Row, Col, List,
 } from 'antd';
-import FA from 'react-fontawesome';
-import FeatherIcon from 'feather-icons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { globalHistory } from '@reach/router';
 import style from './sidebar.module.less';
@@ -37,27 +37,27 @@ const DomContent = () => (
       </div>
       {Config.professions.map((profession) => <div className={`${style.badge} ${style.badgeGray}`}>{profession}</div>)}
       <div className="centerAlign box">
-        <a href={facebook} target="_blank" label="button" rel="noopener noreferrer"><FA name="facebook-f" /></a>
-        <a href={twitter} target="_blank" label="button" rel="noopener noreferrer"><FA name="twitter" /></a>
-        <a href={github} target="_blank" label="button" rel="noopener noreferrer"><FA name="github" /></a>
-        <a href={instagram} target="_blank" label="button" rel="noopener noreferrer"><FA name="instagram" /></a>
+        <a href={facebook} target="_blank" label="button" rel="noopener noreferrer"><FontAwesomeIcon name="facebook-f" /></a>
+        <a href={twitter} target="_blank" label="button" rel="noopener noreferrer"><FontAwesomeIcon name="twitter" /></a>
+        <a href={github} target="_blank" label="button" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']} /></a>
+        <a href={instagram} target="_blank" label="button" rel="noopener noreferrer"><FontAwesomeIcon name="instagram" /></a>
       </div>
       <List itemLayout="horizontal" split={false} style={{ width: '200px' }}>
         <List.Item>
           <List.Item.Meta
-            avatar={<FeatherIcon size="19" icon="calendar" />}
+            avatar={<FontAwesomeIcon size="lg" fixedWidth icon="calendar" />}
             title={Config.birthday}
           />
         </List.Item>
         <List.Item>
           <List.Item.Meta
-            avatar={<FeatherIcon size="19" icon="map-pin" />}
+            avatar={<FontAwesomeIcon size="lg" fixedWidth icon="map-marker-alt" />}
             title={Config.location}
           />
         </List.Item>
         <List.Item>
           <List.Item.Meta
-            avatar={<FeatherIcon size="19" icon="mail" />}
+            avatar={<FontAwesomeIcon size="lg" fixedWidth icon="envelope" />}
             title={<a href={`mailto:${Config.email}`}>{Config.email}</a>}
           />
         </List.Item>

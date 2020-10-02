@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import { Layout } from 'antd';
-import 'font-awesome/less/font-awesome.less';
+// import 'font-awesome/less/font-awesome.less';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
 import style from './header.module.less';
 import '../../../styles/global.less';
 import { useWindowSize } from '../../../utils/hooks';
+
+library.add(fas, fab);
 
 export default () => {
   const [menu, setMenu] = useState(false);

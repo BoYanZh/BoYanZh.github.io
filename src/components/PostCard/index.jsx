@@ -7,7 +7,7 @@ import Utils from '../../utils/pageUtils';
 
 const generateTag = (tag) => (
   <Tag>
-    <a href={`/tags/${tag}`}>{tag}</a>
+    <a href={`/tags/${tag}`}>{`#${tag}`}</a>
   </Tag>
 );
 

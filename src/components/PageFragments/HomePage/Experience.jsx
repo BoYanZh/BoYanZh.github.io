@@ -1,11 +1,11 @@
 import React from 'react';
 import { Timeline, TimelineEvent } from 'react-event-timeline';
-import FeatherIcon from 'feather-icons-react';
+import { Row, Col, List } from 'antd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Config from '../../../../config';
 
 import './index.css';
-
 
 const generateTimelineEvent = (data) => (
   <TimelineEvent
@@ -15,28 +15,48 @@ const generateTimelineEvent = (data) => (
     subtitleStyle={{ fontSize: '13pt', fontWeight: '400' }}
     createdAt={data.date}
     style={{ fontSize: '12pt', fontWeight: '300' }}
-    icon={<FeatherIcon size="19" icon={data.icon || 'bookmark'} />}
+    icon={<FontAwesomeIcon size="md" fixedWidth icon={data.icon || 'school'} />}
   />
 );
 
-const previousTimeLineData = Config.experience.slice(0, Config.experience.length - 1);
-const lastTimeLineData = Config.experience.slice(Config.experience.length - 1);
+const generateInterest = (data) => (
+  <List.Item>
+    <List.Item.Meta
+      avatar={<FontAwesomeIcon size="lg" fixedWidth icon={data.icon} />}
+      title={data.title}
+    />
+  </List.Item>
+);
+
+const previousTimeLineData = Config.education.slice(0, Config.education.length - 1);
+const lastTimeLineData = Config.education.slice(Config.education.length - 1);
 
 const Experience = () => (
-  <div>
-    <h2>Experience</h2>
-    {Config.experience.length > 1
-      ? (
-        <Timeline lineStyle={{ top: '20px' }}>
-          {previousTimeLineData.map(generateTimelineEvent)}
-        </Timeline>
-      ) : null}
-    {Config.experience.length > 0
-      ? (
-        <Timeline lineStyle={{ display: 'none' }} style={{ top: '-30px' }}>
-          {lastTimeLineData.map(generateTimelineEvent)}
-        </Timeline>
-      ) : null}
+  <div style={{ marginTop: '0.8rem' }}>
+    <Row>
+      <Col xs={24} sm={24} md={12} lg={14}>
+        <h2 style={{ marginBottom: '0rem' }}>Education</h2>
+        {Config.education.length > 1
+          ? (
+            <Timeline lineStyle={{ top: '20px' }}>
+              {previousTimeLineData.map(generateTimelineEvent)}
+            </Timeline>
+          ) : null}
+        {Config.education.length > 0
+          ? (
+            <Timeline lineStyle={{ display: 'none' }} style={{ top: '-30px' }}>
+              {lastTimeLineData.map(generateTimelineEvent)}
+            </Timeline>
+          ) : null}
+      </Col>
+      <Col xs={24} sm={24} md={12} lg={10}>
+        <h2 style={{ marginBottom: '0.8rem' }} className="interests">Interests</h2>
+        <List itemLayout="horizontal" split={false}>
+          {Config.interests.map(generateInterest)}
+        </List>
+      </Col>
+    </Row>
+
   </div>
 );
 
