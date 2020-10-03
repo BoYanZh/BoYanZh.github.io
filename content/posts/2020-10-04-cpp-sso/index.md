@@ -79,5 +79,5 @@ In short string mode, the first byte of the string stores the size (which is les
 
 In order to distinguish a long string from a short one, the first byte of a long string (also the first byte of its capacity) is set to a mask 0x80 (which is larger than the maximum length of short string). This mask actually half the maximum capacity of the long string, but 0x 7fff ffff ffff ffff is huge enough comparing to achievable memory size.
 
-This design eliminates the size of a string to 24 bytes, and provides a longer local string (15 -> 23 for `char`, or 7 -> 11 for `wchar_t`).
+This design eliminates the size of a string to 24 bytes, and provides a longer local string (15 -> 22 for `char`, or 7 -> 10 for `wchar_t`).
 
