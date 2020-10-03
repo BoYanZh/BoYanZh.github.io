@@ -11,9 +11,6 @@ import { useWindowSize } from '../../../utils/hooks';
 import Config from '../../../../config';
 
 const { Content } = Layout;
-const {
-  facebook, github, instagram, twitter,
-} = Config.social;
 
 const Name = () => {
   const arr = Config.author.split(' ');
@@ -37,10 +34,9 @@ const DomContent = () => (
       </div>
       {Config.professions.map((profession) => <div className={`${style.badge} ${style.badgeGray}`}>{profession}</div>)}
       <div className="centerAlign box">
-        <a href={facebook} target="_blank" label="button" rel="noopener noreferrer"><FontAwesomeIcon name="facebook-f" /></a>
-        <a href={twitter} target="_blank" label="button" rel="noopener noreferrer"><FontAwesomeIcon name="twitter" /></a>
-        <a href={github} target="_blank" label="button" rel="noopener noreferrer"><FontAwesomeIcon icon={['fab', 'github']} /></a>
-        <a href={instagram} target="_blank" label="button" rel="noopener noreferrer"><FontAwesomeIcon name="instagram" /></a>
+        <a href={Config.social.github} target="_blank" label="button" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={['fab', 'github']} />
+        </a>
       </div>
       <List itemLayout="horizontal" split={false} style={{ width: '200px' }}>
         <List.Item>

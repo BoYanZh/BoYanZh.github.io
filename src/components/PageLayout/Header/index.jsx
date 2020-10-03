@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Link } from 'gatsby';
 import { Layout } from 'antd';
-// import 'font-awesome/less/font-awesome.less';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import style from './header.module.less';
 import '../../../styles/global.less';
 import { useWindowSize } from '../../../utils/hooks';
+import LoadableSearch from '../../SearchBar/loadable';
 
 library.add(fas, fab);
 
 export default () => {
   const [menu, setMenu] = useState(false);
+  const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
+  const searchBarRef = useRef(null);
 
   const [width] = useWindowSize();
   const toggleMenu = () => {
@@ -24,6 +28,19 @@ export default () => {
       }
     }
   };
+
+  const toggleSearchIconClick = (flag) => {
+    setSearchBarExpanded(flag);
+  };
+
+  const expandSearch = () => {
+    toggleSearchIconClick(true);
+  };
+
+  const collapseSearch = () => {
+    toggleSearchIconClick(false);
+  };
+
   return (
     <>
       <div className={style.circleMenu} role="button" tabIndex="0" onKeyDown={toggleMenu} onClick={toggleMenu}>
@@ -55,6 +72,16 @@ export default () => {
               <Link to="/posts" onClick={toggleMenu} activeClassName={style.anchorActive}>
                 Posts
               </Link>
+            </li>
+            <li className={style.navItem} style={{ marginLeft: '1rem' }}>
+              <LoadableSearch
+                isSearchBarExpanded={isSearchBarExpanded}
+                handleSearchBarToggle={collapseSearch}
+                ref={searchBarRef}
+              />
+              {isSearchBarExpanded
+                ? <FontAwesomeIcon icon="times" fixedWidth />
+                : <FontAwesomeIcon icon="search" fixedWidth onMouseDown={expandSearch} />}
             </li>
             {/* <li className={style.navItem}>
               <Link to="/tags" onClick={toggleMenu} activeClassName={style.anchorActive}>
