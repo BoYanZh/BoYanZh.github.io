@@ -2,7 +2,8 @@
   "extends": "airbnb",
   "rules": {
     "react/prop-types": 0,
-    "react/no-danger":0
+    "react/no-danger": 0,
+    "no-plusplus": 0
   },
   "globals": {
     "window": true,

@@ -4,12 +4,16 @@ import { Link } from 'gatsby';
 import { Tag } from 'antd';
 import style from './postCard.module.less';
 import Utils from '../../utils/pageUtils';
+import Statistics from '../../../content/statistics.json';
 
-const generateTag = (tag) => (
-  <Tag>
-    <a href={`/tags/${tag}`}>{`#${tag}`}</a>
-  </Tag>
-);
+const generateTag = (tag) => {
+  const color = Statistics.tags[tag] ? Statistics.tags[tag].color : '';
+  return (
+    <Tag color={color}>
+      <a href={`/tags/${tag}`}>{`#${tag}`}</a>
+    </Tag>
+  );
+};
 
 const PostCard = (props) => {
   const { data: { node } } = props;

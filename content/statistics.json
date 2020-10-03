@@ -1,0 +1,14 @@
+{
+  "tags": {
+    "gatsby": {
+      "count": 1,
+      "path": "/tags/gatsby",
+      "color": "red"
+    },
+    "blog": {
+      "count": 1,
+      "path": "/tags/blog",
+      "color": "magenta"
+    }
+  }
+}

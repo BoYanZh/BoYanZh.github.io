@@ -9,6 +9,7 @@ import { globalHistory } from '@reach/router';
 import style from './sidebar.module.less';
 import { useWindowSize } from '../../../utils/hooks';
 import Config from '../../../../config';
+import Utils from '../../../utils/pageUtils';
 
 const { Content } = Layout;
 
@@ -27,7 +28,7 @@ const Name = () => {
 
 const DomContent = () => (
   <aside>
-    <img className={`${style.profileAvatar} centerAlign`} src={`../${Config.avatar}`} alt="" />
+    <img className={`${style.profileAvatar} centerAlign`} src={Utils.generateFullUrl(Config.avatar)} alt="" />
     <div className={`${style.name} centerAlign`}>
       <div className={`${style.boxName} centerAlign`}>
         <Name />

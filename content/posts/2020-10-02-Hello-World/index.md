@@ -1,6 +1,6 @@
 ---
 title: "Hello World - My first blog"
-tags: ["gatsby"]
+tags: ["gatsby", "blog"]
 date: 2020-10-02
 cover: "./preview.png"
 path: "posts/hello-world"

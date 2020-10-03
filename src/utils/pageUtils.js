@@ -3,6 +3,24 @@ const Config = require('../../config');
 
 const Utils = {
   /**
+   * Generate full url, use localhost in dev mode
+   * @param path
+   * @returns {string}
+   */
+  generateFullUrl: (...path) => {
+    let urlPrefix;
+    if (process && process.env.NODE_ENV !== 'production') {
+      urlPrefix = 'http://127.0.0.1:8000/';
+    } else {
+      urlPrefix = Config.siteUrl;
+    }
+    if (urlPrefix[urlPrefix.length - 1] !== '/') {
+      urlPrefix += '/';
+    }
+    return urlPrefix + Utils.resolveUrl(...path);
+  },
+
+  /**
    * Join provided url paths.
    * @param {...string} paths Provided paths. It doesn't matter if they have trailing slash.
    * @return {string} Resolved url without trailing slash.

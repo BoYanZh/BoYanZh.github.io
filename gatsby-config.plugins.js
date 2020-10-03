@@ -6,6 +6,7 @@ module.exports = [
   'gatsby-plugin-sharp',
   'gatsby-plugin-less',
   'gatsby-plugin-offline',
+  'gatsby-plugin-lodash',
   {
     resolve: 'gatsby-source-filesystem',
     options: {
