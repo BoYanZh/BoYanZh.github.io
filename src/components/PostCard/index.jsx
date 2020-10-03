@@ -26,7 +26,7 @@ const PostCard = (props) => {
         <div
           className={style.postCardImg}
           style={{
-            backgroundImage: `url(${frontmatter ? frontmatter.cover.childImageSharp.fluid.src : ''})`,
+            backgroundImage: `url(${frontmatter && frontmatter.cover ? frontmatter.cover.childImageSharp.fluid.src : ''})`,
           }}
         />
         <div className={style.mrTp20}>

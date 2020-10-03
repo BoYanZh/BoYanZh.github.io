@@ -17,8 +17,9 @@ const Post = ({ data }) => {
   Utils.generateOmittedPostInfo(data.markdownRemark);
   const { html, frontmatter } = data.markdownRemark;
   const {
-    title, cover: { childImageSharp: { fluid } }, excerpt, path,
+    title, cover, excerpt, path,
   } = frontmatter;
+  const fluid = cover ? cover.childImageSharp.fluid : null;
 
   /*  const canonicalUrl = Utils.resolvePageUrl(
     Config.siteUrl,
@@ -39,7 +40,8 @@ const Post = ({ data }) => {
           <div className="marginTopTitle">
             <h1>{title}</h1>
             <div className={style.bannerImgContainer}>
-              <Img className={style.bannerImg} fluid={fluid} title={excerpt} alt={title} />
+              {fluid ? <Img className={style.bannerImg} fluid={fluid} title={excerpt} alt={title} />
+                : <Img className={style.bannerImg} fixed title={excerpt} alt={title} />}
             </div>
             <article className={style.blogArticle} dangerouslySetInnerHTML={{ __html: html }} />
             {/* <Comment pageCanonicalUrl={canonicalUrl} pageId={title} /> */}

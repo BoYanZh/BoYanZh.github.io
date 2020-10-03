@@ -3,6 +3,11 @@
     "gatsby": {
       "count": 1,
       "path": "/tags/gatsby",
+      "color": "volcano"
+    },
+    "cpp": {
+      "count": 1,
+      "path": "/tags/cpp",
       "color": "red"
     },
     "blog": {
