@@ -5,9 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useRef, useCallback, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import { Input } from 'antd';
+import { navigate } from '@reach/router';
 
 // import Config from '../../../config';
 import DocSearch from './lib/DocSearch';
@@ -22,7 +23,6 @@ import './styles.css';
 const Search = (props) => {
   const initialized = useRef(false);
   const searchBarRef = useRef(null);
-  const baseUrl = '/';
   const initAlgolia = (searchDocs, searchIndex) => {
     // eslint-disable-next-line no-new
     new DocSearch({
@@ -32,16 +32,7 @@ const Search = (props) => {
       // Override algolia's default selection event, allowing us to do client-side
       // navigation and avoiding a full page refresh.
       handleSelected: (_input, _event, suggestion) => {
-        const url = baseUrl + suggestion.url;
-        console.log(url);
-        // Use an anchor tag to parse the absolute url into a relative url
-        // Alternatively, we can use new URL(suggestion.url) but its not supported in IE
-        // const a = document.createElement('a');
-        // a.href = url;
-        // Algolia use closest parent element id #__docusaurus
-        // when a h1 page title does not have an id
-        // So, we can safely remove it. See https://github.com/facebook/docusaurus/issues/1828 for more details.
-        // history.push(url);
+        navigate(suggestion.url);
       },
     });
   };
