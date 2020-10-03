@@ -7,6 +7,7 @@
 
 import React, { useRef, useCallback, useEffect } from 'react';
 import classnames from 'classnames';
+import { Input } from 'antd';
 
 // import Config from '../../../config';
 import DocSearch from './lib/DocSearch';
@@ -94,7 +95,8 @@ const Search = (props) => {
 
   const style = {
     position: 'absolute',
-    right: '80px',
+    right: '50px',
+    top: '70px',
     width: '80%',
   };
   if (!isSearchBarExpanded) {
@@ -113,7 +115,7 @@ const Search = (props) => {
         onKeyDown={toggleSearchIconClick}
         tabIndex={0}
       /> */}
-      <input
+      <Input
         id="search_input_react"
         type="search"
         placeholder="Search"

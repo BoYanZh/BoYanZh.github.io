@@ -30,6 +30,7 @@ class DocSearch {
       debug: false,
       hint: false,
       autoselect: true,
+      openOnFocus: true,
     },
     transformData = false,
     queryHook = false,
@@ -89,6 +90,8 @@ class DocSearch {
       'autocomplete:shown',
       this.handleShown.bind(null, this.input),
     );
+
+    this.autocomplete.off('blur');
 
     if (enhancedSearchInput) {
       DocSearch.bindSearchBoxEvent();
@@ -150,7 +153,6 @@ class DocSearch {
         query = queryHook(query) || query;
       }
       this.client.search(query).then((hits) => {
-        console.log(hits);
         if (
           this.queryDataCallback
                     && typeof this.queryDataCallback === 'function'
