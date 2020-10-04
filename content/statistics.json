@@ -3,17 +3,27 @@
     "gatsby": {
       "count": 1,
       "path": "/tags/gatsby",
-      "color": "volcano"
+      "color": "orange"
     },
     "cpp": {
       "count": 1,
       "path": "/tags/cpp",
-      "color": "red"
+      "color": "volcano"
+    },
+    "scheduling": {
+      "count": 1,
+      "path": "/tags/scheduling",
+      "color": "gold"
+    },
+    "algorithm": {
+      "count": 1,
+      "path": "/tags/algorithm",
+      "color": "magenta"
     },
     "blog": {
       "count": 1,
       "path": "/tags/blog",
-      "color": "magenta"
+      "color": "red"
     }
   }
 }

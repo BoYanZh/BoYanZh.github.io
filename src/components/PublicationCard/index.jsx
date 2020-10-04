@@ -30,7 +30,7 @@ const PublicationCard = (props) => {
             <div
               className={style.postCardImg}
               style={{
-                backgroundImage: `url(${frontmatter ? frontmatter.cover.childImageSharp.fluid.src : ''})`,
+                backgroundImage: `url(${frontmatter && frontmatter.cover ? frontmatter.cover.childImageSharp.fluid.src : ''})`,
               }}
             />
           </Col>
