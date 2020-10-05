@@ -2,6 +2,11 @@ import React from 'react';
 import { Layout } from 'antd';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
+
+import 'github-markdown-css';
+import 'highlight.js/styles/github.css';
+import 'typeface-jetbrains-mono';
+
 import Header from '../../components/PageLayout/Header';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import SEO from '../../components/Seo';
@@ -9,8 +14,9 @@ import SEO from '../../components/Seo';
 // import Config from '../../../config';
 import Utils from '../../utils/pageUtils';
 
-import 'prismjs/themes/prism-solarizedlight.css';
+// import 'prismjs/themes/prism-solarizedlight.css';
 import './highlight-syntax.less';
+
 import style from './post.module.less';
 
 const Post = ({ data }) => {
@@ -43,7 +49,7 @@ const Post = ({ data }) => {
               {fluid ? <Img className={style.bannerImg} fluid={fluid} title={excerpt} alt={title} />
                 : <Img className={style.bannerImg} fixed title={excerpt} alt={title} />}
             </div>
-            <article className={style.blogArticle} dangerouslySetInnerHTML={{ __html: html }} />
+            <article className="markdown-body" dangerouslySetInnerHTML={{ __html: html }} />
             {/* <Comment pageCanonicalUrl={canonicalUrl} pageId={title} /> */}
           </div>
         </SidebarWrapper>
