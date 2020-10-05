@@ -5,11 +5,6 @@
       "path": "/tags/gatsby",
       "color": "orange"
     },
-    "cpp": {
-      "count": 1,
-      "path": "/tags/cpp",
-      "color": "volcano"
-    },
     "scheduling": {
       "count": 1,
       "path": "/tags/scheduling",
@@ -20,10 +15,20 @@
       "path": "/tags/algorithm",
       "color": "magenta"
     },
+    "cpp": {
+      "count": 1,
+      "path": "/tags/cpp",
+      "color": "volcano"
+    },
     "blog": {
       "count": 1,
       "path": "/tags/blog",
       "color": "red"
     }
+  },
+  "git": {
+    "hash": "4146a10",
+    "commits": 78,
+    "dirty": true
   }
 }

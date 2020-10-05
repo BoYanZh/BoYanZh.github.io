@@ -2,9 +2,22 @@
 const path = require('path');
 const fs = require('fs');
 const _ = require('lodash');
+const execa = require('execa');
+
 /* App imports */
 const config = require('./config');
 const utils = require('./src/utils/pageUtils');
+
+const getGitInfo = () => {
+  const gitHash = execa.sync('git', ['rev-parse', '--short', 'HEAD']).stdout;
+  const gitNumCommits = Number(execa.sync('git', ['rev-list', 'HEAD', '--count']).stdout);
+  const gitDirty = execa.sync('git', ['status', '-s', '-uall']).stdout.length > 0;
+  return {
+    hash: gitHash,
+    commits: gitNumCommits,
+    dirty: gitDirty,
+  };
+}
 
 const createTagPage = (createPage, tag, node) => {
   let tagPath;
@@ -141,6 +154,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     const statistics = {
       tags,
+      git: getGitInfo(),
     };
 
     fs.writeFileSync('content/statistics.json', JSON.stringify(statistics, null, 2));

@@ -8,6 +8,7 @@ import 'highlight.js/styles/github.css';
 import 'typeface-jetbrains-mono';
 
 import Header from '../../components/PageLayout/Header';
+import Footer from '../../components/PageLayout/Footer';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import SEO from '../../components/Seo';
 // import Comment from '../../components/Comment';
@@ -53,6 +54,7 @@ const Post = ({ data }) => {
             <article className="markdown-body" dangerouslySetInnerHTML={{ __html: html }} />
             {/* <Comment pageCanonicalUrl={canonicalUrl} pageId={title} /> */}
           </div>
+          <Footer />
         </SidebarWrapper>
       </Layout>
     </Layout>
