@@ -3,7 +3,7 @@ title: "C++ Small String Optimization"
 tags: ["cpp"]
 date: 2020-10-04
 path: "posts/cpp-sso"
-excerpt: 
+excerpt: In this post, SSO (Small String Optimization) in C++ is studied and some more efforts for small static strings are made.
 ---
 
 ## Implementation of `std::string`
@@ -55,10 +55,10 @@ class basic_string {
         size_type __size_;              // 8      bytes
         pointer   __data_;              // 8      bytes
     };
-    
+
     enum {__min_cap = (sizeof(__long) - 1) / sizeof(value_type) > 2 ?
                       (sizeof(__long) - 1) / sizeof(value_type) : 2};
-    
+
     struct __short {
         union {
             unsigned char __size_;      // 1      byte

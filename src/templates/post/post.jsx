@@ -45,10 +45,11 @@ const Post = ({ data }) => {
         <SidebarWrapper>
           <div className="marginTopTitle">
             <h1>{title}</h1>
-            <div className={style.bannerImgContainer}>
-              {fluid ? <Img className={style.bannerImg} fluid={fluid} title={excerpt} alt={title} />
-                : <Img className={style.bannerImg} fixed title={excerpt} alt={title} />}
-            </div>
+            { fluid ? (
+              <div className={style.bannerImgContainer}>
+                <Img className={style.bannerImg} fluid={fluid} title={excerpt} alt={title} />
+              </div>
+            ) : null }
             <article className="markdown-body" dangerouslySetInnerHTML={{ __html: html }} />
             {/* <Comment pageCanonicalUrl={canonicalUrl} pageId={title} /> */}
           </div>
