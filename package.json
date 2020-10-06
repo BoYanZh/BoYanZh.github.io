@@ -61,6 +61,7 @@
     "typeface-jetbrains-mono": "^2.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-loader": "^3.0.2",

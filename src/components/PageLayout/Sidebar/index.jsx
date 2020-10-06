@@ -88,7 +88,7 @@ const Sidebar = (props) => {
     <>
       <Layout>
         <Content className={`${style.content} ${style.background}`}>
-          <Row>
+          <Row style={{ marginBottom: '4rem' }}>
             <Col sm={24} md={10} lg={7} className={style.sidebarContent}>
               { domContent }
             </Col>

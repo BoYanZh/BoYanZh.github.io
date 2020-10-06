@@ -5,6 +5,11 @@
       "path": "/tags/gatsby",
       "color": "orange"
     },
+    "cpp": {
+      "count": 1,
+      "path": "/tags/cpp",
+      "color": "volcano"
+    },
     "scheduling": {
       "count": 1,
       "path": "/tags/scheduling",
@@ -15,20 +20,30 @@
       "path": "/tags/algorithm",
       "color": "magenta"
     },
-    "cpp": {
-      "count": 1,
-      "path": "/tags/cpp",
-      "color": "volcano"
-    },
     "blog": {
       "count": 1,
       "path": "/tags/blog",
       "color": "red"
+    },
+    "test1": {
+      "count": 1,
+      "path": "/tags/test1",
+      "color": "lime"
+    },
+    "test2": {
+      "count": 1,
+      "path": "/tags/test2",
+      "color": "green"
+    },
+    "test3": {
+      "count": 1,
+      "path": "/tags/test3",
+      "color": "cyan"
     }
   },
   "git": {
-    "hash": "4146a10",
-    "commits": 78,
+    "hash": "ecb82a2",
+    "commits": 79,
     "dirty": true
   }
 }

@@ -1,19 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 import { Link } from 'gatsby';
-import { Tag } from 'antd';
+import { Row, Col } from 'antd';
 import style from './postCard.module.less';
+import PostTag from '../PostTag';
 import Utils from '../../utils/pageUtils';
-import Statistics from '../../../content/statistics.json';
-
-const generateTag = (tag) => {
-  const color = Statistics.tags[tag] ? Statistics.tags[tag].color : '';
-  return (
-    <Tag color={color}>
-      <a href={`/tags/${tag}`}>{`#${tag}`}</a>
-    </Tag>
-  );
-};
 
 const PostCard = (props) => {
   const { data: { node } } = props;
@@ -30,18 +21,19 @@ const PostCard = (props) => {
           }}
         />
         <div className={style.mrTp20}>
-          <p>
-            <span className={style.dateHolder}>{frontmatter ? moment(frontmatter.date).format('MMM Do YYYY') : ''}</span>
-          </p>
           <h3>{frontmatter ? frontmatter.title : ''}</h3>
-          <p>{frontmatter ? frontmatter.excerpt : ''}</p>
         </div>
       </Link>
-      <p style={{ color: '#ce6d96', wordSpacing: '10px' }}>
-        {
-          frontmatter.tags.map(generateTag)
-        }
-      </p>
+      <Row align="middle" gutter={[0, 8]}>
+        <Col xs>
+          <span className={style.dateHolder}>{frontmatter ? moment(frontmatter.date).format('MMM Do YYYY') : ''}</span>
+        </Col>
+        { frontmatter.tags.map((tag) => (<PostTag tag={tag} />))}
+      </Row>
+      <Link to={Utils.resolvePageUrl(frontmatter.path)}>
+        <p>{frontmatter ? frontmatter.excerpt : ''}</p>
+        {/* </div> */}
+      </Link>
     </div>
   );
 };

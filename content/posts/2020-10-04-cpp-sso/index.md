@@ -3,7 +3,7 @@ title: "C++ Small String Optimization"
 tags: ["cpp"]
 date: 2020-10-04
 path: "posts/cpp-sso"
-excerpt: In this post, SSO (Small String Optimization) in C++ is studied and some more efforts for small static strings are made.
+excerpt: In this post, SSO (small string optimization) in C++ is studied and some more efforts for small static strings are made.
 ---
 
 ## Implementation of `std::string`

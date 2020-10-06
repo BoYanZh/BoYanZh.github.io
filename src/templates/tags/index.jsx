@@ -36,7 +36,7 @@ const TagPage = ({ data, pageContext }) => {
         />
         <SidebarWrapper>
           <div className={`marginTopTitle ${style.tagsList}`}>
-            <h1>
+            <h1 className="titleSeparate">
               #
               {tagName}
             </h1>

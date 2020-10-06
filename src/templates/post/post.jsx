@@ -4,18 +4,16 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 import 'github-markdown-css';
-import 'highlight.js/styles/github.css';
 import 'typeface-jetbrains-mono';
+import 'highlight.js/styles/github.css';
 
 import Header from '../../components/PageLayout/Header';
 import Footer from '../../components/PageLayout/Footer';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import SEO from '../../components/Seo';
 // import Comment from '../../components/Comment';
-// import Config from '../../../config';
 import Utils from '../../utils/pageUtils';
 
-// import 'prismjs/themes/prism-solarizedlight.css';
 import './highlight-syntax.less';
 
 import style from './post.module.less';
