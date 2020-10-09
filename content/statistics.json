@@ -5,6 +5,21 @@
       "path": "/tags/gatsby",
       "color": "orange"
     },
+    "fxh": {
+      "count": 6,
+      "path": "/tags/fxh",
+      "color": "purple"
+    },
+    "sb": {
+      "count": 3,
+      "path": "/tags/sb",
+      "color": "geekblue"
+    },
+    "nb": {
+      "count": 3,
+      "path": "/tags/nb",
+      "color": "blue"
+    },
     "cpp": {
       "count": 1,
       "path": "/tags/cpp",
@@ -42,8 +57,8 @@
     }
   },
   "git": {
-    "hash": "ecb82a2",
-    "commits": 79,
+    "hash": "c96f206",
+    "commits": 80,
     "dirty": true
   }
 }
