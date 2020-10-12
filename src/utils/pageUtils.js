@@ -1,5 +1,11 @@
 /* eslint-disable no-param-reassign */
+const _ = require('lodash');
 const Config = require('../../config');
+const Statistics = require('../../content/statistics.json');
+
+const tags = _(Statistics.tags).map((value, key) => ({
+  name: key, ...value,
+})).sortBy('count', 'name').value();
 
 const Utils = {
   /**
@@ -108,6 +114,7 @@ const Utils = {
       node.frontmatter.path = matches[0];
     }
   },
+  getTags: () => tags,
 };
 
 module.exports = Utils;
