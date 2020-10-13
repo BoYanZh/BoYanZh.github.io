@@ -10,15 +10,20 @@
       "path": "/tags/fxh",
       "color": "magenta"
     },
+    "nb": {
+      "count": 3,
+      "path": "/tags/nb",
+      "color": "red"
+    },
     "sb": {
       "count": 3,
       "path": "/tags/sb",
       "color": "volcano"
     },
-    "nb": {
-      "count": 3,
-      "path": "/tags/nb",
-      "color": "red"
+    "cpp": {
+      "count": 1,
+      "path": "/tags/cpp",
+      "color": "lime"
     },
     "scheduling": {
       "count": 1,
@@ -29,11 +34,6 @@
       "count": 1,
       "path": "/tags/algorithm",
       "color": "orange"
-    },
-    "cpp": {
-      "count": 1,
-      "path": "/tags/cpp",
-      "color": "lime"
     },
     "blog": {
       "count": 1,
@@ -57,8 +57,8 @@
     }
   },
   "git": {
-    "hash": "c7045e4",
-    "commits": 84,
+    "hash": "bdfa6bc",
+    "commits": 85,
     "dirty": true
   }
 }

@@ -37,10 +37,7 @@ const Panel = (props) => {
     }
     return (
       <Col xs>
-        <Tag
-          className="ant-tag-checkable"
-          color={color}
-        >
+        <Tag color={color}>
           <a onClick={() => handleClick(tag.name)}>
             {tag.name}
           </a>
