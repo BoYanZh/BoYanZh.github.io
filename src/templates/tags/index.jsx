@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+// import Img from 'gatsby-image';
 import {
   Layout, Row, Col,
 } from 'antd';
@@ -40,9 +40,9 @@ const TagPage = ({ data, pageContext }) => {
               #
               {tagName}
             </h1>
-            {/*<div className={style.bannerImgContainer}>*/}
-            {/*  <Img className={style.bannerImg} fluid={tagImage} alt={tagName} />*/}
-            {/*</div>*/}
+            {/* <div className={style.bannerImgContainer}> */}
+            {/*  <Img className={style.bannerImg} fluid={tagImage} alt={tagName} /> */}
+            {/* </div> */}
             <h4 className="textCenter">
               {Statistics.tags[tag].description}
             </h4>

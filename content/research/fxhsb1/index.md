@@ -2,7 +2,7 @@
 title: "Lorem Ipsum (fxhsb1)"
 tags: ["fxh", "sb"]
 date: 2020-10-10
-path: "publications/fxhsb1"
+path: "research/fxhsb1"
 excerpt: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
 ---
 

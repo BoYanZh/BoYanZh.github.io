@@ -42,7 +42,7 @@ const processTags = (tags) => {
   const arr = _(tags).map((value, key) => ({
     ...value,
     name: key,
-  })).sortBy('count', 'name').value();
+  })).orderBy(['count', 'name'], ['desc', 'asc']).value();
   if (arr.length > 0) {
     const chunkSize = Math.ceil(arr.length / tagColors.length);
     const chunks = _.chunk(arr, chunkSize);
@@ -78,7 +78,7 @@ exports.createPages = ({ actions, graphql }) => {
     const { allMarkdownRemark } = result.data;
     const tags = {};
 
-    /* Post and Publication pages */
+    /* Post and Research pages */
     allMarkdownRemark.edges.forEach(({ node }) => {
       utils.generateOmittedPostInfo(node);
       // Check path prefix of Tag
@@ -95,9 +95,9 @@ exports.createPages = ({ actions, graphql }) => {
         }
         return;
       }
-      // Check path prefix of Post and Publication
+      // Check path prefix of Post and Research
       if (node.frontmatter.path.indexOf(config.pages.posts) !== 0
-        && node.frontmatter.path.indexOf(config.pages.publications) !== 0) {
+        && node.frontmatter.path.indexOf(config.pages.research) !== 0) {
         // eslint-disable-next-line no-throw-literal
         throw `Invalid path prefix: ${node.frontmatter.path}`;
       }

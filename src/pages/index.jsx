@@ -28,7 +28,7 @@ export const query = graphql`
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { 
-        fileAbsolutePath: { regex: "/publications\/.*\/index\\.md$/" }
+        fileAbsolutePath: { regex: "/research\/.*\/index\\.md$/" }
         frontmatter: { selected: { eq: true } }
       }
     ) {
@@ -55,4 +55,3 @@ export const query = graphql`
     }
   }
 `;
-

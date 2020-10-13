@@ -5,7 +5,7 @@ const Statistics = require('../../content/statistics.json');
 
 const tags = _(Statistics.tags).map((value, key) => ({
   name: key, ...value,
-})).sortBy('count', 'name').value();
+})).orderBy(['count', 'name'], ['desc', 'asc']).value();
 
 const Utils = {
   /**
@@ -106,7 +106,7 @@ const Utils = {
    */
   capitalize: (str) => str[0].toUpperCase() + str.slice(1),
   generateOmittedPostInfo: (node) => {
-    const regex = /(?<=content\/)(posts|publications)\/.*(?=\/index\.md)/g;
+    const regex = /(?<=content\/)(posts|research)\/.*(?=\/index\.md)/g;
     const fileAbsolutePath = node.fileAbsolutePath || '';
     const matches = fileAbsolutePath.match(regex);
     if (matches && matches.length === 1 && !node.frontmatter.path) {

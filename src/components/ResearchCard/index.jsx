@@ -2,15 +2,15 @@ import React from 'react';
 import moment from 'moment';
 import { Link } from 'gatsby';
 import { Row, Col } from 'antd';
-import style from './publicationCard.module.less';
+import style from './researchCard.module.less';
 import PostTag from '../PostTag';
 import Utils from '../../utils/pageUtils';
 
-const PublicationCard = (props) => {
+const ResearchCard = (props) => {
   const { data: { node: { frontmatter } } } = props;
 
   return (
-    <div className={style.publicationCard}>
+    <div className={style.researchCard}>
 
       <Row gutter={[10, 10]} align="middle">
         <Col xs={24} sm={24} md={16} lg={16}>
@@ -44,4 +44,4 @@ const PublicationCard = (props) => {
   );
 };
 
-export default PublicationCard;
+export default ResearchCard;

@@ -3,62 +3,62 @@
     "gatsby": {
       "count": 1,
       "path": "/tags/gatsby",
-      "color": "orange"
+      "color": "green"
     },
     "fxh": {
       "count": 6,
       "path": "/tags/fxh",
-      "color": "purple"
+      "color": "magenta"
     },
     "sb": {
       "count": 3,
       "path": "/tags/sb",
-      "color": "geekblue"
+      "color": "volcano"
     },
     "nb": {
       "count": 3,
       "path": "/tags/nb",
-      "color": "blue"
-    },
-    "cpp": {
-      "count": 1,
-      "path": "/tags/cpp",
-      "color": "volcano"
+      "color": "red"
     },
     "scheduling": {
       "count": 1,
       "path": "/tags/scheduling",
-      "color": "gold"
+      "color": "cyan"
     },
     "algorithm": {
       "count": 1,
       "path": "/tags/algorithm",
-      "color": "magenta"
+      "color": "orange"
+    },
+    "cpp": {
+      "count": 1,
+      "path": "/tags/cpp",
+      "color": "lime"
     },
     "blog": {
       "count": 1,
       "path": "/tags/blog",
-      "color": "red"
+      "color": "gold"
     },
     "test1": {
       "count": 1,
       "path": "/tags/test1",
-      "color": "lime"
+      "color": "blue"
     },
     "test2": {
       "count": 1,
       "path": "/tags/test2",
-      "color": "green"
+      "color": "geekblue"
     },
     "test3": {
       "count": 1,
       "path": "/tags/test3",
-      "color": "cyan"
+      "color": "purple"
     }
   },
   "git": {
-    "hash": "44e9e57",
-    "commits": 83,
+    "hash": "c7045e4",
+    "commits": 84,
     "dirty": true
   }
 }
