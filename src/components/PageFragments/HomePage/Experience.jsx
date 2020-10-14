@@ -34,7 +34,7 @@ const lastTimeLineData = Config.education.slice(Config.education.length - 1);
 const Experience = () => (
   <div style={{ marginTop: '0.8rem' }}>
     <Row>
-      <Col xs={24} sm={24} md={12} lg={14}>
+      <Col xs={24} sm={24} md={12} lg={15}>
         <h2 style={{ marginBottom: '0rem' }}>Education</h2>
         {Config.education.length > 1
           ? (
@@ -49,7 +49,7 @@ const Experience = () => (
             </Timeline>
           ) : null}
       </Col>
-      <Col xs={24} sm={24} md={12} lg={10}>
+      <Col xs={24} sm={24} md={12} lg={9}>
         <h2 style={{ marginBottom: '0.8rem' }} className="interests">Interests</h2>
         <List itemLayout="horizontal" split={false}>
           {Config.interests.map(generateInterest)}

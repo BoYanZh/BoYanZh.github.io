@@ -4,7 +4,14 @@ module.exports = [
   'gatsby-plugin-react-helmet',
   'gatsby-transformer-sharp',
   'gatsby-plugin-sharp',
-  'gatsby-plugin-less',
+  {
+    resolve: 'gatsby-plugin-less',
+    options: {
+      lessOptions: {
+        javascriptEnabled: true,
+      }
+    }
+  },
   'gatsby-plugin-offline',
   'gatsby-plugin-lodash',
   {
