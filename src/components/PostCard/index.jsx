@@ -1,7 +1,11 @@
 import React from 'react';
 import moment from 'moment';
 import { Link } from 'gatsby';
-import { Row, Col } from 'antd';
+import {
+  Row, Col, Card, Divider,
+} from 'antd';
+import { navigate } from '@reach/router';
+
 import style from './postCard.module.less';
 import PostTag from '../PostTag';
 import Utils from '../../utils/pageUtils';
@@ -11,9 +15,20 @@ const PostCard = (props) => {
   Utils.generateOmittedPostInfo(node);
   const { frontmatter } = node;
 
+  const url = Utils.resolvePageUrl(frontmatter.path);
+  const handleClick = (e) => {
+    if (e.target.tagName.toLowerCase() !== 'a' && url) {
+      // window.location.href = url;
+      navigate(url);
+    }
+  };
+
   return (
-    <div className={style.postCard}>
-      <Link to={Utils.resolvePageUrl(frontmatter.path)}>
+    <Card
+      className={style.postCard}
+      bodyStyle={{ padding: '0.8rem' }}
+      hoverable
+      cover={(
         <div>
           <span className={style.dateHolder}>{frontmatter ? moment(frontmatter.date).format('MMM Do YYYY') : ''}</span>
           <div
@@ -23,18 +38,18 @@ const PostCard = (props) => {
             }}
           />
         </div>
-        <div className={style.mrTp20}>
-          <h3>{frontmatter ? frontmatter.title : ''}</h3>
-        </div>
-      </Link>
+      )}
+      onClick={handleClick}
+    >
+      <Card.Meta
+        title={frontmatter ? frontmatter.title : ''}
+        style={{ marginBottom: '1rem' }}
+      />
       <Row align="middle" gutter={[0, 8]}>
         { frontmatter.tags.map((tag) => (<PostTag tag={tag} />))}
       </Row>
-      <Link to={Utils.resolvePageUrl(frontmatter.path)}>
-        <p>{frontmatter ? frontmatter.excerpt : ''}</p>
-        {/* </div> */}
-      </Link>
-    </div>
+      <p style={{ marginTop: '1rem' }}>{frontmatter ? frontmatter.excerpt : ''}</p>
+    </Card>
   );
 };
 

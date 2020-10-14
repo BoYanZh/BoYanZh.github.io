@@ -11,6 +11,7 @@ import { Input } from 'antd';
 import { navigate } from '@reach/router';
 
 // import Config from '../../../config';
+import Utils from '../../utils/pageUtils';
 import DocSearch from './lib/DocSearch';
 import './algolia.css';
 import './styles.css';
@@ -32,7 +33,8 @@ const Search = (props) => {
       // Override algolia's default selection event, allowing us to do client-side
       // navigation and avoiding a full page refresh.
       handleSelected: (_input, _event, suggestion) => {
-        navigate(suggestion.url);
+        const url = Utils.resolvePageUrl(suggestion.url);
+        navigate(url);
       },
     });
   };
