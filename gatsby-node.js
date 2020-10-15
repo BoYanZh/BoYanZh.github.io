@@ -288,3 +288,28 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     // });
   } */
 };
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type MarkdownRemark implements Node {
+      fields: Fields!
+    }
+    type Fields {
+      parsed: Parsed!
+    }
+    type Parsed {
+      title: String
+      tags: [String!]!
+      date: String!
+      path: String
+      excerpt: String!
+      links: [Link!]!
+    }
+    type Link {
+      name: String
+      url: String!
+    }
+  `;
+  createTypes(typeDefs);
+};
