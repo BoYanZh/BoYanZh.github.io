@@ -53,6 +53,9 @@ export const query = graphql`
             title
             tags
             excerpt
+            links {
+              name
+            }
             cover {
               childImageSharp {
                 fluid(maxWidth: 288) {
@@ -62,6 +65,14 @@ export const query = graphql`
             }
           }
           fileAbsolutePath
+          fields {
+            parsed {
+              links {
+                name
+                url
+              }
+            }
+          }
         }
       }
     }

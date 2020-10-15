@@ -7,6 +7,9 @@ const tags = _(Statistics.tags).map((value, key) => ({
   name: key, ...value,
 })).orderBy(['count', 'name'], ['desc', 'asc']).value();
 
+const researchTags = _.filter(tags, { research: true });
+const postsTags = _.filter(tags, { posts: true });
+
 const Utils = {
   /**
    * Generate full url, use localhost in dev mode
@@ -114,7 +117,15 @@ const Utils = {
       node.frontmatter.path = matches[0];
     }
   },
-  getTags: () => tags,
+  getTags: (type = '') => {
+    if (type === 'research') {
+      return researchTags;
+    }
+    if (type === 'posts') {
+      return postsTags;
+    }
+    return tags;
+  },
 };
 
 module.exports = Utils;

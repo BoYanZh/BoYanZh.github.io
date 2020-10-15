@@ -17,7 +17,7 @@ const Panel = (props) => {
   const { type, data } = props;
   const isResearch = type === 'research';
 
-  const tags = Utils.getTags();
+  const tags = Utils.getTags(type);
   const [selectedTags, setSelectedTags] = useState(new Set());
 
   const handleClick = (tagName) => {

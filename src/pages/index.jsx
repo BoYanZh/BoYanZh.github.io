@@ -50,6 +50,14 @@ export const query = graphql`
             }
           }
           fileAbsolutePath
+          fields {
+            parsed {
+              links {
+                name
+                url
+              }
+            }
+          }
         }
       }
     }

@@ -22,9 +22,10 @@ const Post = ({ data }) => {
   Utils.generateOmittedPostInfo(data.markdownRemark);
   const { html, frontmatter } = data.markdownRemark;
   const {
-    title, cover, excerpt, path,
+    title, cover, excerpt, path, links,
   } = frontmatter;
   const fluid = cover ? cover.childImageSharp.fluid : null;
+  console.log(links);
 
   /*  const canonicalUrl = Utils.resolvePageUrl(
     Config.siteUrl,
@@ -60,7 +61,7 @@ const Post = ({ data }) => {
 };
 
 export const pageQuery = graphql`
-  query($fileAbsolutePath: String!, $postPath: String!) {
+  query($fileAbsolutePath: String!) {
     markdownRemark(fileAbsolutePath: { eq: $fileAbsolutePath }) {
       html
       timeToRead
@@ -70,6 +71,7 @@ export const pageQuery = graphql`
         tags
         path
         excerpt
+        links { name }
         cover {
           childImageSharp {
             fluid(maxWidth: 1000) {
@@ -79,30 +81,6 @@ export const pageQuery = graphql`
         }
       }
       fileAbsolutePath
-    }
-    allMarkdownRemark(
-      filter: {
-        frontmatter: { path: { ne: $postPath } }
-        fileAbsolutePath: { regex: "/index.md$/" }
-      }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            path
-            title
-            tags
-            excerpt
-            cover {
-              childImageSharp {
-                fluid(maxWidth: 600) {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
-              }
-            }
-          }
-        }
-      }
     }
   }
 `;
