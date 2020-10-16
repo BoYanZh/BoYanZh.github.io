@@ -1,6 +1,7 @@
 /* Vendor imports */
 const path = require('path');
 const fs = require('fs-extra');
+const crypto = require('crypto');
 const _ = require('lodash');
 const execa = require('execa');
 // const isRelativeUrl = require('is-relative-url');
@@ -66,7 +67,7 @@ const getNodeByAbsolutePath = (absolutePath) => {
 };
 
 exports.createPages = ({ actions, getNode, graphql }) => {
-  const { createPage, createNodeField } = actions;
+  const { createPage, createNode, createNodeField } = actions;
 
   return graphql(`
     {
@@ -221,6 +222,24 @@ exports.createPages = ({ actions, getNode, graphql }) => {
 
     processTags(tags);
 
+    for (const tag in tags) {
+      const contentDigest = crypto
+        .createHash('md5')
+        .update(JSON.stringify(tags[tag]))
+        .digest('hex');
+      createNode({
+        name: tag,
+        ...tags[tag],
+        id: `tag-${tag}`,
+        parent: null,
+        children: [],
+        internal: {
+          type: 'Tag',
+          contentDigest,
+        },
+      });
+    }
+
     const statistics = {
       tags,
       git: getGitInfo(),
@@ -309,6 +328,14 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Link {
       name: String
       url: String!
+    }
+    type Tag implements Node {
+      name: String
+      path: String
+      color: String
+      count: Int
+      research: Boolean
+      posts: Boolean
     }
   `;
   createTypes(typeDefs);

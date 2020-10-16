@@ -14,13 +14,6 @@
       "posts": true,
       "color": "magenta"
     },
-    "sb": {
-      "count": 3,
-      "path": "/tags/sb",
-      "research": true,
-      "posts": false,
-      "color": "volcano"
-    },
     "nb": {
       "count": 3,
       "path": "/tags/nb",
@@ -28,12 +21,12 @@
       "posts": true,
       "color": "red"
     },
-    "cpp": {
-      "count": 1,
-      "path": "/tags/cpp",
-      "research": false,
-      "posts": true,
-      "color": "lime"
+    "sb": {
+      "count": 3,
+      "path": "/tags/sb",
+      "research": true,
+      "posts": false,
+      "color": "volcano"
     },
     "scheduling": {
       "count": 1,
@@ -48,6 +41,13 @@
       "research": true,
       "posts": false,
       "color": "orange"
+    },
+    "cpp": {
+      "count": 1,
+      "path": "/tags/cpp",
+      "research": false,
+      "posts": true,
+      "color": "lime"
     },
     "blog": {
       "count": 1,
@@ -79,8 +79,8 @@
     }
   },
   "git": {
-    "hash": "2a2a1d2",
-    "commits": 89,
+    "hash": "eacba69",
+    "commits": 90,
     "dirty": true
   }
 }

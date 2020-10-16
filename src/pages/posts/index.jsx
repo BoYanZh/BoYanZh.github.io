@@ -39,6 +39,18 @@ Posts.propTypes = {
 
 export const query = graphql`
   {
+    allTag(
+      sort: { fields: [count], order: DESC },
+      filter: { posts: { eq: true } }
+    ) {
+      edges {
+        node {
+          name
+          color
+          path
+        }
+      }
+    }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {

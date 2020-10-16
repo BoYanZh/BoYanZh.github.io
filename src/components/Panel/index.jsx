@@ -17,7 +17,10 @@ const Panel = (props) => {
   const { type, data } = props;
   const isResearch = type === 'research';
 
-  const tags = Utils.getTags(type);
+  // console.log(data.allTag);
+  const tags = data.allTag ? data.allTag.edges : [];
+
+  // const tags = Utils.getTags(type);
   const [selectedTags, setSelectedTags] = useState(new Set());
 
   const handleClick = (tagName) => {
@@ -32,16 +35,13 @@ const Panel = (props) => {
   };
 
   const generateTag = (tag) => {
-    const isChecked = selectedTags.has(tag.name);
-    let color = '';
-    if (isChecked && Statistics.tags[tag.name]) {
-      color = Statistics.tags[tag.name].color;
-    }
+    const isChecked = selectedTags.has(tag.node.name);
+    const color = isChecked ? tag.node.color : '';
     return (
       <Col xs>
         <Tag color={color}>
-          <a onClick={() => handleClick(tag.name)}>
-            {tag.name}
+          <a onClick={() => handleClick(tag.node.name)}>
+            {tag.node.name}
           </a>
         </Tag>
       </Col>
