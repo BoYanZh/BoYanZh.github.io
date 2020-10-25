@@ -11,7 +11,7 @@ import PostTag from '../PostTag';
 import Utils from '../../utils/pageUtils';
 
 const PostCard = (props) => {
-  const { data: { node } } = props;
+  const { data: { node }, tagsMap } = props;
   Utils.generateOmittedPostInfo(node);
   const { frontmatter } = node;
 
@@ -46,7 +46,7 @@ const PostCard = (props) => {
         style={{ marginBottom: '1rem' }}
       />
       <Row align="middle" gutter={[0, 8]}>
-        { frontmatter.tags.map((tag) => (<PostTag tag={tag} />))}
+        { frontmatter.tags.map((tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null))}
       </Row>
       <p style={{ marginTop: '1rem' }}>{frontmatter ? frontmatter.excerpt : ''}</p>
     </Card>

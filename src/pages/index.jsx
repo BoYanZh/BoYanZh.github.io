@@ -25,6 +25,15 @@ export default ({ data }) => (
 
 export const query = graphql`
   {
+    allTag {
+      edges {
+        node {
+          name
+          color
+          path
+        }
+      }
+    }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { 

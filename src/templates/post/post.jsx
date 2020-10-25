@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout } from 'antd';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import moment from 'moment';
 
 import 'github-markdown-css';
 import 'typeface-jetbrains-mono';
@@ -20,12 +21,15 @@ import style from './post.module.less';
 
 const Post = ({ data }) => {
   Utils.generateOmittedPostInfo(data.markdownRemark);
-  const { html, frontmatter } = data.markdownRemark;
+  const { html, frontmatter, fields: { parsed } } = data.markdownRemark;
   const {
-    title, cover, excerpt, path, links,
+    title, cover, excerpt, path, links, date,
   } = frontmatter;
+  const { commit } = parsed;
+  const editTime = moment.unix(commit).format('MMM Do YYYY');
+  const postTime = moment(date).format('MMM Do YYYY');
+
   const fluid = cover ? cover.childImageSharp.fluid : null;
-  console.log(links);
 
   /*  const canonicalUrl = Utils.resolvePageUrl(
     Config.siteUrl,
@@ -45,6 +49,13 @@ const Post = ({ data }) => {
         <SidebarWrapper>
           <div className="marginTopTitle">
             <h1>{title}</h1>
+            <div>
+              <div style={{ color: 'rgba(0, 0, 0, 0.45)', marginBottom: '1rem' }}>
+                {`Posted: ${postTime}`}
+                {commit > 0 && postTime !== editTime ? `, Edited: ${editTime}` : ''}
+              </div>
+            </div>
+            {/* {  } */}
             { fluid ? (
               <div className={style.bannerImgContainer}>
                 <Img className={style.bannerImg} fluid={fluid} title={excerpt} alt={title} />
@@ -81,6 +92,11 @@ export const pageQuery = graphql`
         }
       }
       fileAbsolutePath
+      fields {
+        parsed {
+          commit
+        }
+      }
     }
   }
 `;

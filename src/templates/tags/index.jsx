@@ -12,25 +12,30 @@ import SEO from '../../components/Seo';
 import Header from '../../components/PageLayout/Header';
 import PostCard from '../../components/PostCard';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
-import Config from '../../../config';
-import Statistics from '../../../content/statistics.json';
+// import Config from '../../../config';
+// import Statistics from '../../../content/statistics.json';
 import Utils from '../../utils/pageUtils';
 import style from './tags.module.less';
 
 const TagPage = ({ data, pageContext }) => {
-  const { tag } = pageContext;
-  const tagName = Statistics.tags[tag].name || tag;
-  const tagPagePath = Config.pages.tags;
+  const tagName = pageContext.tag;
+  // const { tag } = pageContext;
+  // const tagName = Statistics.tags[tag].name || tag;
+  // const tagPagePath = Config.pages.tags;
   // const tagImage = data.allFile.edges.find((edge) => edge.node.name === tag).node
   //   .childImageSharp.fluid;
   const posts = data.allMarkdownRemark.edges;
+  const tag = data.allTag.edges[0];
+  const tagPagePath = tag ? tag.node.path : '#';
+  const tagDescription = tag ? tag.node.description : '';
+
   return (
     <Layout className="outerPadding">
       <Layout className="container">
         <Header />
         <SEO
           title={tagName}
-          description={`All post about ${tagName}. ${Statistics.tags[tag].description} `}
+          description={`All post about ${tagName}. ${tagDescription} `}
           path={Utils.resolvePageUrl(tagPagePath, tag)}
           keywords={[tagName]}
         />
@@ -44,7 +49,7 @@ const TagPage = ({ data, pageContext }) => {
             {/*  <Img className={style.bannerImg} fluid={tagImage} alt={tagName} /> */}
             {/* </div> */}
             <h4 className="textCenter">
-              {Statistics.tags[tag].description}
+              {tagDescription}
             </h4>
           </div>
           <Row gutter={[20, 20]}>
@@ -63,6 +68,14 @@ const TagPage = ({ data, pageContext }) => {
 
 TagPage.propTypes = {
   data: PropTypes.shape({
+    allTag: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          path: PropTypes.string.isRequired,
+        }),
+      ).isRequired,
+    }).isRequired,
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object).isRequired,
     }).isRequired,
@@ -86,6 +99,17 @@ TagPage.propTypes = {
 
 export const pageQuery = graphql`
   query($tag: String!) {
+    allTag(
+      filter: { name: { eq: $tag } }
+    ) {
+      edges {
+        node {
+          name
+          description
+          path
+        }
+      }
+    }
     allMarkdownRemark(
       filter: {
         frontmatter: { tags: { in: [$tag] } }

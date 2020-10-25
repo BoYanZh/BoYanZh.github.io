@@ -21,6 +21,15 @@ const getGitInfo = () => {
   };
 };
 
+const getCommitTime = (filePath) => {
+  try {
+    return execa.sync('git',
+      ['log', '-n', '1', '--pretty=format:%at', filePath]).stdout;
+  } catch (err) {
+    return 0;
+  }
+};
+
 const createTagPage = (createPage, tag, node) => {
   let tagPath;
   if (node && node.frontmatter.path) {
@@ -135,6 +144,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
       data.path = frontmatter.path;
       data.excerpt = frontmatter.excerpt || '';
       data.links = [];
+      data.commit = getCommitTime(node.fileAbsolutePath);
 
       if (frontmatter.links) {
         for (const link of frontmatter.links) {
@@ -245,7 +255,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
       git: getGitInfo(),
     };
 
-    fs.writeFileSync('content/statistics.json', JSON.stringify(statistics, null, 2));
+    // fs.writeFileSync('content/statistics.json', JSON.stringify(statistics, null, 2));
 
     return 1;
   });
@@ -324,6 +334,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       path: String
       excerpt: String!
       links: [Link!]!
+      commit: Int
     }
     type Link {
       name: String
@@ -331,6 +342,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
     type Tag implements Node {
       name: String
+      description: String
       path: String
       color: String
       count: Int

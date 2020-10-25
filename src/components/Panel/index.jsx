@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Row, Col, Tag, Divider,
-} from "antd"
+} from 'antd';
 import _ from 'lodash';
 
 import style from './panel.module.less';
@@ -10,8 +10,8 @@ import style from './panel.module.less';
 import PostCard from '../PostCard';
 import ResearchCard from '../ResearchCard';
 // import PostTag from '../PostTag';
-import Utils from '../../utils/pageUtils';
-import Statistics from '../../../content/statistics.json';
+// import Utils from '../../utils/pageUtils';
+// import Statistics from '../../../content/statistics.json';
 
 const Panel = (props) => {
   const { type, data } = props;
@@ -19,6 +19,7 @@ const Panel = (props) => {
 
   // console.log(data.allTag);
   const tags = data.allTag ? data.allTag.edges : [];
+  const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name),'node');
 
   // const tags = Utils.getTags(type);
   const [selectedTags, setSelectedTags] = useState(new Set());
@@ -88,14 +89,14 @@ const Panel = (props) => {
               return (
                 // eslint-disable-next-line react/no-array-index-key
                 <Col key={key} xs={24} sm={24} md={24} lg={24}>
-                  <ResearchCard data={val} />
+                  <ResearchCard data={val} tagsMap={tagsMap} />
                 </Col>
               );
             }
             return (
             // eslint-disable-next-line react/no-array-index-key
               <Col key={key} xs={24} sm={24} md={24} lg={8}>
-                <PostCard data={val} />
+                <PostCard data={val} tagsMap={tagsMap} />
               </Col>
             );
           })

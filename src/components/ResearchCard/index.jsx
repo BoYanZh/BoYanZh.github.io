@@ -10,7 +10,7 @@ import PostTag from '../PostTag';
 import Utils from '../../utils/pageUtils';
 
 const ResearchCard = (props) => {
-  const { data: { node } } = props;
+  const { data: { node }, tagsMap } = props;
   Utils.generateOmittedPostInfo(node);
   const { frontmatter, fields } = node;
   const { parsed } = fields;
@@ -56,7 +56,7 @@ const ResearchCard = (props) => {
         description={frontmatter ? moment(frontmatter.date).format('MMM Do YYYY') : ''}
       />
       <Row align="middle" gutter={[0, 8]}>
-        { frontmatter.tags.map((tag) => (<PostTag tag={tag} />))}
+        { frontmatter.tags.map((tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null))}
       </Row>
       <p style={{ marginTop: '1rem' }}>{frontmatter ? frontmatter.excerpt : ''}</p>
       {parsed && parsed.links ? parsed.links.map(generateLink) : null }

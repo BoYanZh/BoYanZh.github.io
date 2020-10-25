@@ -1,14 +1,14 @@
 /* eslint-disable no-param-reassign */
-const _ = require('lodash');
+// const _ = require('lodash');
 const Config = require('../../config');
-const Statistics = require('../../content/statistics.json');
+// const Statistics = require('../../content/statistics.json');
 
-const tags = _(Statistics.tags).map((value, key) => ({
-  name: key, ...value,
-})).orderBy(['count', 'name'], ['desc', 'asc']).value();
-
-const researchTags = _.filter(tags, { research: true });
-const postsTags = _.filter(tags, { posts: true });
+// const tags = _(Statistics.tags).map((value, key) => ({
+//   name: key, ...value,
+// })).orderBy(['count', 'name'], ['desc', 'asc']).value();
+//
+// const researchTags = _.filter(tags, { research: true });
+// const postsTags = _.filter(tags, { posts: true });
 
 const Utils = {
   /**
@@ -117,7 +117,7 @@ const Utils = {
       node.frontmatter.path = matches[0];
     }
   },
-  getTags: (type = '') => {
+/*  getTags: (type = '') => {
     if (type === 'research') {
       return researchTags;
     }
@@ -125,7 +125,7 @@ const Utils = {
       return postsTags;
     }
     return tags;
-  },
+  },*/
 };
 
 module.exports = Utils;
