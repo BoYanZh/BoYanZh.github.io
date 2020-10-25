@@ -1,18 +1,10 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://rolwinreevan.com">
-    <img alt="Gatsby" src="https://github.com/rolwin100/rolwinreevan_gatsby_blog/blob/master/src/images/icon.png" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's RolwinReevan Portfolio template using <a href='https://ant.design/' target='_blank'>ant-design</a>
-</h1>
-<h3 align="center">Probably the most beautiful 😍 gatsby starter template</h3>
+# tc-imba's Gatsby Personal Website Template for Academic Usage
 
-This starter consists of ant design system you can use it for your personal blog. I have give a lot of time in developing this starter because I found that there were not much starters with a very good design. Please give a star to this project if you have like it to encourage me 😄. Thank you.
+This website (template) is based on [Gatsby's RolwinReevan Portfolio template](https://github.com/rolwin100/rolwinreevan_gatsby_blog) using [ant-design](https://ant.design).
 
+It is rewritten for academic usage with the help of [Reapor-Yurnero](https://github.com/Reapor-Yurnero).
 
-## 🚀 Quick start
+## 🚀 Development
 
 1.  **Setup the project by.**
 
@@ -20,9 +12,9 @@ This starter consists of ant design system you can use it for your personal blog
 
     ```shell
     
-    git clone https://github.com/rolwin100/rolwinreevan_gatsby_blog.git
-    cd rolwinreevan_gatsby_blog 
-    npm install
+    git clone https://github.com/tc-imba/tc-imba.github.io.git
+    cd tc-imba.github.io
+    yarn
     ```
 
 1.  **Start developing.**
@@ -37,6 +29,22 @@ This starter consists of ant design system you can use it for your personal blog
     Your site is now running at `http://localhost:8000`!
 
     _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+
+## Deployment
+
+### Local
+
+```shell
+yarn
+gatsby build
+```
+
+Then the static website will be built in the `public` folder. You can use Apache or nginx to serve the content.
+
+## github.io
+
+The project also supports automatically deploying through GitHub Actions.
+It is already configured in `.github/workflows/main.yml` and typically you do not need to modify it. The static website will be built on the `gh-pages` branch in your GitHub repo.
 
 
 ## 🧐 What's inside?
