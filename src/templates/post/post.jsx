@@ -55,7 +55,6 @@ const Post = ({ data }) => {
                 {commit > 0 && postTime !== editTime ? `, Edited: ${editTime}` : ''}
               </div>
             </div>
-            {/* {  } */}
             { fluid ? (
               <div className={style.bannerImgContainer}>
                 <Img className={style.bannerImg} fluid={fluid} title={excerpt} alt={title} />

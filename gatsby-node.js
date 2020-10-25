@@ -145,6 +145,11 @@ exports.createPages = ({ actions, getNode, graphql }) => {
       data.excerpt = frontmatter.excerpt || '';
       data.links = [];
       data.commit = getCommitTime(node.fileAbsolutePath);
+      if (frontmatter.path.indexOf(config.pages.posts) === 0) {
+        data.type = 'posts';
+      } else if (frontmatter.path.indexOf(config.pages.research) === 0) {
+        data.type = 'research';
+      }
 
       if (frontmatter.links) {
         for (const link of frontmatter.links) {
@@ -335,6 +340,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       excerpt: String!
       links: [Link!]!
       commit: Int
+      type: String
     }
     type Link {
       name: String
