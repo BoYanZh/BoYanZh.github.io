@@ -26,9 +26,10 @@ const ResearchCard = (props) => {
   };
 
   const generateLink = (link) => {
-    console.log(link);
     return (
-      <Button href={link.url} target="_blank" size="small">{link.name}</Button>
+      <Col xs>
+        <Button href={link.url} target="_blank" size="small">{link.name}</Button>
+      </Col>
     );
   };
 
@@ -59,7 +60,9 @@ const ResearchCard = (props) => {
         { frontmatter.tags.map((tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null))}
       </Row>
       <p style={{ marginTop: '1rem' }}>{frontmatter ? frontmatter.excerpt : ''}</p>
-      {parsed && parsed.links ? parsed.links.map(generateLink) : null }
+      <Row gutter={[8, 8]}>
+        {parsed && parsed.links ? parsed.links.map(generateLink) : null }
+      </Row>
     </Card>
   /*    <div className={style.researchCard}>
       <Row gutter={[10, 10]} align="middle">

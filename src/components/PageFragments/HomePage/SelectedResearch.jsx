@@ -9,7 +9,7 @@ const SelectedResearch = ({ data }) => {
 
   return (
     <div>
-      <h2 style={{ marginBottom: '0rem' }}>Selected Research</h2>
+      <h2 style={{ marginBottom: '1rem' }}>Selected Research</h2>
       <Row gutter={[20, 20]}>
         {
         data.allMarkdownRemark && data.allMarkdownRemark.edges.map((val, key) => (

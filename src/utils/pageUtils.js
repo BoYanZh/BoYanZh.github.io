@@ -117,15 +117,6 @@ const Utils = {
       node.frontmatter.path = matches[0];
     }
   },
-/*  getTags: (type = '') => {
-    if (type === 'research') {
-      return researchTags;
-    }
-    if (type === 'posts') {
-      return postsTags;
-    }
-    return tags;
-  },*/
 };
 
 module.exports = Utils;

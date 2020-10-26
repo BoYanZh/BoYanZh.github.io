@@ -95,6 +95,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
                   base
                   absolutePath
                 }
+                url
               }
             }
             fileAbsolutePath
@@ -164,6 +165,11 @@ exports.createPages = ({ actions, getNode, graphql }) => {
               data.links.push({
                 name: link.name,
                 url: urlFilePath,
+              });
+            } else if (link.url) {
+              data.links.push({
+                name: link.name,
+                url: link.url,
               });
             }
           }

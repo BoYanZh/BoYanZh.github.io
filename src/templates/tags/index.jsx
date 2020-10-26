@@ -17,7 +17,7 @@ import SidebarWrapper from '../../components/PageLayout/Sidebar';
 // import Statistics from '../../../content/statistics.json';
 import Utils from '../../utils/pageUtils';
 import style from './tags.module.less';
-import ResearchCard from "../../components/ResearchCard"
+import ResearchCard from '../../components/ResearchCard';
 
 const TagPage = ({ data, pageContext }) => {
   const tagName = pageContext.tag;
