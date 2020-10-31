@@ -25,13 +25,11 @@ const ResearchCard = (props) => {
     }
   };
 
-  const generateLink = (link) => {
-    return (
-      <Col xs>
-        <Button href={link.url} target="_blank" size="small">{link.name}</Button>
-      </Col>
-    );
-  };
+  const generateLink = (link) => (
+    <Col xs>
+      <Button href={link.url} target="_blank" size="small">{link.name}</Button>
+    </Col>
+  );
 
   return (
     <Card
@@ -54,9 +52,17 @@ const ResearchCard = (props) => {
       <Card.Meta
         title={frontmatter ? frontmatter.title : ''}
         style={{ marginBottom: '1rem' }}
-        description={frontmatter ? moment(frontmatter.date).format('MMM Do YYYY') : ''}
+        description={frontmatter && frontmatter.venue ? frontmatter.venue : ''}
       />
       <Row align="middle" gutter={[0, 8]}>
+        {frontmatter
+          ? (
+            <Col xs>
+              <span style={{ marginRight: '0.8rem', color: 'rgba(0, 0, 0, 0.45)' }}>
+                {moment(frontmatter.date).format('MMM Do YYYY')}
+              </span>
+            </Col>
+          ) : null}
         { frontmatter.tags.map((tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null))}
       </Row>
       <p style={{ marginTop: '1rem' }}>{frontmatter ? frontmatter.excerpt : ''}</p>

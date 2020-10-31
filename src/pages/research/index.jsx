@@ -61,6 +61,7 @@ export const query = graphql`
         node {
           frontmatter {
             date
+            venue
             path
             title
             tags
