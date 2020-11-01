@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import { Link } from 'gatsby';
 import {
-  Row, Col, Card, Button,
+  Row, Col, Card, Button, Divider,
 } from 'antd';
 import { navigate } from '@reach/router';
 import style from './researchCard.module.less';
@@ -52,17 +52,41 @@ const ResearchCard = (props) => {
       <Card.Meta
         title={frontmatter ? frontmatter.title : ''}
         style={{ marginBottom: '1rem' }}
-        description={frontmatter && frontmatter.venue ? frontmatter.venue : ''}
+        // description={frontmatter && frontmatter.venue ? frontmatter.venue : ''}
       />
-      <Row align="middle" gutter={[0, 8]}>
-        {frontmatter
+      {
+        frontmatter && frontmatter.authors
           ? (
+            <Row align="middle" gutter={[8, 8]}>
+              {frontmatter.authors.map((author, index) => (
+                <Col xs>
+                  <span>
+                    {author + (index !== frontmatter.authors.length - 1 ? ',' : '')}
+                  </span>
+                </Col>
+              ))}
+            </Row>
+          ) : null
+      }
+      <Row align="middle" gutter={[0, 8]}>
+        {frontmatter && frontmatter.date
+          ? [
             <Col xs>
-              <span style={{ marginRight: '0.8rem', color: 'rgba(0, 0, 0, 0.45)' }}>
+              <span style={{ color: 'rgba(0, 0, 0, 0.45)' }}>
                 {moment(frontmatter.date).format('MMM Do YYYY')}
               </span>
-            </Col>
-          ) : null}
+            </Col>,
+            <Divider type="vertical" />,
+          ] : null}
+        {frontmatter && frontmatter.venue
+          ? [
+            <Col xs>
+              <span style={{ color: 'rgba(0, 0, 0, 0.45)' }}>
+                {frontmatter.venue}
+              </span>
+            </Col>,
+            <Divider type="vertical" />,
+          ] : null}
         { frontmatter.tags.map((tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null))}
       </Row>
       <p style={{ marginTop: '1rem' }}>{frontmatter ? frontmatter.excerpt : ''}</p>

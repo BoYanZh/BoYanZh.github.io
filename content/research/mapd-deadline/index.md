@@ -5,6 +5,9 @@ tags:
   - "algorithm"
 date: 2020-10-04
 venue: AAMAS
+authors:
+  - "Xiaohu Wu"
+  - "Yihao Liu"
 path: "research/mapd-deadline"
 excerpt: Multi-Agent Pickup and Delivery with Individual Deadlines
 selected: true
