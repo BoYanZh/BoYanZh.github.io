@@ -16,6 +16,7 @@ const generateTimelineEvent = (data) => (
     createdAt={data.date}
     style={{ fontSize: '12pt', fontWeight: '300' }}
     icon={<FontAwesomeIcon size="md" fixedWidth icon={data.icon || 'school'} />}
+    iconStyle={{ cursor: 'default' }}
   />
 );
 

@@ -51,13 +51,13 @@ const ResearchCard = (props) => {
     >
       <Card.Meta
         title={frontmatter ? frontmatter.title : ''}
-        style={{ marginBottom: '1rem' }}
+        style={{ marginBottom: '4px' }}
         // description={frontmatter && frontmatter.venue ? frontmatter.venue : ''}
       />
       {
         frontmatter && frontmatter.authors
           ? (
-            <Row align="middle" gutter={[8, 8]}>
+            <Row align="middle" gutter={[8, 4]}>
               {frontmatter.authors.map((author, index) => (
                 <Col xs>
                   <span>
@@ -68,7 +68,7 @@ const ResearchCard = (props) => {
             </Row>
           ) : null
       }
-      <Row align="middle" gutter={[0, 8]}>
+      <Row align="middle" gutter={[0, 4]}>
         {frontmatter && frontmatter.date
           ? [
             <Col xs>

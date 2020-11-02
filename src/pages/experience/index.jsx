@@ -23,7 +23,7 @@ const generateListItem = (data) => (
 );
 
 const generateExperience = (data) => (
-  <Card style={{ marginBottom: '20px' }}>
+  <Card style={{ marginBottom: '20px' }} hoverable>
     <Card.Meta
       title={data.title || ''}
         // description={data.date || ''}

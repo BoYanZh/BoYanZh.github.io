@@ -2,7 +2,6 @@
 title: "Lorem Ipsum (fxhsb3)"
 tags: ["fxh", "sb"]
 date: 2020-10-10
-venue: FXH
 path: "research/fxhsb3"
 excerpt: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
 ---
