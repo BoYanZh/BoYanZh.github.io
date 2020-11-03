@@ -333,24 +333,36 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
     type MarkdownRemark implements Node {
-      fields: Fields!
+      frontmatter: Frontmatter
+      fields: Fields
+    }
+    type Frontmatter {
+      title: String
+      tags: [String]
+      date: String
+      path: String
+      excerpt: String
+      venue: String
+      authors: [String]
+      selected: Boolean
     }
     type Fields {
-      parsed: Parsed!
+      parsed: Parsed
     }
     type Parsed {
       title: String
-      tags: [String!]!
-      date: String!
+      tags: [String]
+      date: String
       path: String
-      excerpt: String!
-      links: [Link!]!
+      excerpt: String
+      links: [Link]
       commit: Int
       type: String
     }
     type Link {
-      name: String
-      url: String!
+      name: String!
+      url: String
+      file: File
     }
     type Tag implements Node {
       name: String
