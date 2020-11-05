@@ -38,20 +38,12 @@ export const query = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { 
         fileAbsolutePath: { regex: "/research\/.*\/index\\.md$/" }
-        frontmatter: { selected: { eq: true } }
+        fields: { parsed: { selected: { eq: true } } }
       }
     ) {
       edges {
         node {
           frontmatter {
-            date
-            venue
-            authors
-            path
-            title
-            tags
-            excerpt
-            selected
             cover {
               childImageSharp {
                 fluid(maxWidth: 288) {
@@ -63,6 +55,14 @@ export const query = graphql`
           fileAbsolutePath
           fields {
             parsed {
+              date
+              venue
+              authors
+              path
+              title
+              tags
+              excerpt
+              selected
               links {
                 name
                 url

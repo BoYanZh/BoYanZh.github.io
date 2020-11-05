@@ -1,3 +1,7 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-unused-vars */
+/* eslint-disable guard-for-in */
+
 /* Vendor imports */
 const path = require('path');
 const fs = require('fs-extra');
@@ -84,8 +88,14 @@ exports.createPages = ({ actions, getNode, graphql }) => {
         edges {
           node {
             frontmatter {
-              path
+              title
               tags
+              date
+              path
+              excerpt
+              venue
+              authors
+              selected
               links {
                 name
                 file {
@@ -144,6 +154,9 @@ exports.createPages = ({ actions, getNode, graphql }) => {
       data.date = frontmatter.date || '';
       data.path = frontmatter.path;
       data.excerpt = frontmatter.excerpt || '';
+      data.venue = frontmatter.venue || '';
+      data.authors = frontmatter.authors || [];
+      data.selected = frontmatter.selected || false;
       data.links = [];
       data.commit = getCommitTime(node.fileAbsolutePath);
       if (frontmatter.path.indexOf(config.pages.posts) === 0) {
@@ -355,9 +368,12 @@ exports.createSchemaCustomization = ({ actions }) => {
       date: String
       path: String
       excerpt: String
+      venue: String
+      authors: [String]
       links: [Link]
       commit: Int
       type: String
+      selected: Boolean
     }
     type Link {
       name: String!

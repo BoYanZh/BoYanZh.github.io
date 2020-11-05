@@ -8,7 +8,7 @@
 import React, { useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import { Input } from 'antd';
-import { navigate } from '@reach/router';
+// import { navigate } from '@reach/router';
 
 // import Config from '../../../config';
 import Utils from '../../utils/pageUtils';
@@ -34,7 +34,8 @@ const Search = (props) => {
       // navigation and avoiding a full page refresh.
       handleSelected: (_input, _event, suggestion) => {
         const url = Utils.resolvePageUrl(suggestion.url);
-        navigate(url);
+        window.location.href = url;
+        // navigate(url);
       },
     });
   };

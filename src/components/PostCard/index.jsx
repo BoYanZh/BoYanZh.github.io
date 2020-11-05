@@ -1,10 +1,10 @@
 import React from 'react';
 import moment from 'moment';
-import { Link } from 'gatsby';
+// import { Link } from 'gatsby';
 import {
-  Row, Col, Card, Divider,
+  Row, Card,
 } from 'antd';
-import { navigate } from '@reach/router';
+// import { navigate } from '@reach/router';
 
 import style from './postCard.module.less';
 import PostTag from '../PostTag';
@@ -12,14 +12,17 @@ import Utils from '../../utils/pageUtils';
 
 const PostCard = (props) => {
   const { data: { node }, tagsMap } = props;
-  Utils.generateOmittedPostInfo(node);
-  const { frontmatter } = node;
+  const { fields: { parsed }, frontmatter: { cover } } = node;
+  const {
+    title, excerpt, path, date, tags,
+  } = parsed;
+  const fluid = cover ? cover.childImageSharp.fluid : null;
 
-  const url = Utils.resolvePageUrl(frontmatter.path);
+  const url = Utils.resolvePageUrl(path);
   const handleClick = (e) => {
     if (e.target.tagName.toLowerCase() !== 'a' && url) {
-      // window.location.href = url;
-      navigate(url);
+      window.location.href = url;
+      // navigate(url);
     }
   };
 
@@ -30,11 +33,13 @@ const PostCard = (props) => {
       hoverable
       cover={(
         <div>
-          <span className={style.dateHolder}>{frontmatter ? moment(frontmatter.date).format('MMM Do YYYY') : ''}</span>
+          <span className={style.dateHolder}>
+            {date ? moment(date).format('MMM Do YYYY') : ''}
+          </span>
           <div
             className={style.postCardImg}
             style={{
-              backgroundImage: `url(${frontmatter && frontmatter.cover ? frontmatter.cover.childImageSharp.fluid.src : ''})`,
+              backgroundImage: `url(${fluid ? fluid.src : ''})`,
             }}
           />
         </div>
@@ -42,13 +47,15 @@ const PostCard = (props) => {
       onClick={handleClick}
     >
       <Card.Meta
-        title={frontmatter ? frontmatter.title : ''}
+        title={title}
         style={{ marginBottom: '1rem' }}
       />
       <Row align="middle" gutter={[0, 8]}>
-        { frontmatter.tags.map((tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null))}
+        { tags ? tags.map((tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null)) : null}
       </Row>
-      <p style={{ marginTop: '1rem' }}>{frontmatter ? frontmatter.excerpt : ''}</p>
+      <p style={{ marginTop: '1rem' }}>
+        {excerpt}
+      </p>
     </Card>
   );
 };

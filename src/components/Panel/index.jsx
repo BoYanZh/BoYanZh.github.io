@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Row, Col, Tag, Divider,
+  Row, Col, Tag,
 } from 'antd';
 import _ from 'lodash';
 
@@ -19,7 +19,7 @@ const Panel = (props) => {
 
   // console.log(data.allTag);
   const tags = data.allTag ? data.allTag.edges : [];
-  const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name),'node');
+  const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
 
   // const tags = Utils.getTags(type);
   const [selectedTags, setSelectedTags] = useState(new Set());
@@ -31,17 +31,18 @@ const Panel = (props) => {
     } else {
       nextSelectedTags.add(tagName);
     }
-    console.log('You are interested in: ', nextSelectedTags);
+    // console.log('You are interested in: ', nextSelectedTags);
     setSelectedTags(nextSelectedTags);
   };
 
   const generateTag = (tag) => {
     const isChecked = selectedTags.has(tag.node.name);
     const color = isChecked ? tag.node.color : '';
+    const handleTagClick = () => handleClick(tag.node.name);
     return (
       <Col xs>
         <Tag color={color}>
-          <a onClick={() => handleClick(tag.node.name)}>
+          <a onClick={handleTagClick} onKeyPress={handleTagClick} role="button" tabIndex={0}>
             {tag.node.name}
           </a>
         </Tag>
@@ -51,12 +52,13 @@ const Panel = (props) => {
 
   if (data.allMarkdownRemark) {
     data.allMarkdownRemark.edges.forEach((val) => {
-      if (!val.node || !val.node.frontmatter || !val.node.frontmatter.tags) {
+      if (!val.node || !val.node.fields || !val.node.fields.parsed
+        || !val.node.fields.parsed.tags) {
         // eslint-disable-next-line no-param-reassign
         val.tags = new Set();
       } else {
         // eslint-disable-next-line no-param-reassign
-        val.tags = new Set(val.node.frontmatter.tags);
+        val.tags = new Set(val.node.fields.parsed.tags);
       }
     });
   }

@@ -13,19 +13,17 @@ import Footer from '../../components/PageLayout/Footer';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import SEO from '../../components/Seo';
 // import Comment from '../../components/Comment';
-import Utils from '../../utils/pageUtils';
+// import Utils from '../../utils/pageUtils';
 
 import './highlight-syntax.less';
 
 import style from './post.module.less';
 
 const Post = ({ data }) => {
-  Utils.generateOmittedPostInfo(data.markdownRemark);
-  const { html, frontmatter, fields: { parsed } } = data.markdownRemark;
+  const { html, fields: { parsed }, frontmatter: { cover } } = data.markdownRemark;
   const {
-    title, cover, excerpt, path, links, date,
-  } = frontmatter;
-  const { commit } = parsed;
+    title, excerpt, path, date, commit,
+  } = parsed;
   const editTime = moment.unix(commit).format('MMM Do YYYY');
   const postTime = moment(date).format('MMM Do YYYY');
 
@@ -48,7 +46,7 @@ const Post = ({ data }) => {
         <Header />
         <SidebarWrapper>
           <div className="marginTopTitle">
-            <h1>{title}</h1>
+            <h1 className="titleSeparate">{title}</h1>
             <div>
               <div style={{ color: 'rgba(0, 0, 0, 0.45)', marginBottom: '1rem' }}>
                 {`Posted: ${postTime}`}
@@ -76,12 +74,6 @@ export const pageQuery = graphql`
       html
       timeToRead
       frontmatter {
-        title
-        date
-        tags
-        path
-        excerpt
-        links { name }
         cover {
           childImageSharp {
             fluid(maxWidth: 1000) {
@@ -93,6 +85,12 @@ export const pageQuery = graphql`
       fileAbsolutePath
       fields {
         parsed {
+          title
+          date
+          tags
+          path
+          excerpt
+          links { name }
           commit
         }
       }

@@ -60,16 +60,6 @@ export const query = graphql`
       edges {
         node {
           frontmatter {
-            date
-            venue
-            authors
-            path
-            title
-            tags
-            excerpt
-            links {
-              name
-            }
             cover {
               childImageSharp {
                 fluid(maxWidth: 288) {
@@ -81,6 +71,13 @@ export const query = graphql`
           fileAbsolutePath
           fields {
             parsed {
+              date
+              venue
+              authors
+              path
+              title
+              tags
+              excerpt
               links {
                 name
                 url

@@ -132,7 +132,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       filter: {
-        frontmatter: { tags: { in: [$tag] } }
+        fields: { parsed: { tags: { in: [$tag] } } }
         fileAbsolutePath: { regex: "/index.md$/" }
       }
       sort: { fields: [frontmatter___date], order: DESC }
@@ -140,11 +140,6 @@ export const pageQuery = graphql`
       edges {
         node {
           frontmatter {
-            title
-            date
-            path
-            tags
-            excerpt
             cover {
               childImageSharp {
                 fluid(maxWidth: 600) {
@@ -155,7 +150,18 @@ export const pageQuery = graphql`
           }
           fields {
             parsed {
+              date
+              venue
+              authors
+              path
+              title
+              tags
+              excerpt
               type
+              links {
+                name
+                url
+              }
             }
           }
         }
