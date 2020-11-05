@@ -8,6 +8,8 @@ const fs = require('fs-extra');
 const crypto = require('crypto');
 const _ = require('lodash');
 const execa = require('execa');
+const nacl = require('tweetnacl');
+nacl.util = require('tweetnacl-util');
 // const isRelativeUrl = require('is-relative-url');
 
 /* App imports */
@@ -87,6 +89,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
       allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}) {
         edges {
           node {
+            html
             frontmatter {
               title
               tags
@@ -96,6 +99,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
               venue
               authors
               selected
+              password
               links {
                 name
                 file {
@@ -163,6 +167,22 @@ exports.createPages = ({ actions, getNode, graphql }) => {
         data.type = 'posts';
       } else if (frontmatter.path.indexOf(config.pages.research) === 0) {
         data.type = 'research';
+      }
+
+      // encrypt post with password
+      if (frontmatter.password) {
+        const nonce = nacl.randomBytes(nacl.secretbox.nonceLength);
+        const message = nacl.util.decodeUTF8(node.html);
+        const password = nacl.util.decodeUTF8(frontmatter.password);
+        const key = nacl.hash(password).slice(0, nacl.secretbox.keyLength);
+        const htmlEncrypted = nacl.secretbox(message, nonce, key);
+        data.html = '';
+        data.htmlEncrypted = nacl.util.encodeBase64(htmlEncrypted);
+        data.nonce = nacl.util.encodeBase64(nonce);
+      } else {
+        data.html = node.html;
+        data.htmlEncrypted = '';
+        data.nonce = '';
       }
 
       if (frontmatter.links) {
@@ -358,6 +378,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       venue: String
       authors: [String]
       selected: Boolean
+      password: String
     }
     type Fields {
       parsed: Parsed
@@ -374,6 +395,9 @@ exports.createSchemaCustomization = ({ actions }) => {
       commit: Int
       type: String
       selected: Boolean
+      html: String
+      htmlEncrypted: String
+      nonce: String
     }
     type Link {
       name: String!

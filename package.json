@@ -23,6 +23,7 @@
     "autocomplete.js": "^0.38.0",
     "classnames": "^2.2.6",
     "execa": "^4.0.3",
+    "fs-extra": "^9.0.1",
     "gatsby": "^2.24.67",
     "gatsby-image": "^2.3.1",
     "gatsby-plugin-antd": "^2.1.0",
@@ -59,6 +60,8 @@
     "react-event-timeline": "^1.6.3",
     "react-helmet": "^6.1.0",
     "react-pdf": "^5.0.0",
+    "tweetnacl": "^1.0.3",
+    "tweetnacl-util": "^0.15.1",
     "typeface-jetbrains-mono": "^2.0.0"
   },
   "devDependencies": {

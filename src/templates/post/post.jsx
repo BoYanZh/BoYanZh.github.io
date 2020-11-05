@@ -1,8 +1,12 @@
-import React from 'react';
-import { Layout } from 'antd';
+import React, { useState } from 'react';
+import {
+  Layout, Empty, Row, Col, Input, Alert,
+} from 'antd';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import moment from 'moment';
+import nacl from 'tweetnacl';
+import naclUtil from 'tweetnacl-util';
 
 import 'github-markdown-css';
 import 'typeface-jetbrains-mono';
@@ -20,9 +24,9 @@ import './highlight-syntax.less';
 import style from './post.module.less';
 
 const Post = ({ data }) => {
-  const { html, fields: { parsed }, frontmatter: { cover } } = data.markdownRemark;
+  const { fields: { parsed }, frontmatter: { cover } } = data.markdownRemark;
   const {
-    title, excerpt, path, date, commit,
+    title, excerpt, path, date, commit, html, nonce, htmlEncrypted,
   } = parsed;
   const editTime = moment.unix(commit).format('MMM Do YYYY');
   const postTime = moment(date).format('MMM Do YYYY');
@@ -34,6 +38,39 @@ const Post = ({ data }) => {
     Config.pathPrefix,
     path,
   ); */
+
+  const [state, setState] = useState({
+    locked: nonce !== '',
+    failed: false,
+    html,
+  });
+
+  // encrypted post
+
+  const onUnlock = (value) => {
+    if (state.locked) {
+      try {
+        const password = naclUtil.decodeUTF8(value);
+        const nonceBuffer = naclUtil.decodeBase64(nonce);
+        const keyBuffer = nacl.hash(password).slice(0, nacl.secretbox.keyLength);
+        const box = naclUtil.decodeBase64(htmlEncrypted);
+        const htmlBuffer = nacl.secretbox.open(box, nonceBuffer, keyBuffer);
+        const htmlReal = naclUtil.encodeUTF8(htmlBuffer);
+        setState({
+          locked: false,
+          failed: false,
+          html: htmlReal,
+        });
+      } catch (e) {
+        setState({
+          locked: true,
+          failed: true,
+          html: '',
+        });
+      }
+    }
+  };
+
   return (
     <Layout className="outerPadding">
       <Layout className="container">
@@ -58,7 +95,31 @@ const Post = ({ data }) => {
                 <Img className={style.bannerImg} fluid={fluid} title={excerpt} alt={title} />
               </div>
             ) : null }
-            <article className="markdown-body" dangerouslySetInnerHTML={{ __html: html }} />
+            { state.locked
+              ? (
+                <Empty
+                  description=""
+                >
+                  <Row justify="center">
+                    <Col xs={24} sm={24} md={24} lg={16} xl={12}>
+                      {
+                        state.failed
+                          ? (<Alert type="error" showIcon message="Wrong password! Please try again." />)
+                          : (<Alert type="info" showIcon message="This article is encrypted by xsalsa20-poly1305 algorithm." />)
+                      }
+                      <Input.Search
+                        placeholder="Enter password to unlock this article."
+                        allowClear
+                        enterButton="Unlock"
+                        size="large"
+                        onSearch={onUnlock}
+                        style={{ marginTop: '1rem' }}
+                      />
+                    </Col>
+                  </Row>
+                </Empty>
+              )
+              : <article className="markdown-body" dangerouslySetInnerHTML={{ __html: state.html }} />}
             {/* <Comment pageCanonicalUrl={canonicalUrl} pageId={title} /> */}
           </div>
           <Footer />
@@ -71,7 +132,6 @@ const Post = ({ data }) => {
 export const pageQuery = graphql`
   query($fileAbsolutePath: String!) {
     markdownRemark(fileAbsolutePath: { eq: $fileAbsolutePath }) {
-      html
       timeToRead
       frontmatter {
         cover {
@@ -85,6 +145,9 @@ export const pageQuery = graphql`
       fileAbsolutePath
       fields {
         parsed {
+          html
+          htmlEncrypted
+          nonce
           title
           date
           tags
