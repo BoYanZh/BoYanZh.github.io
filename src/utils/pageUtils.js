@@ -22,6 +22,12 @@ const Utils = {
       urlPrefix = 'http://127.0.0.1:8000/';
     } else {
       urlPrefix = Config.siteUrl;
+      if (Config.pathPrefix) {
+        if (urlPrefix[urlPrefix.length - 1] !== '/' && Config.pathPrefix[0] !== '/') {
+          urlPrefix += '/';
+        }
+        urlPrefix += Config.pathPrefix;
+      }
     }
     if (urlPrefix[urlPrefix.length - 1] !== '/') {
       urlPrefix += '/';

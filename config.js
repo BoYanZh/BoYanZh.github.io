@@ -1,6 +1,6 @@
 module.exports = {
-  pathPrefix: '',
-  siteUrl: 'https://tc-imba.github.io/greatest-gatsby-academic-template',
+  pathPrefix: '/greatest-gatsby-academic-template',
+  siteUrl: 'https://tc-imba.github.io',
   siteTitle: 'John Doe',
   siteDescription: 'Logbook of John Doe',
   author: 'John Doe',
