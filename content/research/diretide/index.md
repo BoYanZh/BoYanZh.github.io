@@ -1,25 +1,23 @@
 ---
-title: "Multi-Agent Pickup and Delivery with Individual Deadlines"
-tags: 
-  - "scheduling"
-  - "algorithm"
+title: "Dire Tide 2020"
+tags:
+  - "dota2"
+  - "game"
 date: 2020-10-04
-venue: AAMAS
+venue: DOTA2
 authors:
-  - "Xiaohu Wu"
-  - "Yihao Liu"
-path: "research/mapd-deadline"
-excerpt: Multi-Agent Pickup and Delivery with Individual Deadlines
+  - "Valve"
+path: "research/diretide"
+excerpt: Dire Tide 2020
 selected: true
 cover: "./preview.png"
 links:
   - name: "pdf"
-    file: "./aamas21-334.pdf"
+    file: "./diretide.pdf"
   - name: "image"
     file: "./preview.png"
-  - name: "code"
-    url: "https://github.com/tc-imba/MAPF"
+  - name: "website"
+    url: "https://www.dota2.com/diretide/?l=english"
 ---
 
-Multi-Agent Pickup and Delivery with Individual Deadlines
-
+Dire Tide 2020
