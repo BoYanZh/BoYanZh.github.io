@@ -78,7 +78,7 @@ const ResearchCard = (props) => {
       onClick={handleClick}
     >
       <Row gutter={[8, 0]} align="middle">
-        <Col xs={24} sm={24} md={24} lg={16}>
+        <Col xs={24} sm={24} md={24} lg={15} xl={18}>
           <Card.Meta
             title={title}
             style={{ marginBottom: '4px' }}
@@ -96,7 +96,7 @@ const ResearchCard = (props) => {
             {links ? links.map(generateLink) : null}
           </Row>
         </Col>
-        <Col xs={24} sm={24} md={24} lg={8}>
+        <Col xs={24} sm={24} md={24} lg={9} xl={6}>
           <div
             className={style.postCardImg}
             style={{
