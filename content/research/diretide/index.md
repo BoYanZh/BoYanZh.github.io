@@ -6,7 +6,8 @@ tags:
 date: 2020-10-04
 venue: DOTA2
 authors:
-  - "Valve"
+  - name: "Valve"
+    url: "https://www.valvesoftware.com/"
 path: "research/diretide"
 excerpt: Dire Tide 2020
 selected: true

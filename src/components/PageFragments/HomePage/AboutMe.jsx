@@ -5,9 +5,13 @@ import React from 'react';
 
 import SEO from '../../Seo';
 import Config from '../../../../config';
+import Utils from '../../../utils/pageUtils';
 
 const AboutMe = () => {
-  const description = Config.introduction.join('\n');
+  const description = Config.introduction.join('\n\n');
+  const markdown = Utils.parseMarkDown(description);
+  // console.log(markdown);
+
   return (
     <>
       <div>
@@ -18,7 +22,7 @@ const AboutMe = () => {
           keywords={['Rolwin', 'Reevan', 'Monteiro', 'FullStack developer', 'Javascript', 'ReactJS', 'NodeJS', 'Gatsby']}
         />
         <h1 className="titleSeparate">About Me</h1>
-        {Config.introduction.map((paragraph) => <p>{paragraph}</p>)}
+        <div dangerouslySetInnerHTML={{ __html: markdown }} />
       </div>
       {/*      <Row gutter={[20, 20]}>
         <Col xs={24} sm={24} md={12} lg={8}>

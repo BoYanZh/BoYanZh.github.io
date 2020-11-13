@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+// import moment from 'moment';
 // import { Link } from 'gatsby';
 import {
   Row, Card,
@@ -34,7 +34,7 @@ const PostCard = (props) => {
       cover={(
         <div>
           <span className={style.dateHolder}>
-            {date ? moment(date).format('MMM Do YYYY') : ''}
+            {date ? Utils.formatDate(date) : ''}
           </span>
           <div
             className={style.postCardImg}
@@ -47,7 +47,7 @@ const PostCard = (props) => {
       onClick={handleClick}
     >
       <Card.Meta
-        title={title}
+        title={<span className={style.title}>{title}</span>}
         style={{ marginBottom: '1rem' }}
       />
       <Row align="middle" gutter={[0, 8]}>

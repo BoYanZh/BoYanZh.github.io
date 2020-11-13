@@ -17,11 +17,11 @@ import Footer from '../../components/PageLayout/Footer';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import SEO from '../../components/Seo';
 // import Comment from '../../components/Comment';
-// import Utils from '../../utils/pageUtils';
 
 import './highlight-syntax.less';
 
 import style from './post.module.less';
+import Utils from '../../utils/pageUtils';
 
 const Post = ({ data }) => {
   const { fields: { parsed }, frontmatter: { cover } } = data.markdownRemark;
@@ -29,7 +29,7 @@ const Post = ({ data }) => {
     title, excerpt, path, date, commit, html, nonce, htmlEncrypted,
   } = parsed;
   const editTime = moment.unix(commit).format('MMM Do YYYY');
-  const postTime = moment(date).format('MMM Do YYYY');
+  const postTime = Utils.formatDate(date);
 
   const fluid = cover ? cover.childImageSharp.fluid : null;
 
@@ -71,6 +71,14 @@ const Post = ({ data }) => {
     }
   };
 
+  const time = [];
+  if (postTime) {
+    time.push(`Posted: ${postTime}`);
+  }
+  if (commit > 0 && postTime !== editTime) {
+    time.push(`Edited: ${editTime}`);
+  }
+
   return (
     <Layout className="outerPadding">
       <Layout className="container">
@@ -86,8 +94,7 @@ const Post = ({ data }) => {
             <h1 className="titleSeparate">{title}</h1>
             <div>
               <div style={{ color: 'rgba(0, 0, 0, 0.45)', marginBottom: '1rem' }}>
-                {`Posted: ${postTime}`}
-                {commit > 0 && postTime !== editTime ? `, Edited: ${editTime}` : ''}
+                {time.join(', ')}
               </div>
             </div>
             { fluid ? (

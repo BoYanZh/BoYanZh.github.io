@@ -60,6 +60,10 @@
     "react-event-timeline": "^1.6.3",
     "react-helmet": "^6.1.0",
     "react-pdf": "^5.0.0",
+    "remark": "^13.0.0",
+    "remark-external-links": "^8.0.0",
+    "remark-html": "^13.0.1",
+    "slash": "^3.0.0",
     "tweetnacl": "^1.0.3",
     "tweetnacl-util": "^0.15.1",
     "typeface-jetbrains-mono": "^2.0.0"

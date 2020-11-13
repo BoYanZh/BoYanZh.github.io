@@ -10,6 +10,7 @@ const _ = require('lodash');
 const execa = require('execa');
 const nacl = require('tweetnacl');
 nacl.util = require('tweetnacl-util');
+const slash = require('slash');
 // const isRelativeUrl = require('is-relative-url');
 
 /* App imports */
@@ -97,18 +98,15 @@ exports.createPages = ({ actions, getNode, graphql }) => {
               path
               excerpt
               venue
-              authors
+              authors {
+                name
+                url
+              }
               selected
               password
               links {
                 name
-                file {
-                  internal {
-                    contentDigest
-                  }
-                  base
-                  absolutePath
-                }
+                file
                 url
               }
             }
@@ -117,11 +115,29 @@ exports.createPages = ({ actions, getNode, graphql }) => {
           }
         }
       }
+      allFile {
+        edges {
+          node {
+            internal {
+              contentDigest
+            }
+            name
+            base
+            absolutePath
+          }
+        }
+      }
     }    
   `).then((result) => {
     if (result.errors) return Promise.reject(result.errors);
 
-    const { allMarkdownRemark } = result.data;
+    const { allMarkdownRemark, allFile } = result.data;
+    const filePathMap = {};
+    allFile.edges.forEach(({ node }) => {
+      const { absolutePath } = node;
+      filePathMap[absolutePath] = node;
+    });
+
     const tags = {};
 
     /* Post and Research pages */
@@ -188,7 +204,32 @@ exports.createPages = ({ actions, getNode, graphql }) => {
       if (frontmatter.links) {
         for (const link of frontmatter.links) {
           if (link.name) {
-            if (link.file && link.file.internal && link.file.base && link.file.absolutePath) {
+            if (link.file) {
+              const filePath = slash(path.resolve(path.dirname(node.fileAbsolutePath), link.file));
+              if (filePath in filePathMap) {
+                const fileNode = filePathMap[filePath];
+                const { contentDigest } = fileNode.internal;
+                const destFileDir = path.posix.join('public', 'files', contentDigest);
+                const destFilePath = path.posix.join(destFileDir, fileNode.base);
+                const urlFilePath = utils.resolveUrl('files', contentDigest, fileNode.base);
+                fs.ensureDirSync(destFileDir);
+                fs.copyFileSync(fileNode.absolutePath, destFilePath);
+                data.links.push({
+                  name: link.name,
+                  url: urlFilePath,
+                });
+              }
+            } else if (link.url) {
+              data.links.push({
+                name: link.name,
+                url: link.url,
+              });
+            }
+          }
+        }
+      }
+
+      /* if (link.file && link.file.internal && link.file.base && link.file.absolutePath) {
               const { contentDigest } = link.file.internal;
               const destFileDir = path.posix.join('public', 'files', contentDigest);
               const destFilePath = path.posix.join(destFileDir, link.file.base);
@@ -199,15 +240,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
                 name: link.name,
                 url: urlFilePath,
               });
-            } else if (link.url) {
-              data.links.push({
-                name: link.name,
-                url: link.url,
-              });
-            }
-          }
-        }
-      }
+            } */
 
       if (frontmatter.tags) {
         for (let i = 0; i < frontmatter.tags.length; i++) {
@@ -362,7 +395,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   } */
 };
 
-exports.createSchemaCustomization = ({ actions }) => {
+exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
   const typeDefs = `
     type MarkdownRemark implements Node {
@@ -376,9 +409,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       path: String
       excerpt: String
       venue: String
-      authors: [String]
+      authors: [Author]
       selected: Boolean
       password: String
+      links: [Link]
     }
     type Fields {
       parsed: Parsed
@@ -390,7 +424,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       path: String
       excerpt: String
       venue: String
-      authors: [String]
+      authors: [Author]
       links: [Link]
       commit: Int
       type: String
@@ -402,7 +436,11 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Link {
       name: String!
       url: String
-      file: File
+      file: String
+    }
+    type Author {
+      name: String!
+      url: String
     }
     type Tag implements Node {
       name: String
@@ -414,5 +452,19 @@ exports.createSchemaCustomization = ({ actions }) => {
       posts: Boolean
     }
   `;
-  createTypes(typeDefs);
+  // const fileDef = schema.buildObjectType({
+  //   name: 'File',
+  //   id: {
+  //     type: 'String!',
+  //     resolve(source, args, context, info) {
+  //       // For a more generic solution, you could pick the field value from
+  //       // `source[info.fieldName]`
+  //       if (source.id == null) {
+  //         return '';
+  //       }
+  //       return source.id;
+  //     },
+  //   },
+  // });
+  createTypes([typeDefs]);
 };

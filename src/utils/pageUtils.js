@@ -1,5 +1,11 @@
 /* eslint-disable no-param-reassign */
 // const _ = require('lodash');
+
+const moment = require('moment');
+const remark = require('remark');
+const html = require('remark-html');
+const externalLinks = require('remark-external-links');
+
 const Config = require('../../config');
 // const Statistics = require('../../content/statistics.json');
 
@@ -121,6 +127,35 @@ const Utils = {
     if (matches && matches.length === 1 && !node.frontmatter.path) {
       // eslint-disable-next-line prefer-destructuring
       node.frontmatter.path = matches[0];
+    }
+  },
+
+  formatDate: (date) => {
+    const d = moment(date);
+    if (d.isValid()) {
+      return d.format('MMM Do YYYY');
+    }
+    return date;
+  },
+
+  parseMarkDown: (str, removeParagraph = false) => {
+    try {
+      // @type string
+      let md = remark()
+        .use(externalLinks, { target: '_blank' })
+        .use(html)
+        .processSync(str)
+        .toString();
+      if (removeParagraph) {
+        const regex = /^<p>(.*)<\/p>/g;
+        const match = regex.exec(md);
+        if (match.length > 0) {
+          [, md] = match;
+        }
+      }
+      return md;
+    } catch (e) {
+      return str;
     }
   },
 };

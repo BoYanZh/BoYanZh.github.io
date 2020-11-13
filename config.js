@@ -5,7 +5,7 @@ module.exports = {
   siteDescription: 'Logbook of John Doe',
   author: 'John Doe',
   introduction: [
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "[fxhsb](https://github.com/Reapor-Yurnero) Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   ],
   avatar: 'avatar.png',
@@ -13,7 +13,7 @@ module.exports = {
     'Software Engineer',
     'Full Stack Developer',
   ],
-  birthday: 'Some day',
+  // birthday: 'Some day',
   location: 'Earth',
   email: 'john.doe@gmail.com',
   postsForArchivePage: 3,
@@ -76,6 +76,7 @@ module.exports = {
   experience: [
     {
       title: 'Work',
+      position: 'left',
       data: [
         {
           date: 'Aug 2019 - Present',
@@ -86,6 +87,7 @@ module.exports = {
       ],
     }, {
       title: 'Teaching',
+      position: 'right',
       data: [
         {
           date: 'Aug 2019',
@@ -111,18 +113,19 @@ module.exports = {
       ],
     }, {
       title: 'Volunteer',
+      position: 'left',
       data: [
         {
           date: 'Aug 2019',
-          title: 'fxh home visit third time',
+          title: '[fxh](https://github.com/Reapor-Yurnero) home visit third time',
           location: 'Somewhere',
         }, {
           date: 'Aug 2018',
-          title: 'fxh home visit second time',
+          title: '[fxh](https://github.com/Reapor-Yurnero) home visit second time',
           location: 'Somewhere',
         }, {
           date: 'Aug 2017',
-          title: 'fxh home visit',
+          title: '[fxh](https://github.com/Reapor-Yurnero) home visit\n\n111',
           location: 'Somewhere',
         },
       ],

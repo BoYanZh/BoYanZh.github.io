@@ -7,25 +7,31 @@ import Header from '../../components/PageLayout/Header';
 import SEO from '../../components/Seo';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import Config from '../../../config';
+import Utils from '../../utils/pageUtils';
 
-const generateListItem = (data) => (
-  <List.Item style={{ display: 'block' }}>
-    <List.Item.Meta
+const generateListItem = (data) => {
+  const title = Utils.parseMarkDown(data.title, true);
+  const description = Utils.parseMarkDown(data.description, true);
+  return (
+    <List.Item style={{ display: 'block' }}>
+      <List.Item.Meta
       // avatar={<FontAwesomeIcon size="lg" fixedWidth icon={data.icon} />}
-      title={data.title}
-      description={`${data.date}, ${data.location}`}
-      style={{ marginLeft: '12px' }}
-    />
-    <div style={{ marginLeft: '12px', marginTop: '4px' }}>
-      {data.description}
-    </div>
-  </List.Item>
-);
+        title={<div dangerouslySetInnerHTML={{ __html: title }} />}
+        description={`${data.date}, ${data.location}`}
+        style={{ marginLeft: '12px' }}
+      />
+      <div
+        style={{ marginLeft: '12px', marginTop: '4px' }}
+        dangerouslySetInnerHTML={{ __html: description }}
+      />
+    </List.Item>
+  );
+};
 
 const generateExperience = (data) => (
-  <Card style={{ marginBottom: '20px' }} hoverable>
+  <Card style={{ marginBottom: '20px', cursor: 'default' }} hoverable>
     <Card.Meta
-      title={data.title || ''}
+      title={<span style={{ fontSize: '20px' }}>{data.title || ''}</span>}
         // description={data.date || ''}
       style={{ marginBottom: '1rem' }}
     />
@@ -36,8 +42,8 @@ const generateExperience = (data) => (
 );
 
 const Experience = () => {
-  const leftColumn = _.filter(Config.experience, (value, index) => index % 2 === 0);
-  const rightColumn = _.filter(Config.experience, (value, index) => index % 2 === 1);
+  const leftColumn = _.filter(Config.experience, (value) => value.position === 'left');
+  const rightColumn = _.filter(Config.experience, (value) => value.position === 'right');
   return (
     <Layout className="outerPadding">
       <Layout className="container">

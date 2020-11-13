@@ -73,7 +73,10 @@ export const query = graphql`
             parsed {
               date
               venue
-              authors
+              authors {
+                name
+                url
+              }
               path
               title
               tags

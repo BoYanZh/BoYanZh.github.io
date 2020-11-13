@@ -33,31 +33,46 @@ const DomContent = () => (
       <div className={`${style.boxName} centerAlign`}>
         <Name />
       </div>
-      {Config.professions.map((profession) => <div className={`${style.badge} ${style.badgeGray}`}>{profession}</div>)}
+      <Row>
+        {Config.professions.map((profession) => (
+          <Col xs={24} style={{ display: 'flex', justifyContent: 'center' }}>
+            <span className={`${style.badge} ${style.badgeGray}`}>{profession}</span>
+          </Col>
+        ))}
+      </Row>
       <div className="centerAlign box">
         <a href={Config.social.github} target="_blank" label="button" rel="noopener noreferrer">
           <FontAwesomeIcon icon={['fab', 'github']} />
         </a>
       </div>
       <List itemLayout="horizontal" split={false} style={{ width: '200px' }}>
-        <List.Item>
-          <List.Item.Meta
-            avatar={<FontAwesomeIcon size="lg" fixedWidth icon="calendar" />}
-            title={Config.birthday}
-          />
-        </List.Item>
-        <List.Item>
-          <List.Item.Meta
-            avatar={<FontAwesomeIcon size="lg" fixedWidth icon="map-marker-alt" />}
-            title={Config.location}
-          />
-        </List.Item>
-        <List.Item>
-          <List.Item.Meta
-            avatar={<FontAwesomeIcon size="lg" fixedWidth icon="envelope" />}
-            title={<a href={`mailto:${Config.email}`}>{Config.email}</a>}
-          />
-        </List.Item>
+        {Config.birthday
+          ? (
+            <List.Item>
+              <List.Item.Meta
+                avatar={<FontAwesomeIcon size="lg" fixedWidth icon="calendar" />}
+                title={Config.birthday}
+              />
+            </List.Item>
+          ) : null}
+        {Config.location
+          ? (
+            <List.Item>
+              <List.Item.Meta
+                avatar={<FontAwesomeIcon size="lg" fixedWidth icon="map-marker-alt" />}
+                title={Config.location}
+              />
+            </List.Item>
+          ) : null}
+        {Config.email
+          ? (
+            <List.Item>
+              <List.Item.Meta
+                avatar={<FontAwesomeIcon size="lg" fixedWidth icon="envelope" />}
+                title={<a href={`mailto:${Config.email}`}>{Config.email}</a>}
+              />
+            </List.Item>
+          ) : null}
       </List>
       {/* <div className={style.resumeDownload}> */}
       {/*  <a href="../resume.pdf" target="_blank">Download CV</a> */}

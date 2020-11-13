@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+// import moment from 'moment';
 // import { Link } from 'gatsby';
 import {
   Row, Col, Card, Button, Divider,
@@ -35,7 +35,8 @@ const ResearchCard = (props) => {
   const generateAuthor = (author, index) => (
     <Col xs>
       <span>
-        {author + (index !== authors.length - 1 ? ',' : '')}
+        {author.url ? <a href={author.url} target="_blank" rel="noreferrer">{author.name}</a> : author.name}
+        {(index !== authors.length - 1 ? ',' : '')}
       </span>
     </Col>
   );
@@ -45,7 +46,7 @@ const ResearchCard = (props) => {
     infoLine = infoLine.concat([
       <Col xs>
         <span style={{ color: 'rgba(0, 0, 0, 0.45)' }}>
-          {moment(date).format('MMM Do YYYY')}
+          {Utils.formatDate(date)}
         </span>
       </Col>,
       <Divider type="vertical" className={style.divider} />,
@@ -78,9 +79,9 @@ const ResearchCard = (props) => {
       onClick={handleClick}
     >
       <Row gutter={[8, 0]} align="middle">
-        <Col xs={24} sm={24} md={24} lg={15} xl={18}>
+        <Col xs={24} sm={24} md={24} lg={12} xl={16}>
           <Card.Meta
-            title={title}
+            title={<span className={style.title}>{title}</span>}
             style={{ marginBottom: '4px' }}
           />
           <Row align="middle" gutter={[8, 4]}>
@@ -96,7 +97,7 @@ const ResearchCard = (props) => {
             {links ? links.map(generateLink) : null}
           </Row>
         </Col>
-        <Col xs={24} sm={24} md={24} lg={9} xl={6}>
+        <Col xs={24} sm={24} md={24} lg={12} xl={8}>
           <div
             className={style.postCardImg}
             style={{
