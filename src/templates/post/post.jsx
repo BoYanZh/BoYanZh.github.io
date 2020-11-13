@@ -26,7 +26,7 @@ import Utils from '../../utils/pageUtils';
 const Post = ({ data }) => {
   const { fields: { parsed }, frontmatter: { cover } } = data.markdownRemark;
   const {
-    title, excerpt, path, date, commit, html, nonce, htmlEncrypted,
+    title, excerpt, path, date, commit, html, nonce, htmlEncrypted, type,
   } = parsed;
   const editTime = moment.unix(commit).format('MMM Do YYYY');
   const postTime = Utils.formatDate(date);
@@ -125,9 +125,11 @@ const Post = ({ data }) => {
               )
               : <article className="markdown-body" dangerouslySetInnerHTML={{ __html: state.html }} />}
           </div>
-          <div style={{ marginTop: '2rem' }}>
-            <Comment pageCanonicalUrl={canonicalUrl} pageId={title} />
-          </div>
+          { type === 'posts' ? (
+            <div style={{ marginTop: '2rem' }}>
+              <Comment pageCanonicalUrl={canonicalUrl} pageId={title} />
+            </div>
+          ) : null}
           <Footer />
         </SidebarWrapper>
       </Layout>
@@ -161,6 +163,7 @@ export const pageQuery = graphql`
           excerpt
           links { name }
           commit
+          type
         }
       }
     }
