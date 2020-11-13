@@ -19,7 +19,7 @@ module.exports = {
   postsForArchivePage: 3,
   defaultLanguage: 'en',
   disqusScript: process.env.DISQUS_SCRIPT
-    || 'https://rolwinreevan.disqus.com/embed.js',
+    || 'https://tc-imba.disqus.com/embed.js',
   pages: {
     home: '/',
     posts: 'posts',

@@ -16,7 +16,7 @@ import Header from '../../components/PageLayout/Header';
 import Footer from '../../components/PageLayout/Footer';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import SEO from '../../components/Seo';
-// import Comment from '../../components/Comment';
+import Comment from '../../components/Comment';
 
 import './highlight-syntax.less';
 
@@ -33,11 +33,8 @@ const Post = ({ data }) => {
 
   const fluid = cover ? cover.childImageSharp.fluid : null;
 
-  /*  const canonicalUrl = Utils.resolvePageUrl(
-    Config.siteUrl,
-    Config.pathPrefix,
-    path,
-  ); */
+  const canonicalUrl = Utils.generateFullUrl(path);
+  console.log(canonicalUrl);
 
   const [state, setState] = useState({
     locked: nonce !== '',
@@ -127,7 +124,9 @@ const Post = ({ data }) => {
                 </Empty>
               )
               : <article className="markdown-body" dangerouslySetInnerHTML={{ __html: state.html }} />}
-            {/* <Comment pageCanonicalUrl={canonicalUrl} pageId={title} /> */}
+          </div>
+          <div style={{ marginTop: '2rem' }}>
+            <Comment pageCanonicalUrl={canonicalUrl} pageId={title} />
           </div>
           <Footer />
         </SidebarWrapper>
