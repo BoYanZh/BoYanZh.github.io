@@ -30,8 +30,9 @@ const getGitInfo = () => {
 
 const getCommitTime = (filePath) => {
   try {
-    return execa.sync('git',
+    const timestamp = execa.sync('git',
       ['log', '-n', '1', '--pretty=format:%at', filePath]).stdout;
+    return parseInt(timestamp, 10);
   } catch (err) {
     return 0;
   }
