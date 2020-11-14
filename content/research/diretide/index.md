@@ -15,10 +15,11 @@ cover: "./preview.png"
 links:
   - name: "pdf"
     file: "./diretide.pdf"
-  - name: "image"
-    file: "./preview.png"
   - name: "website"
     url: "https://www.dota2.com/diretide/?l=english"
 ---
 
-Dire Tide 2020
+[Preview](./preview.png)
+
+[Dire Tide 2020](https://www.dota2.com/diretide/?l=english)
+

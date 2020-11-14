@@ -142,7 +142,7 @@ const Utils = {
     try {
       // @type string
       let md = remark()
-        .use(externalLinks, { target: '_blank' })
+        .use(externalLinks, { target: '_blank', rel: 'nofollow' })
         .use(html)
         .processSync(str)
         .toString();

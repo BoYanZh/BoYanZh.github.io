@@ -9,8 +9,8 @@ module.exports = [
     options: {
       lessOptions: {
         javascriptEnabled: true,
-      }
-    }
+      },
+    },
   },
   'gatsby-plugin-offline',
   'gatsby-plugin-lodash',
@@ -47,6 +47,13 @@ module.exports = [
     options: {
       plugins: [
         {
+          resolve: 'gatsby-remark-copy-linked-files',
+          options: {
+            destinationDir: 'files',
+            ignoreFileExtensions: ['md'],
+          },
+        },
+        {
           resolve: 'gatsby-remark-images',
           options: {
             maxWidth: 1000,
@@ -58,6 +65,7 @@ module.exports = [
         {
           resolve: 'gatsby-remark-external-links',
           options: {
+            target: '_blank',
             rel: 'nofollow',
           },
         },
@@ -122,7 +130,9 @@ module.exports = [
           // Add to index custom entries, that are not actually extracted from gatsby nodes
           // customEntries: [{ title: 'Pictures', content: 'awesome pictures', url: '/pictures' }],
           plugins: [
+            // eslint-disable-next-line no-unused-vars
             (lunr) => (builder) => {
+              // eslint-disable-next-line no-param-reassign
               builder.metadataWhitelist = ['position'];
             },
           ],
