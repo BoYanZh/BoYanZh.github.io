@@ -35,8 +35,8 @@ const Utils = {
         urlPrefix += Config.pathPrefix;
       }
     }
-    if (urlPrefix[urlPrefix.length - 1] !== '/') {
-      urlPrefix += '/';
+    if (urlPrefix[urlPrefix.length - 1] === '/') {
+      urlPrefix.pop();
     }
     return urlPrefix + Utils.resolveUrl(...path);
   },
