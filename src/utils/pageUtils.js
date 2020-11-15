@@ -36,7 +36,7 @@ const Utils = {
       }
     }
     if (urlPrefix[urlPrefix.length - 1] === '/') {
-      urlPrefix.pop();
+      urlPrefix = urlPrefix.substring(0, urlPrefix.length - 1);
     }
     return urlPrefix + Utils.resolveUrl(...path);
   },

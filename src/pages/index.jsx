@@ -46,7 +46,7 @@ export const query = graphql`
           frontmatter {
             cover {
               childImageSharp {
-                fluid(maxWidth: 288) {
+                fluid(maxWidth: 320, maxHeight: 180, fit: CONTAIN, background: "rgba(0,0,0,0)") {
                   ...GatsbyImageSharpFluid_tracedSVG
                 }
               }

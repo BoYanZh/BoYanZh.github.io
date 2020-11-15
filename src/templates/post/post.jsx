@@ -34,7 +34,7 @@ const Post = ({ data }) => {
   const fluid = cover ? cover.childImageSharp.fluid : null;
 
   const canonicalUrl = Utils.generateFullUrl(path);
-  console.log(canonicalUrl);
+  // console.log(canonicalUrl);
 
   const [state, setState] = useState({
     locked: nonce !== '',

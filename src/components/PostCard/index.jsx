@@ -5,6 +5,7 @@ import {
   Row, Card,
 } from 'antd';
 // import { navigate } from '@reach/router';
+import Img from 'gatsby-image';
 
 import style from './postCard.module.less';
 import PostTag from '../PostTag';
@@ -36,12 +37,7 @@ const PostCard = (props) => {
           <span className={style.dateHolder}>
             {date ? Utils.formatDate(date) : ''}
           </span>
-          <div
-            className={style.postCardImg}
-            style={{
-              backgroundImage: `url(${fluid ? fluid.src : ''})`,
-            }}
-          />
+          { fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
         </div>
       )}
       onClick={handleClick}

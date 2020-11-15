@@ -5,6 +5,7 @@ import {
   Row, Col, Card, Button, Divider,
 } from 'antd';
 // import { navigate } from '@reach/router';
+import Img from 'gatsby-image';
 import style from './researchCard.module.less';
 import PostTag from '../PostTag';
 import Utils from '../../utils/pageUtils';
@@ -16,6 +17,7 @@ const ResearchCard = (props) => {
     title, authors, excerpt, path, links, date, tags, venue,
   } = parsed;
   const fluid = cover ? cover.childImageSharp.fluid : null;
+  console.log(fluid);
 
   const url = Utils.resolvePageUrl(path);
   const handleClick = (e) => {
@@ -98,12 +100,7 @@ const ResearchCard = (props) => {
           </Row>
         </Col>
         <Col xs={24} sm={24} md={24} lg={12} xl={8}>
-          <div
-            className={style.postCardImg}
-            style={{
-              backgroundImage: `url(${fluid ? fluid.src : ''})`,
-            }}
-          />
+          <Img fluid={fluid} />
         </Col>
       </Row>
     </Card>
