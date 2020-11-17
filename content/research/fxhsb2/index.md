@@ -1,5 +1,5 @@
 ---
-title: "Lorem Ipsum (fxhsb2)"
+title: "Lorem Ipsum (fxhsb2) this a very long long long long long long long long long long long long long long long long title"
 tags: ["fxh", "sb"]
 date: 2020-10-10
 path: "research/fxhsb2"
