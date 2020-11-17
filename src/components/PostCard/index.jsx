@@ -22,7 +22,7 @@ const PostCard = (props) => {
   const url = Utils.resolvePageUrl(path);
   const handleClick = (e) => {
     if (e.target.tagName.toLowerCase() !== 'a' && url) {
-      window.location.href = url;
+      window.location.href = Utils.generateFullUrl(url);
       // navigate(url);
     }
   };
@@ -34,10 +34,10 @@ const PostCard = (props) => {
       hoverable
       cover={(
         <div>
+          { fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
           <span className={style.dateHolder}>
             {date ? Utils.formatDate(date) : ''}
           </span>
-          { fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
         </div>
       )}
       onClick={handleClick}

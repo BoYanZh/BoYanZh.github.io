@@ -17,22 +17,25 @@ const ResearchCard = (props) => {
     title, authors, excerpt, path, links, date, tags, venue,
   } = parsed;
   const fluid = cover ? cover.childImageSharp.fluid : null;
-  console.log(fluid);
+  // console.log(fluid);
 
   const url = Utils.resolvePageUrl(path);
   const handleClick = (e) => {
     const tagName = e.target.tagName.toLowerCase();
     if (tagName !== 'a' && tagName !== 'span' && url) {
-      window.location.href = url;
+      window.location.href = Utils.generateFullUrl(url);
       // navigate(url);
     }
   };
 
-  const generateLink = (link) => (
-    <Col xs>
-      <Button href={link.url} target="_blank" size="small">{link.name}</Button>
-    </Col>
-  );
+  const generateLink = (link) => {
+    const href = link.url ? Utils.generateFullUrl(link.url) : '#';
+    return (
+      <Col xs>
+        <Button href={href} target="_blank" size="small">{link.name}</Button>
+      </Col>
+    );
+  };
 
   const generateAuthor = (author, index) => (
     <Col xs>
