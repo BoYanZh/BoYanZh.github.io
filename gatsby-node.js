@@ -100,8 +100,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
               excerpt
               venue
               authors {
-                name
-                url
+                parsed
               }
               selected
               password
@@ -176,7 +175,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
       data.path = frontmatter.path;
       data.excerpt = frontmatter.excerpt || '';
       data.venue = frontmatter.venue || '';
-      data.authors = frontmatter.authors || [];
+      data.authors = frontmatter.authors ? frontmatter.authors.map((author) => author.parsed) : [];
       data.selected = frontmatter.selected || false;
       data.links = [];
       data.commit = getCommitTime(node.fileAbsolutePath);
@@ -425,7 +424,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       path: String
       excerpt: String
       venue: String
-      authors: [Author]
+      authors: [String]
       links: [Link]
       commit: Int
       type: String
@@ -439,10 +438,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       url: String
       file: String
     }
-    type Author {
-      name: String!
-      url: String
-    }
     type Tag implements Node {
       name: String
       description: String
@@ -453,6 +448,25 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       posts: Boolean
     }
   `;
+  const AuthorDef = schema.buildObjectType({
+    name: 'Author',
+    fields: {
+      name: 'String',
+      url: 'String',
+      parsed: {
+        type: 'String',
+        resolve: (source, args, context, info) => {
+          if (typeof source === 'string') {
+            return source;
+          }
+          if (!source.url) {
+            return source.name;
+          }
+          return `[${source.name}](${source.url})`;
+        },
+      },
+    },
+  });
   // const fileDef = schema.buildObjectType({
   //   name: 'File',
   //   id: {
@@ -467,5 +481,5 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   //     },
   //   },
   // });
-  createTypes([typeDefs]);
+  createTypes([typeDefs, AuthorDef]);
 };

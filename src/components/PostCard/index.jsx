@@ -2,7 +2,7 @@ import React from 'react';
 // import moment from 'moment';
 // import { Link } from 'gatsby';
 import {
-  Row, Card,
+  Row, Card, Col,
 } from 'antd';
 // import { navigate } from '@reach/router';
 import Img from 'gatsby-image';
@@ -49,9 +49,7 @@ const PostCard = (props) => {
       <Row align="middle" gutter={[0, 8]}>
         { tags ? tags.map((tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null)) : null}
       </Row>
-      <p style={{ marginTop: '1rem' }}>
-        {excerpt}
-      </p>
+      <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt) }} />
     </Card>
   );
 };

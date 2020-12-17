@@ -45,14 +45,17 @@ const ResearchCard = (props) => {
     );
   };
 
-  const generateAuthor = (author, index) => (
-    <Col xs>
-      <span>
-        {author.url ? <a href={author.url} target="_blank" rel="noreferrer">{author.name}</a> : author.name}
-        {(index !== authors.length - 1 ? ',' : '')}
-      </span>
-    </Col>
-  );
+  const generateAuthor = (author, index) => {
+    let markdown = Utils.parseMarkDown(author);
+    if (index !== authors.length - 1) {
+      markdown += ',';
+    }
+    return (
+      <Col xs>
+        <span dangerouslySetInnerHTML={{ __html: markdown }} />
+      </Col>
+    );
+  };
 
   let infoLine = [];
   if (date) {
@@ -103,9 +106,7 @@ const ResearchCard = (props) => {
           <Row align="middle" gutter={[0, 4]}>
             {infoLine}
           </Row>
-          <p style={{ marginTop: '1rem' }}>
-            {excerpt}
-          </p>
+          <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt) }} />
           <Row gutter={[8, 8]}>
             {links ? links.map(generateLink) : null}
           </Row>
