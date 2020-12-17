@@ -49,6 +49,7 @@
     "github-markdown-css": "^4.0.0",
     "highlight.js": "^10.2.1",
     "hogan.js": "^3.0.2",
+    "is-relative-url": "^3.0.0",
     "less": "^3.11.1",
     "lodash": "^4.17.20",
     "lunr": "^2.3.9",

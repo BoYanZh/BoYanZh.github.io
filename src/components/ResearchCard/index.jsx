@@ -6,6 +6,7 @@ import {
 } from 'antd';
 // import { navigate } from '@reach/router';
 import Img from 'gatsby-image';
+import isRelativeUrl from 'is-relative-url';
 import style from './researchCard.module.less';
 import PostTag from '../PostTag';
 import Utils from '../../utils/pageUtils';
@@ -29,7 +30,14 @@ const ResearchCard = (props) => {
   };
 
   const generateLink = (link) => {
-    const href = link.url ? Utils.generateFullUrl(link.url) : '#';
+    let href = '#';
+    if (link.url) {
+      if (isRelativeUrl(link.url)) {
+        href = Utils.generateFullUrl(link.url);
+      } else {
+        href = link.url;
+      }
+    }
     return (
       <Col xs>
         <Button href={href} target="_blank" size="small">{link.name}</Button>
