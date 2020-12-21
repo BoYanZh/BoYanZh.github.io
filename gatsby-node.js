@@ -177,6 +177,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
       data.venue = frontmatter.venue || '';
       data.authors = frontmatter.authors ? frontmatter.authors.map((author) => author.parsed) : [];
       data.selected = frontmatter.selected || false;
+      data.priority = frontmatter.priority || 0;
       data.links = [];
       data.commit = getCommitTime(node.fileAbsolutePath);
       if (frontmatter.path.indexOf(config.pages.posts) === 0) {
@@ -327,10 +328,10 @@ exports.createPages = ({ actions, getNode, graphql }) => {
       });
     }
 
-    const statistics = {
-      tags,
-      git: getGitInfo(),
-    };
+    // const statistics = {
+    //   tags,
+    //   git: getGitInfo(),
+    // };
 
     // fs.writeFileSync('content/statistics.json', JSON.stringify(statistics, null, 2));
 

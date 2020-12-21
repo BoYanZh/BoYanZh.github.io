@@ -37,11 +37,15 @@ export const query = graphql`
       }
     }
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
       filter: { 
         fileAbsolutePath: { regex: "/research\/.*\/index\\.md$/" }
-        fields: { parsed: { selected: { eq: true } } }
+        fields: { 
+          parsed: { 
+            selected: { eq: true } 
+          } 
+        }
       }
+      sort: { fields: [frontmatter___priority, frontmatter___title], order: ASC }
     ) {
       edges {
         node {
@@ -53,6 +57,8 @@ export const query = graphql`
                 }
               }
             }
+            priority
+            title
           }
           fileAbsolutePath
           fields {
@@ -65,6 +71,7 @@ export const query = graphql`
               tags
               excerpt
               selected
+              priority
               links {
                 name
                 url

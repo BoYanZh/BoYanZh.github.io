@@ -17,6 +17,7 @@ links:
     file: "./diretide.pdf"
   - name: "website"
     url: "https://www.dota2.com/diretide/?l=english"
+priority: 20
 ---
 
 [Preview](./preview.png)
