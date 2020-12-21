@@ -131,6 +131,14 @@ module.exports = {
       ],
     },
   ],
+  awards: [
+    {
+      date: 'Someday',
+      icon: 'graduation-cap',
+      title: 'Som Awards',
+      location: 'Some University, Somewhere',
+    },
+  ],
   tagColors: [
     'magenta', 'red', 'volcano', 'orange', 'gold',
     'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple',

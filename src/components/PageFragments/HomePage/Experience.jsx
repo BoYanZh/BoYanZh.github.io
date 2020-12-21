@@ -1,24 +1,12 @@
 import React from 'react';
-import { Timeline, TimelineEvent } from 'react-event-timeline';
+import { Timeline } from 'react-event-timeline';
 import { Row, Col, List } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Config from '../../../../config';
+import TimelineItem from '../../TimelineItem';
 
 import './index.css';
-
-const generateTimelineEvent = (data) => (
-  <TimelineEvent
-    title={data.title}
-    titleStyle={{ fontSize: '12pt', fontWeight: 'bold' }}
-    subtitle={data.location}
-    subtitleStyle={{ fontSize: '13pt', fontWeight: '400' }}
-    createdAt={data.date}
-    style={{ fontSize: '12pt', fontWeight: '300' }}
-    icon={<FontAwesomeIcon size="md" fixedWidth icon={data.icon || 'school'} />}
-    iconStyle={{ cursor: 'default' }}
-  />
-);
 
 const generateInterest = (data) => (
   <List.Item>
@@ -40,13 +28,13 @@ const Experience = () => (
         {Config.education.length > 1
           ? (
             <Timeline lineStyle={{ top: '20px' }}>
-              {previousTimeLineData.map(generateTimelineEvent)}
+              {previousTimeLineData.map(TimelineItem)}
             </Timeline>
           ) : null}
         {Config.education.length > 0
           ? (
             <Timeline lineStyle={{ display: 'none' }} style={{ top: '-30px' }}>
-              {lastTimeLineData.map(generateTimelineEvent)}
+              {lastTimeLineData.map(TimelineItem)}
             </Timeline>
           ) : null}
       </Col>
