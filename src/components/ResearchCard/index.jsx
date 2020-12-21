@@ -7,6 +7,7 @@ import {
 // import { navigate } from '@reach/router';
 import Img from 'gatsby-image';
 import isRelativeUrl from 'is-relative-url';
+import classnames from 'classnames';
 import style from './researchCard.module.less';
 import PostTag from '../PostTag';
 import Utils from '../../utils/pageUtils';
@@ -89,7 +90,7 @@ const ResearchCard = (props) => {
 
   return (
     <Card
-      className={style.researchCard}
+      className={classnames(style.researchCard, 'cursor-default')}
       bodyStyle={{ padding: '0.8rem' }}
       hoverable
       onClick={handleClick}
