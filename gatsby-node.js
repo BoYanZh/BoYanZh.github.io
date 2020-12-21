@@ -413,6 +413,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       selected: Boolean
       password: String
       links: [Link]
+      priority: Int
     }
     type Fields {
       parsed: Parsed
@@ -432,6 +433,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       html: String
       htmlEncrypted: String
       nonce: String
+      priority: Int
     }
     type Link {
       name: String!

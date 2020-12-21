@@ -7,6 +7,7 @@ import SidebarWrapper from '../components/PageLayout/Sidebar';
 import AboutMe from '../components/PageFragments/HomePage/AboutMe';
 import Experience from '../components/PageFragments/HomePage/Experience';
 import SelectedResearch from '../components/PageFragments/HomePage/SelectedResearch';
+import Awards from '../components/PageFragments/HomePage/Awards';
 
 export default ({ data }) => (
   <Layout className="outerPadding">
@@ -17,6 +18,7 @@ export default ({ data }) => (
           <AboutMe />
           <Experience />
           <SelectedResearch data={data} />
+          <Awards />
         </>
       </SidebarWrapper>
     </Layout>
