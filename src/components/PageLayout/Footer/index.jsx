@@ -15,7 +15,7 @@ export default () => {
   const buildTime = moment(currentDate).format('MMM Do YYYY');
   return (
     <>
-      <Divider style={{ color: 'rgba(0, 0, 0, 0.45)', marginTop: '3rem', marginBottom: '0' }}>
+      <Divider style={{ color: 'rgba(0, 0, 0, 0.45)', marginTop: '3rem', marginBottom: '-3rem' }}>
         <Typography.Text type="secondary">
           {/* {'Made with '}
         <a href="https://www.gatsbyjs.com/">Gatsby</a>

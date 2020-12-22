@@ -88,10 +88,10 @@ exports.createPages = ({ actions, getNode, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}) {
+      allMdx(sort: {order: DESC, fields: [frontmatter___date]}) {
         edges {
           node {
-            html
+            body
             frontmatter {
               title
               tags
@@ -99,9 +99,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
               path
               excerpt
               venue
-              authors {
-                parsed
-              }
+              authors
               selected
               password
               links {
@@ -131,7 +129,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
   `).then((result) => {
     if (result.errors) return Promise.reject(result.errors);
 
-    const { allMarkdownRemark, allFile } = result.data;
+    const { allMdx, allFile } = result.data;
     const filePathMap = {};
     allFile.edges.forEach(({ node }) => {
       const { absolutePath } = node;
@@ -141,7 +139,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
     const tags = {};
 
     /* Post and Research pages */
-    allMarkdownRemark.edges.forEach(({ node }) => {
+    allMdx.edges.forEach(({ node }) => {
       const { frontmatter } = node;
 
       // utils.generateOmittedPostInfo(node);
@@ -175,7 +173,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
       data.path = frontmatter.path;
       data.excerpt = frontmatter.excerpt || '';
       data.venue = frontmatter.venue || '';
-      data.authors = frontmatter.authors ? frontmatter.authors.map((author) => author.parsed) : [];
+      data.authors = frontmatter.authors || [];
       data.selected = frontmatter.selected || false;
       data.priority = frontmatter.priority || 0;
       data.links = [];
@@ -189,7 +187,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
       // encrypt post with password
       if (frontmatter.password) {
         const nonce = nacl.randomBytes(nacl.secretbox.nonceLength);
-        const message = nacl.util.decodeUTF8(node.html);
+        const message = nacl.util.decodeUTF8(node.body);
         const password = nacl.util.decodeUTF8(frontmatter.password);
         const key = nacl.hash(password).slice(0, nacl.secretbox.keyLength);
         const htmlEncrypted = nacl.secretbox(message, nonce, key);
@@ -197,7 +195,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
         data.htmlEncrypted = nacl.util.encodeBase64(htmlEncrypted);
         data.nonce = nacl.util.encodeBase64(nonce);
       } else {
-        data.html = node.html;
+        data.html = node.body;
         data.htmlEncrypted = '';
         data.nonce = '';
       }
@@ -268,7 +266,7 @@ exports.createPages = ({ actions, getNode, graphql }) => {
       // console.log(internalNode.internal);
       createNodeField({
         node: internalNode,
-        name: 'parsed',
+        name: 'slug',
         value: data,
       });
 
@@ -278,14 +276,14 @@ exports.createPages = ({ actions, getNode, graphql }) => {
         context: {
           fileAbsolutePath: node.fileAbsolutePath,
           postPath: frontmatter.path,
-          translations: utils.getRelatedTranslations(node, allMarkdownRemark.edges),
+          translations: utils.getRelatedTranslations(node, allMdx.edges),
         },
       });
     });
 
     // const regexForIndex = /index\.md$/;
     // Posts in default language, excluded the translated versions
-    // const defaultPosts = allMarkdownRemark.edges
+    // const defaultPosts = allMdx.edges
     //   .filter(({ node: { fileAbsolutePath } }) => fileAbsolutePath.match(regexForIndex));
 
     /* Tag pages */
@@ -390,7 +388,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     // console.log(node);
     // createNodeField({
     //   node,
-    //   name: 'parsed',
+    //   name: 'slug',
     //   value: data,
     // });
   } */
@@ -399,27 +397,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
   const typeDefs = `
-    type MarkdownRemark implements Node {
+    type Mdx implements Node {
       frontmatter: Frontmatter
       fields: Fields
     }
-    type Frontmatter {
-      title: String
-      tags: [String]
-      date: String
-      path: String
-      excerpt: String
-      venue: String
-      authors: [Author]
-      selected: Boolean
-      password: String
-      links: [Link]
-      priority: Int
-    }
     type Fields {
-      parsed: Parsed
+      slug: Slug
     }
-    type Parsed {
+    type Slug {
       title: String
       tags: [String]
       date: String
@@ -451,12 +436,84 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       posts: Boolean
     }
   `;
-  const AuthorDef = schema.buildObjectType({
+  const FrontmatterDef = schema.buildObjectType({
+    name: 'Frontmatter',
+    fields: {
+      title: {
+        type: 'String',
+        resolve: (source) => source.title || '',
+      },
+      tags: {
+        type: '[String]',
+        resolve: (source) => source.tags || [],
+      },
+      date: {
+        type: 'String',
+        resolve: (source) => source.date || '',
+      },
+      path: 'String',
+      type: {
+        type: 'String',
+        // eslint-disable-next-line consistent-return
+        resolve: (source) => {
+          if (source.path.indexOf(config.pages.posts) === 0) {
+            return 'posts';
+          }
+          if (source.path.indexOf(config.pages.research) === 0) {
+            return 'research';
+          }
+          return '';
+        },
+      },
+      excerpt: {
+        type: 'String',
+        resolve: (source) => source.excerpt || '',
+      },
+      venue: {
+        type: 'String',
+        resolve: (source) => source.venue || '',
+      },
+      authors: {
+        type: '[String]',
+        resolve: (source) => {
+          const authors = source.authors || [];
+          return authors.map((author) => {
+            if (typeof author === 'string') {
+              return author;
+            }
+            if (!author.url) {
+              return author.name;
+            }
+            return `[${author.name}](${author.url})`;
+          });
+        },
+      },
+      selected: {
+        type: 'Boolean',
+        resolve: (source) => source.selected || false,
+      },
+      password: {
+        type: 'String',
+        resolve: (source) => source.password || '',
+      },
+      links: {
+        type: '[Link]',
+        resolve: (source) => source.links || [],
+      },
+      priority: {
+        type: 'Int',
+        resolve: (source) => source.priority || 0,
+      },
+    },
+  });
+
+  /* const AuthorDef = schema.buildObjectType({
     name: 'Author',
+    infer: false,
     fields: {
       name: 'String',
       url: 'String',
-      parsed: {
+      slug: {
         type: 'String',
         resolve: (source, args, context, info) => {
           if (typeof source === 'string') {
@@ -469,7 +526,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         },
       },
     },
-  });
+  }); */
   // const fileDef = schema.buildObjectType({
   //   name: 'File',
   //   id: {
@@ -484,5 +541,5 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
   //     },
   //   },
   // });
-  createTypes([typeDefs, AuthorDef]);
+  createTypes([FrontmatterDef, typeDefs]);
 };

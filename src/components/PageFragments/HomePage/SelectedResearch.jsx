@@ -12,7 +12,7 @@ const SelectedResearch = ({ data }) => {
       <h2 style={{ marginBottom: '1rem' }}>Selected Research</h2>
       <Row gutter={[20, 20]}>
         {
-        data.allMarkdownRemark && data.allMarkdownRemark.edges.map((val, key) => (
+        data.allMdx && data.allMdx.edges.map((val, key) => (
           // eslint-disable-next-line react/no-array-index-key
           <Col key={key} xs={24} sm={24} md={24} lg={24}>
             <ResearchCard data={val} tagsMap={tagsMap} />

@@ -43,9 +43,10 @@ module.exports = [
     },
   },
   {
-    resolve: 'gatsby-transformer-remark',
+    resolve: 'gatsby-plugin-mdx',
     options: {
-      plugins: [
+      extensions: ['.mdx', '.md'],
+      gatsbyRemarkPlugins: [
         {
           resolve: 'gatsby-remark-copy-linked-files',
           options: {
@@ -69,6 +70,7 @@ module.exports = [
             rel: 'nofollow',
           },
         },
+        'gatsby-remark-autolink-headers',
         'gatsby-remark-highlight.js',
       ],
     },

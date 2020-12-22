@@ -14,10 +14,10 @@ import Utils from '../../utils/pageUtils';
 
 const PostCard = (props) => {
   const { data: { node }, tagsMap } = props;
-  const { fields: { parsed }, frontmatter: { cover } } = node;
+  const { fields: { slug }, frontmatter: { cover } } = node;
   const {
     title, excerpt, path, date, tags,
-  } = parsed;
+  } = slug;
   const fluid = cover ? cover.childImageSharp.fluid : null;
 
   const url = Utils.resolvePageUrl(path);

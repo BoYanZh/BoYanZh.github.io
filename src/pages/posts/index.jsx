@@ -7,6 +7,7 @@ import Header from '../../components/PageLayout/Header';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import Panel from '../../components/Panel';
 import SEO from '../../components/Seo';
+import Footer from '../../components/PageLayout/Footer';
 
 const Posts = ({ data }) => (
   <Layout className="outerPadding">
@@ -24,6 +25,7 @@ const Posts = ({ data }) => (
           <h1 className="titleSeparate">Posts</h1>
         </div>
         <Panel type="posts" data={data} />
+        <Footer />
       </SidebarWrapper>
     </Layout>
   </Layout>
@@ -31,7 +33,7 @@ const Posts = ({ data }) => (
 
 Posts.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     }).isRequired,
   }).isRequired,
@@ -51,7 +53,7 @@ export const query = graphql`
         }
       }
     }
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
         fileAbsolutePath: { regex: "/posts\/.*\/index\\.md$/" }
@@ -70,7 +72,7 @@ export const query = graphql`
           }
           fileAbsolutePath
           fields {
-            parsed {
+            slug {
               date
               path
               title

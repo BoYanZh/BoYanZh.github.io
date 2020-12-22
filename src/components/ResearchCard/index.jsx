@@ -14,10 +14,10 @@ import Utils from '../../utils/pageUtils';
 
 const ResearchCard = (props) => {
   const { data: { node }, tagsMap } = props;
-  const { fields: { parsed }, frontmatter: { cover } } = node;
+  const { fields: { slug }, frontmatter: { cover } } = node;
   const {
     title, authors, excerpt, path, links, date, tags, venue,
-  } = parsed;
+  } = slug;
   const fluid = cover ? cover.childImageSharp.fluid : null;
   // console.log(fluid);
 

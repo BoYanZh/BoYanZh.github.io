@@ -10,10 +10,11 @@ import SEO from '../../components/Seo';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import TagCard from '../../components/TagCard';
 import Config from '../../../config';
+import Footer from '../../components/PageLayout/Footer';
 
 const Tags = ({ data }) => {
   const { allFile: { edges } } = data;
-  const rawTags = data.allMarkdownRemark.edges
+  const rawTags = data.allMdx.edges
     .map((edge) => edge.node.frontmatter.tags)
     .reduce((prev, curr) => prev.concat(curr));
   rawTags
@@ -50,6 +51,7 @@ const Tags = ({ data }) => {
                 ))
               }
             </Row>
+            <Footer />
           </>
         </SidebarWrapper>
       </Layout>
@@ -59,7 +61,7 @@ const Tags = ({ data }) => {
 
 Tags.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       edges: PropTypes.arrayOf(
         PropTypes.shape({
           node: PropTypes.shape({
@@ -87,7 +89,7 @@ Tags.propTypes = {
 
 export const query = graphql`
   {
-    allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/index.md$/" } }) {
+    allMdx(filter: { fileAbsolutePath: { regex: "/index.md$/" } }) {
       edges {
         node {
           frontmatter {

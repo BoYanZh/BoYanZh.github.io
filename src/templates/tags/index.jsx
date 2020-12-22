@@ -26,9 +26,9 @@ const TagPage = ({ data, pageContext }) => {
   // const tagPagePath = Config.pages.tags;
   // const tagImage = data.allFile.edges.find((edge) => edge.node.name === tag).node
   //   .childImageSharp.fluid;
-  const docs = data.allMarkdownRemark.edges;
-  const posts = _.filter(docs, (doc) => doc.node.fields.parsed.type === 'posts');
-  const research = _.filter(docs, (doc) => doc.node.fields.parsed.type === 'research');
+  const docs = data.allMdx.edges;
+  const posts = _.filter(docs, (doc) => doc.node.fields.slug.type === 'posts');
+  const research = _.filter(docs, (doc) => doc.node.fields.slug.type === 'research');
   const tags = data.allTag ? data.allTag.edges : [];
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
 
@@ -97,7 +97,7 @@ TagPage.propTypes = {
         }),
       ).isRequired,
     }).isRequired,
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object).isRequired,
     }).isRequired,
     allFile: PropTypes.shape({
@@ -130,9 +130,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(
+    allMdx(
       filter: {
-        fields: { parsed: { tags: { in: [$tag] } } }
+        fields: { slug: { tags: { in: [$tag] } } }
         fileAbsolutePath: { regex: "/index.md$/" }
       }
       sort: { fields: [frontmatter___date], order: DESC }
@@ -149,7 +149,7 @@ export const pageQuery = graphql`
             }
           }
           fields {
-            parsed {
+            slug {
               date
               venue
               authors

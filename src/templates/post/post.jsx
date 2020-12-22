@@ -7,6 +7,7 @@ import Img from 'gatsby-image';
 import moment from 'moment';
 import nacl from 'tweetnacl';
 import naclUtil from 'tweetnacl-util';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import 'github-markdown-css';
 import 'typeface-jetbrains-mono';
@@ -24,10 +25,11 @@ import style from './post.module.less';
 import Utils from '../../utils/pageUtils';
 
 const Post = ({ data }) => {
-  const { fields: { parsed }, frontmatter: { cover } } = data.markdownRemark;
+  console.log(data.mdx.tableOfContents);
+  const { fields: { slug }, frontmatter: { cover } } = data.mdx;
   const {
     title, excerpt, path, date, commit, html, nonce, htmlEncrypted, type,
-  } = parsed;
+  } = slug;
   const editTime = moment.unix(commit).format('MMM Do YYYY');
   const postTime = Utils.formatDate(date);
 
@@ -123,7 +125,11 @@ const Post = ({ data }) => {
                   </Row>
                 </Empty>
               )
-              : <article className="markdown-body" dangerouslySetInnerHTML={{ __html: state.html }} />}
+              : (
+                <article className="markdown-body">
+                  <MDXRenderer>{state.html}</MDXRenderer>
+                </article>
+              )}
           </div>
           { type === 'posts' ? (
             <div style={{ marginTop: '2rem' }}>
@@ -139,8 +145,9 @@ const Post = ({ data }) => {
 
 export const pageQuery = graphql`
   query($fileAbsolutePath: String!) {
-    markdownRemark(fileAbsolutePath: { eq: $fileAbsolutePath }) {
+    mdx(fileAbsolutePath: { eq: $fileAbsolutePath }) {
       timeToRead
+      tableOfContents
       frontmatter {
         cover {
           childImageSharp {
@@ -152,7 +159,7 @@ export const pageQuery = graphql`
       }
       fileAbsolutePath
       fields {
-        parsed {
+        slug {
           html
           htmlEncrypted
           nonce

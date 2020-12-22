@@ -50,15 +50,15 @@ const Panel = (props) => {
     );
   };
 
-  if (data.allMarkdownRemark) {
-    data.allMarkdownRemark.edges.forEach((val) => {
-      if (!val.node || !val.node.fields || !val.node.fields.parsed
-        || !val.node.fields.parsed.tags) {
+  if (data.allMdx) {
+    data.allMdx.edges.forEach((val) => {
+      if (!val.node || !val.node.fields || !val.node.fields.slug
+        || !val.node.fields.slug.tags) {
         // eslint-disable-next-line no-param-reassign
         val.tags = new Set();
       } else {
         // eslint-disable-next-line no-param-reassign
-        val.tags = new Set(val.node.fields.parsed.tags);
+        val.tags = new Set(val.node.fields.slug.tags);
       }
     });
   }
@@ -82,7 +82,7 @@ const Panel = (props) => {
       </section>
       <Row gutter={[20, 20]}>
         {
-          data.allMarkdownRemark && data.allMarkdownRemark.edges.map((val, key) => {
+          data.allMdx && data.allMdx.edges.map((val, key) => {
             // eslint-disable-next-line no-restricted-syntax
             for (const tag of selectedTags) {
               if (!val.tags.has(tag)) return null;

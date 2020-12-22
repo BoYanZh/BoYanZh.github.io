@@ -8,6 +8,7 @@ import SEO from '../../components/Seo';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import Config from '../../../config';
 import Utils from '../../utils/pageUtils';
+import Footer from '../../components/PageLayout/Footer';
 
 const generateListItem = (data) => {
   const title = Utils.parseMarkDown(data.title, true);
@@ -67,6 +68,7 @@ const Experience = () => {
                 {rightColumn.map(generateExperience)}
               </Col>
             </Row>
+            <Footer />
           </>
         </SidebarWrapper>
       </Layout>

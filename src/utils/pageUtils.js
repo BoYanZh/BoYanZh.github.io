@@ -70,9 +70,9 @@ const Utils = {
   /**
    * Get an ordered list of suggested posts for a single post.
    * @param {Object} post The single post of which to find the related posts.
-   * It's the returned object from Graphql's query `markdownRemark`
+   * It's the returned object from Graphql's query `mdx`
    * @param {Array} postList The list where find related posts. It's the returned
-   * object from Graphql's query `allMarkdownRemark`
+   * object from Graphql's query `allMdx`
    * @param {number} limit The maximum number of suggested posts to get
    * @return {Array} The `postList` object sorted according to the best match with the `post` object
    */
@@ -93,9 +93,9 @@ const Utils = {
   /**
    * Pass a post and retrieve a list of related translations.
    * @param {Object} post The post of which retrieve its translations.
-   * It accepts a `node` object from Graphql's query `allMarkdownRemark`
+   * It accepts a `node` object from Graphql's query `allMdx`
    * @param {Object} postList The list of posts where search translations.
-   * It accepts a `edges` array from Graphql's query `allMarkdownRemark`
+   * It accepts a `edges` array from Graphql's query `allMdx`
    * @return {Object} An array of objects with languages as keys (ISO 639-1) and
    * translated post's paths as values.
    */

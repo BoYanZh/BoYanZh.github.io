@@ -8,18 +8,18 @@ import AboutMe from '../components/PageFragments/HomePage/AboutMe';
 import Experience from '../components/PageFragments/HomePage/Experience';
 import SelectedResearch from '../components/PageFragments/HomePage/SelectedResearch';
 import Awards from '../components/PageFragments/HomePage/Awards';
+import Footer from '../components/PageLayout/Footer';
 
 export default ({ data }) => (
   <Layout className="outerPadding">
     <Layout className="container">
       <Header />
       <SidebarWrapper>
-        <>
-          <AboutMe />
-          <Experience />
-          <SelectedResearch data={data} />
-          <Awards />
-        </>
+        <AboutMe />
+        <Experience />
+        <SelectedResearch data={data} />
+        <Awards />
+        <Footer />
       </SidebarWrapper>
     </Layout>
   </Layout>
@@ -36,11 +36,11 @@ export const query = graphql`
         }
       }
     }
-    allMarkdownRemark(
+    allMdx(
       filter: { 
         fileAbsolutePath: { regex: "/research\/.*\/index\\.md$/" }
         fields: { 
-          parsed: { 
+          slug: { 
             selected: { eq: true } 
           } 
         }
@@ -62,7 +62,7 @@ export const query = graphql`
           }
           fileAbsolutePath
           fields {
-            parsed {
+            slug {
               date
               venue
               authors

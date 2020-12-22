@@ -7,6 +7,7 @@ import Header from '../../components/PageLayout/Header';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import Panel from '../../components/Panel';
 import SEO from '../../components/Seo';
+import Footer from '../../components/PageLayout/Footer';
 
 const Research = ({ data }) => (
   <Layout className="outerPadding">
@@ -24,6 +25,7 @@ const Research = ({ data }) => (
           <h1 className="titleSeparate">Research</h1>
           <Panel type="research" data={data} />
         </div>
+        <Footer />
       </SidebarWrapper>
     </Layout>
   </Layout>
@@ -31,7 +33,7 @@ const Research = ({ data }) => (
 
 Research.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     }).isRequired,
   }).isRequired,
@@ -51,7 +53,7 @@ export const query = graphql`
         }
       }
     }
-    allMarkdownRemark(
+    allMdx(
       filter: { 
         fileAbsolutePath: { regex: "/research\/.*\/index\\.md$/" }
       }
@@ -72,7 +74,7 @@ export const query = graphql`
           }
           fileAbsolutePath
           fields {
-            parsed {
+            slug {
               date
               venue
               authors
