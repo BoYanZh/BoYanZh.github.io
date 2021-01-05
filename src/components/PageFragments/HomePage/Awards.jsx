@@ -1,8 +1,29 @@
 import React from 'react';
-import { Timeline } from 'react-event-timeline';
+import { Timeline, TimelineEvent } from 'react-event-timeline';
 import { Col, Row } from 'antd';
 import Config from '../../../../config';
-import TimelineItem from '../../TimelineItem';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const AwardItem = (data) => {
+  const title = (
+    <Row justify="space-between" align="middle">
+      <Col style={{ fontSize: '12pt', fontWeight: '400' }}>
+        {data.title}
+      </Col>
+      <Col style={{ fontSize: '12pt' }}>
+        {data.date}
+      </Col>
+    </Row>
+  );
+  return (
+    <TimelineEvent
+      title={title}
+      style={{ paddingBottom: '5px' }}
+      icon={<FontAwesomeIcon size="md" fixedWidth icon={data.icon || 'school'} />}
+      iconStyle={{ cursor: 'default' }}
+    />
+  );
+};
 
 const Awards = () => (
   <div>
@@ -10,7 +31,7 @@ const Awards = () => (
     <Row>
       <Col xs={24} sm={24} md={12} lg={15}>
         <Timeline lineStyle={{ display: 'none' }}>
-          {Config.awards.map(TimelineItem)}
+          {Config.awards.map(AwardItem)}
         </Timeline>
       </Col>
     </Row>

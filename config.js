@@ -135,8 +135,11 @@ module.exports = {
     {
       date: 'Someday',
       icon: 'graduation-cap',
-      title: 'Som Awards',
-      location: 'Some University, Somewhere',
+      title: 'Some Award',
+    }, {
+      date: 'Someday',
+      icon: 'graduation-cap',
+      title: 'Another Award',
     },
   ],
   tagColors: [
