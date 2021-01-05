@@ -8,6 +8,7 @@ venue: DOTA2
 authors:
   - name: "Valve"
     url: "https://www.valvesoftware.com/"
+alternative: Alternative Name
 path: "research/diretide"
 excerpt: Dire Tide 2020
 selected: true

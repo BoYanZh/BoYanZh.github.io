@@ -1,8 +1,8 @@
 import React from 'react';
 import { Timeline, TimelineEvent } from 'react-event-timeline';
 import { Col, Row } from 'antd';
-import Config from '../../../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Config from '../../../../config';
 
 const AwardItem = (data) => {
   const title = (

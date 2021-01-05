@@ -14,7 +14,7 @@ import Utils from '../../utils/pageUtils';
 
 const ResearchCard = (props) => {
   const { data: { node }, tagsMap } = props;
-  const { fields: { slug }, frontmatter: { cover } } = node;
+  const { fields: { slug }, frontmatter: { cover, alternative } } = node;
   const {
     title, authors, excerpt, path, links, date, tags, venue,
   } = slug;
@@ -47,8 +47,8 @@ const ResearchCard = (props) => {
   };
 
   const generateAuthor = (author, index) => {
-    let markdown = Utils.parseMarkDown(author);
-    if (index !== authors.length - 1) {
+    let markdown = Utils.parseMarkDown(author, true);
+    if (index >= 0 && index !== authors.length - 1) {
       markdown += ',';
     }
     return (
@@ -104,10 +104,15 @@ const ResearchCard = (props) => {
           <Row align="middle" gutter={[8, 4]}>
             {authors ? authors.map(generateAuthor) : null}
           </Row>
+          {alternative ? (
+            <Row align="middle" gutter={[8, 4]}>
+              {generateAuthor(alternative, -1)}
+            </Row>
+          ) : null}
           <Row align="middle" gutter={[0, 4]}>
             {infoLine}
           </Row>
-          <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt) }} />
+          <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
           <Row gutter={[8, 8]}>
             {links ? links.map(generateLink) : null}
           </Row>
