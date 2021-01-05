@@ -26,7 +26,7 @@ import Utils from '../../utils/pageUtils';
 
 const Post = ({ data }) => {
   console.log(data.mdx.tableOfContents);
-  const { fields: { slug }, frontmatter: { cover } } = data.mdx;
+  const { fields: { slug }, frontmatter: { cover }, tableOfContents } = data.mdx;
   const {
     title, excerpt, path, date, commit, html, nonce, htmlEncrypted, type,
   } = slug;
@@ -88,7 +88,7 @@ const Post = ({ data }) => {
           keywords={['Rolwin', 'Reevan', 'Monteiro', 'FullStack developer', 'Javascript', 'ReactJS', 'NodeJS', 'Gatsby', 'technology']}
         />
         <Header />
-        <SidebarWrapper>
+        <SidebarWrapper tableOfContents={tableOfContents}>
           <div className="marginTopTitle">
             <h1 className="titleSeparate">{title}</h1>
             <div>

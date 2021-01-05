@@ -10,6 +10,7 @@ import style from './sidebar.module.less';
 import { useWindowSize } from '../../../utils/hooks';
 import Config from '../../../../config';
 import Utils from '../../../utils/pageUtils';
+import TableOfContents from '../../TableOfContents';
 
 const { Content } = Layout;
 
@@ -83,7 +84,7 @@ const DomContent = () => (
 
 const Sidebar = (props) => {
   const [width] = useWindowSize();
-  const { children } = props;
+  const { children, tableOfContents } = props;
   const { pathname } = globalHistory.location;
   let domContent = <DomContent />;
   if (width > 997) {
@@ -106,6 +107,7 @@ const Sidebar = (props) => {
           <Row style={{ marginBottom: '4rem' }}>
             <Col sm={24} md={10} lg={7} className={style.sidebarContent}>
               { domContent }
+              {/* {tableOfContents ? <TableOfContents tableOfContents={tableOfContents} /> : null} */}
             </Col>
             <Col sm={24} md={14} lg={17}>
               <Layout className={`${style.background} ${style.boxContent} borderRadiusSection`}>

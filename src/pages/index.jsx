@@ -17,8 +17,8 @@ export default ({ data }) => (
       <SidebarWrapper>
         <AboutMe />
         <Experience />
-        <SelectedResearch data={data} />
         <Awards />
+        <SelectedResearch data={data} />
         <Footer />
       </SidebarWrapper>
     </Layout>

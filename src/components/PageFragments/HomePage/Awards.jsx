@@ -5,7 +5,7 @@ import Config from '../../../../config';
 import TimelineItem from '../../TimelineItem';
 
 const Awards = () => (
-  <div style={{ marginTop: '0.8rem' }}>
+  <div>
     <h2 style={{ marginBottom: '0rem' }}>Awards & Scholarships</h2>
     <Row>
       <Col xs={24} sm={24} md={12} lg={15}>
