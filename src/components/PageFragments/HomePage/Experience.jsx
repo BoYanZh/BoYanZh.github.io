@@ -27,13 +27,13 @@ const Experience = () => (
         <h2 style={{ marginBottom: '0rem' }}>Education</h2>
         {Config.education.length > 1
           ? (
-            <Timeline lineStyle={{ top: '20px' }} lineColor="#44566C">
+            <Timeline lineStyle={{ top: '20px' }} lineColor="#44566C" style={{ width: '100%' }}>
               {previousTimeLineData.map(TimelineItem)}
             </Timeline>
           ) : null}
         {Config.education.length > 0
           ? (
-            <Timeline lineStyle={{ display: 'none' }} style={{ top: '-30px' }}>
+            <Timeline lineStyle={{ display: 'none' }} style={{ top: '-30px', width: '100%' }}>
               {lastTimeLineData.map(TimelineItem)}
             </Timeline>
           ) : null}
