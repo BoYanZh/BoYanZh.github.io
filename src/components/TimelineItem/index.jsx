@@ -12,6 +12,7 @@ const TimelineItem = (data) => (
     style={{ fontSize: '12pt', fontWeight: '300' }}
     icon={<FontAwesomeIcon size="md" fixedWidth icon={data.icon || 'school'} />}
     iconStyle={{ cursor: 'default' }}
+    iconColor="#44566C"
   />
 );
 

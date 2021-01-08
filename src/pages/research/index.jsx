@@ -71,7 +71,6 @@ export const query = graphql`
             }
             priority
             title
-            alternative
           }
           fileAbsolutePath
           fields {

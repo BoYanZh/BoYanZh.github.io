@@ -19,11 +19,20 @@ const Name = () => {
   const firstName = arr.slice(0, arr.length - 1).join(' ');
   const lastName = arr[arr.length - 1];
   return (
-    <h2>
-      {firstName}
-      {' '}
-      <span>{lastName}</span>
-    </h2>
+    <Row>
+      <Col xs={24}>
+        <h2 className="centerAlign">
+          {firstName}
+          &nbsp;
+          <span>{lastName}</span>
+        </h2>
+      </Col>
+      {Config.authorAlternative ? (
+        <Col xs={24} style={{ marginTop: '-1rem', fontFamily: 'LiSu' }}>
+          <h2 className="centerAlign">{Config.authorAlternative}</h2>
+        </Col>
+      ) : null }
+    </Row>
   );
 };
 
@@ -31,9 +40,9 @@ const DomContent = () => (
   <aside>
     <img className={`${style.profileAvatar} centerAlign`} src={Utils.generateFullUrl(Config.avatar)} alt="" />
     <div className={`${style.name} centerAlign`}>
-      <div className={`${style.boxName} centerAlign`}>
-        <Name />
-      </div>
+      {/* <div className={`${style.boxName} centerAlign`}> */}
+      <Name />
+      {/* </div> */}
       <Row>
         {Config.professions.map((profession) => (
           <Col xs={24} style={{ display: 'flex', justifyContent: 'center' }}>

@@ -488,10 +488,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           });
         },
       },
-      alternative: {
-        type: 'String',
-        resolve: (source) => source.alternative || '',
-      },
       selected: {
         type: 'Boolean',
         resolve: (source) => source.selected || false,

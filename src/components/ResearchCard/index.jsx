@@ -14,7 +14,7 @@ import Utils from '../../utils/pageUtils';
 
 const ResearchCard = (props) => {
   const { data: { node }, tagsMap } = props;
-  const { fields: { slug }, frontmatter: { cover, alternative } } = node;
+  const { fields: { slug }, frontmatter: { cover } } = node;
   const {
     title, authors, excerpt, path, links, date, tags, venue,
   } = slug;
@@ -104,11 +104,6 @@ const ResearchCard = (props) => {
           <Row align="middle" gutter={[8, 4]}>
             {authors ? authors.map(generateAuthor) : null}
           </Row>
-          {alternative ? (
-            <Row align="middle" gutter={[8, 4]}>
-              {generateAuthor(alternative, -1)}
-            </Row>
-          ) : null}
           <Row align="middle" gutter={[0, 4]}>
             {infoLine}
           </Row>

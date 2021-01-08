@@ -8,7 +8,7 @@ const SelectedResearch = ({ data }) => {
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
 
   return (
-    <div style={{ marginTop: '0.8rem' }} >
+    <div style={{ marginTop: '0.8rem' }}>
       <h2 style={{ marginBottom: '1rem' }}>Selected Research</h2>
       <Row gutter={[20, 20]}>
         {
