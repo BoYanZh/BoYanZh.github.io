@@ -3,6 +3,7 @@ import { Timeline, TimelineEvent } from 'react-event-timeline';
 import { Col, List, Row } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Config from '../../../../config';
+import styles from './homePage.module.less';
 
 const AwardItem = (data) => {
   const title = (
@@ -40,10 +41,10 @@ const AwardItem = (data) => {
 };
 
 const Awards = () => (
-  <div>
-    <h2 style={{ marginBottom: '0.4rem' }}>Awards & Scholarships</h2>
+  <div className={styles.homepageSection}>
+    <h2 style={{ marginBottom: '0rem' }}>Awards & Scholarships</h2>
     <Row>
-      <Col xs={24}>
+      <Col xs={24} style={{ marginBottom: '-0.8rem' }}>
         <Timeline lineStyle={{ display: 'none' }} style={{ width: '100%' }}>
           {Config.awards.map(AwardItem)}
         </Timeline>

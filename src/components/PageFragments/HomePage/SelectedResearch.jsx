@@ -2,13 +2,14 @@ import React from 'react';
 import { Col, Row } from 'antd';
 import _ from 'lodash';
 import ResearchCard from '../../ResearchCard';
+import styles from './homePage.module.less';
 
 const SelectedResearch = ({ data }) => {
   const tags = data.allTag ? data.allTag.edges : [];
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
 
   return (
-    <div style={{ marginTop: '0.8rem' }}>
+    <div className={styles.homepageSection}>
       <h2 style={{ marginBottom: '1rem' }}>Selected Research</h2>
       <Row gutter={[20, 20]}>
         {

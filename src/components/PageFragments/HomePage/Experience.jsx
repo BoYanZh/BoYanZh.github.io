@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Config from '../../../../config';
 import TimelineItem from '../../TimelineItem';
 
-import './index.css';
+import styles from './homePage.module.less';
 
 const generateInterest = (data) => (
   <List.Item>
@@ -21,10 +21,10 @@ const previousTimeLineData = Config.education.slice(0, Config.education.length -
 const lastTimeLineData = Config.education.slice(Config.education.length - 1);
 
 const Experience = () => (
-  <div style={{ marginTop: '0.8rem' }}>
+  <div className={styles.homepageSection}>
     <Row>
-      <Col xs={24} sm={24} md={12} lg={15}>
-        <h2 style={{ marginBottom: '0rem' }}>Education</h2>
+      <Col xs={24} sm={24} md={12} lg={15} style={{ marginBottom: '-1.5rem' }}>
+        <h2 style={{ marginBottom: '0' }}>Education</h2>
         {Config.education.length > 1
           ? (
             <Timeline lineStyle={{ top: '20px' }} lineColor="#44566C" style={{ width: '100%' }}>
