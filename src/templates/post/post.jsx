@@ -25,7 +25,7 @@ import style from './post.module.less';
 import Utils from '../../utils/pageUtils';
 
 const Post = ({ data }) => {
-  console.log(data.mdx.tableOfContents);
+  // console.log(data.mdx.tableOfContents);
   const { fields: { slug }, frontmatter: { cover }, tableOfContents } = data.mdx;
   const {
     title, excerpt, path, date, commit, html, nonce, htmlEncrypted, type,

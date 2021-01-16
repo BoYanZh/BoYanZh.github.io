@@ -36,13 +36,9 @@ const Name = () => {
   );
 };
 
-const DomContent = () => (
-  <aside>
-    <img className={`${style.profileAvatar} centerAlign`} src={Utils.generateFullUrl(Config.avatar)} alt="" />
+const UserInfo = () => (
+  <>
     <div className={`${style.name} centerAlign`}>
-      {/* <div className={`${style.boxName} centerAlign`}> */}
-      <Name />
-      {/* </div> */}
       <Row>
         {Config.professions.map((profession) => (
           <Col xs={24} style={{ display: 'flex', justifyContent: 'center' }}>
@@ -84,29 +80,42 @@ const DomContent = () => (
             </List.Item>
           ) : null}
       </List>
+    </div>
+  </>
+);
+
+const DomContent = (props) => {
+  const { tableOfContents } = props;
+  return (
+    <aside>
+      <img className={`${style.profileAvatar} centerAlign`} src={Utils.generateFullUrl(Config.avatar)} alt="" />
+      <div className={`${style.name} ${style.boxName} centerAlign`}>
+        <Name />
+      </div>
+      { tableOfContents ? <TableOfContents tableOfContents={tableOfContents} /> : <UserInfo /> }
       {/* <div className={style.resumeDownload}> */}
       {/*  <a href="../resume.pdf" target="_blank">Download CV</a> */}
       {/* </div> */}
-    </div>
-  </aside>
-);
+    </aside>
+  );
+};
 
 const Sidebar = (props) => {
   const [width] = useWindowSize();
   const { children, tableOfContents } = props;
   const { pathname } = globalHistory.location;
-  let domContent = <DomContent />;
+  let domContent = <DomContent tableOfContents={tableOfContents} />;
   if (width > 997) {
     domContent = (
       <Affix offsetTop={0}>
-        <DomContent />
+        <DomContent tableOfContents={tableOfContents} />
       </Affix>
     );
   }
   if (width < 768) {
     domContent = <></>;
     if (pathname === '/') {
-      domContent = <DomContent />;
+      domContent = <DomContent tableOfContents={tableOfContents} />;
     }
   }
   return (
@@ -116,7 +125,6 @@ const Sidebar = (props) => {
           <Row style={{ marginBottom: '4rem' }}>
             <Col sm={24} md={10} lg={7} className={style.sidebarContent}>
               { domContent }
-              {/* {tableOfContents ? <TableOfContents tableOfContents={tableOfContents} /> : null} */}
             </Col>
             <Col sm={24} md={14} lg={17}>
               <Layout className={`${style.background} ${style.boxContent} borderRadiusSection`}>

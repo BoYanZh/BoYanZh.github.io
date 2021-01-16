@@ -70,6 +70,7 @@
     "remark": "^13.0.0",
     "remark-external-links": "^8.0.0",
     "remark-html": "^13.0.1",
+    "rxjs": "^6.6.3",
     "slash": "^3.0.0",
     "tweetnacl": "^1.0.3",
     "tweetnacl-util": "^0.15.1",
