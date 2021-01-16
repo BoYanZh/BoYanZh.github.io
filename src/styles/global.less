@@ -1,9 +1,11 @@
 @import (reference) './mixins.less';
+@import (reference) './theme.less';
+
 html{
   scroll-behavior: smooth;
 }
 body{
-  font-size: 16px;
+  font-size: @font-size-lg;
   background: #f0f2f5;
   overflow-y: scroll;
 }
@@ -85,7 +87,7 @@ ul{
     margin-top: 1.5rem;
 }
 .fa{
-    font-size: 16px;
+    font-size: @font-size-lg;
     margin-right: 10px;
     margin-left: 10px;
 }
@@ -96,7 +98,7 @@ ul{
   margin-top: 6px;
   position: absolute;
   color: rgba(0, 0, 0, 0.45);
-  font-size: 12px;
+  font-size: @font-size-sm;
   line-height: 1;
   white-space: nowrap;
   text-align: left;
@@ -146,7 +148,7 @@ ul{
 //}
 
 .ant-divider-inner-text {
-  font-size: 12px;
+  font-size: @font-size-sm;
 }
 
 .ant-card-hoverable.cursor-default {
