@@ -10,7 +10,7 @@ import style from './sidebar.module.less';
 import { useWindowSize } from '../../../utils/hooks';
 import Config from '../../../../config';
 import Utils from '../../../utils/pageUtils';
-import TableOfContents from '../../TableOfContents';
+import LoadableTableOfContents from '../../TableOfContents/loadable';
 
 const { Content } = Layout;
 
@@ -92,7 +92,7 @@ const DomContent = (props) => {
       <div className={`${style.name} ${style.boxName} centerAlign`}>
         <Name />
       </div>
-      { tableOfContents ? <TableOfContents tableOfContents={tableOfContents} /> : <UserInfo /> }
+      { tableOfContents ? <LoadableTableOfContents tableOfContents={tableOfContents} /> : <UserInfo /> }
       {/* <div className={style.resumeDownload}> */}
       {/*  <a href="../resume.pdf" target="_blank">Download CV</a> */}
       {/* </div> */}

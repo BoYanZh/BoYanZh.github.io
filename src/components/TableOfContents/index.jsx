@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
+import Loadable from '@loadable/component';
 import { fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import styles from './toc.module.less';
-
 /* const generateTOCHelper = (data, level) => {
   const { items, title, url } = data;
   let markdown = '';
@@ -49,7 +49,7 @@ const TableOfContents = (props) => {
   // const toc = generateTOC(tableOfContents);
   // const markdown = Utils.parseMarkDown(toc);
   // console.log(markdown);
-  const { items } = tableOfContents;
+  const items = tableOfContents.items || [];
 
   const [offsets] = useState(() => {
     // eslint-disable-next-line no-underscore-dangle
