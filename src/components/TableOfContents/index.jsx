@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 import { fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
+import Config from '../../../config';
 import styles from './toc.module.less';
 /* const generateTOCHelper = (data, level) => {
   const { items, title, url } = data;
@@ -28,17 +29,38 @@ const generateTOC = (data) => {
   return markdown;
 }; */
 
+const MAX_DEPTH = Config.tocMaxDepth || 2;
+
 const TOCItem = (props) => {
-  const { data: { items, title, url }, activeTOC, setActiveTOC } = props;
+  const {
+    data: { items, title, url }, activeTOC, setActiveTOC, depth,
+  } = props;
   // console.log(url);
   const className = activeTOC.url === url ? styles.tocCurrent : '';
   const handleClick = () => {
     setActiveTOC(url);
   };
   return (
-    <li key={url} title={title}>
-      <a href={url} className={className} onClick={handleClick}>{title}</a>
-    </li>
+    <>
+      <li key={url} title={title}>
+        <a
+          style={{ paddingLeft: `${depth + 1}em` }}
+          href={url}
+          className={className}
+          onClick={handleClick}
+        >
+          {title}
+        </a>
+      </li>
+      {items && depth < MAX_DEPTH ? items.map((item) => (
+        <TOCItem
+          data={item}
+          activeTOC={activeTOC}
+          setActiveTOC={setActiveTOC}
+          depth={depth + 1}
+        />
+      )) : null}
+    </>
   );
 };
 
@@ -53,19 +75,23 @@ const TableOfContents = (props) => {
   const calculateOffsets = () => {
     // eslint-disable-next-line no-underscore-dangle
     const _offsets = [];
-    items.forEach((item) => {
-      // console.log(item);
-      if (item.url) {
-        const element = window.document.getElementById(item.url.substring(1));
+    const preorderTraversal = (root) => {
+      if (root.url) {
+        const element = window.document.getElementById(root.url.substring(1));
         if (element) {
           _offsets.push({
             offset: element.offsetTop,
-            url: item.url,
+            url: root.url,
           });
         }
+        if (root.items) {
+          root.items.forEach(preorderTraversal);
+        }
       }
-    });
-    return _.sortBy(_offsets, (value) => value.offset);
+    };
+    items.forEach(preorderTraversal);
+    return _offsets;
+    // return _.sortBy(_offsets, (value) => value.offset);
   };
 
   const [offsets, setOffsets] = useState(calculateOffsets);
@@ -129,6 +155,7 @@ const TableOfContents = (props) => {
             data={item}
             activeTOC={activeTOC}
             setActiveTOC={setActiveTOCByClick}
+            depth={0}
           />
         ))}
       </ul>

@@ -14,6 +14,7 @@ module.exports = {
     'Software Engineer',
     'Full Stack Developer',
   ],
+  tocMaxDepth: 2,
   // birthday: 'Some day',
   location: 'Earth',
   email: 'john.doe@gmail.com',
