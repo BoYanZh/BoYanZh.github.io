@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
-import Loadable from '@loadable/component';
 import { fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import styles from './toc.module.less';
@@ -51,7 +50,7 @@ const TableOfContents = (props) => {
   // console.log(markdown);
   const items = tableOfContents.items || [];
 
-  const [offsets] = useState(() => {
+  const calculateOffsets = () => {
     // eslint-disable-next-line no-underscore-dangle
     const _offsets = [];
     items.forEach((item) => {
@@ -67,7 +66,9 @@ const TableOfContents = (props) => {
       }
     });
     return _.sortBy(_offsets, (value) => value.offset);
-  });
+  };
+
+  const [offsets, setOffsets] = useState(calculateOffsets);
 
   const getActiveUrl = () => {
     const position = window.pageYOffset; // + window.innerHeight * 0.2;
@@ -96,13 +97,28 @@ const TableOfContents = (props) => {
       }
     };
 
-    const scrolls = fromEvent(window.document, 'scroll');
-    const result = scrolls.pipe(throttleTime(300));
-    const subscription = result.subscribe(handleScroll);
+    const events = fromEvent(window.document, 'scroll');
+    const event = events.pipe(throttleTime(300));
+    const subscription = event.subscribe(handleScroll);
+
     return () => {
       subscription.unsubscribe();
     };
   }, [activeTOC]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setOffsets(calculateOffsets());
+    };
+
+    const events = fromEvent(window, 'resize');
+    const event = events.pipe(throttleTime(300));
+    const subscription = event.subscribe(handleResize);
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [offsets]);
 
   return (
     <div className={styles.tocContainer}>
