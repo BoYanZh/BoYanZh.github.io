@@ -31,7 +31,7 @@ priority: 20
 [Dire Tide 2020](https://www.dota2.com/diretide/?l=english)
 
 ## Title 2
-``
+
 ## Title 3
 
 ## Title 4
