@@ -17,6 +17,8 @@ const slash = require('slash');
 const config = require('./config');
 const utils = require('./src/utils/pageUtils');
 
+const EXCERPT_MAX_LENGTH = config.excerptMaxLength || 500;
+
 const getGitInfo = () => {
   const gitHash = execa.sync('git', ['rev-parse', '--short', 'HEAD']).stdout;
   const gitNumCommits = Number(execa.sync('git', ['rev-list', 'HEAD', '--count']).stdout);
@@ -467,7 +469,11 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       },
       excerpt: {
         type: 'String',
-        resolve: (source) => source.excerpt || '',
+        resolve: (source) => {
+          if (!source.excerpt) return '';
+          if (source.excerpt.length < EXCERPT_MAX_LENGTH) return source.excerpt;
+          return `${source.excerpt.substring(0, EXCERPT_MAX_LENGTH)} ...`;
+        },
       },
       venue: {
         type: 'String',

@@ -35,22 +35,28 @@ const PostCard = (props) => {
       hoverable
       cover={(
         <div>
-          { fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
+          <a href={Utils.generateFullUrl(url)}>
+            { fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
+          </a>
           <span className={style.dateHolder}>
             {date ? Utils.formatDate(date) : ''}
           </span>
         </div>
       )}
-      onClick={handleClick}
+      // onClick={handleClick}
     >
       <Card.Meta
-        title={<span className={style.title}>{title}</span>}
+        title={(
+          <span className={style.title}>
+            <a href={Utils.generateFullUrl(url)}>{title}</a>
+          </span>
+        )}
         style={{ marginBottom: '1rem' }}
       />
       <Row align="middle" gutter={[0, 8]}>
         { tags ? tags.map((tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null)) : null}
       </Row>
-      <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
+      <p style={{ marginTop: '1rem', cursor: 'text' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
     </Card>
   );
 };

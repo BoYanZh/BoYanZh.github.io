@@ -93,12 +93,16 @@ const ResearchCard = (props) => {
       className={classnames(style.researchCard, 'cursor-default')}
       bodyStyle={{ padding: '0.8rem' }}
       hoverable
-      onClick={handleClick}
+      // onClick={handleClick}
     >
       <Row gutter={[8, 0]} align="middle">
         <Col xs={24} sm={24} md={24} lg={12} xl={16}>
           <Card.Meta
-            title={<span className={style.title}>{title}</span>}
+            title={(
+              <span className={style.title}>
+                <a href={Utils.generateFullUrl(url)}>{title}</a>
+              </span>
+            )}
             style={{ marginBottom: '4px' }}
           />
           <Row align="middle" gutter={[8, 4]}>
@@ -107,13 +111,15 @@ const ResearchCard = (props) => {
           <Row align="middle" gutter={[0, 4]}>
             {infoLine}
           </Row>
-          <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
+          <p style={{ marginTop: '1rem', cursor: 'text' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
           <Row gutter={[8, 8]}>
             {links ? links.map(generateLink) : null}
           </Row>
         </Col>
         <Col xs={24} sm={24} md={24} lg={12} xl={8}>
-          <Img fluid={fluid} />
+          <a href={Utils.generateFullUrl(url)}>
+            <Img fluid={fluid} />
+          </a>
         </Col>
       </Row>
     </Card>

@@ -4,6 +4,7 @@ import { fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import Config from '../../../config';
 import styles from './toc.module.less';
+import { Divider } from 'antd';
 /* const generateTOCHelper = (data, level) => {
   const { items, title, url } = data;
   let markdown = '';
@@ -96,30 +97,34 @@ const TableOfContents = (props) => {
 
   const [offsets, setOffsets] = useState(calculateOffsets);
 
-  const getActiveUrl = () => {
-    const position = window.pageYOffset; // + window.innerHeight * 0.2;
+  const getActiveUrl = (position) => {
+    // const position = window.pageYOffset; // + window.innerHeight * 0.2;
     // console.log(position);
     let index = _.sortedIndexBy(offsets, { offset: position }, (value) => value.offset);
     if (index > 0) {
       --index;
     }
-    return offsets.length > index ? offsets[index].url : null;
+    return offsets.length > index ? offsets[index] : { offset: 0, url: '' };
   };
 
   const [activeTOC, setActiveTOC] = useState({
-    url: getActiveUrl(),
+    url: getActiveUrl(window.pageYOffset).url,
     clickTime: 0,
   });
 
   const setActiveTOCByClick = (url) => {
-    setActiveTOC({ url, clickTime: Date.now() });
+    const currentOffset = window.pageYOffset;
+    const newOffset = window.document.getElementById(url.substring(1)).offsetTop;
+    const diff = Math.abs(currentOffset - newOffset) || 0;
+    const time = Date.now() + 500 + diff / 5;
+    setActiveTOC({ url, clickTime: time });
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      if (Date.now() > activeTOC.clickTime + 500) {
-        const active = getActiveUrl();
-        setActiveTOC({ url: active, clickTime: activeTOC.clickTime });
+      if (Date.now() > activeTOC.clickTime) {
+        const active = getActiveUrl(window.pageYOffset);
+        setActiveTOC({ url: active.url, clickTime: activeTOC.clickTime });
       }
     };
 

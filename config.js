@@ -15,6 +15,7 @@ module.exports = {
     'Full Stack Developer',
   ],
   tocMaxDepth: 2,
+  excerptMaxLength: 500,
   // birthday: 'Some day',
   location: 'Earth',
   email: 'john.doe@gmail.com',

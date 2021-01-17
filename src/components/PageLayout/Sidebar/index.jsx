@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Affix, Layout, Row, Col, List,
+  Affix, Layout, Row, Col, List, Divider,
 } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -28,7 +28,7 @@ const Name = () => {
         </h2>
       </Col>
       {Config.authorAlternative ? (
-        <Col xs={24} style={{ marginTop: '-1rem', fontFamily: 'LiSu' }}>
+        <Col xs={24} style={{ marginTop: '-1rem', fontFamily: 'LiSu', marginBottom: '-2rem' }}>
           <h2 className="centerAlign">{Config.authorAlternative}</h2>
         </Col>
       ) : null }
@@ -51,7 +51,7 @@ const UserInfo = () => (
           <FontAwesomeIcon icon={['fab', 'github']} />
         </a>
       </div>
-      <List itemLayout="horizontal" split={false} style={{ width: '200px' }}>
+      <List itemLayout="horizontal" split={false} style={{ width: '200px', marginBottom: '-0.5rem' }}>
         {Config.birthday
           ? (
             <List.Item>
@@ -92,7 +92,14 @@ const DomContent = (props) => {
       <div className={`${style.name} ${style.boxName} centerAlign`}>
         <Name />
       </div>
-      { tableOfContents ? <LoadableTableOfContents tableOfContents={tableOfContents} /> : <UserInfo /> }
+      <UserInfo />
+      { tableOfContents
+        ? (
+          <>
+            <Divider />
+            <LoadableTableOfContents tableOfContents={tableOfContents} />
+          </>
+        ) : null }
       {/* <div className={style.resumeDownload}> */}
       {/*  <a href="../resume.pdf" target="_blank">Download CV</a> */}
       {/* </div> */}
