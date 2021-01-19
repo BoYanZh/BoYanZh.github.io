@@ -18,6 +18,7 @@ import Footer from '../../components/PageLayout/Footer';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import SEO from '../../components/Seo';
 import Comment from '../../components/Comment';
+import CodeBox from '../../components/CodeBox';
 
 import './highlight-syntax.less';
 
@@ -98,7 +99,9 @@ const Post = ({ data }) => {
             </div>
             <Row gutter={[8, 0]} align="middle">
               <Col xs={24} sm={24} md={24} lg={fluid ? 12 : 24} xl={fluid ? 16 : 24}>
-                <p style={{ marginTop: '1rem', cursor: 'text' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
+                <CodeBox title="Abstract">
+                  <p style={{ marginTop: '1rem', cursor: 'text' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
+                </CodeBox>
               </Col>
               { fluid ? (
                 <Col xs={24} sm={24} md={24} lg={12} xl={8}>

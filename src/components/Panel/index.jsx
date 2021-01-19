@@ -5,10 +5,9 @@ import {
 } from 'antd';
 import _ from 'lodash';
 
-import style from './panel.module.less';
-
 import PostCard from '../PostCard';
 import ResearchCard from '../ResearchCard';
+import CodeBox from '../CodeBox';
 // import PostTag from '../PostTag';
 // import Utils from '../../utils/pageUtils';
 // import Statistics from '../../../content/statistics.json';
@@ -65,21 +64,16 @@ const Panel = (props) => {
 
   return (
     <>
-      <section className={style.codeBox}>
-        <section className={style.codeBoxTitle}>
-          Filters
-        </section>
-        <section className={style.codeBoxDescription}>
-          <Row gutter={[0, 8]} align="middle">
-            <Col xs>
-              <h5 style={{ marginBottom: '0', marginRight: '10px' }}>
-                Tags:
-              </h5>
-            </Col>
-            { tags.map(generateTag)}
-          </Row>
-        </section>
-      </section>
+      <CodeBox title="Filters">
+        <Row gutter={[0, 8]} align="middle">
+          <Col xs>
+            <h5 style={{ marginBottom: '0', marginRight: '10px' }}>
+              Tags:
+            </h5>
+          </Col>
+          { tags.map(generateTag)}
+        </Row>
+      </CodeBox>
       <Row gutter={[20, 20]}>
         {
           data.allMdx && data.allMdx.edges.map((val, key) => {
