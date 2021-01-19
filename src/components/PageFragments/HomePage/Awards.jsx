@@ -44,7 +44,7 @@ const Awards = () => (
   <div className={styles.homepageSection}>
     <h2 style={{ marginBottom: '0rem' }}>Awards & Scholarships</h2>
     <Row>
-      <Col xs={24} style={{ marginBottom: '-0.8rem' }}>
+      <Col xs={24} style={{ marginBottom: '-0.5rem' }}>
         <Timeline lineStyle={{ display: 'none' }} style={{ width: '100%' }}>
           {Config.awards.map(AwardItem)}
         </Timeline>

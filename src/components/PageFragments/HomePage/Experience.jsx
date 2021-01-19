@@ -23,7 +23,7 @@ const lastTimeLineData = Config.education.slice(Config.education.length - 1);
 const Experience = () => (
   <div className={styles.homepageSection}>
     <Row>
-      <Col xs={24} sm={24} md={12} lg={15} style={{ marginBottom: '-1.5rem' }}>
+      <Col xs={24} sm={24} md={12} lg={15} style={{ marginBottom: '-2rem' }}>
         <h2 style={{ marginBottom: '0' }}>Education</h2>
         {Config.education.length > 1
           ? (
