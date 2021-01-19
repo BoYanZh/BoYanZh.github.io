@@ -1,6 +1,8 @@
 @import (reference) '../../styles/index.less';
 
 .toc-container {
+  overflow: auto;
+
   margin: 1rem 0.5rem;
 
   @media (min-width: 1200px) {
@@ -78,10 +80,13 @@ ul.toc > li {
 }
 
 .toc-current {
-  font-weight: bold;
-  color: @primary-color !important;
   border-color: @primary-color !important;
   border-width: 2px !important;
+}
+
+.toc-active {
+  font-weight: bold;
+  color: @primary-color !important;
 }
 
 

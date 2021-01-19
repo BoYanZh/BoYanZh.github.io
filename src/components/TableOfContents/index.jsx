@@ -1,43 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
+import classnames from 'classnames';
 import { fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
 import Config from '../../../config';
 import styles from './toc.module.less';
-import { Divider } from 'antd';
-/* const generateTOCHelper = (data, level) => {
-  const { items, title, url } = data;
-  let markdown = '';
-  if (title && url) {
-    markdown += `${_.repeat('  ', level)}- [${title}](${url})\n\n`;
-  }
-  if (items) {
-    items.forEach((item) => {
-      markdown += generateTOCHelper(item, level + 1);
-    });
-  }
-  return markdown;
-};
-
-const generateTOC = (data) => {
-  const { items } = data;
-  let markdown = '';
-  if (items) {
-    items.forEach((item) => {
-      markdown += generateTOCHelper(item, 0);
-    });
-  }
-  return markdown;
-}; */
 
 const MAX_DEPTH = Config.tocMaxDepth || 2;
 
 const TOCItem = (props) => {
   const {
-    data: { items, title, url }, activeTOC, setActiveTOC, depth,
+    data: { items, title, url }, activeUrls, setActiveTOC, depth,
   } = props;
   // console.log(url);
-  const className = activeTOC.url === url ? styles.tocCurrent : '';
+  const classNames = [];
+  let childActiveUrls = [];
+  if (activeUrls.length > 0 && activeUrls[0] === url) {
+    classNames.push(styles.tocActive);
+    if (activeUrls.length === 1) {
+      classNames.push(styles.tocCurrent);
+    } else {
+      childActiveUrls = activeUrls.slice(1);
+    }
+  }
   const handleClick = () => {
     setActiveTOC(url);
   };
@@ -47,7 +32,7 @@ const TOCItem = (props) => {
         <a
           style={{ paddingLeft: `${depth + 1}em` }}
           href={url}
-          className={className}
+          className={classnames(classNames)}
           onClick={handleClick}
         >
           {title}
@@ -56,7 +41,7 @@ const TOCItem = (props) => {
       {items && depth < MAX_DEPTH ? items.map((item) => (
         <TOCItem
           data={item}
-          activeTOC={activeTOC}
+          activeUrls={childActiveUrls}
           setActiveTOC={setActiveTOC}
           depth={depth + 1}
         />
@@ -76,39 +61,48 @@ const TableOfContents = (props) => {
   const calculateOffsets = () => {
     // eslint-disable-next-line no-underscore-dangle
     const _offsets = [];
-    const preorderTraversal = (root) => {
+    const preorderTraversal = (root, parent) => {
       if (root.url) {
         const element = window.document.getElementById(root.url.substring(1));
         if (element) {
+          const id = _offsets.length;
           _offsets.push({
+            parent,
             offset: element.offsetTop,
             url: root.url,
           });
-        }
-        if (root.items) {
-          root.items.forEach(preorderTraversal);
+          if (root.items) {
+            root.items.forEach((item) => preorderTraversal(item, id));
+          }
         }
       }
     };
-    items.forEach(preorderTraversal);
+    items.forEach((item) => preorderTraversal(item, -1));
+    // console.log(_offsets);
     return _offsets;
     // return _.sortBy(_offsets, (value) => value.offset);
   };
 
   const [offsets, setOffsets] = useState(calculateOffsets);
 
-  const getActiveUrl = (position) => {
+  const getActiveUrls = (position) => {
     // const position = window.pageYOffset; // + window.innerHeight * 0.2;
     // console.log(position);
     let index = _.sortedIndexBy(offsets, { offset: position }, (value) => value.offset);
     if (index > 0) {
       --index;
     }
-    return offsets.length > index ? offsets[index] : { offset: 0, url: '' };
+    const urls = [];
+    while (index >= 0 && index < offsets.length) {
+      // console.log(index, offsets[index]);
+      urls.unshift(offsets[index].url);
+      index = offsets[index].parent;
+    }
+    return urls;
   };
 
   const [activeTOC, setActiveTOC] = useState({
-    url: getActiveUrl(window.pageYOffset).url,
+    urls: getActiveUrls(window.pageYOffset),
     clickTime: 0,
   });
 
@@ -117,14 +111,19 @@ const TableOfContents = (props) => {
     const newOffset = window.document.getElementById(url.substring(1)).offsetTop;
     const diff = Math.abs(currentOffset - newOffset) || 0;
     const time = Date.now() + 500 + diff / 5;
-    setActiveTOC({ url, clickTime: time });
+    const activeUrls = getActiveUrls(newOffset + 1);
+    setActiveTOC({ urls: activeUrls, clickTime: time });
   };
+
+  const calculateHeight = () => Math.max(200, window.innerHeight - 750);
+
+  const [height, setHeight] = useState(calculateHeight());
 
   useEffect(() => {
     const handleScroll = () => {
       if (Date.now() > activeTOC.clickTime) {
-        const active = getActiveUrl(window.pageYOffset);
-        setActiveTOC({ url: active.url, clickTime: activeTOC.clickTime });
+        const activeUrls = getActiveUrls(window.pageYOffset);
+        setActiveTOC({ urls: activeUrls, clickTime: activeTOC.clickTime });
       }
     };
 
@@ -139,6 +138,7 @@ const TableOfContents = (props) => {
 
   useEffect(() => {
     const handleResize = () => {
+      setHeight(calculateHeight());
       setOffsets(calculateOffsets());
     };
 
@@ -149,16 +149,18 @@ const TableOfContents = (props) => {
     return () => {
       subscription.unsubscribe();
     };
-  }, [offsets]);
+  }, [offsets, height]);
+
+  console.log(activeTOC.urls);
 
   return (
-    <div className={styles.tocContainer}>
+    <div className={styles.tocContainer} style={{ height }}>
       <h3>Table of Contents</h3>
       <ul className={styles.toc}>
         {items.map((item) => (
           <TOCItem
             data={item}
-            activeTOC={activeTOC}
+            activeUrls={activeTOC.urls}
             setActiveTOC={setActiveTOCByClick}
             depth={0}
           />
