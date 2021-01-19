@@ -111,7 +111,9 @@ const ResearchCard = (props) => {
           <Row align="middle" gutter={[0, 4]}>
             {infoLine}
           </Row>
-          <p style={{ marginTop: '1rem', cursor: 'text' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
+          <a href={Utils.generateFullUrl(url)}>
+            <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
+          </a>
           <Row gutter={[8, 8]}>
             {links ? links.map(generateLink) : null}
           </Row>

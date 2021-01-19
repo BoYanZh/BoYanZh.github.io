@@ -56,7 +56,9 @@ const PostCard = (props) => {
       <Row align="middle" gutter={[0, 8]}>
         { tags ? tags.map((tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null)) : null}
       </Row>
-      <p style={{ marginTop: '1rem', cursor: 'text' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
+      <a href={Utils.generateFullUrl(url)}>
+        <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
+      </a>
     </Card>
   );
 };

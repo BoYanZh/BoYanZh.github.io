@@ -96,11 +96,19 @@ const Post = ({ data }) => {
                 {time.join(', ')}
               </div>
             </div>
-            { fluid ? (
-              <div className={style.bannerImgContainer}>
-                <Img className={style.bannerImg} fluid={fluid} title={excerpt} alt={title} />
-              </div>
-            ) : null }
+            <Row gutter={[8, 0]} align="middle">
+              <Col xs={24} sm={24} md={24} lg={fluid ? 12 : 24} xl={fluid ? 16 : 24}>
+                <p style={{ marginTop: '1rem', cursor: 'text' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
+              </Col>
+              { fluid ? (
+                <Col xs={24} sm={24} md={24} lg={12} xl={8}>
+                  <div className={style.bannerImgContainer}>
+                    <Img className={style.bannerImg} fluid={fluid} title={excerpt} alt={title} />
+                  </div>
+                </Col>
+              ) : null }
+            </Row>
+
             { state.locked
               ? (
                 <Empty
