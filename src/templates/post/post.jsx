@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Layout, Empty, Row, Col, Input, Alert,
+  Layout, Empty, Row, Col, Input, Alert, Card,
 } from 'antd';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -97,17 +97,19 @@ const Post = ({ data }) => {
                 {time.join(', ')}
               </div>
             </div>
-            <Row gutter={[8, 0]} align="middle" style={{ marginBottom: '1rem' }}>
+            <Row gutter={[20, 20]}>
               <Col xs={24} sm={24} md={24} lg={fluid ? 12 : 24} xl={fluid ? 16 : 24}>
-                <CodeBox title="Abstract">
+                <CodeBox title="Abstract" style={{ height: '100%' }}>
                   <p style={{ marginTop: '1rem', cursor: 'text' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
                 </CodeBox>
               </Col>
               { fluid ? (
                 <Col xs={24} sm={24} md={24} lg={12} xl={8}>
-                  <div className={style.bannerImgContainer}>
-                    <Img className={style.bannerImg} fluid={fluid} title={excerpt} alt={title} />
-                  </div>
+                  <Row align="middle" style={{ height: '100%' }}>
+                    <Col xs={24}>
+                      <Img fluid={fluid} title={title} alt={title} />
+                    </Col>
+                  </Row>
                 </Col>
               ) : null }
             </Row>
