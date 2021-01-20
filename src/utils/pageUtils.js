@@ -7,6 +7,9 @@ const html = require('remark-html');
 const externalLinks = require('remark-external-links');
 
 const Config = require('../../config');
+
+const EXCERPT_MAX_LENGTH = Config.excerptMaxLength || 500;
+
 // const Statistics = require('../../content/statistics.json');
 
 // const tags = _(Statistics.tags).map((value, key) => ({
@@ -158,6 +161,13 @@ const Utils = {
       return str;
     }
   },
+
+  trimExcerpt: (excerpt) => {
+    if (!excerpt) return '';
+    if (excerpt.length < EXCERPT_MAX_LENGTH) return excerpt;
+    return `${excerpt.substring(0, EXCERPT_MAX_LENGTH)} ...`;
+  },
+
 };
 
 module.exports = Utils;

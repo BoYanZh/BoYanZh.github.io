@@ -69,20 +69,18 @@ export const query = graphql`
                 }
               }
             }
-            priority
+            date
+            venue
+            authors
+            path
             title
+            tags
+            excerpt
+            priority
           }
           fileAbsolutePath
           fields {
             slug {
-              date
-              venue
-              authors
-              path
-              title
-              tags
-              excerpt
-              priority
               links {
                 name
                 url

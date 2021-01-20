@@ -14,19 +14,22 @@ import Utils from '../../utils/pageUtils';
 
 const PostCard = (props) => {
   const { data: { node }, tagsMap } = props;
-  const { fields: { slug }, frontmatter: { cover } } = node;
   const {
-    title, excerpt, path, date, tags,
-  } = slug;
+    frontmatter: {
+      title, excerpt, path, date, tags, cover,
+    },
+  } = node;
   const fluid = cover ? cover.childImageSharp.fluid : null;
 
   const url = Utils.resolvePageUrl(path);
-  const handleClick = (e) => {
-    if (e.target.tagName.toLowerCase() !== 'a' && url) {
-      window.location.href = Utils.generateFullUrl(url);
-      // navigate(url);
-    }
-  };
+  // const handleClick = (e) => {
+  //   if (e.target.tagName.toLowerCase() !== 'a' && url) {
+  //     window.location.href = Utils.generateFullUrl(url);
+  //     // navigate(url);
+  //   }
+  // };
+
+  const excerptHTML = Utils.parseMarkDown(Utils.trimExcerpt(excerpt), true);
 
   return (
     <Card
@@ -57,7 +60,7 @@ const PostCard = (props) => {
         { tags ? tags.map((tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null)) : null}
       </Row>
       <a href={Utils.generateFullUrl(url)}>
-        <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
+        <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
       </a>
     </Card>
   );

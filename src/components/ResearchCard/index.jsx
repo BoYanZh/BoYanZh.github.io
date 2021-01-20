@@ -14,21 +14,22 @@ import Utils from '../../utils/pageUtils';
 
 const ResearchCard = (props) => {
   const { data: { node }, tagsMap } = props;
-  const { fields: { slug }, frontmatter: { cover } } = node;
   const {
-    title, authors, excerpt, path, links, date, tags, venue,
-  } = slug;
+    fields: { slug: { links } }, frontmatter: {
+      title, authors, excerpt, path, date, tags, venue, cover,
+    },
+  } = node;
   const fluid = cover ? cover.childImageSharp.fluid : null;
   // console.log(fluid);
 
   const url = Utils.resolvePageUrl(path);
-  const handleClick = (e) => {
-    const tagName = e.target.tagName.toLowerCase();
-    if (tagName !== 'a' && tagName !== 'span' && url) {
-      window.location.href = Utils.generateFullUrl(url);
-      // navigate(url);
-    }
-  };
+  // const handleClick = (e) => {
+  //   const tagName = e.target.tagName.toLowerCase();
+  //   if (tagName !== 'a' && tagName !== 'span' && url) {
+  //     window.location.href = Utils.generateFullUrl(url);
+  //     // navigate(url);
+  //   }
+  // };
 
   const generateLink = (link) => {
     let href = '#';
@@ -88,6 +89,8 @@ const ResearchCard = (props) => {
     infoLine.pop();
   }
 
+  const excerptHTML = Utils.parseMarkDown(Utils.trimExcerpt(excerpt), true);
+
   return (
     <Card
       className={classnames(style.researchCard, 'cursor-default')}
@@ -112,7 +115,7 @@ const ResearchCard = (props) => {
             {infoLine}
           </Row>
           <a href={Utils.generateFullUrl(url)}>
-            <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
+            <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
           </a>
           <Row gutter={[8, 8]}>
             {links ? links.map(generateLink) : null}
