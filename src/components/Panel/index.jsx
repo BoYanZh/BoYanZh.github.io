@@ -64,17 +64,19 @@ const Panel = (props) => {
 
   return (
     <>
-      <CodeBox title="Filters">
-        <Row gutter={[0, 8]} align="middle">
-          <Col xs>
-            <h5 style={{ marginBottom: '0', marginRight: '10px' }}>
-              Tags:
-            </h5>
-          </Col>
-          { tags.map(generateTag)}
-        </Row>
-      </CodeBox>
       <Row gutter={[20, 20]}>
+        <Col xs={24} sm={24} md={24} lg={24}>
+          <CodeBox title="Filters">
+            <Row gutter={[0, 8]} align="middle">
+              <Col xs>
+                <h5 style={{ marginBottom: '0', marginRight: '10px' }}>
+                  Tags:
+                </h5>
+              </Col>
+              { tags.map(generateTag)}
+            </Row>
+          </CodeBox>
+        </Col>
         {
           data.allMdx && data.allMdx.edges.map((val, key) => {
             // eslint-disable-next-line no-restricted-syntax

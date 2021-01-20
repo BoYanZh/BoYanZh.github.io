@@ -97,7 +97,7 @@ const Post = ({ data }) => {
                 {time.join(', ')}
               </div>
             </div>
-            <Row gutter={[8, 0]} align="middle">
+            <Row gutter={[8, 0]} align="middle" style={{ marginBottom: '1rem' }}>
               <Col xs={24} sm={24} md={24} lg={fluid ? 12 : 24} xl={fluid ? 16 : 24}>
                 <CodeBox title="Abstract">
                   <p style={{ marginTop: '1rem', cursor: 'text' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
