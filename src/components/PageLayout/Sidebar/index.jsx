@@ -28,8 +28,8 @@ const Name = () => {
         </h2>
       </Col>
       {Config.authorAlternative ? (
-        <Col xs={24} style={{ marginTop: '-1rem', fontFamily: 'LiSu', marginBottom: '-2rem' }}>
-          <h2 className="centerAlign">{Config.authorAlternative}</h2>
+        <Col xs={24} style={{ marginTop: '-1rem', marginBottom: '-2rem' }}>
+          <h3 className="centerAlign">{Config.authorAlternative}</h3>
         </Col>
       ) : null }
     </Row>
