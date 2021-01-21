@@ -147,17 +147,17 @@ export const pageQuery = graphql`
                 }
               }
             }
+            date
+            venue
+            authors
+            path
+            title
+            tags
+            excerpt
+            type
           }
           fields {
             slug {
-              date
-              venue
-              authors
-              path
-              title
-              tags
-              excerpt
-              type
               links {
                 name
                 url
