@@ -1,6 +1,6 @@
 import React from 'react';
 import { Timeline, TimelineEvent } from 'react-event-timeline';
-import { Col, List, Row } from 'antd';
+import { Col, Row } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Config from '../../../../config';
 import styles from './homePage.module.less';
@@ -48,9 +48,6 @@ const Awards = () => (
         <Timeline lineStyle={{ display: 'none' }} style={{ width: '100%' }}>
           {Config.awards.map(AwardItem)}
         </Timeline>
-        {/* <List itemLayout="horizontal" split={false} style={{ width: '95%', margin: '0px auto', paddingBottom: '0.8rem' }}>
-          {Config.awards.map(AwardItem)}
-        </List> */}
       </Col>
     </Row>
   </div>

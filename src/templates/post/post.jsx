@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Layout, Empty, Row, Col, Input, Alert, Card,
+  Layout, Empty, Row, Col, Input, Alert,
 } from 'antd';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -22,7 +22,7 @@ import CodeBox from '../../components/CodeBox';
 
 import './highlight-syntax.less';
 
-import style from './post.module.less';
+// import style from './post.module.less';
 import Utils from '../../utils/pageUtils';
 
 const Post = ({ data }) => {

@@ -12,7 +12,6 @@ const TOCItem = (props) => {
   const {
     data: { items, title, url }, activeUrls, setActiveTOC, depth,
   } = props;
-  // console.log(url);
   const classNames = [];
   let childActiveUrls = [];
   if (activeUrls.length > 0 && activeUrls[0] === url) {
@@ -52,10 +51,6 @@ const TOCItem = (props) => {
 
 const TableOfContents = (props) => {
   const { tableOfContents } = props;
-  // console.log(tableOfContents);
-  // const toc = generateTOC(tableOfContents);
-  // const markdown = Utils.parseMarkDown(toc);
-  // console.log(markdown);
   const items = tableOfContents.items || [];
 
   const calculateOffsets = () => {
@@ -151,7 +146,7 @@ const TableOfContents = (props) => {
     };
   }, [offsets, height]);
 
-  console.log(activeTOC.urls);
+  // console.log(activeTOC.urls);
 
   return (
     <div className={styles.tocContainer} style={{ height }}>

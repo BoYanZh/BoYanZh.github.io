@@ -4,7 +4,7 @@ import { Link, graphql } from 'gatsby';
 import Header from '../../components/PageLayout/Header';
 import style from './404.module.less';
 
-import SidebarWrapper, { Sidebar404 } from '../../components/PageLayout/Sidebar';
+import { Sidebar404 } from '../../components/PageLayout/Sidebar';
 
 export const query = graphql`
   {

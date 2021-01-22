@@ -27,11 +27,11 @@ export default () => {
         <a href="https://github.com/">GitHub</a>
         {' style markdown'} */}
           {`Last Updated on ${buildTime}. `}
-          {/*{'Powered by '}
+          {/* {'Powered by '}
           <a href="https://github.com/tc-imba/greatest-gatsby-academic-template">
             greatest-gatsby-academic-template
           </a>
-          .*/}
+          . */}
         </Typography.Text>
       </Divider>
     </>
