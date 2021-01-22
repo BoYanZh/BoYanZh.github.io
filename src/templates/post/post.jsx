@@ -100,7 +100,7 @@ const Post = ({ data }) => {
             <Row gutter={[20, 20]}>
               <Col xs={24} sm={24} md={24} lg={fluid ? 12 : 24} xl={fluid ? 16 : 24}>
                 <CodeBox title="Abstract" style={{ height: '100%' }}>
-                  <p style={{ marginTop: '1rem', cursor: 'text' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
+                  <p style={{ marginBottom: '0' }} dangerouslySetInnerHTML={{ __html: Utils.parseMarkDown(excerpt, true) }} />
                 </CodeBox>
               </Col>
               { fluid ? (
