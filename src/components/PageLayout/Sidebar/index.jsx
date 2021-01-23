@@ -28,7 +28,7 @@ const Name = () => {
         </h2>
       </Col>
       {Config.authorAlternative ? (
-        <Col xs={24} style={{ marginTop: '-1rem', marginBottom: '-2rem' }}>
+        <Col xs={24} style={{ marginTop: '-1rem', marginBottom: '-1rem' }}>
           <h3 className="centerAlign">{Config.authorAlternative}</h3>
         </Col>
       ) : null }
@@ -46,7 +46,7 @@ const UserInfo = () => (
           </Col>
         ))}
       </Row>
-      <div className="centerAlign box">
+      <div className="centerAlign box" style={{ marginTop: '0.5rem' }}>
         <a href={Config.social.github} target="_blank" label="button" rel="noopener noreferrer">
           <FontAwesomeIcon icon={['fab', 'github']} />
         </a>
