@@ -14,4 +14,5 @@ module.exports = {
     },
   ],
   siteMetadata: config,
+  pathPrefix: config.pathPrefix,
 };

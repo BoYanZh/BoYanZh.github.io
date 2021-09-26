@@ -51,7 +51,7 @@ function SEO({
         return (
           <Helmet
             title={title} // Page title
-            titleTemplate={`%s | ${siteMetadata.siteTitle}`}
+            titleTemplate={`%s | ${siteMetadata.title}`}
             meta={
               [
                 { name: 'description', content: description }, // Page description
@@ -62,7 +62,7 @@ function SEO({
                 { property: 'og:description', content: description },
                 { property: 'og:image', content: metaImageUrl },
                 { property: 'og:image:alt', content: description },
-                { property: 'og:site_name', content: siteMetadata.siteTitle },
+                { property: 'og:site_name', content: siteMetadata.title },
                 { property: 'og:locale', content: lang || 'en_US' },
                 /* Twitter card */
                 { name: 'twitter:card', content: 'summary_large_image' },

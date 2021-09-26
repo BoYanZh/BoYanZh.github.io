@@ -27,8 +27,8 @@ export const useSiteMetadata = () => {
         siteMetadata {
           pathPrefix
           siteUrl
-          siteTitle
-          siteDescription
+          title
+          description
           author
           authorAlternative
           introduction

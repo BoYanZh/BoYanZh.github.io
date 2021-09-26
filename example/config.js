@@ -1,8 +1,8 @@
 module.exports = {
   pathPrefix: '/greatest-gatsby-academic-template',
   siteUrl: 'https://tc-imba.github.io',
-  siteTitle: 'Shixin Song',
-  siteDescription: 'Logbook of Shixin Song',
+  title: 'Shixin Song',
+  description: 'Logbook of Shixin Song',
   author: 'Shixin Song',
   authorAlternative: '宋世欣',
   introduction: [
