@@ -12,16 +12,15 @@ It is rewritten for academic usage with the help of [Reapor-Yurnero](https://git
 
     ```shell
     
-    git clone https://github.com/tc-imba/tc-imba.github.io.git
-    cd tc-imba.github.io
+    git clone https://github.com/tc-imba/greatest-gatsby-academic-template.git
+    cd greatest-gatsby-academic-template
     yarn
     ```
 
 1.  **Start developing.**
 
-
     ```shell
-    gatsby develop
+    yarn develop
     ```
 
 1.  **Open the source code and start editing!**
@@ -36,10 +35,10 @@ It is rewritten for academic usage with the help of [Reapor-Yurnero](https://git
 
 ```shell
 yarn
-gatsby build
+yarn build
 ```
 
-Then the static website will be built in the `public` folder. You can use Apache or nginx to serve the content.
+Then the static website will be built in the `example/public` folder. You can use Apache or nginx to serve the content.
 
 ## github.io
 

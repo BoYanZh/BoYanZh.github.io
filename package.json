@@ -5,11 +5,21 @@
   "version": "0.2.0",
   "license": "MIT",
   "scripts": {
-    "build": "yarn workspace example build"
+    "build": "yarn workspace example build",
+    "develop": "yarn workspace example develop",
+    "clean": "yarn workspace example clean"
   },
-  "workspaces": ["gatsby-theme-academic", "example"],
+  "workspaces": [
+    "gatsby-theme-academic",
+    "example"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/tc-imba/greatest-gatsby-academic-template"
-  }
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "markdown"
+  ]
 }
