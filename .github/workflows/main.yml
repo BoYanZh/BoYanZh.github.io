@@ -40,13 +40,13 @@ jobs:
 
       - run: npm i -g yarn
       - run: yarn
-      - run: yarn run build
+      - run: yarn workspace example build
       - name: Deploy to GitHub Pages
         if: success() && github.ref == 'refs/heads/master'
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: gh-pages
-          build_dir: public
+          build_dir: example/public
           keep_history: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
