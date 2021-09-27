@@ -10,6 +10,7 @@ module.exports = {
         defaultLanguage: 'en',
         pages: config.pages,
         tagColors: config.tagColors,
+        author: config.author,
       },
     },
   ],

@@ -1,5 +1,5 @@
 import {
-  Layout, Empty, Row, Col, Input, Alert,
+  Layout, Empty, Row, Col, Input, Alert, Space
 } from 'antd';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -91,8 +91,10 @@ const Post = ({ data }) => {
         />
         <Header />
         <SidebarWrapper tableOfContents={tableOfContents}>
-          <div className="marginTopTitle">
-            <h1 className="titleSeparate">{title}</h1>
+          <Space direction="vertical">
+            <div className="marginTopTitle">
+              <h1 className="titleSeparate">{title}</h1>
+            </div>
             <div>
               <div style={{ color: 'rgba(0, 0, 0, 0.45)', marginBottom: '1rem' }}>
                 {time.join(', ')}
@@ -144,7 +146,7 @@ const Post = ({ data }) => {
                   <MDXRenderer>{state.html}</MDXRenderer>
                 </article>
               )}
-          </div>
+          </Space>
           { type === 'posts' ? (
             <div style={{ marginTop: '2rem' }}>
               <Comment pageCanonicalUrl={canonicalUrl} pageId={title} />
