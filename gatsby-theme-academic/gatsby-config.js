@@ -11,6 +11,9 @@ module.exports = ({
     tags: 'tags',
     research: 'research',
   },
+  tagColors = [
+    'magenta', 'red', 'volcano', 'orange', 'gold',
+    'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple'],
 }) => ({
   plugins: [
     'gatsby-plugin-react-helmet',
