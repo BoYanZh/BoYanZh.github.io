@@ -8,10 +8,10 @@ import {
 import Img from 'gatsby-image';
 import isRelativeUrl from 'is-relative-url';
 import classnames from 'classnames';
-import * as style from './researchCard.module.less';
 import PostTag from '../PostTag';
 import Utils from '../../utils/pageUtils';
 import { useSiteMetadata } from '../../utils/hooks';
+import * as style from './researchCard.module.less';
 
 const ResearchCard = (props) => {
   const { data: { node }, tagsMap } = props;

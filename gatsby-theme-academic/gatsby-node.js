@@ -18,8 +18,11 @@ const utils = require('./src/utils/pageUtils');
 
 const getGitInfo = () => {
   const gitHash = execa.sync('git', ['rev-parse', '--short', 'HEAD']).stdout;
-  const gitNumCommits = Number(execa.sync('git', ['rev-list', 'HEAD', '--count']).stdout);
-  const gitDirty = execa.sync('git', ['status', '-s', '-uall']).stdout.length > 0;
+  const gitNumCommits = Number(
+    execa.sync('git', ['rev-list', 'HEAD', '--count']).stdout,
+  );
+  const gitDirty =
+    execa.sync('git', ['status', '-s', '-uall']).stdout.length > 0;
   return {
     hash: gitHash,
     commits: gitNumCommits,
@@ -29,8 +32,13 @@ const getGitInfo = () => {
 
 const getCommitTime = (filePath) => {
   try {
-    const timestamp = execa.sync('git',
-      ['log', '-n', '1', '--pretty=format:%at', filePath]).stdout;
+    const timestamp = execa.sync('git', [
+      'log',
+      '-n',
+      '1',
+      '--pretty=format:%at',
+      filePath,
+    ]).stdout;
     return parseInt(timestamp, 10);
   } catch (err) {
     return 0;
@@ -98,7 +106,7 @@ exports.createPages = async ({
 
   const result = await graphql(`
     {
-      allMdx(sort: {order: DESC, fields: [frontmatter___date]}) {
+      allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
         edges {
           node {
             body
@@ -135,7 +143,7 @@ exports.createPages = async ({
           }
         }
       }
-    }    
+    }
   `);
   if (result.errors) {
     throw result.errors;
@@ -175,8 +183,10 @@ exports.createPages = async ({
       return;
     }
     // Check path prefix of Post and Research
-    if (frontmatter.path.indexOf(options.pages.posts) !== 0
-      && frontmatter.path.indexOf(options.pages.research) !== 0) {
+    if (
+      frontmatter.path.indexOf(options.pages.posts) !== 0 &&
+      frontmatter.path.indexOf(options.pages.research) !== 0
+    ) {
       // eslint-disable-next-line no-throw-literal
       throw `Invalid path prefix: ${frontmatter.path}`;
     }
@@ -226,9 +236,17 @@ exports.createPages = async ({
             if (filePath in filePathMap) {
               const fileNode = filePathMap[filePath];
               const { contentDigest } = fileNode.internal;
-              const destFileDir = path.posix.join('public', 'files', contentDigest);
+              const destFileDir = path.posix.join(
+                'public',
+                'files',
+                contentDigest,
+              );
               const destFilePath = path.posix.join(destFileDir, fileNode.base);
-              const urlFilePath = utils.resolveUrl('files', contentDigest, fileNode.base);
+              const urlFilePath = utils.resolveUrl(
+                'files',
+                contentDigest,
+                fileNode.base,
+              );
               fs.ensureDirSync(destFileDir);
               fs.copyFileSync(fileNode.absolutePath, destFilePath);
               data.links.push({
@@ -415,21 +433,20 @@ exports.onCreateNode = ({
     } */
 };
 
-exports.createSchemaCustomization = async ({
-  actions,
-  schema,
-  graphql,
-}, options) => {
+exports.createSchemaCustomization = async (
+  {
+    actions,
+    schema,
+    graphql,
+  },
+  options,
+) => {
   const { createTypes } = actions;
   const typeDefs = `
-    type Mdx implements Node {
-      frontmatter: MdxFrontmatter
-      fields: Fields
+    type MdxFields {
+      slug: MdxFieldsSlug
     }
-    type Fields {
-      slug: Slug
-    }
-    type Slug {
+    type MdxFieldsSlug {
       title: String
       tags: [String]
       date: String
@@ -461,7 +478,7 @@ exports.createSchemaCustomization = async ({
       posts: Boolean
     }
   `;
-  const FrontmatterDef = schema.buildObjectType({
+  const MdxFrontmatterDef = schema.buildObjectType({
     name: 'MdxFrontmatter',
     fields: {
       title: {
@@ -500,6 +517,9 @@ exports.createSchemaCustomization = async ({
       },
       authors: {
         type: '[String]',
+        extensions: {
+          infer: false,
+        },
         resolve: (source) => {
           const authors = source.authors || [];
           return authors.map((author) => {
@@ -531,42 +551,43 @@ exports.createSchemaCustomization = async ({
       },
     },
   });
-
-  /* const AuthorDef = schema.buildObjectType({
-    name: 'Author',
-    infer: false,
+  const SiteMetadataInterestDef = schema.buildObjectType({
+    name: 'SiteSiteMetadataInterests',
+    extensions: {
+      infer: false,
+    },
     fields: {
-      name: 'String',
-      url: 'String',
-      slug: {
-        type: 'String',
-        resolve: (source, args, context, info) => {
-          if (typeof source === 'string') {
-            return source;
+      icon: {
+        type: '[String]',
+        resolve: (source) => {
+          const icon = source.icon || [];
+          if (typeof icon === 'string') {
+            // FontAwesome defaults to solid
+            return ['fas', icon];
           }
-          if (!source.url) {
-            return source.name;
-          }
-          return `[${source.name}](${source.url})`;
+          return icon;
         },
       },
+      title: {
+        type: 'String!',
+      },
     },
-  }); */
-  // const fileDef = schema.buildObjectType({
-  //   name: 'File',
-  //   id: {
-  //     type: 'String!',
-  //     resolve(source, args, context, info) {
-  //       // For a more generic solution, you could pick the field value from
-  //       // `source[info.fieldName]`
-  //       if (source.id == null) {
-  //         return '';
-  //       }
-  //       return source.id;
-  //     },
-  //   },
-  // });
-  createTypes([FrontmatterDef, typeDefs]);
+  });
+  /*  const fileDef = schema.buildObjectType({
+      name: 'File',
+      id: {
+        type: 'String!',
+        resolve(source, args, context, info) {
+          // For a more generic solution, you could pick the field value from
+          // `source[info.fieldName]`
+          if (source.id == null) {
+            return '';
+          }
+          return source.id;
+        },
+      },
+    }); */
+  createTypes([MdxFrontmatterDef, SiteMetadataInterestDef, typeDefs]);
 };
 
 exports.onCreateWebpackConfig = ({
@@ -585,9 +606,7 @@ exports.onCreateWebpackConfig = ({
         },
       ],
     },
-    plugins: [
-      plugins.provide({ process: 'process/browser' }),
-    ],
+    plugins: [plugins.provide({ process: 'process/browser' })],
     resolve: {
       fallback: {
         fs: false,

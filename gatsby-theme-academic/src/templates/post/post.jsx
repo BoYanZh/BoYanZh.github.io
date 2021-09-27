@@ -20,11 +20,10 @@ import SEO from '../../components/Seo';
 import Comment from '../../components/Comment';
 import CodeBox from '../../components/CodeBox';
 
-import './highlight-syntax.less';
-
 // import * as style from './post.module.less';
 import Utils from '../../utils/pageUtils';
 import { useSiteMetadata } from '../../utils/hooks';
+import './highlight-syntax.less';
 
 const Post = ({ data }) => {
   // console.log(data.mdx.tableOfContents);

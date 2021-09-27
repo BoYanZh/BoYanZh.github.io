@@ -33,7 +33,10 @@ const Utils = {
     } else {
       urlPrefix = siteMetaData.siteUrl;
       if (siteMetaData.pathPrefix) {
-        if (urlPrefix[urlPrefix.length - 1] !== '/' && siteMetaData.pathPrefix[0] !== '/') {
+        if (
+          urlPrefix[urlPrefix.length - 1] !== '/' &&
+          siteMetaData.pathPrefix[0] !== '/'
+        ) {
           urlPrefix += '/';
         }
         urlPrefix += siteMetaData.pathPrefix;
@@ -50,18 +53,18 @@ const Utils = {
    * @param {...string} paths Provided paths. It doesn't matter if they have trailing slash.
    * @return {string} Resolved url without trailing slash.
    */
-  resolveUrl: (...paths) => paths.reduce((resolvedUrl, path) => {
-    const urlPath = path.toString()
-      .trim();
-    if (urlPath) {
-      // eslint-disable-next-line no-param-reassign
-      resolvedUrl
-        += (resolvedUrl === '' ? '' : '/') + urlPath.replace(/^\/|\/$/g, '');
-    }
+  resolveUrl: (...paths) =>
+    paths.reduce((resolvedUrl, path) => {
+      const urlPath = path.toString().trim();
+      if (urlPath) {
+        // eslint-disable-next-line no-param-reassign
+        resolvedUrl +=
+          (resolvedUrl === '' ? '' : '/') + urlPath.replace(/^\/|\/$/g, '');
+      }
 
-    resolvedUrl = resolvedUrl[0] !== '/' ? `/${resolvedUrl}` : resolvedUrl;
-    return resolvedUrl;
-  }, ''),
+      resolvedUrl = resolvedUrl[0] !== '/' ? `/${resolvedUrl}` : resolvedUrl;
+      return resolvedUrl;
+    }, ''),
   /**
    * Resolve a page url adding a trailing slash.
    * Needed to prevent 301 redirects cause of Gatsby.js' folder structure.
@@ -104,24 +107,22 @@ const Utils = {
    * @return {Object} An array of objects with languages as keys (ISO 639-1) and
    * translated post's paths as values.
    */
-  getRelatedTranslations: (options, post, postList) => postList
-    .filter(({ node }) =>
-      // Get posts in the same folder of provided post
-      // eslint-disable-next-line implicit-arrow-linebreak
-      (
-        node.fileAbsolutePath.split('/')
-          .slice(-2, -1)[0]
-        === post.fileAbsolutePath.split('/')
-          .slice(-2, -1)[0]
-      ))
-    .map(({ node }) => {
-      const lang = node.fileAbsolutePath.split('.')
-        .slice(-2, -1)[0];
-      return {
-        hreflang: lang.slice(-5) !== 'index' ? lang : options.defaultLanguage,
-        path: Utils.resolvePageUrl(node.frontmatter.path),
-      };
-    }),
+  getRelatedTranslations: (options, post, postList) =>
+    postList
+      .filter(
+        ({ node }) =>
+          // Get posts in the same folder of provided post
+          // eslint-disable-next-line implicit-arrow-linebreak
+          node.fileAbsolutePath.split('/').slice(-2, -1)[0] ===
+          post.fileAbsolutePath.split('/').slice(-2, -1)[0],
+      )
+      .map(({ node }) => {
+        const lang = node.fileAbsolutePath.split('.').slice(-2, -1)[0];
+        return {
+          hreflang: lang.slice(-5) !== 'index' ? lang : options.defaultLanguage,
+          path: Utils.resolvePageUrl(node.frontmatter.path),
+        };
+      }),
   /**
    * Capitalize passed string
    * @param {string} str string to capitalize
@@ -175,7 +176,6 @@ const Utils = {
     if (excerpt.length < excerptMaxLength) return excerpt;
     return `${excerpt.substring(0, excerptMaxLength)} ...`;
   },
-
 };
 
 module.exports = Utils;

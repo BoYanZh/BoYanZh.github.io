@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
-import { useState, useLayoutEffect } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
+import { useState, useLayoutEffect } from 'react';
 
 /**
  * custom hoook to detect the window size of a broswer

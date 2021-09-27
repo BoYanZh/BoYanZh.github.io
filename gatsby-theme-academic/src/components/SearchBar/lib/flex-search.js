@@ -1,18 +1,22 @@
+/* eslint-disable */
+
 const getHit = (doc) => {
   const category = doc.path.split('/')[0];
   // const titlePosition = doc.title.
-  return ({
+  return {
     hierarchy: {
       lvl0: category,
       lvl1: doc.title,
     },
     url: doc.path,
-    _snippetResult: formattedContent ? {
-      content: {
-        value: formattedContent,
-        matchLevel: 'full',
-      },
-    } : null,
+    _snippetResult: formattedContent
+      ? {
+          content: {
+            value: formattedContent,
+            matchLevel: 'full',
+          },
+        }
+      : null,
     _highlightResult: {
       hierarchy: {
         lvl0: {
@@ -23,7 +27,7 @@ const getHit = (doc) => {
         },
       },
     },
-  });
+  };
 };
 
 class FlexSearchAdapter {

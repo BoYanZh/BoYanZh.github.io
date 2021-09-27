@@ -15,8 +15,8 @@ import PostCard from '../../components/PostCard';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 // import Statistics from '../../../content/statistics.json';
 import Utils from '../../utils/pageUtils';
-import * as style from './tags.module.less';
 import ResearchCard from '../../components/ResearchCard';
+import * as style from './tags.module.less';
 
 const TagPage = ({
   data,

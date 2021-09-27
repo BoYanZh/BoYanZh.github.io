@@ -2,11 +2,9 @@ import React from 'react';
 import { Timeline } from 'react-event-timeline';
 import { Row, Col, List } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import TimelineItem from '../../TimelineItem';
-
-import * as styles from './homePage.module.less';
 import { useSiteMetadata } from '../../../utils/hooks';
+import * as styles from './homePage.module.less';
 
 const generateInterest = (data) => (
   <List.Item>

@@ -1,17 +1,43 @@
 {
-  "parser": "babel-eslint",
-  "extends": "airbnb",
+  "plugins": ["import"],
+  "parser": "@babel/eslint-parser",
+  "extends": [
+    "airbnb",
+    "plugin:import/warnings"
+  ],
   "rules": {
     "react/prop-types": 0,
     "react/no-danger": 0,
     "no-plusplus": 0,
     "template-curly-spacing": 0,
     "jsx-a11y/anchor-is-valid": 0,
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "operator-linebreak": 0,
+    "no-unused-vars": 0,
+    "react/destructuring-assignment": 0,
+    "implicit-arrow-linebreak": 0,
+    "arrow-body-style": 0,
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
   },
   "globals": {
     "window": true,
     "FormData": true,
     "fetch": true
+  },
+  "settings": {
+    "import/extensions": [
+      ".js",
+      ".jsx"
+    ]
   }
 }

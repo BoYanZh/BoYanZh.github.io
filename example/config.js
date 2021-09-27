@@ -74,7 +74,8 @@ module.exports = {
       icon: 'layer-group',
       title: 'Full Stack Development',
     }, {
-      icon: 'fab linux',
+      icon: ['fab', 'linux'],
+      // icon: 'linux',
       title: 'Open Source Community',
     }],
   experience: [

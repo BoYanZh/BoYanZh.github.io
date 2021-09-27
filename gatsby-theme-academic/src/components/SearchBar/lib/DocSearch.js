@@ -1,12 +1,11 @@
 /* eslint-disable */
-
-import Hogan from 'hogan.js';
-import autocomplete from 'autocomplete.js';
-import $ from 'autocomplete.js/zepto';
-import templates from './templates';
-import utils from './utils';
 // import FlexSearchAdapter from './flex-search';
 import LunrSearchAdapter from './lunar-search';
+import templates from './templates';
+import utils from './utils';
+import autocomplete from 'autocomplete.js';
+import $ from 'autocomplete.js/zepto';
+import Hogan from 'hogan.js';
 
 /**
  * Adds an autocomplete dropdown to an input field
@@ -40,18 +39,23 @@ class DocSearch {
   }) {
     this.input = DocSearch.getInputFromSelector(inputSelector);
     this.queryDataCallback = queryDataCallback || null;
-    const autocompleteOptionsDebug = autocompleteOptions && autocompleteOptions.debug
-      ? autocompleteOptions.debug
-      : false;
+    const autocompleteOptionsDebug =
+      autocompleteOptions && autocompleteOptions.debug
+        ? autocompleteOptions.debug
+        : false;
 
     autocompleteOptions.debug = debug || autocompleteOptionsDebug;
     this.autocompleteOptions = autocompleteOptions;
-    this.autocompleteOptions.cssClasses = this.autocompleteOptions.cssClasses || {};
-    this.autocompleteOptions.cssClasses.prefix = this.autocompleteOptions.cssClasses.prefix || 'ds';
-    const inputAriaLabel = this.input
-            && typeof this.input.attr === 'function'
-            && this.input.attr('aria-label');
-    this.autocompleteOptions.ariaLabel = this.autocompleteOptions.ariaLabel || inputAriaLabel || 'search input';
+    this.autocompleteOptions.cssClasses =
+      this.autocompleteOptions.cssClasses || {};
+    this.autocompleteOptions.cssClasses.prefix =
+      this.autocompleteOptions.cssClasses.prefix || 'ds';
+    const inputAriaLabel =
+      this.input &&
+      typeof this.input.attr === 'function' &&
+      this.input.attr('aria-label');
+    this.autocompleteOptions.ariaLabel =
+      this.autocompleteOptions.ariaLabel || inputAriaLabel || 'search input';
 
     this.isSimpleLayout = layout === 'simple';
 
@@ -100,10 +104,7 @@ class DocSearch {
 
   static injectSearchBox(input) {
     input.before(templates.searchBox);
-    const newInput = input
-      .prev()
-      .prev()
-      .find('input');
+    const newInput = input.prev().prev().find('input');
     input.remove();
     return newInput;
   }
@@ -126,36 +127,35 @@ class DocSearch {
   }
 
   /**
-     * Returns the matching input from a CSS selector, null if none matches
-     * @function getInputFromSelector
-     * @param  {string} selector CSS selector that matches the search
-     * input of the page
-     * @returns {void}
-     */
+   * Returns the matching input from a CSS selector, null if none matches
+   * @function getInputFromSelector
+   * @param  {string} selector CSS selector that matches the search
+   * input of the page
+   * @returns {void}
+   */
   static getInputFromSelector(selector) {
     const input = $(selector).filter('input');
     return input.length ? $(input[0]) : null;
   }
 
   /**
-     * Returns the `source` method to be passed to autocomplete.js. It will query
-     * the Algolia index and call the callbacks with the formatted hits.
-     * @function getAutocompleteSource
-     * @param  {function} transformData An optional function to transform the hits
-     * @param {function} queryHook An optional function to transform the query
-     * @returns {function} Method to be passed as the `source` option of
-     * autocomplete
-     */
+   * Returns the `source` method to be passed to autocomplete.js. It will query
+   * the Algolia index and call the callbacks with the formatted hits.
+   * @function getAutocompleteSource
+   * @param  {function} transformData An optional function to transform the hits
+   * @param {function} queryHook An optional function to transform the query
+   * @returns {function} Method to be passed as the `source` option of
+   * autocomplete
+   */
   getAutocompleteSource(transformData, queryHook) {
     return (query, callback) => {
       if (queryHook) {
-
         query = queryHook(query) || query;
       }
       this.client.search(query).then((hits) => {
         if (
-          this.queryDataCallback
-                    && typeof this.queryDataCallback === 'function'
+          this.queryDataCallback &&
+          typeof this.queryDataCallback === 'function'
         ) {
           this.queryDataCallback(hits);
         }
@@ -173,7 +173,6 @@ class DocSearch {
     const clonedHits = utils.deepClone(receivedHits);
     const hits = clonedHits.map((hit) => {
       if (hit._highlightResult) {
-
         hit._highlightResult = utils.mergeKeyWithParent(
           hit._highlightResult,
           'hierarchy',
@@ -211,12 +210,18 @@ class DocSearch {
           '<span class="aa-suggestion-title-separator" aria-hidden="true"> › </span>',
         );
       const text = utils.getSnippetedValue(hit, 'content');
-      const isTextOrSubcategoryNonEmpty = (subcategory && subcategory !== '')
-                || (displayTitle && displayTitle !== '');
-      const isLvl1EmptyOrDuplicate = !subcategory || subcategory === '' || subcategory === category;
-      const isLvl2 = displayTitle && displayTitle !== '' && displayTitle !== subcategory;
-      const isLvl1 = !isLvl2
-                && (subcategory && subcategory !== '' && subcategory !== category);
+      const isTextOrSubcategoryNonEmpty =
+        (subcategory && subcategory !== '') ||
+        (displayTitle && displayTitle !== '');
+      const isLvl1EmptyOrDuplicate =
+        !subcategory || subcategory === '' || subcategory === category;
+      const isLvl2 =
+        displayTitle && displayTitle !== '' && displayTitle !== subcategory;
+      const isLvl1 =
+        !isLvl2 &&
+        subcategory &&
+        subcategory !== '' &&
+        subcategory !== category;
       const isLvl0 = !isLvl1 && !isLvl2;
 
       return {
@@ -243,8 +248,9 @@ class DocSearch {
       if (containsAnchor) return url;
       if (anchor) return `${hit.url}#${hit.anchor}`;
       return url;
-    } if (anchor) return `#${hit.anchor}`;
-        console.warn("no anchor nor url for : ", JSON.stringify(hit));
+    }
+    if (anchor) return `#${hit.anchor}`;
+    console.warn('no anchor nor url for : ', JSON.stringify(hit));
     return null;
   }
 
@@ -280,12 +286,14 @@ class DocSearch {
       middleOfWindow = 900;
     }
 
-    const alignClass = middleOfInput - middleOfWindow >= 0
-      ? 'algolia-autocomplete-right'
-      : 'algolia-autocomplete-left';
-    const otherAlignClass = middleOfInput - middleOfWindow < 0
-      ? 'algolia-autocomplete-right'
-      : 'algolia-autocomplete-left';
+    const alignClass =
+      middleOfInput - middleOfWindow >= 0
+        ? 'algolia-autocomplete-right'
+        : 'algolia-autocomplete-left';
+    const otherAlignClass =
+      middleOfInput - middleOfWindow < 0
+        ? 'algolia-autocomplete-right'
+        : 'algolia-autocomplete-left';
     const autocompleteWrapper = $('.algolia-autocomplete');
     if (!autocompleteWrapper.hasClass(alignClass)) {
       autocompleteWrapper.addClass(alignClass);

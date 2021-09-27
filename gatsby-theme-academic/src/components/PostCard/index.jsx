@@ -8,10 +8,10 @@ import {
 import Img from 'gatsby-image';
 
 import classnames from 'classnames';
-import * as style from './postCard.module.less';
 import PostTag from '../PostTag';
 import Utils from '../../utils/pageUtils';
 import { useSiteMetadata } from '../../utils/hooks';
+import * as style from './postCard.module.less';
 
 const PostCard = (props) => {
   const { data: { node }, tagsMap } = props;
