@@ -64,7 +64,7 @@ const UserInfo = () => {
         </Row>
         <div className="centerAlign box" style={{ marginTop: '0.5rem' }}>
           <a href={siteMetadata.social.github} target="_blank" label="button" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={['fab', 'github']} />
+            <FontAwesomeIcon size="lg" icon={['fab', 'github']} />
           </a>
         </div>
         <List
