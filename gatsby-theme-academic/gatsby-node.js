@@ -444,6 +444,9 @@ exports.createSchemaCustomization = async (
 ) => {
   const { createTypes } = actions;
   const typeDefs = `
+    type Mdx implements Node {
+      fields: MdxFields
+    }
     type MdxFields {
       slug: MdxFieldsSlug
     }
