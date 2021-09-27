@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-academic",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "main": "index.js",
   "author": "tc-imba",
   "license": "MIT",
@@ -8,6 +8,10 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "lint": "eslint \"./**/*.{js,jsx}\"",
     "lint:fix": "eslint \"./**/*.{js,jsx}\" --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tc-imba/greatest-gatsby-academic-template"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
