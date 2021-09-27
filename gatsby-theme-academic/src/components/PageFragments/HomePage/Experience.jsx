@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import TimelineItem from '../../TimelineItem';
 
-import styles from './homePage.module.less';
+import * as styles from './homePage.module.less';
 import { useSiteMetadata } from '../../../utils/hooks';
 
 const generateInterest = (data) => (

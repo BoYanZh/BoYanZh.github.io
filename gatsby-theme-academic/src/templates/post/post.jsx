@@ -22,7 +22,7 @@ import CodeBox from '../../components/CodeBox';
 
 import './highlight-syntax.less';
 
-// import style from './post.module.less';
+// import * as style from './post.module.less';
 import Utils from '../../utils/pageUtils';
 import { useSiteMetadata } from '../../utils/hooks';
 

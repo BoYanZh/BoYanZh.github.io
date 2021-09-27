@@ -8,7 +8,7 @@ import {
 import Img from 'gatsby-image';
 
 import classnames from 'classnames';
-import style from './postCard.module.less';
+import * as style from './postCard.module.less';
 import PostTag from '../PostTag';
 import Utils from '../../utils/pageUtils';
 import { useSiteMetadata } from '../../utils/hooks';

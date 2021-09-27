@@ -3,7 +3,7 @@ import _ from 'lodash';
 import classnames from 'classnames';
 import { fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
-import styles from './toc.module.less';
+import * as styles from './toc.module.less';
 import { useSiteMetadata } from '../../utils/hooks';
 
 const TOCItem = (props) => {

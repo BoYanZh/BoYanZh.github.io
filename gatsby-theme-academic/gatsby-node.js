@@ -576,16 +576,15 @@ exports.onCreateWebpackConfig = ({
   plugins,
   actions,
 }) => {
-  if (stage === 'build-html') {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /canvas/,
-            use: loaders.null(),
-          },
-        ],
+  actions.setWebpackConfig({
+    plugins: [
+      plugins.provide({ process: 'process/browser' }),
+    ],
+    resolve: {
+      fallback: {
+        fs: false,
+        path: require.resolve('path-browserify'),
       },
-    });
-  }
+    },
+  });
 };

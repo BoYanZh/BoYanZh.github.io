@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './codeBox.module.less';
+import * as style from './codeBox.module.less';
 
 const CodeBox = (props) => {
   const { title, children, ...restProps } = props;

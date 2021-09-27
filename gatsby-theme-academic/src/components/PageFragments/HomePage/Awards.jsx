@@ -2,7 +2,7 @@ import React from 'react';
 import { Timeline, TimelineEvent } from 'react-event-timeline';
 import { Col, Row } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styles from './homePage.module.less';
+import * as styles from './homePage.module.less';
 import { useSiteMetadata } from '../../../utils/hooks';
 
 const AwardItem = (data) => {

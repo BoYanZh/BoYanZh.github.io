@@ -1,7 +1,9 @@
 /* eslint-disable no-param-reassign */
 // const _ = require('lodash');
 
+// const esmrequire = require('esm')(module);
 const moment = require('moment');
+
 const remark = require('remark');
 const html = require('remark-html');
 const externalLinks = require('remark-external-links');
@@ -49,7 +51,8 @@ const Utils = {
    * @return {string} Resolved url without trailing slash.
    */
   resolveUrl: (...paths) => paths.reduce((resolvedUrl, path) => {
-    const urlPath = path.toString().trim();
+    const urlPath = path.toString()
+      .trim();
     if (urlPath) {
       // eslint-disable-next-line no-param-reassign
       resolvedUrl

@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { Col, Row } from 'antd';
 import _ from 'lodash';
 import ResearchCard from '../../ResearchCard';
-import styles from './homePage.module.less';
+import * as styles from './homePage.module.less';
 
 const SelectedResearch = () => {
   const data = useStaticQuery(graphql`
