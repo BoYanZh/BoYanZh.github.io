@@ -174,8 +174,8 @@ module.exports = ({
         ],
         // How to resolve each field's value for a supported node type
         resolvers: {
-          // For any node of type MarkdownRemark, list how to resolve the fields' values
-          MarkdownRemark: {
+          // For any node of type Mdx, list how to resolve the fields' values
+          Mdx: {
             title: (node) => node.frontmatter.title,
             content: (node) => node.rawMarkdownBody,
             url: (node) => node.frontmatter.path,
@@ -183,7 +183,7 @@ module.exports = ({
         },
         // custom index file name, default is search_index.json
         filename: 'search_index.json',
-        // custom options on fetch api call for search_ındex.json
+        // custom options on fetch api call for search_index.json
         fetchOptions: {
           credentials: 'same-origin',
         },
