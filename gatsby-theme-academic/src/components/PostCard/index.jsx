@@ -1,16 +1,12 @@
-import React from 'react';
-// import moment from 'moment';
-// import { Link } from 'gatsby';
-import {
-  Row, Card,
-} from 'antd';
-// import { navigate } from '@reach/router';
-import Img from 'gatsby-image';
-
+import { Row, Card } from 'antd';
 import classnames from 'classnames';
-import PostTag from '../PostTag';
-import Utils from '../../utils/pageUtils';
+import Img from 'gatsby-image';
+import React from 'react';
+
 import { useSiteMetadata } from '../../utils/hooks';
+import Utils from '../../utils/pageUtils';
+import PostTag from '../PostTag';
+
 import * as style from './postCard.module.less';
 
 const PostCard = (props) => {

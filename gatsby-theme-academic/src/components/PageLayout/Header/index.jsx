@@ -1,14 +1,15 @@
-import React, { useRef, useState } from 'react';
-import { Link } from 'gatsby';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Layout } from 'antd';
+import { Link } from 'gatsby';
+import React, { useRef, useState } from 'react';
 import '../../../styles/global.less';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useWindowSize } from '../../../utils/hooks';
 import LoadableSearch from '../../SearchBar/loadable';
+
 import * as style from './header.module.less';
 
 library.add(fas, fab);

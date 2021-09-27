@@ -1,14 +1,15 @@
-import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// eslint-disable-next-line import/no-unresolved
+import { globalHistory } from '@reach/router';
 import {
   Affix, Layout, Row, Col, List, Divider,
 } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 
-// eslint-disable-next-line import/no-unresolved
-import { globalHistory } from '@reach/router';
 import { useWindowSize, useSiteMetadata } from '../../../utils/hooks';
 import Utils from '../../../utils/pageUtils';
 import LoadableTableOfContents from '../../TableOfContents/loadable';
+
 import * as style from './sidebar.module.less';
 
 const { Content } = Layout;

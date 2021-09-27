@@ -1,4 +1,5 @@
 import React from 'react';
+
 import * as style from './about.module.less';
 
 const AboutTile = (props) => {

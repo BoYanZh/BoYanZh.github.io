@@ -1,11 +1,12 @@
 /* Vendor imports */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Helmet } from 'react-helmet';
+
 /* App imports */
-import Utils from '../../utils/pageUtils';
 import { useSiteMetadata } from '../../utils/hooks';
+import Utils from '../../utils/pageUtils';
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {

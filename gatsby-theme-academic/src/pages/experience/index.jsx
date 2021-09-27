@@ -1,14 +1,15 @@
-import React from 'react';
 import {
   Layout, Col, Row, Card, List,
 } from 'antd';
 import _ from 'lodash';
-import Header from '../../components/PageLayout/Header';
-import SEO from '../../components/Seo';
-import SidebarWrapper from '../../components/PageLayout/Sidebar';
-import Utils from '../../utils/pageUtils';
+import React from 'react';
+
 import Footer from '../../components/PageLayout/Footer';
+import Header from '../../components/PageLayout/Header';
+import SidebarWrapper from '../../components/PageLayout/Sidebar';
+import SEO from '../../components/Seo';
 import { useSiteMetadata } from '../../utils/hooks';
+import Utils from '../../utils/pageUtils';
 
 const generateListItem = (data) => {
   const title = Utils.parseMarkDown(data.title, true);

@@ -1,8 +1,9 @@
-import React from 'react';
 import { Layout, Row, Col } from 'antd';
+import React from 'react';
+
+import ContactForm from '../../components/PageFragments/ContactForm';
 import Header from '../../components/PageLayout/Header';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
-import ContactForm from '../../components/PageFragments/ContactForm';
 import SEO from '../../components/Seo';
 
 const Contact = () => (

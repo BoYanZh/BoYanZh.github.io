@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import _ from 'lodash';
 import classnames from 'classnames';
+import _ from 'lodash';
+import React, { useState, useEffect } from 'react';
 import { fromEvent } from 'rxjs';
 import { throttleTime } from 'rxjs/operators';
+
 import { useSiteMetadata } from '../../utils/hooks';
+
 import * as styles from './toc.module.less';
 
 const TOCItem = (props) => {

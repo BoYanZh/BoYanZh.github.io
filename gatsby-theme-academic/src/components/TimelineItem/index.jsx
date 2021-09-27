@@ -1,6 +1,6 @@
-import { TimelineEvent } from 'react-event-timeline';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { TimelineEvent } from 'react-event-timeline';
 
 const TimelineItem = (data) => (
   <TimelineEvent

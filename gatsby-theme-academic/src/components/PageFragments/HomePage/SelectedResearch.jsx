@@ -1,8 +1,10 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { Col, Row } from 'antd';
+import { useStaticQuery, graphql } from 'gatsby';
 import _ from 'lodash';
+import React from 'react';
+
 import ResearchCard from '../../ResearchCard';
+
 import * as styles from './homePage.module.less';
 
 const SelectedResearch = () => {

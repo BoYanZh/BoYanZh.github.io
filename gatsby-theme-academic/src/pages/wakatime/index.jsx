@@ -1,10 +1,10 @@
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
 import { Layout, Row } from 'antd';
-import Header from '../../components/PageLayout/Header';
-import SEO from '../../components/Seo';
-import SidebarWrapper from '../../components/PageLayout/Sidebar';
+import React from 'react';
 
+import Header from '../../components/PageLayout/Header';
+import SidebarWrapper from '../../components/PageLayout/Sidebar';
+import SEO from '../../components/Seo';
 import WakaTimeImage, { WakaTimeTypes } from '../../components/WakaTimeImage';
 
 const WakaTime = () => (

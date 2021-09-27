@@ -1,7 +1,8 @@
 import { Col, Tag } from 'antd';
 import React from 'react';
-import Utils from '../../utils/pageUtils';
+
 import { useSiteMetadata } from '../../utils/hooks';
+import Utils from '../../utils/pageUtils';
 
 const PostTag = (props) => {
   const siteMetadata = useSiteMetadata();

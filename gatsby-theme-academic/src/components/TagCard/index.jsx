@@ -1,7 +1,9 @@
-import React from 'react';
 import { Link } from 'gatsby';
-import Utils from '../../utils/pageUtils';
+import React from 'react';
+
 import { useSiteMetadata } from '../../utils/hooks';
+import Utils from '../../utils/pageUtils';
+
 import * as style from './tags.module.less';
 
 const TagCard = (props) => {

@@ -1,6 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Card, Col } from 'antd';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import { useSiteMetadata } from '../../utils/hooks';
 
 const WakaTimeTypes = ['activity', 'language', 'editor', 'os'];

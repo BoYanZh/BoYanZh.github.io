@@ -3,14 +3,15 @@
 /* eslint-disable guard-for-in */
 
 /* Vendor imports */
-const path = require('path');
-const fs = require('fs-extra');
 const crypto = require('crypto');
-const _ = require('lodash');
+const path = require('path');
+
 const execa = require('execa');
+const fs = require('fs-extra');
+const _ = require('lodash');
+const slash = require('slash');
 const nacl = require('tweetnacl');
 nacl.util = require('tweetnacl-util');
-const slash = require('slash');
 // const isRelativeUrl = require('is-relative-url');
 
 /* App imports */
@@ -596,6 +597,7 @@ exports.onCreateWebpackConfig = ({
   loaders,
   plugins,
   actions,
+  getConfig,
 }) => {
   actions.setWebpackConfig({
     module: {
@@ -614,4 +616,16 @@ exports.onCreateWebpackConfig = ({
       },
     },
   });
+
+  // disable warnings of order in MiniCssExtractPlugin
+  if (stage === 'develop' || stage === 'build-javascript') {
+    const config = getConfig();
+    const miniCssExtractPlugin = config.plugins.find(
+      (plugin) => plugin.constructor.name === 'MiniCssExtractPlugin',
+    );
+    if (miniCssExtractPlugin) {
+      miniCssExtractPlugin.options.ignoreOrder = true;
+    }
+    actions.replaceWebpackConfig(config);
+  }
 };

@@ -1,5 +1,6 @@
-import React from 'react';
 import { Row, Col } from 'antd';
+import React from 'react';
+
 import ProgressBar from '../../Progress';
 
 const SkillsProgress = () => (

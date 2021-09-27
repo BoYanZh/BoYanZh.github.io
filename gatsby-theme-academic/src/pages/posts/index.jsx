@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
 import { Layout } from 'antd';
+import { graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
+import Footer from '../../components/PageLayout/Footer';
 import Header from '../../components/PageLayout/Header';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import Panel from '../../components/Panel';
 import SEO from '../../components/Seo';
-import Footer from '../../components/PageLayout/Footer';
 
 const Posts = ({ data }) => (
   <Layout className="outerPadding">

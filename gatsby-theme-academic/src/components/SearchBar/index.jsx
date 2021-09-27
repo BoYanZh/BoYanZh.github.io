@@ -5,12 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useRef, useEffect } from 'react';
-import classnames from 'classnames';
 import { Input } from 'antd';
+import classnames from 'classnames';
+import React, { useRef, useEffect } from 'react';
 // import { navigate } from '@reach/router';
 
 import Utils from '../../utils/pageUtils';
+
 import DocSearch from './lib/DocSearch';
 import './algolia.css';
 import './styles.css';

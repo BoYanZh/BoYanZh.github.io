@@ -1,16 +1,17 @@
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
 import {
   Layout, Row, Col,
 } from 'antd';
+import { graphql } from 'gatsby';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import Header from '../../components/PageLayout/Header';
-import SEO from '../../components/Seo';
-import SidebarWrapper from '../../components/PageLayout/Sidebar';
-import TagCard from '../../components/TagCard';
+import React from 'react';
+
 import Footer from '../../components/PageLayout/Footer';
+import Header from '../../components/PageLayout/Header';
+import SidebarWrapper from '../../components/PageLayout/Sidebar';
+import SEO from '../../components/Seo';
+import TagCard from '../../components/TagCard';
 import { useSiteMetadata } from '../../utils/hooks';
 
 const Tags = ({ data }) => {

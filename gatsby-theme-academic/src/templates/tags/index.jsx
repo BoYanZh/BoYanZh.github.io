@@ -1,21 +1,23 @@
 /* eslint-disable react/forbid-prop-types */
 /* Vendor imports */
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-// import Img from 'gatsby-image';
 import {
   Layout, Row, Col,
 } from 'antd';
+import { graphql } from 'gatsby';
+// import Img from 'gatsby-image';
 /* App imports */
 import _ from 'lodash';
-import SEO from '../../components/Seo';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import Header from '../../components/PageLayout/Header';
-import PostCard from '../../components/PostCard';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
+import PostCard from '../../components/PostCard';
 // import Statistics from '../../../content/statistics.json';
-import Utils from '../../utils/pageUtils';
 import ResearchCard from '../../components/ResearchCard';
+import SEO from '../../components/Seo';
+import Utils from '../../utils/pageUtils';
+
 import * as style from './tags.module.less';
 
 const TagPage = ({

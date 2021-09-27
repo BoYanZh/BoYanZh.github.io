@@ -2,6 +2,7 @@ import {
   Col, Form, Input, Button, message,
 } from 'antd';
 import React from 'react';
+
 import { useSiteMetadata } from '../../../utils/hooks';
 
 const validateMessages = {

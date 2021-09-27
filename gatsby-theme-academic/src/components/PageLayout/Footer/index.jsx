@@ -1,7 +1,7 @@
-import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { Divider, Typography } from 'antd';
+import { useStaticQuery, graphql } from 'gatsby';
 import moment from 'moment';
+import React from 'react';
 
 export default () => {
   const data = useStaticQuery(graphql`

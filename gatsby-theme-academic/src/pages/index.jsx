@@ -1,14 +1,14 @@
-import React from 'react';
 import { Layout } from 'antd';
 import { graphql } from 'gatsby';
-import Header from '../components/PageLayout/Header';
+import React from 'react';
 
-import SidebarWrapper from '../components/PageLayout/Sidebar';
 import AboutMe from '../components/PageFragments/HomePage/AboutMe';
+import Awards from '../components/PageFragments/HomePage/Awards';
 import Experience from '../components/PageFragments/HomePage/Experience';
 import SelectedResearch from '../components/PageFragments/HomePage/SelectedResearch';
-import Awards from '../components/PageFragments/HomePage/Awards';
 import Footer from '../components/PageLayout/Footer';
+import Header from '../components/PageLayout/Header';
+import SidebarWrapper from '../components/PageLayout/Sidebar';
 
 export default ({ data }) => (
   <Layout className="outerPadding">

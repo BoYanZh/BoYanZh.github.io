@@ -3,9 +3,9 @@ import React from 'react';
 // import AboutTile from '../../AbouTile';
 // import { stripTags, domHtml } from '../../../utils/stripTags';
 
-import SEO from '../../Seo';
-import Utils from '../../../utils/pageUtils';
 import { useSiteMetadata } from '../../../utils/hooks';
+import Utils from '../../../utils/pageUtils';
+import SEO from '../../Seo';
 
 const AboutMe = () => {
   const siteMetadata = useSiteMetadata();

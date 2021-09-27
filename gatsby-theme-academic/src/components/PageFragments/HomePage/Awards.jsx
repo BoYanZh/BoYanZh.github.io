@@ -1,8 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Row } from 'antd';
 import React from 'react';
 import { Timeline, TimelineEvent } from 'react-event-timeline';
-import { Col, Row } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { useSiteMetadata } from '../../../utils/hooks';
+
 import * as styles from './homePage.module.less';
 
 const AwardItem = (data) => {

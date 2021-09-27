@@ -3,10 +3,9 @@
 
 // const esmrequire = require('esm')(module);
 const moment = require('moment');
-
 const remark = require('remark');
-const html = require('remark-html');
 const externalLinks = require('remark-external-links');
+const html = require('remark-html');
 
 // const EXCERPT_MAX_LENGTH = pageMetaData.excerptMaxLength || 500;
 
