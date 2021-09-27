@@ -577,6 +577,14 @@ exports.onCreateWebpackConfig = ({
   actions,
 }) => {
   actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /canvas/,
+          use: loaders.null(),
+        },
+      ],
+    },
     plugins: [
       plugins.provide({ process: 'process/browser' }),
     ],
