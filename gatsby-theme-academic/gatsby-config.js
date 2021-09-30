@@ -167,6 +167,10 @@ module.exports = ({
             attributes: { boost: 20 },
           },
           {
+            name: 'abstract',
+            store: true,
+          },
+          {
             name: 'content',
             store: true,
           },
@@ -180,6 +184,7 @@ module.exports = ({
           // For any node of type Mdx, list how to resolve the fields' values
           Mdx: {
             title: (node) => node.frontmatter.title,
+            abstract: (node) => node.frontmatter.abstract,
             content: (node) => node.rawMarkdownBody,
             url: (node) => node.frontmatter.path,
           },
