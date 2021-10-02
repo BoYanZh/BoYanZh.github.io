@@ -31,13 +31,18 @@ module.exports = {
     tags: 'tags',
     research: 'research',
   },
-  social: {
-    github: 'https://github.com/',
-    // facebook: 'https://www.facebook.com/rolwin.monteiro',
-    // twitter: 'https://twitter.com/rolwin100',
-    // instagram: 'https://www.instagram.com/reevan100/',
-    // rss: '/rss.xml',
-  },
+  social: [
+    {
+      url: 'https://github.com/',
+      icon: ['fab', 'github'],
+    }, {
+      url: 'https://twitter.com/',
+      icon: ['fab', 'twitter'],
+    },
+  ],
+  // facebook: 'https://www.facebook.com/rolwin.monteiro',
+  // instagram: 'https://www.instagram.com/reevan100/',
+  // rss: '/rss.xml',
   wakatime: {
     username: 'tcimba',
     activity: '7add4047-08f9-4da8-b649-aa114503678f',

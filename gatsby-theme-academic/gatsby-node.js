@@ -442,7 +442,26 @@ exports.createSchemaCustomization = async (
   },
   options,
 ) => {
-  const { createTypes } = actions;
+  const {
+    createFieldExtension,
+    createTypes,
+  } = actions;
+  createFieldExtension({
+    name: 'fontAwesomeIcon',
+    extend(options, prevFieldConfig) {
+      return {
+        resolve(source) {
+          const icon = source.icon || [];
+          if (typeof icon === 'string') {
+            // FontAwesome defaults to solid
+            return ['fas', icon];
+          }
+          return icon;
+        },
+      };
+    },
+  });
+
   const typeDefs = `
     type Mdx implements Node {
       fields: MdxFields
@@ -480,6 +499,20 @@ exports.createSchemaCustomization = async (
       count: Int
       research: Boolean
       posts: Boolean
+    }
+    type SiteSiteMetadataSocial @dontInfer {
+      url: String
+      icon: [String] @fontAwesomeIcon
+    }
+    type SiteSiteMetadataInterests @dontInfer {
+      icon: [String] @fontAwesomeIcon
+      title: String!
+    }
+    type SiteSiteMetadataEducation @dontInfer {
+      date: String!
+      icon: [String] @fontAwesomeIcon
+      title: String!
+      location: String!
     }
   `;
   const MdxFrontmatterDef = schema.buildObjectType({
@@ -555,28 +588,7 @@ exports.createSchemaCustomization = async (
       },
     },
   });
-  const SiteMetadataInterestDef = schema.buildObjectType({
-    name: 'SiteSiteMetadataInterests',
-    extensions: {
-      infer: false,
-    },
-    fields: {
-      icon: {
-        type: '[String]',
-        resolve: (source) => {
-          const icon = source.icon || [];
-          if (typeof icon === 'string') {
-            // FontAwesome defaults to solid
-            return ['fas', icon];
-          }
-          return icon;
-        },
-      },
-      title: {
-        type: 'String!',
-      },
-    },
-  });
+
   /*  const fileDef = schema.buildObjectType({
       name: 'File',
       id: {
@@ -591,7 +603,7 @@ exports.createSchemaCustomization = async (
         },
       },
     }); */
-  createTypes([MdxFrontmatterDef, SiteMetadataInterestDef, typeDefs]);
+  createTypes([MdxFrontmatterDef, typeDefs]);
 };
 
 exports.onCreateWebpackConfig = ({

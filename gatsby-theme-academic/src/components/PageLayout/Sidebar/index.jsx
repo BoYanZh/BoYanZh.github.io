@@ -63,9 +63,20 @@ const UserInfo = () => {
           ))}
         </Row>
         <div className="centerAlign box" style={{ marginTop: '0.5rem' }}>
-          <a href={siteMetadata.social.github} target="_blank" label="button" rel="noopener noreferrer">
-            <FontAwesomeIcon size="lg" icon={['fab', 'github']} />
-          </a>
+          <Row gutter={[10, 0]}>
+            {siteMetadata.social.map((social) => (
+              <Col>
+                <a
+                  href={social.url}
+                  target="_blank"
+                  label="button"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon size="lg" icon={social.icon} />
+                </a>
+              </Col>
+            ))}
+          </Row>
         </div>
         <List
           itemLayout="horizontal"

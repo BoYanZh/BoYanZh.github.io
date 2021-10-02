@@ -41,7 +41,8 @@ export const useSiteMetadata = () => {
           email
           postsForArchivePage
           social {
-            github
+            url
+            icon
           }
           disqusScript
           contactFormUrl
