@@ -10,10 +10,18 @@ import PostTag from '../PostTag';
 import * as style from './postCard.module.less';
 
 const PostCard = (props) => {
-  const { data: { node }, tagsMap } = props;
+  const {
+    data: { node },
+    tagsMap,
+  } = props;
   const {
     frontmatter: {
-      title, excerpt, path, date, tags, cover,
+      title,
+      excerpt,
+      path,
+      date,
+      tags,
+      cover,
     },
   } = node;
   const fluid = cover ? cover.childImageSharp.fluid : null;
@@ -36,7 +44,7 @@ const PostCard = (props) => {
       cover={(
         <div>
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
-            { fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
+            {fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
           </a>
           <span className={style.dateHolder}>
             {date ? Utils.formatDate(date) : ''}
@@ -54,7 +62,9 @@ const PostCard = (props) => {
         style={{ marginBottom: '1rem' }}
       />
       <Row align="middle" gutter={[0, 8]}>
-        { tags ? tags.map((tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null)) : null}
+        {tags ?
+          tags.map((tag) => (tagsMap[tag] ? <PostTag key={tag} tag={tagsMap[tag]} /> : null)) :
+          null}
       </Row>
       <a href={Utils.generateFullUrl(siteMetadata, url)}>
         <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />

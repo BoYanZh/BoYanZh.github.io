@@ -52,6 +52,7 @@ const UserInfo = () => {
         <Row>
           {siteMetadata.professions.map((profession) => (
             <Col
+              key={profession}
               xs={24}
               style={{
                 display: 'flex',
@@ -65,7 +66,7 @@ const UserInfo = () => {
         <div className="centerAlign box" style={{ marginTop: '0.5rem' }}>
           <Row gutter={[10, 0]}>
             {siteMetadata.social.map((social) => (
-              <Col>
+              <Col key={social.url}>
                 <a
                   href={social.url}
                   target="_blank"

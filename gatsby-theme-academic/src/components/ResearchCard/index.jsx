@@ -57,7 +57,7 @@ const ResearchCard = (props) => {
       markdown += ',';
     }
     return (
-      <Col xs>
+      <Col key={index} xs>
         <span dangerouslySetInnerHTML={{ __html: markdown }} />
       </Col>
     );
@@ -66,27 +66,27 @@ const ResearchCard = (props) => {
   let infoLine = [];
   if (date) {
     infoLine = infoLine.concat([
-      <Col xs>
+      <Col xs key="date">
         <span style={{ color: 'rgba(0, 0, 0, 0.45)' }}>
           {Utils.formatDate(date)}
         </span>
       </Col>,
-      <Divider type="vertical" className={style.divider} />,
+      <Divider key="date-divider" type="vertical" className={style.divider} />,
     ]);
   }
   if (venue) {
     infoLine = infoLine.concat([
-      <Col xs>
+      <Col xs key="venue">
         <span style={{ color: 'rgba(0, 0, 0, 0.45)' }}>
           {venue}
         </span>
       </Col>,
-      <Divider type="vertical" className={style.divider} />,
+      <Divider key="venue-divider" type="vertical" className={style.divider} />,
     ]);
   }
   if (tags) {
     infoLine = infoLine.concat(tags.map(
-      (tag) => (tagsMap[tag] ? <PostTag tag={tagsMap[tag]} /> : null),
+      (tag) => (tagsMap[tag] ? <PostTag key={`tag-${tag}`} tag={tagsMap[tag]} /> : null),
     ));
   } else if (infoLine.length > 0) {
     // delete the divider if there are no tags
@@ -127,7 +127,7 @@ const ResearchCard = (props) => {
         </Col>
         <Col xs={24} sm={24} md={24} lg={12} xl={8}>
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
-            <Img fluid={fluid} />
+            { fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
           </a>
         </Col>
       </Row>

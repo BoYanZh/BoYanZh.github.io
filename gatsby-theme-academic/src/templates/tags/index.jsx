@@ -63,28 +63,34 @@ const TagPage = ({
               {tagDescription}
             </h4>
           </div>
-          {research.length > 0 ? [
-            <h2>Research</h2>,
-            <Row gutter={[20, 20]}>
-              {research.map((post, key) => (
+          {research.length > 0 ? (
+            <>
+              <h2>Research</h2>
+              <Row gutter={[20, 20]}>
+                {research.map((post, key) => (
                 // eslint-disable-next-line react/no-array-index-key
-                <Col key={key} xs={24} sm={24} md={24} lg={24}>
-                  <ResearchCard data={post} tagsMap={tagsMap} />
-                </Col>
-              ))}
-            </Row>,
-          ] : null}
-          {posts.length > 0 ? [
-            <h2>Posts</h2>,
-            <Row gutter={[20, 20]}>
-              {posts.map((post, key) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <Col key={key} xs={24} sm={24} md={12} lg={8}>
-                  <PostCard data={post} tagsMap={tagsMap} />
-                </Col>
-              ))}
-            </Row>,
-          ] : null}
+                  <Col key={key} xs={24} sm={24} md={24} lg={24}>
+                    <ResearchCard data={post} tagsMap={tagsMap} />
+                  </Col>
+                ))}
+              </Row>
+              ,
+            </>
+          ) : null}
+          {posts.length > 0 ? (
+            <>
+              <h2>Posts</h2>
+              <Row gutter={[20, 20]}>
+                {posts.map((post, key) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <Col key={key} xs={24} sm={24} md={12} lg={8}>
+                    <PostCard data={post} tagsMap={tagsMap} />
+                  </Col>
+                ))}
+              </Row>
+              ,
+            </>
+          ) : null}
         </SidebarWrapper>
       </Layout>
     </Layout>
@@ -96,8 +102,12 @@ TagPage.propTypes = {
     allTag: PropTypes.shape({
       edges: PropTypes.arrayOf(
         PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          path: PropTypes.string.isRequired,
+          node: PropTypes.shape({
+            color: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            description: PropTypes.string,
+            path: PropTypes.string,
+          }),
         }),
       ).isRequired,
     }).isRequired,
@@ -158,7 +168,6 @@ export const pageQuery = graphql`
             title
             tags
             excerpt
-            type
           }
           fields {
             slug {
@@ -166,6 +175,7 @@ export const pageQuery = graphql`
                 name
                 url
               }
+              type
             }
           }
         }

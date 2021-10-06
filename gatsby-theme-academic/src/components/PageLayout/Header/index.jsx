@@ -1,7 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Layout } from 'antd';
 import { Link } from 'gatsby';
@@ -18,7 +18,7 @@ library.add(fas, fab, far);
 export default () => {
   const [menu, setMenu] = useState(false);
   const [isSearchBarExpanded, setSearchBarExpanded] = useState(false);
-  const searchBarRef = useRef(null);
+  // const searchBarRef = useRef(null);
 
   const [width] = useWindowSize();
   const toggleMenu = () => {
@@ -84,7 +84,7 @@ export default () => {
               <LoadableSearch
                 isSearchBarExpanded={isSearchBarExpanded}
                 handleSearchBarToggle={collapseSearch}
-                ref={searchBarRef}
+                // ref={searchBarRef}
               />
               {isSearchBarExpanded
                 ? <FontAwesomeIcon icon="times" fixedWidth />
