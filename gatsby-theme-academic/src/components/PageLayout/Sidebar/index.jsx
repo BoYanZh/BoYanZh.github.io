@@ -4,7 +4,7 @@ import { globalHistory } from '@reach/router';
 import {
   Affix, Layout, Row, Col, List, Divider,
 } from 'antd';
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { useWindowSize, useSiteMetadata } from '../../../utils/hooks';
 import Utils from '../../../utils/pageUtils';
@@ -86,6 +86,7 @@ const UserInfo = () => {
             width: '200px',
             marginBottom: '-0.5rem',
           }}
+          grid={{ gutter: 0 }}
         >
           {siteMetadata.birthday
             ? (
@@ -123,22 +124,25 @@ const UserInfo = () => {
 const DomContent = (props) => {
   const { tableOfContents } = props;
   const siteMetadata = useSiteMetadata();
+  const mainSidebar = useRef(null);
   return (
     <aside>
-      <img
-        className={`${style.profileAvatar} centerAlign`}
-        src={Utils.generateFullUrl(siteMetadata, siteMetadata.avatar)}
-        alt=""
-      />
-      <div className={`${style.name} ${style.boxName} centerAlign`}>
-        <Name />
+      <div ref={mainSidebar}>
+        <img
+          className={`${style.profileAvatar} centerAlign`}
+          src={Utils.generateFullUrl(siteMetadata, siteMetadata.avatar)}
+          alt=""
+        />
+        <div className={`${style.name} ${style.boxName} centerAlign`}>
+          <Name />
+        </div>
+        <UserInfo />
       </div>
-      <UserInfo />
       {tableOfContents
         ? (
           <>
             <Divider />
-            <LoadableTableOfContents tableOfContents={tableOfContents} />
+            <LoadableTableOfContents tableOfContents={tableOfContents} mainSidebar={mainSidebar} />
           </>
         ) : null}
       {/* <div className={style.resumeDownload}> */}

@@ -91,14 +91,12 @@ const Post = ({ data }) => {
         />
         <Header />
         <SidebarWrapper tableOfContents={tableOfContents}>
-          <Space direction="vertical">
+          <Space direction="vertical" size="large">
             <div className="marginTopTitle">
               <h1 className="titleSeparate">{title}</h1>
             </div>
-            <div>
-              <div style={{ color: 'rgba(0, 0, 0, 0.45)', marginBottom: '1rem' }}>
-                {time.join(', ')}
-              </div>
+            <div style={{ color: 'rgba(0, 0, 0, 0.45)' }}>
+              {time.join(', ')}
             </div>
             <Row gutter={[20, 20]}>
               <Col xs={24} sm={24} md={24} lg={fluid ? 12 : 24} xl={fluid ? 16 : 24}>

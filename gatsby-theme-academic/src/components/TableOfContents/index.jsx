@@ -47,6 +47,7 @@ const TOCItem = (props) => {
       </li>
       {items && depth < tocMaxDepth ? items.map((item) => (
         <TOCItem
+          key={item.url}
           data={item}
           activeUrls={childActiveUrls}
           setActiveTOC={setActiveTOC}
@@ -58,8 +59,9 @@ const TOCItem = (props) => {
 };
 
 const TableOfContents = (props) => {
-  const { tableOfContents } = props;
+  const { tableOfContents, mainSidebar } = props;
   const items = tableOfContents.items || [];
+  const mainSidebarHeight = mainSidebar ? mainSidebar.current.clientHeight : 0;
 
   const calculateOffsets = () => {
     // eslint-disable-next-line no-underscore-dangle
@@ -121,8 +123,7 @@ const TableOfContents = (props) => {
     });
   };
 
-  const calculateHeight = () => Math.max(200, window.innerHeight - 750);
-
+  const calculateHeight = () => Math.max(200, window.innerHeight - mainSidebarHeight - 175);
   const [height, setHeight] = useState(calculateHeight());
 
   useEffect(() => {
@@ -168,6 +169,7 @@ const TableOfContents = (props) => {
       <ul className={styles.toc}>
         {items.map((item) => (
           <TOCItem
+            key={item.url}
             data={item}
             activeUrls={activeTOC.urls}
             setActiveTOC={setActiveTOCByClick}
