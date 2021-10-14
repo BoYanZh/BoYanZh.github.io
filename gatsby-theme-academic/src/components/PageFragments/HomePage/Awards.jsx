@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Col, Row } from 'antd';
 import React from 'react';
 import { Timeline, TimelineEvent } from 'react-event-timeline';
 
 import { useSiteMetadata } from '../../../utils/hooks';
+import Icon from '../../Icon';
 
 import * as styles from './homePage.module.less';
 
@@ -36,7 +36,7 @@ const AwardItem = (data) => {
   return (
     /*    <List.Item style={{ paddingBottom: '0rem' }}>
         <List.Item.Meta
-          avatar={<FontAwesomeIcon size="lg" fixedWidth icon={data.icon || 'award'} />}
+          avatar={<Icon size="lg" fixedWidth icon={data.icon || 'award'} />}
           title={title}
         />
       </List.Item> */
@@ -46,7 +46,7 @@ const AwardItem = (data) => {
         paddingBottom: '0.8rem',
         paddingTop: '0.8px',
       }}
-      icon={<FontAwesomeIcon size={data.iconSize || 'lg'} fixedWidth icon={data.icon || 'award'} />}
+      icon={<Icon size={data.iconSize || 'lg'} fixedWidth icon={data.icon || 'award'} />}
       iconStyle={{ cursor: 'default' }}
       iconColor="#44566C"
       // bubbleStyle={{ background: 'none', border: '0' }}

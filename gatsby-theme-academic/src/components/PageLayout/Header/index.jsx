@@ -1,19 +1,13 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Layout } from 'antd';
 import { Link } from 'gatsby';
 import React, { useRef, useState } from 'react';
 import '../../../styles/global.less';
 
 import { useWindowSize } from '../../../utils/hooks';
+import Icon from '../../Icon';
 import LoadableSearch from '../../SearchBar/loadable';
 
 import * as style from './header.module.less';
-
-library.add(fas, fab, far);
 
 export default () => {
   const [menu, setMenu] = useState(false);
@@ -87,8 +81,8 @@ export default () => {
                 // ref={searchBarRef}
               />
               {isSearchBarExpanded
-                ? <FontAwesomeIcon icon="times" fixedWidth />
-                : <FontAwesomeIcon icon="search" fixedWidth onMouseDown={expandSearch} />}
+                ? <Icon icon="times" fixedWidth />
+                : <Icon icon="search" fixedWidth onMouseDown={expandSearch} />}
             </li>
             {/* <li className={style.navItem}>
               <Link to="/tags" onClick={toggleMenu} activeClassName={style.anchorActive}>

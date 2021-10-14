@@ -2768,6 +2768,11 @@ abbrev@1:
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
   integrity sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==
 
+academicons@^1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/academicons/-/academicons-1.9.1.tgz#8be1db54559ef50e919db1928123274e15e77555"
+  integrity sha512-5bNH9nbbCdIaBsD7g6VYssA+N0QmqLxKSZgLCfOsFyppc5RPgmq8ZttTTbFMsuDgr57gbHROSLgPtc3Jah4oOw==
+
 accepts@^1.3.7, accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
   version "1.3.7"
   resolved "https://registry.yarnpkg.com/accepts/-/accepts-1.3.7.tgz#531bc726517a3b2b41f850021c6cc15eaab507cd"

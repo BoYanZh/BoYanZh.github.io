@@ -33,6 +33,9 @@ module.exports = {
   },
   social: [
     {
+      url: '/resume.pdf',
+      icon: ['ai', 'ai-cv'],
+    }, {
       url: 'https://github.com/',
       icon: ['fab', 'github'],
     }, {

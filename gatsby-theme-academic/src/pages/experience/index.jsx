@@ -17,7 +17,7 @@ const generateListItem = (data) => {
   return (
     <List.Item style={{ display: 'block' }}>
       <List.Item.Meta
-      // avatar={<FontAwesomeIcon size="lg" fixedWidth icon={data.icon} />}
+      // avatar={<Icon size="lg" fixedWidth icon={data.icon} />}
         title={<div dangerouslySetInnerHTML={{ __html: title }} />}
         description={`${data.date}, ${data.location}`}
         style={{ marginLeft: '12px' }}

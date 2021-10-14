@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Row, Col, List } from 'antd';
 import React from 'react';
 import { Timeline } from 'react-event-timeline';
 
 import { useSiteMetadata } from '../../../utils/hooks';
+import Icon from '../../Icon';
 import TimelineItem from '../../TimelineItem';
 
 import * as styles from './homePage.module.less';
@@ -11,7 +11,7 @@ import * as styles from './homePage.module.less';
 const generateInterest = (data) => (
   <List.Item>
     <List.Item.Meta
-      avatar={<FontAwesomeIcon size="lg" fixedWidth icon={data.icon} />}
+      avatar={<Icon size="lg" fixedWidth icon={data.icon} />}
       title={data.title}
     />
   </List.Item>

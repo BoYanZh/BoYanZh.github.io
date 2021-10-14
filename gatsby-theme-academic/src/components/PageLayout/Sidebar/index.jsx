@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // eslint-disable-next-line import/no-unresolved
 import { globalHistory } from '@reach/router';
 import {
@@ -8,6 +7,7 @@ import React, { useRef } from 'react';
 
 import { useWindowSize, useSiteMetadata } from '../../../utils/hooks';
 import Utils from '../../../utils/pageUtils';
+import Icon from '../../Icon';
 import LoadableTableOfContents from '../../TableOfContents/loadable';
 
 import * as style from './sidebar.module.less';
@@ -73,7 +73,7 @@ const UserInfo = () => {
                   label="button"
                   rel="noopener noreferrer"
                 >
-                  <FontAwesomeIcon size="lg" icon={social.icon} />
+                  <Icon size="lg" fixedWidth icon={social.icon} />
                 </a>
               </Col>
             ))}
@@ -92,7 +92,7 @@ const UserInfo = () => {
             ? (
               <List.Item>
                 <List.Item.Meta
-                  avatar={<FontAwesomeIcon size="lg" fixedWidth icon="calendar" />}
+                  avatar={<Icon size="lg" fixedWidth icon="calendar" />}
                   title={siteMetadata.birthday}
                 />
               </List.Item>
@@ -101,7 +101,7 @@ const UserInfo = () => {
             ? (
               <List.Item>
                 <List.Item.Meta
-                  avatar={<FontAwesomeIcon size="lg" fixedWidth icon="map-marker-alt" />}
+                  avatar={<Icon size="lg" fixedWidth icon="map-marker-alt" />}
                   title={siteMetadata.location}
                 />
               </List.Item>
@@ -110,7 +110,7 @@ const UserInfo = () => {
             ? (
               <List.Item>
                 <List.Item.Meta
-                  avatar={<FontAwesomeIcon size="lg" fixedWidth icon="envelope" />}
+                  avatar={<Icon size="lg" fixedWidth icon="envelope" />}
                   title={<a href={`mailto:${siteMetadata.email}`}>{siteMetadata.email}</a>}
                 />
               </List.Item>
