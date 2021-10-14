@@ -582,6 +582,10 @@ exports.createSchemaCustomization = async (
         type: '[Link]',
         resolve: (source) => source.links || [],
       },
+      commit: {
+        type: 'Int',
+        resolve: (source) => source.commit || 0,
+      },
       priority: {
         type: 'Int',
         resolve: (source) => source.priority || 0,
