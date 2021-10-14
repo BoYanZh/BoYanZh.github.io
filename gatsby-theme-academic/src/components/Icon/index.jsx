@@ -8,13 +8,36 @@ import 'academicons';
 
 library.add(fas, fab, far);
 
+const FontAwesomeCompatibleIcon = (props) => {
+  const {
+    prefix,
+    size,
+    icon,
+    fixedWidth,
+    inverse,
+    pull,
+  } = props;
+  const sizeClass = size ? `${prefix}-${size}` : '';
+  const iconClass = icon ? `${prefix}-${icon}` : '';
+  const fwClass = fixedWidth ? `${prefix}-fw` : '';
+  const inverseClass = inverse ? `${prefix}-inverse` : '';
+  let pullClass = '';
+  if (pull === 'right') {
+    pullClass = `${prefix}-pull-right`;
+  } else if (pull === 'left') {
+    pullClass = `${prefix}-pull-left`;
+  }
+  return <i className={`ai ${iconClass} ${sizeClass} ${fwClass} ${inverseClass} ${pullClass}`} />;
+};
+
 const Icon = (props) => {
-  const { icon, size, fixedWidth } = props;
-  if (icon[0] === 'ai') {
-    const sizeClass = size ? `ai-${size}` : '';
-    const iconClass = icon[1] ? `ai-${icon[1]}` : '';
-    const fwClass = fixedWidth ? 'ai-fw' : '';
-    return <i className={`ai ${iconClass} ${sizeClass} ${fwClass}`} />;
+  const {
+    icon,
+    ...restProps
+  } = props;
+  if (icon[0] === 'ai' && icon[1]) {
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    return <FontAwesomeCompatibleIcon prefix={icon[0]} icon={icon[1]} {...restProps} />;
   }
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <FontAwesomeIcon {...props} />;
