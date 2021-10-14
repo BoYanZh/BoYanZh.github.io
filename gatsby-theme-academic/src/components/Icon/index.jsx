@@ -9,10 +9,12 @@ import 'academicons';
 library.add(fas, fab, far);
 
 const Icon = (props) => {
-  const { icon, size } = props;
+  const { icon, size, fixedWidth } = props;
   if (icon[0] === 'ai') {
     const sizeClass = size ? `ai-${size}` : '';
-    return <i className={`${icon.join(' ')} ${sizeClass}`} />;
+    const iconClass = icon[1] ? `ai-${icon[1]}` : '';
+    const fwClass = fixedWidth ? 'ai-fw' : '';
+    return <i className={`ai ${iconClass} ${sizeClass} ${fwClass}`} />;
   }
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <FontAwesomeIcon {...props} />;
