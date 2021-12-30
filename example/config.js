@@ -63,7 +63,7 @@ module.exports = {
     os: '84d9c631-f6c1-4553-a0cc-cc3634936846',
   },
   contactFormUrl: process.env.CONTACT_FORM_ENDPOINT || '',
-  googleAnalyticTrackingId: process.env.GA_TRACKING_ID || '',
+  googleAnalyticTrackingId: process.env.GA_TRACKING_ID || 'UA-XXXXXXXXX-X',
   education: [
     {
       date: 'Sept. 2018 - Present',
