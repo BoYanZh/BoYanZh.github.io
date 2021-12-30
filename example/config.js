@@ -49,7 +49,7 @@ module.exports = {
       icon: ['fab', 'steam'],
     }, {
       url: '/wakatime',
-      icon: ['clock'],
+      icon: ['fas', 'code'],
     },
   ],
   // facebook: 'https://www.facebook.com/rolwin.monteiro',
