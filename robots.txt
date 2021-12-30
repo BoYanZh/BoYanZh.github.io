@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://boyanzh.github.io/sitemap/sitemap-index.xml
-Host: https://boyanzh.github.io
+Sitemap: https://boyanzh.site/sitemap/sitemap-index.xml
+Host: https://boyanzh.site
