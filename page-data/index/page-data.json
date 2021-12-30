@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---gatsby-theme-academic-src-pages-index-jsx",
     "path": "/",
-    "result": {"data":{"allTag":{"edges":[{"node":{"name":"fxh","color":"magenta","path":"/tags/fxh"}},{"node":{"name":"nb","color":"red","path":"/tags/nb"}},{"node":{"name":"sb","color":"volcano","path":"/tags/sb"}},{"node":{"name":"dota2","color":"gold","path":"/tags/dota2"}},{"node":{"name":"game","color":"lime","path":"/tags/game"}},{"node":{"name":"gatsby","color":"green","path":"/tags/gatsby"}},{"node":{"name":"blog","color":"orange","path":"/tags/blog"}},{"node":{"name":"test1","color":"cyan","path":"/tags/test1"}},{"node":{"name":"test2","color":"blue","path":"/tags/test2"}},{"node":{"name":"test3","color":"geekblue","path":"/tags/test3"}}]},"allMdx":{"edges":[]}},"pageContext":{"slug":"/","langKey":"en"}},
+    "result": {"data":{"allTag":{"edges":[{"node":{"name":"gatsby","color":"red","path":"/tags/gatsby"}},{"node":{"name":"blog","color":"magenta","path":"/tags/blog"}}]},"allMdx":{"edges":[]}},"pageContext":{"slug":"/","langKey":"en"}},
     "staticQueryHashes": ["1552981879","2494093640","3013679938","4097791827"]}
