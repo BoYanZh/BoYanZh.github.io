@@ -68,7 +68,7 @@ const SelectedResearch = () => {
   const tags = data.allTag ? data.allTag.edges : [];
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
 
-  return data.allMdx ? (
+  return (data.allMdx && data.allMdx.edges) ? (
     <div className={styles.homepageSection}>
       <h2 style={{ marginBottom: '1rem' }}>Selected Research</h2>
       <Row gutter={[20, 20]}>
