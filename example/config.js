@@ -1,13 +1,14 @@
 module.exports = {
   pathPrefix: '',
   siteUrl: 'https://boyanzh.github.io',
-  title: 'John Doe',
-  description: 'Personal Website of John Doe',
-  author: 'John Doe',
-  authorAlternative: '豆浆',
+  title: 'Boming Zhang',
+  description: 'Personal Website of Boming Zhang',
+  author: 'Boming Zhang',
+  authorAlternative: '张泊明',
   introduction: [
-    'You can write one or several paragraphs to introduce yourself here. You can find this introduction in the `config.js` file in the template.',
-    'In this site, almost everything supports Markdown Syntax. For example, you can add hyperlinks in the introduction such as [fxhsb](https://github.com/Reapor-Yurnero) with\n```markdown\n[fxhsb](https://github.com/Reapor-Yurnero)\n```',
+    'Hi there, I am BoYanZh (Boming Zhang). I am a software developer from China.',
+    'I have built lots of useful tools and platforms. They mainly aims for making the life of students easier in UM-SJTU-JI, which is my undergradute institue.',
+    'I am keen on writing high quality, readable, and maintainable codes, with the help of check tools. Also, automated the whole process of writing to deployment with CI/CD is one of my interset.',
   ],
   avatar: 'avatar.png',
   professions: [
@@ -16,13 +17,13 @@ module.exports = {
   ],
   tocMaxDepth: 2,
   excerptMaxLength: 500,
-  birthday: 'Some day',
-  location: 'Earth',
-  email: 'john.doe@gmail.com',
+  birthday: 'Mar. 16, 2000',
+  location: 'Shanghai, China',
+  email: 'bomingzh@sjtu.edu.cn',
   postsForArchivePage: 3,
   defaultLanguage: 'en',
-  // disqusScript: process.env.DISQUS_SCRIPT
-  //   || 'https://tc-imba.disqus.com/embed.js',
+  disqusScript: process.env.DISQUS_SCRIPT
+    || 'https://boyanzh.disqus.com/embed.js',
   pages: {
     home: '/',
     posts: 'posts',
@@ -30,59 +31,53 @@ module.exports = {
     resume: 'resume',
     tags: 'tags',
     research: 'research',
+    wakatime: 'wakatime',
   },
   social: [
     {
       url: '/resume.pdf',
       icon: ['ai', 'cv'],
     }, {
-      url: 'https://github.com/',
+      url: 'https://github.com/BoYanZh',
       icon: ['fab', 'github'],
     }, {
-      url: 'https://twitter.com/',
-      icon: ['fab', 'twitter'],
+      url: 'https://t.me/BoYanZh',
+      icon: ['fab', 'telegram'],
     },
   ],
   // facebook: 'https://www.facebook.com/rolwin.monteiro',
   // instagram: 'https://www.instagram.com/reevan100/',
   // rss: '/rss.xml',
-  wakatime: {
-    username: 'tcimba',
-    activity: '7add4047-08f9-4da8-b649-aa114503678f',
-    language: '460a84ab-722a-4b80-b896-cabaa13ad7eb',
-    editor: 'd851639a-28d8-4884-949f-d338a858f7e9',
-    os: 'caf7d0d1-8fd2-4595-a991-363c8583fea9',
-  },
-  contactFormUrl: process.env.CONTACT_FORM_ENDPOINT
-    || 'https://getform.io/f/09a3066f-c638-40db-ad59-05e4ed71e451',
+  // wakatime: {
+  //   username: 'boyanzh',
+  //   activity: '7add4047-08f9-4da8-b649-aa114503678f',
+  //   language: '460a84ab-722a-4b80-b896-cabaa13ad7eb',
+  //   editor: 'd851639a-28d8-4884-949f-d338a858f7e9',
+  //   os: 'caf7d0d1-8fd2-4595-a991-363c8583fea9',
+  // },
+  contactFormUrl: process.env.CONTACT_FORM_ENDPOINT || '',
   googleAnalyticTrackingId: process.env.GA_TRACKING_ID || '',
   education: [
     {
-      date: 'Jan 2020 - Present',
-      icon: 'graduation-cap',
-      title: 'Ph.D in Computer Science',
-      location: 'Some University, Somewhere',
-    }, {
-      date: 'Sept 2015 - Aug 2019',
+      date: 'Sept. 2018 - Present',
       icon: 'university',
       title: 'B.S.E. in Electrical and Computer Engineering',
-      location: 'Some University, Somewhere',
+      location: 'Shanghai Jiao Tong University',
     }, {
-      date: 'Sept 2008 - June 2015',
+      date: 'Sept. 2015 - June 2018',
       icon: 'school',
-      title: 'Middle School',
-      location: 'Some Middle School, Somewhere',
+      title: 'High School',
+      location: 'High School Affiliated to Shanghai Jiao Tong University',
     }],
   interests: [
     {
-      icon: 'cubes',
-      title: 'Distributed Systems',
+      icon: 'network-wired',
+      title: 'Internet of Things',
     }, {
       icon: 'layer-group',
       title: 'Full Stack Development',
     }, {
       icon: ['fab', 'linux'],
-      // icon: 'linux',
       title: 'Open Source Community',
     }],
   experience: [
