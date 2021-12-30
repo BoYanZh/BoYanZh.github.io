@@ -1,9 +1,9 @@
 module.exports = {
   pathPrefix: '',
-  siteUrl: 'https://boyanzh.github.io',
-  title: 'Boming Zhang',
-  description: 'Personal Website of Boming Zhang',
-  author: 'Boming Zhang',
+  siteUrl: 'https://boyanzh.site',
+  title: 'BoYanZh',
+  description: 'Personal Website of BoYanZh',
+  author: 'Boming ZHANG',
   authorAlternative: '张泊明',
   introduction: [
     'Hi there, I am BoYanZh (Boming Zhang). I am a software developer from China.',
@@ -45,11 +45,11 @@ module.exports = {
       url: 'https://t.me/BoYanZh',
       icon: ['fab', 'telegram'],
     }, {
-      url: '/wakatime',
-      icon: ['fab', 'clock'],
-    }, {
       url: 'https://steamcommunity.com/id/boyanzh',
       icon: ['fab', 'steam'],
+    }, {
+      url: '/wakatime',
+      icon: ['clock'],
     },
   ],
   // facebook: 'https://www.facebook.com/rolwin.monteiro',
@@ -149,6 +149,10 @@ module.exports = {
     {
       date: 'Nov. 2021',
       title: '2020-2021 Undergraduate Excellent Scholarship',
+    },
+    {
+      date: 'June 2019',
+      title: 'Outstanding Member of Technology Department UM-SJTU Joint Institute Student Union',
     },
   ],
   tagColors: [

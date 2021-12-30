@@ -10,7 +10,7 @@ authors:
     url: "https://www.valvesoftware.com/"
 path: "research/diretide"
 excerpt: Dire Tide 2020
-selected: true
+selected: false
 cover: "./preview.png"
 links:
   - name: "pdf"
