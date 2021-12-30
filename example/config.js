@@ -7,12 +7,13 @@ module.exports = {
   authorAlternative: '张泊明',
   introduction: [
     'Hi there, I am BoYanZh (Boming Zhang). I am a software developer from China.',
-    'I have built lots of useful tools and platforms. They mainly aims for making the life of students easier in UM-SJTU-JI, which is my undergradute institue.',
-    'I am keen on writing high quality, readable, and maintainable codes, with the help of check tools. Also, automated the whole process of writing to deployment with CI/CD is one of my interset.',
+    'I have built lots of useful tools and platforms. They mainly aims at making the life of students easier in UM-SJTU JI, which is my undergradute institue.',
+    'I am keen on writing high quality, readable, and maintainable codes, with the help of check tools. Also, automating the whole process of writing to deployment with CI/CD is one of my interests.',
+    'I like to build softwares with real world impact and being accssible by everyone and everywhere. So I have a lot of Web projects, working mainly on the backend side with `Python` and `Go`, creating modern RESTful API. However, my interest currently diverges from building CRUD(Create, Read, Update, Delete) endpoints repeatedly with frameworks. I am trying to diving deeper and deeper into the backend side.',
   ],
   avatar: 'avatar.png',
   professions: [
-    'Software Engineer',
+    'Undergradute Student',
     'Full Stack Developer',
   ],
   tocMaxDepth: 2,
@@ -43,18 +44,24 @@ module.exports = {
     }, {
       url: 'https://t.me/BoYanZh',
       icon: ['fab', 'telegram'],
+    }, {
+      url: '/wakatime',
+      icon: ['fab', 'clock'],
+    }, {
+      url: 'https://steamcommunity.com/id/boyanzh',
+      icon: ['fab', 'steam'],
     },
   ],
   // facebook: 'https://www.facebook.com/rolwin.monteiro',
   // instagram: 'https://www.instagram.com/reevan100/',
   // rss: '/rss.xml',
-  // wakatime: {
-  //   username: 'boyanzh',
-  //   activity: '7add4047-08f9-4da8-b649-aa114503678f',
-  //   language: '460a84ab-722a-4b80-b896-cabaa13ad7eb',
-  //   editor: 'd851639a-28d8-4884-949f-d338a858f7e9',
-  //   os: 'caf7d0d1-8fd2-4595-a991-363c8583fea9',
-  // },
+  wakatime: {
+    username: 'boyanzh',
+    activity: '8ec8868a-3e3b-4d1d-845f-b1ba0a474e72',
+    language: '910c9181-965c-4d66-a371-c5d9ffeafbac',
+    editor: '489d2fc7-aa89-4984-af24-17115132d603',
+    os: '84d9c631-f6c1-4553-a0cc-cc3634936846',
+  },
   contactFormUrl: process.env.CONTACT_FORM_ENDPOINT || '',
   googleAnalyticTrackingId: process.env.GA_TRACKING_ID || '',
   education: [
@@ -62,7 +69,7 @@ module.exports = {
       date: 'Sept. 2018 - Present',
       icon: 'university',
       title: 'B.S.E. in Electrical and Computer Engineering',
-      location: 'Shanghai Jiao Tong University',
+      location: 'Shanghai Jiao Tong University (UM-SJTU Joint Institute)',
     }, {
       date: 'Sept. 2015 - June 2018',
       icon: 'school',
@@ -71,11 +78,11 @@ module.exports = {
     }],
   interests: [
     {
-      icon: 'network-wired',
-      title: 'Internet of Things',
-    }, {
       icon: 'layer-group',
       title: 'Full Stack Development',
+    }, {
+      icon: 'network-wired',
+      title: 'Internet of Things',
     }, {
       icon: ['fab', 'linux'],
       title: 'Open Source Community',
@@ -140,11 +147,8 @@ module.exports = {
   ],
   awards: [
     {
-      date: 'Someday',
-      title: 'Some Award',
-    }, {
-      date: 'Someday',
-      title: 'Another Award',
+      date: 'Nov. 2021',
+      title: '2020-2021 Undergraduate Excellent Scholarship',
     },
   ],
   tagColors: [
