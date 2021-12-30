@@ -1,6 +1,6 @@
 module.exports = {
   pathPrefix: '/greatest-gatsby-academic-template',
-  siteUrl: 'https://tc-imba.github.io',
+  siteUrl: 'https://boyanzh.github.io',
   title: 'John Doe',
   description: 'Personal Website of John Doe',
   author: 'John Doe',
@@ -21,8 +21,8 @@ module.exports = {
   email: 'john.doe@gmail.com',
   postsForArchivePage: 3,
   defaultLanguage: 'en',
-  disqusScript: process.env.DISQUS_SCRIPT
-    || 'https://tc-imba.disqus.com/embed.js',
+  // disqusScript: process.env.DISQUS_SCRIPT
+  //   || 'https://tc-imba.disqus.com/embed.js',
   pages: {
     home: '/',
     posts: 'posts',
