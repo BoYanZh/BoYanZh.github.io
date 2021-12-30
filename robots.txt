@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://boyanzh.github.io/greatest-gatsby-academic-template/sitemap/sitemap-index.xml
+Sitemap: https://boyanzh.github.io/sitemap/sitemap-index.xml
 Host: https://boyanzh.github.io
