@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     algolia_html_extractor (2.6.2)
       json (~> 2.0)
@@ -104,7 +104,7 @@ GEM
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     progressbar (1.10.1)
-    public_suffix (4.0.4)
+    public_suffix (4.0.6)
     puma (4.3.3)
       nio4r (~> 2.0)
     rack (1.6.13)
