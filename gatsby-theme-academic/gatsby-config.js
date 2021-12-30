@@ -46,6 +46,7 @@ module.exports = ({
         theme_color: '#304CFD',
         display: 'standalone',
         // icon: `${__dirname}/src/images/icon.png`, // This path is relative to the root of the site.
+        icon: `favicon.ico`, // This path is relative to the root of the site.
         legacy: true, // this will add apple-touch-icon links to <head>. Required for
         // versions prior to iOS 11.3.
       },
