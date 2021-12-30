@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://rolwinreevan.com/sitemap/sitemap-index.xml
+Host: https://rolwinreevan.com

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://rolwinreevan.com/blog/react17-new-features</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/blog/code-splitting-in-react</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/blog/center-align-things-with-css</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/blog/promises-in-javascript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/blog/why-i-migrated-my-website-from-wordpress-to-gatsby</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/blog/how-to-build-your-own-compiler</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/blog/react–the-future-of-web-frontend</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/blog/django-the-widely-used-python-framework-for-web-development</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/blog/hello-world-rolwins-first-blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/tags/reactjs</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/tags/html</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/tags/css</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/tags/javascript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/tags/typescript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/tags/nodejs</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/tags/gatsby</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/tags/python</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/resume/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/blog/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/contact/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://rolwinreevan.com/tags/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+</urlset>
