@@ -52,7 +52,7 @@ export const useSiteMetadata = () => {
             contact
             resume
             tags
-            research
+            project
           }
           wakatime {
             username

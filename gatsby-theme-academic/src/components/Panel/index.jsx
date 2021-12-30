@@ -7,14 +7,14 @@ import React, { useState } from 'react';
 
 import CodeBox from '../CodeBox';
 import PostCard from '../PostCard';
-import ResearchCard from '../ResearchCard';
+import ProjectCard from '../ProjectCard';
 // import PostTag from '../PostTag';
 // import Utils from '../../utils/pageUtils';
 // import Statistics from '../../../content/statistics.json';
 
 const Panel = (props) => {
   const { type, data } = props;
-  const isResearch = type === 'research';
+  const isProject = type === 'project';
 
   // console.log(data.allTag);
   const tags = data.allTag ? data.allTag.edges : [];
@@ -83,11 +83,11 @@ const Panel = (props) => {
             for (const tag of selectedTags) {
               if (!val.tags.has(tag)) return null;
             }
-            if (isResearch) {
+            if (isProject) {
               return (
                 // eslint-disable-next-line react/no-array-index-key
                 <Col key={key} xs={24} sm={24} md={24} lg={24}>
-                  <ResearchCard data={val} tagsMap={tagsMap} />
+                  <ProjectCard data={val} tagsMap={tagsMap} />
                 </Col>
               );
             }
@@ -105,7 +105,7 @@ const Panel = (props) => {
 };
 
 Panel.propTypes = {
-  type: PropTypes.oneOf(['posts', 'research']).isRequired,
+  type: PropTypes.oneOf(['posts', 'project']).isRequired,
 };
 
 export default Panel;

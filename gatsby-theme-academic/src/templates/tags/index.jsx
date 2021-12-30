@@ -14,7 +14,7 @@ import Header from '../../components/PageLayout/Header';
 import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import PostCard from '../../components/PostCard';
 // import Statistics from '../../../content/statistics.json';
-import ResearchCard from '../../components/ResearchCard';
+import ProjectCard from '../../components/ProjectCard';
 import SEO from '../../components/Seo';
 import Utils from '../../utils/pageUtils';
 
@@ -32,7 +32,7 @@ const TagPage = ({
   //   .childImageSharp.fluid;
   const docs = data.allMdx.edges;
   const posts = _.filter(docs, (doc) => doc.node.fields.slug.type === 'posts');
-  const research = _.filter(docs, (doc) => doc.node.fields.slug.type === 'research');
+  const project = _.filter(docs, (doc) => doc.node.fields.slug.type === 'project');
   const tags = data.allTag ? data.allTag.edges : [];
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
 
@@ -63,14 +63,14 @@ const TagPage = ({
               {tagDescription}
             </h4>
           </div>
-          {research.length > 0 ? (
+          {project.length > 0 ? (
             <>
-              <h2>Research</h2>
+              <h2>Project</h2>
               <Row gutter={[20, 20]}>
-                {research.map((post, key) => (
+                {project.map((post, key) => (
                 // eslint-disable-next-line react/no-array-index-key
                   <Col key={key} xs={24} sm={24} md={24} lg={24}>
-                    <ResearchCard data={post} tagsMap={tagsMap} />
+                    <ProjectCard data={post} tagsMap={tagsMap} />
                   </Col>
                 ))}
               </Row>

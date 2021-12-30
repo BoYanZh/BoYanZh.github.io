@@ -9,21 +9,21 @@ import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import Panel from '../../components/Panel';
 import SEO from '../../components/Seo';
 
-const Research = ({ data }) => (
+const Project = ({ data }) => (
   <Layout className="outerPadding">
     <Layout className="container">
       <Header />
       <SEO
-        title="Research"
+        title="Project"
         description="I like blogging about various web technologies and other stuff related to
           javascript and other trends like graphql, prisma etc. This blog expresses my views of various technologies
           and scenarios I have come across in realtime."
-        path="research"
+        path="project"
       />
       <SidebarWrapper>
         <div className="marginTopTitle">
-          <h1 className="titleSeparate">Research</h1>
-          <Panel type="research" data={data} />
+          <h1 className="titleSeparate">Project</h1>
+          <Panel type="project" data={data} />
         </div>
         <Footer />
       </SidebarWrapper>
@@ -31,7 +31,7 @@ const Research = ({ data }) => (
   </Layout>
 );
 
-Research.propTypes = {
+Project.propTypes = {
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
       edges: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
@@ -43,7 +43,7 @@ export const query = graphql`
   {
     allTag(
       sort: { fields: [count], order: DESC },
-      filter: { research: { eq: true } }
+      filter: { project: { eq: true } }
     ) {
       edges {
         node {
@@ -55,7 +55,7 @@ export const query = graphql`
     }
     allMdx(
       filter: { 
-        fileAbsolutePath: { regex: "/research\/.*\/index\\.md$/" }
+        fileAbsolutePath: { regex: "/project\/.*\/index\\.md$/" }
       }
       sort: { fields: [frontmatter___priority, frontmatter___title], order: ASC }
     ) {
@@ -93,4 +93,4 @@ export const query = graphql`
   }
 `;
 
-export default Research;
+export default Project;

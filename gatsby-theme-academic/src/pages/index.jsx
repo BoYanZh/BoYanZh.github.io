@@ -5,7 +5,7 @@ import React from 'react';
 import AboutMe from '../components/PageFragments/HomePage/AboutMe';
 import Awards from '../components/PageFragments/HomePage/Awards';
 import Experience from '../components/PageFragments/HomePage/Experience';
-import SelectedResearch from '../components/PageFragments/HomePage/SelectedResearch';
+import SelectedProject from '../components/PageFragments/HomePage/SelectedProject';
 import Footer from '../components/PageLayout/Footer';
 import Header from '../components/PageLayout/Header';
 import SidebarWrapper from '../components/PageLayout/Sidebar';
@@ -18,7 +18,7 @@ export default ({ data }) => (
         <AboutMe />
         <Experience />
         <Awards />
-        <SelectedResearch data={data} />
+        <SelectedProject data={data} />
         <Footer />
       </SidebarWrapper>
     </Layout>
@@ -38,7 +38,7 @@ export const query = graphql`
     }
     allMdx(
       filter: { 
-        fileAbsolutePath: { regex: "/research\/.*\/index\\.md$/" }
+        fileAbsolutePath: { regex: "/project\/.*\/index\\.md$/" }
         fields: { 
           slug: { 
             selected: { eq: true } 

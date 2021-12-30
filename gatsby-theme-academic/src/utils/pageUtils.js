@@ -15,7 +15,7 @@ const html = require('remark-html');
 //   name: key, ...value,
 // })).orderBy(['count', 'name'], ['desc', 'asc']).value();
 //
-// const researchTags = _.filter(tags, { research: true });
+// const projectTags = _.filter(tags, { project: true });
 // const postsTags = _.filter(tags, { posts: true });
 
 const Utils = {
@@ -129,7 +129,7 @@ const Utils = {
    */
   capitalize: (str) => str[0].toUpperCase() + str.slice(1),
   generateOmittedPostInfo: (node) => {
-    const regex = /(?<=content\/)(posts|research)\/.*(?=\/index\.md)/g;
+    const regex = /(?<=content\/)(posts|project)\/.*(?=\/index\.md)/g;
     const fileAbsolutePath = node.fileAbsolutePath || '';
     const matches = fileAbsolutePath.match(regex);
     if (matches && matches.length === 1 && !node.frontmatter.path) {

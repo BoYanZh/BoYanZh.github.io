@@ -162,7 +162,7 @@ exports.createPages = async ({
 
   const tags = {};
 
-  /* Post and Research pages */
+  /* Post and Project pages */
   allMdx.edges.forEach(({ node }) => {
     const { frontmatter } = node;
 
@@ -174,7 +174,7 @@ exports.createPages = async ({
         tags[tag] = {
           count: 0,
           path: '',
-          research: false,
+          project: false,
           posts: false,
         };
       }
@@ -183,10 +183,10 @@ exports.createPages = async ({
       }
       return;
     }
-    // Check path prefix of Post and Research
+    // Check path prefix of Post and Project
     if (
       frontmatter.path.indexOf(options.pages.posts) !== 0 &&
-      frontmatter.path.indexOf(options.pages.research) !== 0
+      frontmatter.path.indexOf(options.pages.project) !== 0
     ) {
       // eslint-disable-next-line no-throw-literal
       throw `Invalid path prefix: ${frontmatter.path}`;
@@ -206,8 +206,8 @@ exports.createPages = async ({
     data.commit = getCommitTime(node.fileAbsolutePath);
     if (frontmatter.path.indexOf(options.pages.posts) === 0) {
       data.type = 'posts';
-    } else if (frontmatter.path.indexOf(options.pages.research) === 0) {
-      data.type = 'research';
+    } else if (frontmatter.path.indexOf(options.pages.project) === 0) {
+      data.type = 'project';
     }
 
     // encrypt post with password
@@ -285,15 +285,15 @@ exports.createPages = async ({
           tags[tag] = {
             count: 0,
             path: '',
-            research: false,
+            project: false,
             posts: false,
           };
         }
         tags[tag].count++;
         if (frontmatter.path.indexOf(options.pages.posts) === 0) {
           tags[tag].posts = true;
-        } else if (frontmatter.path.indexOf(options.pages.research) === 0) {
-          tags[tag].research = true;
+        } else if (frontmatter.path.indexOf(options.pages.project) === 0) {
+          tags[tag].project = true;
         }
       }
     }
@@ -497,7 +497,7 @@ exports.createSchemaCustomization = async (
       path: String
       color: String
       count: Int
-      research: Boolean
+      project: Boolean
       posts: Boolean
     }
     type SiteSiteMetadataSocial @dontInfer {
@@ -538,8 +538,8 @@ exports.createSchemaCustomization = async (
           if (source.path.indexOf(options.pages.posts) === 0) {
             return 'posts';
           }
-          if (source.path.indexOf(options.pages.research) === 0) {
-            return 'research';
+          if (source.path.indexOf(options.pages.project) === 0) {
+            return 'project';
           }
           return '';
         },

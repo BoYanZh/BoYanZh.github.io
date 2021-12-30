@@ -9,7 +9,7 @@ module.exports = ({
     contact: 'contact',
     resume: 'resume',
     tags: 'tags',
-    research: 'research',
+    project: 'project',
   },
   icon = '',
   tagColors = [

@@ -13,9 +13,9 @@ import { useSiteMetadata } from '../../utils/hooks';
 import Utils from '../../utils/pageUtils';
 import PostTag from '../PostTag';
 
-import * as style from './researchCard.module.less';
+import * as style from './projectCard.module.less';
 
-const ResearchCard = (props) => {
+const ProjectCard = (props) => {
   const { data: { node }, tagsMap } = props;
   const {
     fields: { slug: { links } }, frontmatter: {
@@ -97,7 +97,7 @@ const ResearchCard = (props) => {
 
   return (
     <Card
-      className={classnames(style.researchCard, 'cursor-default')}
+      className={classnames(style.projectCard, 'cursor-default')}
       bodyStyle={{ padding: '0.8rem' }}
       hoverable
       // onClick={handleClick}
@@ -135,4 +135,4 @@ const ResearchCard = (props) => {
   );
 };
 
-export default ResearchCard;
+export default ProjectCard;

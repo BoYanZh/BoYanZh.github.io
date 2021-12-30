@@ -3,11 +3,11 @@ import { useStaticQuery, graphql } from 'gatsby';
 import _ from 'lodash';
 import React from 'react';
 
-import ResearchCard from '../../ResearchCard';
+import ProjectCard from '../../ProjectCard';
 
 import * as styles from './homePage.module.less';
 
-const SelectedResearch = () => {
+const SelectedProject = () => {
   const data = useStaticQuery(graphql`
   {
     allTag {
@@ -21,7 +21,7 @@ const SelectedResearch = () => {
     }
     allMdx(
       filter: { 
-        fileAbsolutePath: { regex: "/research\/.*\/index\\.md$/" }
+        fileAbsolutePath: { regex: "/project\/.*\/index\\.md$/" }
         fields: { 
           slug: { 
             selected: { eq: true } 
@@ -69,13 +69,13 @@ const SelectedResearch = () => {
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
   return (data.allMdx && data.allMdx.edges && data.allMdx.edges.length) ? (
     <div className={styles.homepageSection}>
-      <h2 style={{ marginBottom: '1rem' }}>Selected Research</h2>
+      <h2 style={{ marginBottom: '1rem' }}>Selected Project</h2>
       <Row gutter={[20, 20]}>
         {data.allMdx &&
           data.allMdx.edges.map((val, key) => (
             // eslint-disable-next-line react/no-array-index-key
             <Col key={key} xs={24} sm={24} md={24} lg={24}>
-              <ResearchCard data={val} tagsMap={tagsMap} />
+              <ProjectCard data={val} tagsMap={tagsMap} />
             </Col>
           ))}
       </Row>
@@ -85,4 +85,4 @@ const SelectedResearch = () => {
   );
 };
 
-export default SelectedResearch;
+export default SelectedProject;
