@@ -39,6 +39,7 @@ export const useSiteMetadata = () => {
           birthday
           location
           email
+          language
           postsForArchivePage
           social {
             url

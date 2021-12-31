@@ -115,6 +115,15 @@ const UserInfo = () => {
                 />
               </List.Item>
             ) : null}
+          {siteMetadata.language
+            ? (
+              <List.Item>
+                <List.Item.Meta
+                  avatar={<Icon size="lg" fixedWidth icon="language" />}
+                  title={siteMetadata.language}
+                />
+              </List.Item>
+            ) : null}
         </List>
       </div>
     </>

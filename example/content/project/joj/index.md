@@ -8,15 +8,17 @@ authors:
   - name: "BoYanZh"
     url: "https://github.com/BoYanZh"
 path: "project/joj"
-# excerpt: Dire Tide 2020
+excerpt: The next generation online grading system
 selected: false
 # cover: "./preview.png"
 links:
 #   - name: "pdf"
 #     file: "./diretide.pdf"
-  - name: "website"
+  - name: "Frontend Repo"
+    url: "https://github.com/joint-online-judge/cattle"
+  - name: "Backend Repo"
     url: "https://github.com/joint-online-judge/horse"
-  - name: "website"
+  - name: "Judger Repo"
     url: "https://github.com/joint-online-judge/tiger"
 priority: 20
 ---

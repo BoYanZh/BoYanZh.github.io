@@ -6,25 +6,24 @@ module.exports = {
   author: 'Boming ZHANG',
   authorAlternative: '张泊明',
   introduction: [
-    'Hi there, I am BoYanZh (Boming Zhang). I am a software developer from China.',
-    'I have built lots of useful tools and platforms. They mainly aims at making the life of students easier in UM-SJTU JI, which is my undergradute institue.',
+    'Hi there, I am BoYanZh (Boming Zhang). I am a software developer from China🇨🇳.',
+    'I have built lots of handy tools and platforms for my undergraduate institute. They mainly aim at making the life of students easier. You can find them in my [Github](https://github.com/BoYanZh).',
     'I am keen on writing high quality, readable, and maintainable codes, with the help of check tools. Also, automating the whole process of writing to deployment with CI/CD is one of my interests.',
-    'I like to build softwares with real world impact and being accssible by everyone and everywhere. So I have a lot of Web projects, working mainly on the backend side with `Python` and `Go`, creating modern RESTful API. However, my interest currently diverges from building CRUD(Create, Read, Update, Delete) endpoints repeatedly with frameworks. I am trying to diving deeper and deeper into the backend side.',
+    'I like to build software with real-world impact and is accessible by everyone and everywhere. So I have taken part in plenty of Web projects, working mainly on the backend side with `Python3` and `Go`. I am trying to dive deeper and deeper into the backend side.',
+    'You can check my coding status here: [![wakatime](https://wakatime.com/badge/user/8dcab400-e2d4-43ad-8a8f-7a94a34ea7b6.svg)](https://wakatime.com/@8dcab400-e2d4-43ad-8a8f-7a94a34ea7b6).',
   ],
   avatar: 'avatar.png',
-  professions: [
-    'Undergradute Student',
-    'Full Stack Developer',
-  ],
+  professions: ['Undergradute Student', 'Full Stack Developer'],
   tocMaxDepth: 2,
   excerptMaxLength: 500,
   birthday: 'Mar. 16, 2000',
   location: 'Shanghai, China',
   email: 'bomingzh@sjtu.edu.cn',
+  language: 'Chinese, English',
   postsForArchivePage: 3,
   defaultLanguage: 'en',
-  disqusScript: process.env.DISQUS_SCRIPT
-    || 'https://boyanzh.disqus.com/embed.js',
+  disqusScript:
+    process.env.DISQUS_SCRIPT || 'https://boyanzh.disqus.com/embed.js',
   pages: {
     home: '/',
     posts: 'posts',
@@ -38,18 +37,20 @@ module.exports = {
     {
       url: '/resume.pdf',
       icon: ['ai', 'cv'],
-    }, {
+    },
+    {
       url: 'https://github.com/BoYanZh',
       icon: ['fab', 'github'],
-    }, {
+    },
+    {
       url: 'https://t.me/BoYanZh',
       icon: ['fab', 'telegram'],
-    }, {
-      url: 'https://steamcommunity.com/id/boyanzh',
-      icon: ['fab', 'steam'],
-    }, {
-      url: '/wakatime',
-      icon: ['fas', 'code'],
+      // }, {
+      //   url: 'https://steamcommunity.com/id/boyanzh',
+      //   icon: ['fab', 'steam'],
+      // }, {
+      //   url: '/wakatime',
+      //   icon: ['fas', 'code'],
     },
   ],
   // facebook: 'https://www.facebook.com/rolwin.monteiro',
@@ -70,77 +71,144 @@ module.exports = {
       icon: 'university',
       title: 'B.S.E. in Electrical and Computer Engineering',
       location: 'Shanghai Jiao Tong University (UM-SJTU Joint Institute)',
-    }, {
+    },
+    {
       date: 'Sept. 2015 - June 2018',
       icon: 'school',
       title: 'High School',
       location: 'High School Affiliated to Shanghai Jiao Tong University',
-    }],
+    },
+  ],
   interests: [
     {
-      icon: 'layer-group',
+      icon: ['layer-group'],
       title: 'Full Stack Development',
-    }, {
-      icon: 'network-wired',
+    },
+    {
+      icon: ['network-wired'],
       title: 'Internet of Things',
-    }, {
+    },
+    {
+      icon: ['fab', 'docker'],
+      title: 'Container Technology',
+    },
+    {
       icon: ['fab', 'linux'],
       title: 'Open Source Community',
-    }],
+    },
+  ],
   experience: [
     {
-      title: 'Work',
+      title: 'Job',
       position: 'left',
       data: [
         {
-          date: 'Aug 2019 - Present',
-          title: 'Software Engineer',
-          location: 'Somewhere',
-          description: 'description',
+          date: 'June 2021 - Present',
+          title: 'Research & Development Engineer Intern',
+          location: 'Shanghai Zhimian Weiye Technology Co., Ltd.',
+          description: 'Full-stack development engineer, technical leader.',
         },
       ],
-    }, {
-      title: 'Teaching',
+    },
+    {
+      title: 'Teaching Assistant',
       position: 'right',
       data: [
         {
-          date: 'Aug 2019',
-          title: 'Teaching Assistant of XXX',
-          location: 'Somewhere',
-        }, {
-          date: 'Aug 2018',
-          title: 'Teaching Assistant of XXX',
-          location: 'Somewhere',
-        }, {
-          date: 'Aug 2017',
-          title: 'Teaching Assistant of XXX',
-          location: 'Somewhere',
-        }, {
-          date: 'Aug 2018',
-          title: 'Teaching Assistant of XXX',
-          location: 'Somewhere',
-        }, {
-          date: 'Aug 2017',
-          title: 'Teaching Assistant of XXX',
-          location: 'Somewhere',
+          date: 'Sept. 2021 - Dec. 2021',
+          title: 'Teaching Assistant of Intro to OS',
+          location: 'Shanghai Jiao Tong University',
+          description: 'Advisor: Prof. Manuel Charlemagne'
+        },
+        {
+          date: 'Sept. 2020 - Dec. 2020',
+          title: 'Teaching Assistant of Intro to Comp.',
+          location: 'Shanghai Jiao Tong University',
+          description: 'Advisor: Prof. Manuel Charlemagne'
         },
       ],
-    }, {
-      title: 'Project',
+    },
+    {
+      title: 'Laboratory',
       position: 'left',
       data: [
         {
-          date: 'Aug 2019',
-          title: 'third',
-          location: 'Somewhere',
-        }, {
-          date: 'Aug 2018',
-          title: 'second',
-          location: 'Somewhere',
-        }, {
-          date: 'Aug 2017',
-          title: 'first',
-          location: 'Somewhere',
+          date: 'Mar. 2021 - Present',
+          title: 'Research Assistant',
+          location: 'Intelligent Design and Optimization Research Lab',
+          description: 'Advisor: Prof. Mian Li'
+        },
+        {
+          date: 'July 2021 – Sept. 2021',
+          title: 'Website Developer',
+          location: 'Advanced Network Laboratory',
+          description: 'Advisor: Prof. Xiaofeng Gao'
+        },
+        {
+          date: 'March 2019 – Dec. 2019',
+          title: 'Research Assistant',
+          location: 'Institute of Media, Information, and Network',
+          description: 'Advisor: Prof. Weiyao Lin'
+        },
+      ],
+    },
+    {
+      title: 'Coursework',
+      position: 'left',
+      data: [
+        {
+          date: 'VE482',
+          location: 'Intro to Operating Systems (A+)',
+        },
+        {
+          date: 'VE472',
+          location: 'Methods and Tools for big data (A+)',
+        },
+        {
+          date: 'VE281',
+          location: 'Data Structures and Algorithms (A)',
+        },
+        {
+          date: 'VE280',
+          location: 'Programming and Elem. Data Structures (A+)',
+        },
+        {
+          date: 'VE450',
+          location: 'Major Design Experience (A)',
+        },
+        {
+          date: 'VE490',
+          location: 'Undergraduate Research (A)',
+        },
+        {
+          date: 'VG101',
+          location: 'Intro to Computers and Programming (A+)',
+        },
+        {
+          date: 'VG100',
+          location: 'Intro to Engineering (A)',
+        },
+      ],
+    },
+    {
+      title: 'Student Organization',
+      position: 'right',
+      data: [
+        {
+          date: 'Sept. 2019 – Present',
+          title: 'Maintainer, Main Contributor',
+          location: 'Fan of Computer Science',
+        },
+        {
+          date: 'Sept. 2018 – July 2019',
+          title: 'Deputy Director',
+          location:
+            'Technology Department UM-SJTU Joint Institute Student Union',
+        },
+        {
+          date: 'Sept. 2019 - July 2019',
+          title: 'Member',
+          location: 'Student Science, Technology and Innovation Association',
         },
       ],
     },
@@ -152,66 +220,85 @@ module.exports = {
     },
     {
       date: 'June 2019',
-      title: 'Outstanding Member of Technology Department UM-SJTU Joint Institute Student Union',
+      title:
+        'Outstanding Member of Technology Department UM-SJTU Joint Institute Student Union',
     },
   ],
   tagColors: [
-    'magenta', 'red', 'volcano', 'orange', 'gold',
-    'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple',
+    'magenta',
+    'red',
+    'volcano',
+    'orange',
+    'gold',
+    'lime',
+    'green',
+    'cyan',
+    'blue',
+    'geekblue',
+    'purple',
   ],
   tags: [
     {
       id: 'javascript',
       name: 'javascript',
-      description: 'JavaScript is an object-oriented programming language used alongside HTML and CSS to give functionality to web pages.',
+      description:
+        'JavaScript is an object-oriented programming language used alongside HTML and CSS to give functionality to web pages.',
       color: '#f0da50',
     },
     {
       id: 'nodejs',
       name: 'Node.js',
-      description: 'Node.js is a tool for executing JavaScript in a variety of environments.',
+      description:
+        'Node.js is a tool for executing JavaScript in a variety of environments.',
       color: '#90c53f',
     },
     {
       id: 'rxjs',
       name: 'RxJS',
-      description: 'RxJS is a library for reactive programming using Observables, for asynchronous operations.',
+      description:
+        'RxJS is a library for reactive programming using Observables, for asynchronous operations.',
       color: '#eb428e',
     },
     {
       id: 'typescript',
       name: 'typescript',
-      description: 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.',
+      description:
+        'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.',
       color: '#257acc',
     },
     {
       id: 'reactjs',
       name: 'reactjs',
-      description: 'React is an open source JavaScript library used for designing user interfaces.',
+      description:
+        'React is an open source JavaScript library used for designing user interfaces.',
       color: '#61dbfa',
     },
     {
       id: 'gatsby',
       name: 'Gatsby.js',
-      description: 'A framework built over ReactJS to generate static page web application.  ',
+      description:
+        'A framework built over ReactJS to generate static page web application.  ',
       color: '#6f309f',
     },
     {
       id: 'html',
       name: 'HTML',
-      description: 'A markup language that powers the web. All websites use HTML for structuring the content.',
+      description:
+        'A markup language that powers the web. All websites use HTML for structuring the content.',
       color: '#dd3431',
     },
     {
       id: 'css',
       name: 'css',
-      description: 'CSS is used to style the HTML element and to give a very fancy look for the web application.',
+      description:
+        'CSS is used to style the HTML element and to give a very fancy look for the web application.',
       color: '#43ace0',
     },
     {
       id: 'python',
       name: 'python',
-      description: 'A general purpose programming language that is widely used for developing various applications.',
+      description:
+        'A general purpose programming language that is widely used for developing various applications.',
       color: '#f9c646',
     },
   ],
