@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---gatsby-theme-academic-src-pages-index-jsx",
     "path": "/",
-    "result": {"data":{"allTag":{"edges":[{"node":{"name":"gatsby","color":"red","path":"/tags/gatsby"}},{"node":{"name":"blog","color":"magenta","path":"/tags/blog"}}]},"allMdx":{"edges":[]}},"pageContext":{"slug":"/","langKey":"en"}},
-    "staticQueryHashes": ["1552981879","264791314","3793747976","4097791827"]}
+    "result": {"data":{"allTag":{"edges":[{"node":{"name":"gatsby","color":"volcano","path":"/tags/gatsby"}},{"node":{"name":"blog","color":"red","path":"/tags/blog"}},{"node":{"name":"backend","color":"magenta","path":"/tags/backend"}},{"node":{"name":"python3","color":"orange","path":"/tags/python3"}}]},"allMdx":{"edges":[]}},"pageContext":{"slug":"/","langKey":"en"}},
+    "staticQueryHashes": ["1260612473","1552981879","264791314","4097791827"]}

@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---gatsby-theme-academic-src-pages-project-index-jsx",
     "path": "/project/",
-    "result": {"data":{"allTag":{"edges":[]},"allMdx":{"edges":[]}},"pageContext":{"slug":"/project/","langKey":"en"}},
-    "staticQueryHashes": ["1552981879","3793747976","4097791827"]}
+    "result": {"data":{"allTag":{"edges":[{"node":{"name":"backend","color":"magenta","path":"/tags/backend"}},{"node":{"name":"python3","color":"orange","path":"/tags/python3"}}]},"allMdx":{"edges":[{"node":{"frontmatter":{"cover":null,"date":"2021-03-01T00:00:00.000Z","venue":"","authors":["[BoYanZh](https://github.com/BoYanZh)"],"path":"project/joj","title":"Joint Online Judge 2","tags":["backend","python3"],"excerpt":"The next generation online grading system","priority":20},"fileAbsolutePath":"/home/runner/work/BoYanZh.github.io/BoYanZh.github.io/example/content/project/joj/index.md","fields":{"slug":{"links":[{"name":"Frontend Repo","url":"https://github.com/joint-online-judge/cattle"},{"name":"Backend Repo","url":"https://github.com/joint-online-judge/horse"},{"name":"Judger Repo","url":"https://github.com/joint-online-judge/tiger"}]}}}}]}},"pageContext":{"slug":"/project/","langKey":"en"}},
+    "staticQueryHashes": ["1260612473","1552981879","4097791827"]}

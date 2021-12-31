@@ -1,1 +1,1 @@
-{"data":{"allTag":{"edges":[{"node":{"name":"gatsby","color":"red","path":"/tags/gatsby"}},{"node":{"name":"blog","color":"magenta","path":"/tags/blog"}}]},"allMdx":{"edges":[]}}}
+{"data":{"allTag":{"edges":[{"node":{"name":"gatsby","color":"volcano","path":"/tags/gatsby"}},{"node":{"name":"blog","color":"red","path":"/tags/blog"}},{"node":{"name":"backend","color":"magenta","path":"/tags/backend"}},{"node":{"name":"python3","color":"orange","path":"/tags/python3"}}]},"allMdx":{"edges":[]}}}
