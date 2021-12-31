@@ -197,7 +197,7 @@ module.exports = {
         {
           date: 'Sept. 2019 – Present',
           title: 'Maintainer, Main Contributor',
-          location: 'Fan of Computer Science',
+          location: 'Fans Of Computer Science',
         },
         {
           date: 'Sept. 2018 – July 2019',
