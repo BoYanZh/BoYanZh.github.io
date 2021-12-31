@@ -81,11 +81,11 @@ module.exports = {
   ],
   interests: [
     {
-      icon: ['layer-group'],
+      icon: ['fab', 'layer-group'],
       title: 'Full Stack Development',
     },
     {
-      icon: ['network-wired'],
+      icon: ['fab', 'network-wired'],
       title: 'Internet of Things',
     },
     {
