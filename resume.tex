@@ -1,0 +1,215 @@
+%-------------
+% Resume in Latex
+% Author : Sidratul Muntaha Ahmed
+% License : MIT
+%------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%-----FONT OPTIONS-----
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%----------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%-----HEADING-----
+
+
+\begin{center}
+    \textbf{\Huge Boming Zhang} \\ \vspace{1pt}
+    \small (+86)180-1720-9402 $|$ \href{mailto:bomingzh@sjtu.edu.cn}{\underline{bomingzh@sjtu.edu.cn}} $|$
+    \href{https://boyanzh.site}{\underline{boyanzh.site}} $|$
+    \href{https://github.com/BoYanZh}{\underline{github.com/BoYanZh}}
+\end{center}
+
+
+%------EDUCATION------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Shanghai Jiao Tong University (UM-SJTU Joint Institute)}{Sept. 2018 - Present}
+      {Bachelor of Science in Electrical and Computer Engineering}{Shanghai, China}
+          \resumeItemListStart
+            \resumeItem{Relevant Coursework: Intro to Operating Systems (A+), Methods and Tools for Big Data (A+), Data Structures and Algorithms (A), Programming and Elem. Data Structures (A+), Major Design Experience (A)}
+            \resumeItem{\textbf{2020-2021 Undergraduate Excellent Scholarship}}
+            \resumeItem{Outstanding Member of Technology Department UM-SJTU Joint Institute Student Union}
+          \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%------EXPERIENCE------
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Research \& Development Engineer Intern}{June 2021 - Present}
+      {Shanghai Zhimian Weiye Technology Co., Ltd.}{Shanghai, China}
+      \resumeItemListStart
+        \resumeItem{Full-stack development engineer, technical leader. Build a intelligent firefighting system based on IoT. Responsible for the system arthitecture, Web frontend, App frontend, backend, and development. Over 7 million IoT devices are connected to the system from Shanghai Fire Brigade, and the algorithm detect hundreds of potential fire risks.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Research Assistant}{Mar. 2021 - Present}
+      {Intelligent Design and Optimization Research Lab, advisor Prof. Mian Li}{Shanghai, China}
+      \resumeItemListStart
+        \resumeItem{Technical leader of 2 Undergraduate Innovation Practice Programs. Build a risk control center for Shanghai Jiao Tong University School of Medicine, used by over 10 different management systems and over 100 faculties.}
+        \resumeItem{Construct and build the cryptocurrency funding rate arbitrage system for market research, using Python.}
+        \resumeItemListEnd
+
+    \resumeSubheading
+      {Teaching Assistant (Intro to OS, Intro to Comp.)}{Sept. 2020 - Dec. 2020, Sept. 2021 - Dec. 2021}
+      {Shanghai Jiao Tong University, advisor Prof. Manuel Charlemagne}{Shanghai, China}
+      \resumeItemListStart
+        \resumeItem{Hosted exam review sessions and weekly lab sessions for at most 100 students, response to students' questions.}
+        \resumeItem{Develop and maintain the server and relevant softwares, including online grading system, self-service Git platform, Continuous Integration platform for in total over 300 students per term to build and test their softwares.}
+        \resumeItem{Develop automatic grading script, integrate operations on 4 platforms. Save 1 hour per week per 50 students.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Deputy Director}{Sept. 2018 - July 2019}
+      {Technology Department UM-SJTU Joint Institute Student Union}{Shanghai, China}
+      \resumeItemListStart
+        \resumeItem{Build Danmu multimedia system using PyQt5 for welcoming party, used by over 300 students every year.}
+        \resumeItem{Hold workshops and write posts every month to teach and discuss various about technology and development.}
+      \resumeItemListEnd
+
+
+    \resumeSubHeadingListEnd
+
+%------PROJECTS------
+\section{Projects}
+
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+        {\href{https://github.com/joint-online-judge}{\textbf{JOJ 2.0}} $|$ \emph{Python3, FastAPI, PostgreSQL, Redis, Celery, LakeFS, Docker, cgroupsv1, React.js}}{June 2021 - Present}
+        \resumeItemListStart
+          \resumeItem{Next generation of online grading system.}
+          \resumeItem{Project Description 2}
+        \resumeItemListEnd
+      \resumeProjectHeading
+        {\textbf{iiFire} $|$ \emph{Python3, FastAPI, Go, Gin, MongoDB, Docker, React.js, React Native}}{June 2021 - Present}
+        \resumeItemListStart
+          \resumeItem{Project Description 1}
+          \resumeItem{Project Description 2}
+        \resumeItemListEnd
+      \resumeProjectHeading
+        {\textbf{FOCS student system} $|$ \emph{Python3, Go, Node.js, Docker2}}{June 2021 - Present}
+        \resumeItemListStart
+          \resumeItem{JOJ1.0 + Gitea + Drone.io development + maintainance}
+          \resumeItem{Project Description 2}
+        \resumeItemListEnd
+    \resumeProjectHeading
+        {\href{https://github.com/BoYanZh/Canvas-Syncer}{\textbf{Canvas Syncer}} $|$ \emph{Python3, Asynchronous, Multithread}}{June 2021 - Present}
+        \resumeItemListStart
+        \resumeItem{Project Description 1}
+        \resumeItem{Project Description 2}
+        \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+
+%
+%------TECHNICAL SKILLS------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, (modern) C++, C (Linux), Go, Typescript, MATLAB, C\#, Java, HTML, Shell, \LaTeX} \\
+     \textbf{Frameworks}{: FastAPI, Django, Flask, React.js, Selenium, PyTest, Pandas, NumPy, MXNet, Hadoop} \\
+     \textbf{Developer Tools}{: Git, Docker, Jenkins, Github, Gitlab, Drone.io, VSCode, Vim, Pre-commit, Linux Perf} \\
+     \textbf{Data Management Tools}{: PostgreSQL, MySQL, MongoDB, Redis, Drill, SQLite, RabbitMQ} \\
+    }}
+ \end{itemize}
+
+
+%----------------------
+\end{document}
