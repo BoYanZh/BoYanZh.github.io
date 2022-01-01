@@ -20,10 +20,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: xu-cheng/latex-action@v2
+      - name: Build resume pdf
+        uses: xu-cheng/latex-action@v2
         with:
           root_file: example/static/resume.tex
-          post_compile: "cp resume.pdf example/static/resume.pdf"
+          post_compile: "rm example/static/resume.tex && cp resume.pdf example/static/resume.pdf"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
