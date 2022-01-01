@@ -20,12 +20,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: example/static/resume.tex
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
           cache: yarn
-      - run: npm i -g yarn
       - run: yarn
       - run: yarn workspace example build
       - name: Deploy to GitHub Pages
