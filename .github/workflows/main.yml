@@ -23,6 +23,10 @@ jobs:
       - uses: xu-cheng/latex-action@v2
         with:
           root_file: example/static/resume.tex
+      - run: |
+          pwd
+          ls
+          cp resume.pdf example/static/resume.pdf
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
