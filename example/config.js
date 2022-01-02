@@ -46,8 +46,8 @@ module.exports = {
       url: 'https://t.me/BoYanZh',
       icon: ['fab', 'telegram'],
     }, {
-      url: 'https://www.linkedin.com/in/jiayaowu/',
-      icon: 'linkedin',
+      url: 'https://www.linkedin.com/in/bomingzh/',
+      icon: ['fab', 'linkedin'],
     }, {
       url: 'https://steamcommunity.com/id/boyanzh',
       icon: ['fab', 'steam'],
