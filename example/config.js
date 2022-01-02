@@ -43,12 +43,18 @@ module.exports = {
       icon: ['fab', 'github'],
     },
     {
+      url: 'https://twitter.com/BoYanZh233',
+      icon: ['fab', 'twitter'],
+    },
+    {
       url: 'https://t.me/BoYanZh',
       icon: ['fab', 'telegram'],
-    }, {
-      url: 'https://www.linkedin.com/in/bomingzh/',
+    },
+    {
+      url: 'https://linkedin.com/in/bomingzh/',
       icon: ['fab', 'linkedin'],
-    }, {
+    },
+    {
       url: 'https://steamcommunity.com/id/boyanzh',
       icon: ['fab', 'steam'],
     },
