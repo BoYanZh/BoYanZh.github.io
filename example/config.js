@@ -7,10 +7,10 @@ module.exports = {
   authorAlternative: '张泊明',
   introduction: [
     'Hi there, I am BoYanZh (Boming Zhang). I am a software developer from China. 🇨🇳',
-    'I have built lots of handy tools and platforms for my undergraduate institute. They mainly aim at making the life of students easier. You can find them in my [Github](https://github.com/BoYanZh).',
-    'I am keen on writing high quality, readable, and maintainable codes, with the help of check tools. Also, automating the whole process from writing codes to deployment with CI/CD is one of my interests.',
+    'I am keen on writing high quality, readable, and maintainable codes, with the help of check tools. Also, automating the whole process from development to deployment with CI/CD is one of my interests.',
     'I like to build software with real-world impact and is accessible by everyone and everywhere. So I have taken part in plenty of Web projects, working mainly on the backend side with `Python3` and `Go`. I am trying to dive deeper and deeper into the backend side.',
-    'You can check my coding status here: [![wakatime](https://wakatime.com/badge/user/8dcab400-e2d4-43ad-8a8f-7a94a34ea7b6.svg)](https://wakatime.com/@8dcab400-e2d4-43ad-8a8f-7a94a34ea7b6).',
+    'I have built lots of handy tools and platforms for my undergraduate institute. They mainly aim at making the life of students easier. Check this [Gist](https://gist.github.com/BoYanZh/fc4469c20fd6adf42c212114532aaac0) for a collection of useful tools built by me and other JI students!',
+    'Get my coding statistics here since entering college: [![wakatime](https://wakatime.com/badge/user/8dcab400-e2d4-43ad-8a8f-7a94a34ea7b6.svg)](https://wakatime.com/@8dcab400-e2d4-43ad-8a8f-7a94a34ea7b6).',
   ],
   avatar: 'avatar.png',
   professions: ['Undergradute Student', 'Full Stack Developer'],
