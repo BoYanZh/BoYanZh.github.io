@@ -13,7 +13,7 @@ module.exports = {
     'Get my coding statistics here since entering college: [![wakatime](https://wakatime.com/badge/user/8dcab400-e2d4-43ad-8a8f-7a94a34ea7b6.svg)](https://wakatime.com/@8dcab400-e2d4-43ad-8a8f-7a94a34ea7b6).',
   ],
   avatar: 'avatar.png',
-  professions: ['Undergradute Student', 'Full Stack Developer'],
+  professions: ['Undergraduate Student', 'Full Stack Developer'],
   tocMaxDepth: 2,
   excerptMaxLength: 500,
   birthday: 'Mar. 16, 2000',
