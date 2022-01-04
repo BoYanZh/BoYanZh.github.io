@@ -12,7 +12,7 @@ export default () => {
   }
 `);
   const { currentBuildDate: { currentDate } } = data;
-  const buildTime = moment(currentDate).format('MMM Do YYYY');
+  const buildTime = moment(currentDate).format('MMM Do, YYYY');
   return (
     <>
       <Divider style={{ color: 'rgba(0, 0, 0, 0.45)', marginTop: '3rem', marginBottom: '-3rem' }}>
