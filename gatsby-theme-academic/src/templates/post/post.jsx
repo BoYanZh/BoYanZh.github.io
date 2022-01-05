@@ -31,7 +31,7 @@ const Post = ({ data }) => {
   const {
     title, excerpt, path, date, commit, html, nonce, htmlEncrypted, type,
   } = slug;
-  const editTime = moment.unix(commit).format('MMM Do YYYY');
+  const editTime = moment.unix(commit).format('MMM Do, YYYY');
   const postTime = Utils.formatDate(date);
 
   const fluid = cover ? cover.childImageSharp.fluid : null;

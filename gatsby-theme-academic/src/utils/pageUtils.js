@@ -141,7 +141,7 @@ const Utils = {
   formatDate: (date) => {
     const d = moment(date);
     if (d.isValid()) {
-      return d.format('MMM Do YYYY');
+      return d.format('MMM Do, YYYY');
     }
     return date;
   },
