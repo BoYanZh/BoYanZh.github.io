@@ -15,6 +15,7 @@ const PostCard = (props) => {
     tagsMap,
   } = props;
   const {
+    fields: { slug: { links } },
     frontmatter: {
       title,
       excerpt,
@@ -43,9 +44,9 @@ const PostCard = (props) => {
       hoverable
       cover={(
         <div>
-          <a href={Utils.generateFullUrl(siteMetadata, url)}>
+          {/* <a href={Utils.generateFullUrl(siteMetadata, url)}>
             {fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
-          </a>
+          </a> */}
           <span className={style.dateHolder}>
             {date ? Utils.formatDate(date) : ''}
           </span>
@@ -69,6 +70,9 @@ const PostCard = (props) => {
       <a href={Utils.generateFullUrl(siteMetadata, url)}>
         <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
       </a>
+      <Row gutter={[8, 8]}>
+        {links ? links.map(generateLink) : null}
+      </Row>
     </Card>
   );
 };
