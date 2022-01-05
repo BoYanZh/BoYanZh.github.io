@@ -1,6 +1,7 @@
 import { Row, Card } from 'antd';
 import classnames from 'classnames';
 import Img from 'gatsby-image';
+import isRelativeUrl from 'is-relative-url';
 import React from 'react';
 
 import { useSiteMetadata } from '../../utils/hooks';
