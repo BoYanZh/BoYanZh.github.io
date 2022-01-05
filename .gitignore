@@ -71,3 +71,4 @@ yarn-error.log
 .yarn-integrity
 
 /example/static/resume.pdf
+/example/static/reference
