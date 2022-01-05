@@ -35,6 +35,22 @@ const PostCard = (props) => {
   //   }
   // };
 
+  const generateLink = (link) => {
+    let href = '#';
+    if (link.url) {
+      if (isRelativeUrl(link.url)) {
+        href = Utils.generateFullUrl(siteMetadata, link.url);
+      } else {
+        href = link.url;
+      }
+    }
+    return (
+      <Col xs>
+        <Button href={href} target="_blank" size="small">{link.name}</Button>
+      </Col>
+    );
+  };
+
   const excerptHTML = Utils.parseMarkDown(Utils.trimExcerpt(excerpt), true);
 
   return (
