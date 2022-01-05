@@ -3,12 +3,19 @@ title: "Joint Online Judge 2"
 tags:
   - "backend"
   - "python3"
+  - "redis"
+  - "celery"
+  - "postgresql"
+  - "cgroupsv1"
+  - "lakefs"
+  - "docker"
+  - "fastapi"
 date: 2021-03-01
 authors:
   - name: "BoYanZh"
     url: "https://github.com/BoYanZh"
-path: "project/joj"
-excerpt: The next generation online grading system
+path: "project/joint-online-judge-2"
+excerpt: The next generation online grading system.
 selected: false
 # cover: "./preview.png"
 links:
@@ -23,13 +30,13 @@ links:
 priority: 20
 ---
 
-## Title 1
+<!-- ## Title 1 -->
 
 <!-- ### Preview
 
 [Preview](./preview.png) -->
 
-### Website
+<!-- ### Website
 
 [Github](https://github.com/joint-online-judge)
 
@@ -37,4 +44,4 @@ priority: 20
 
 ## Title 3
 
-## Title 4
+## Title 4 -->

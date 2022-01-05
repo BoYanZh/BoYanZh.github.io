@@ -69,11 +69,11 @@ export default () => {
                 Project
               </Link>
             </li>
-            <li className={style.navItem}>
+            {/* <li className={style.navItem}>
               <Link to="/posts/" onClick={toggleMenu} partiallyActive activeClassName={style.anchorActive}>
                 Posts
               </Link>
-            </li>
+            </li> */}
             <li className={style.navItem} style={{ marginLeft: '1rem' }}>
               <LoadableSearch
                 isSearchBarExpanded={isSearchBarExpanded}
