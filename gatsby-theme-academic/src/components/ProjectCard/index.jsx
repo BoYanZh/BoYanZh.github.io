@@ -46,9 +46,7 @@ const ProjectCard = (props) => {
     }
     return (
       <Row>
-        <Col xs>
-          <Button shape="round" href={href} target="_blank" size="small">{link.name}</Button>
-        </Col>
+        <Button shape="round" href={href} target="_blank" size="small">{link.name}</Button>
       </Row>
     );
   };
@@ -124,9 +122,9 @@ const ProjectCard = (props) => {
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
             <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
           </a>
-          <Row gutter={[8, 8]}>
+          <Col gutter={[8, 8]}>
             {links ? links.map(generateLink) : null}
-          </Row>
+          </Col>
         {/* </Col> */}
         {/* <Col xs={24} sm={24} md={24} lg={12} xl={8}>
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
