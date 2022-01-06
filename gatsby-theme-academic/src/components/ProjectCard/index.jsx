@@ -103,7 +103,7 @@ const ProjectCard = (props) => {
       // onClick={handleClick}
     >
       <Row gutter={[8, 0]} align="middle">
-        <Col xs={24} sm={24} md={24} lg={12} xl={16}>
+        {/* <Col xs={24} sm={24} md={24} lg={12} xl={16}> */}
           <Card.Meta
             title={(
               <span className={style.title}>
@@ -124,12 +124,12 @@ const ProjectCard = (props) => {
           <Row gutter={[8, 8]}>
             {links ? links.map(generateLink) : null}
           </Row>
-        </Col>
-        <Col xs={24} sm={24} md={24} lg={12} xl={8}>
+        {/* </Col> */}
+        {/* <Col xs={24} sm={24} md={24} lg={12} xl={8}>
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
             { fluid ? <Img fluid={fluid} /> : <div className={style.postCardImg} />}
           </a>
-        </Col>
+        </Col> */}
       </Row>
     </Card>
   );
