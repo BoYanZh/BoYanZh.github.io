@@ -84,11 +84,7 @@ const ProjectCard = (props) => {
       <Divider key="venue-divider" type="vertical" className={style.divider} />,
     ]);
   }
-  if (tags) {
-    infoLine = infoLine.concat(tags.map(
-      (tag) => (tagsMap[tag] ? <PostTag key={`tag-${tag}`} tag={tagsMap[tag]} /> : null),
-    ));
-  } else if (infoLine.length > 0) {
+  if (infoLine.length > 0) {
     // delete the divider if there are no tags
     infoLine.pop();
   }
@@ -117,6 +113,11 @@ const ProjectCard = (props) => {
           </Row> */}
           <Row align="middle" gutter={[0, 4]}>
             {infoLine}
+          </Row>
+          <Row align="middle" gutter={[0, 4]}>{
+            tags.map(
+              (tag) => (tagsMap[tag] ? <PostTag key={`tag-${tag}`} tag={tagsMap[tag]} /> : null),
+            )}
           </Row>
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
             <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
