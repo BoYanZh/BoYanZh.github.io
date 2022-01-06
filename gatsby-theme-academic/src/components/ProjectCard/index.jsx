@@ -122,8 +122,8 @@ const ProjectCard = (props) => {
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
             <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
           </a>
-          <Divider />
-          <Row gutter={[8, 8]}>
+          <Row gutter={[8, 8]} align="bottom">
+            <Divider />
             {links ? links.map(generateLink) : null}
           </Row>
         {/* </Col> */}
