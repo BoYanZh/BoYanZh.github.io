@@ -101,6 +101,7 @@ const ProjectCard = (props) => {
       bodyStyle={{ padding: '0.8rem' }}
       style={{ height: '100%' }}
       hoverable
+      actions={links ? links.map(generateLink) : null}
       // onClick={handleClick}
     >
       <Row gutter={[8, 0]} align="middle">
@@ -122,10 +123,6 @@ const ProjectCard = (props) => {
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
             <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
           </a>
-          <Row gutter={[8, 8]} align="bottom">
-            <Divider style={{ marginTop: '6px', marginBottom: '6px' }} />
-            {links ? links.map(generateLink) : null}
-          </Row>
         {/* </Col> */}
         {/* <Col xs={24} sm={24} md={24} lg={12} xl={8}>
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
