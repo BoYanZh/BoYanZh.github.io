@@ -123,7 +123,7 @@ const ProjectCard = (props) => {
             <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
           </a>
           <Row gutter={[8, 8]} align="bottom">
-            <Divider />
+            <Divider style={{ marginTop: '6px', marginBottom: '6px' }} />
             {links ? links.map(generateLink) : null}
           </Row>
         {/* </Col> */}
