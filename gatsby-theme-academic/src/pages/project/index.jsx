@@ -24,8 +24,7 @@ const Project = ({ data }) => (
         <div className="marginTopTitle">
           <h1 className="titleSeparate">Project</h1>
         </div>
-        {/* <Panel type="project" data={data} /> */}
-        <Panel type="posts" data={data} />
+        <Panel type="project" data={data} />
         <Footer />
       </SidebarWrapper>
     </Layout>

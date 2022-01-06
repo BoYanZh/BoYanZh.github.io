@@ -86,7 +86,7 @@ const Panel = (props) => {
             if (isProject) {
               return (
                 // eslint-disable-next-line react/no-array-index-key
-                <Col key={key} xs={24} sm={24} md={24} lg={24}>
+                <Col key={key} xs={24} sm={24} md={24} lg={8}>
                   <ProjectCard data={val} tagsMap={tagsMap} />
                 </Col>
               );
