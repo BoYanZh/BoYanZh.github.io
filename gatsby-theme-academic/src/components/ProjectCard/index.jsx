@@ -99,6 +99,7 @@ const ProjectCard = (props) => {
     <Card
       className={classnames(style.projectCard, 'cursor-default')}
       bodyStyle={{ padding: '0.8rem' }}
+      style={{ height: '100%' }}
       hoverable
       // onClick={handleClick}
     >
