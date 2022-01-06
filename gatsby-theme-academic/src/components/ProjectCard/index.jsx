@@ -112,9 +112,9 @@ const ProjectCard = (props) => {
             )}
             style={{ marginBottom: '4px' }}
           />
-          <Row align="middle" gutter={[8, 4]}>
+          {/* <Row align="middle" gutter={[8, 4]}>
             {authors ? authors.map(generateAuthor) : null}
-          </Row>
+          </Row> */}
           <Row align="middle" gutter={[0, 4]}>
             {infoLine}
           </Row>
