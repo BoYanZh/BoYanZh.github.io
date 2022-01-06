@@ -122,11 +122,11 @@ const ProjectCard = (props) => {
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
             <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
           </a>
-          <Space direction="vertical">
-            <Col>
+          <Col>
+            <Space direction="vertical">
               {links ? links.map(generateLink) : null}
-            </Col>
-          </Space>
+            </Space>
+          </Col>
         {/* </Col> */}
         {/* <Col xs={24} sm={24} md={24} lg={12} xl={8}>
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
