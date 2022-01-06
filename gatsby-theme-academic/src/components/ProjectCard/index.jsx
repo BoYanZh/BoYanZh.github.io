@@ -1,7 +1,7 @@
 // import moment from 'moment';
 // import { Link } from 'gatsby';
 import {
-  Row, Col, Card, Button, Divider,
+  Row, Col, Card, Button, Divider, Space
 } from 'antd';
 // import { navigate } from '@reach/router';
 import classnames from 'classnames';
@@ -122,9 +122,11 @@ const ProjectCard = (props) => {
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
             <p style={{ marginTop: '1rem' }} dangerouslySetInnerHTML={{ __html: excerptHTML }} />
           </a>
-          <Col gutter={[8, 8]}>
-            {links ? links.map(generateLink) : null}
-          </Col>
+          <Space direction="vertical">
+            <Col>
+              {links ? links.map(generateLink) : null}
+            </Col>
+          </Space>
         {/* </Col> */}
         {/* <Col xs={24} sm={24} md={24} lg={12} xl={8}>
           <a href={Utils.generateFullUrl(siteMetadata, url)}>
