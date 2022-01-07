@@ -159,6 +159,28 @@ module.exports = {
       ],
     },
     {
+      title: 'Student Organization',
+      position: 'right',
+      data: [
+        {
+          date: 'Sept. 2019 – Present',
+          title: 'Maintainer, Main Contributor',
+          location: 'Fans Of Computer Science',
+        },
+        {
+          date: 'Sept. 2018 – July 2019',
+          title: 'Deputy Director',
+          location:
+            'Technology Department UM-SJTU Joint Institute Student Union',
+        },
+        {
+          date: 'Sept. 2019 - July 2019',
+          title: 'Member',
+          location: 'Student Science, Technology and Innovation Association',
+        },
+      ],
+    },
+    {
       title: 'Coursework',
       position: 'left',
       data: [
@@ -193,28 +215,6 @@ module.exports = {
         {
           date: 'VG100',
           location: 'Intro to Engineering (A)',
-        },
-      ],
-    },
-    {
-      title: 'Student Organization',
-      position: 'right',
-      data: [
-        {
-          date: 'Sept. 2019 – Present',
-          title: 'Maintainer, Main Contributor',
-          location: 'Fans Of Computer Science',
-        },
-        {
-          date: 'Sept. 2018 – July 2019',
-          title: 'Deputy Director',
-          location:
-            'Technology Department UM-SJTU Joint Institute Student Union',
-        },
-        {
-          date: 'Sept. 2019 - July 2019',
-          title: 'Member',
-          location: 'Student Science, Technology and Innovation Association',
         },
       ],
     },
