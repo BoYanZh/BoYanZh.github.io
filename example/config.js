@@ -73,9 +73,9 @@ module.exports = {
   googleAnalyticTrackingId: process.env.GA_TRACKING_ID || 'UA-XXXXXXXXX-X',
   education: [
     {
-      date: 'Sept. 2018 - Present',
+      date: 'Sept. 2018 - Aug. 2022',
       icon: 'university',
-      title: 'B.S.E. in Electrical and Computer Engineering',
+      title: 'B.S.E. in Electrical and Computer Engineering (minor in Computer Science)',
       location: 'Shanghai Jiao Tong University (UM-SJTU Joint Institute)',
     },
     {
@@ -145,7 +145,7 @@ module.exports = {
       position: 'left',
       data: [
         {
-          date: 'Mar. 2021 - Present',
+          date: 'Mar. 2021 - Feb. 2022',
           title: 'Research Assistant',
           location: 'Intelligent Design and Optimization Research Lab',
           description: 'Advisor: Prof. Mian Li'
