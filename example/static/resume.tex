@@ -67,7 +67,7 @@
   }
 }
 
-\newcommand{\resumeSubheading}[4]{
+\newcommand{\resumeSubHeader}[4]{
   \vspace{-2pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
@@ -75,14 +75,14 @@
     \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\resumeSubSubheading}[2]{
+\newcommand{\resumeSubSubHeader}[2]{
     \item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
       \textit{\small#1} & \textit{\small #2} \\
     \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\resumeProjectHeading}[2]{
+\newcommand{\resumeProjectHeader}[2]{
     \item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
       \small#1 & #2 \\
@@ -93,8 +93,8 @@
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeSubHeaderListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeaderListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
@@ -104,7 +104,7 @@
 
 \begin{document}
 
-%-----HEADING-----
+%-----Header-----
 
 
 \begin{center}
@@ -117,8 +117,8 @@
 
 %------EDUCATION------
 \section{Education}
-  \resumeSubHeadingListStart
-    \resumeSubheading
+  \resumeSubHeaderListStart
+    \resumeSubHeader
       {Shanghai Jiao Tong University (UM-SJTU Joint Institute)}{Sept. 2018 - Aug. 2022}
       {Bachelor of Science in Electrical and Computer Engineering (minor in Computer Science)}{Shanghai, China}
           \resumeItemListStart
@@ -127,27 +127,27 @@
             \resumeItem{Outstanding Member of Technology Department UM-SJTU Joint Institute Student Union}
           \resumeItemListEnd
 
-  \resumeSubHeadingListEnd
+  \resumeSubHeaderListEnd
 
 %------EXPERIENCE------
 \section{Experience}
-  \resumeSubHeadingListStart
-  \resumeSubheading
+  \resumeSubHeaderListStart
+  \resumeSubHeader
     {Software Engineer Intern}{Feb. 2022 - Jul. 2022}
     {\href{https://naivesystems.com}{Naive Systems}}{Shanghai, China}
     \resumeItemListStart
-      \resumeItem{Take part in a code analyzer and relative DevSecOps products. Implement the checkers of some guidelines in MISRA C, based on \textbf{Clang Static Analyzer, Libtooling, and Cppcheck}. Responsible for all checkers' tests.}
-      \resumeItem{Develop the VSCode extension for reading the analyzer results. Implement the i18n feature for the checkers.}
+      \resumeItem{Take part in a code analyzer and relative DevSecOps products. Implement checkers of some guidelines in MISRA C, based on \textbf{Clang Static Analyzer, Libtooling, and Cppcheck}. Responsible for all checkers' tests.}
+      \resumeItem{Develop a VSCode extension to read protobuf analyzer results. Implement the i18n feature for checkers.}
     \resumeItemListEnd
 
-    \resumeSubheading
+    \resumeSubHeader
       {Research \& Development Engineer Intern}{Jun. 2021 - Feb. 2022}
       {Shanghai Zhimian Weiye Technology}{Shanghai, China}
       \resumeItemListStart
         \resumeItem{Build Intell. IoT Firefighting System project. Design the architecture, and work as a full-stack developer.}
       \resumeItemListEnd
 
-    \resumeSubheading
+    \resumeSubHeader
       {Research Assistant}{Mar. 2021 - Feb. 2022}
       {Intelligent Design and Optimization Research Lab, advisor Prof. Mian Li}{Shanghai, China}
       \resumeItemListStart
@@ -156,48 +156,47 @@
         \resumeItem{Maintain a filling station hazard CV detection system based on \textbf{NVIDIA Jetson} and \textbf{lock-free queue}.}
       \resumeItemListEnd
 
-    \resumeSubheading
+    \resumeSubHeader
       {Teaching Assistant (Intro to OS, Intro to Comp.)}{Sep. 2020 - Dec. 2020, Sep. 2021 - Dec. 2021}
       {Shanghai Jiao Tong University, advisor Prof. Manuel Charlemagne}{Shanghai, China}
       \resumeItemListStart
         \resumeItem{Host \textbf{exam review sessions} and \textbf{weekly lab sessions} for at most 100 students. Grade labs and homework.}
-        \resumeItem{Develop an automatic cast-to-cast grading script. Maintain the server for up to 150 students' usage.}
+        \resumeItem{Develop an automatic cast-to-cast grading script. Maintain servers for up to 150 students' usage.}
       \resumeItemListEnd
 
-    \resumeSubheading
+    \resumeSubHeader
       {Deputy Director}{Sep. 2018 - Jul. 2019}
       {Technology Department UM-SJTU Joint Institute Student Union}{Shanghai, China}
       \resumeItemListStart
-        \resumeItem{Build multimedia system and chatbot using PyQt5 for welcoming party. Write posts on WeChat official accounts.}
+        \resumeItem{Build multimedia system and chatbot with PyQt5 for welcoming party. Write posts on WeChat official accounts.}
       \resumeItemListEnd
 
 
-    \resumeSubHeadingListEnd
+    \resumeSubHeaderListEnd
 
 %------PROJECTS------
 \section{Projects}
 
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
+    \resumeSubHeaderListStart
+      \resumeProjectHeader
         {\href{https://github.com/joint-online-judge}{\textbf{JOJ 2.0}} $|$ \emph{Python3, Cython, PostgreSQL, Redis, Celery, LakeFS, Docker, CGroupsV1, React.js}}{Mar. 2021 - Present}
         \resumeItemListStart
-          \resumeItem{Develop an online judge system from scratch for various courses
-          in the Joint Institute. Provide stable, secure, fast, well-documented online judge service with various integrations for \textbf{over 1000 students in the institute}.}
-          \resumeItem{Build the judging sandbox with \textbf{namespace and containerization} for isolation and measurement.}
+          \resumeItem{Develop an online judge system from scratch for various courses. Provide stable, secure, fast, well-documented online judge service with various integrations for \textbf{over 1000 students in the institute}.}
+          \resumeItem{Build the judger's sandbox with \textbf{namespace and containerization} for isolation and measurement.}
         \resumeItemListEnd
-      \resumeProjectHeading
+      \resumeProjectHeader
         {\href{https://github.com/SJTU-IPP-Firefighting}{\textbf{Intell. IoT Firefighting System}} $|$ \emph{Python3, Go, MongoDB, Docker, React.js, React Native}}{Mar. 2021 - Feb. 2022}
         \resumeItemListStart
-          \resumeItem{Starting from scratch, build a high perf. firefighting platform (Web + App) based on IoT data. Using an algorithm to detect the potential hazard, and report fire alarms with high accuracy in buildings to \textbf{save life and money}.}
-          \resumeItem{Deploy the platform on \textbf{the fire brigade of Shanghai Province}, connected with \textbf{over 7 million IoT devices}.}
+          \resumeItem{Start from scratch, build a high perf. firefighting platform (Web + App) based on IoT data. Use an algorithm to detect potential hazards and report fire alarms with high accuracy in buildings to \textbf{save life and money}.}
+          \resumeItem{Deploy the system on \textbf{the fire brigade of Shanghai Province}, connected with \textbf{over 7 million IoT devices}.}
         \resumeItemListEnd
-      \resumeProjectHeading
+      \resumeProjectHeader
         {\href{https://gist.github.com/BoYanZh/fc4469c20fd6adf42c212114532aaac0}{\textbf{FOCS student system \& related tools}} $|$ \emph{Python3, Go, Node.js, Docker, Nginx, Certbot}}{Nov. 2018 - Present}
         \resumeItemListStart
           \resumeItem{Develop new features and maintain the online service and software, including online judge, self-service Git platform, CI platform for \textbf{over 300 students from 10 courses each term} to build, test, and grade their codes.}
           \resumeItem{Build various tools to connect Canvas LMS, Online Judge, and Gitea together, which are widely used by students and teaching assistants in Joint Institute to save their time. Get \textbf{in total 60+ stars} on Github.}
         \resumeItemListEnd
-    \resumeSubHeadingListEnd
+    \resumeSubHeaderListEnd
 
 
 %
