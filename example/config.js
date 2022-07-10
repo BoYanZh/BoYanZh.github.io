@@ -109,11 +109,17 @@ module.exports = {
       position: 'left',
       data: [
         {
-          date: 'June 2021 - Present',
+          date: 'Feb. 2022 - Jul. 2022',
+          title: 'Software Engineer Intern',
+          location: 'Naive Systems',
+          description: 'Build a code analyzer and relative DevSecOps products.',
+        },
+        {
+          date: 'June 2021 - Feb. 2022',
           title: 'Research & Development Engineer Intern',
           location: 'Shanghai Zhimian Weiye Technology Co., Ltd.',
           description: 'Full-stack development engineer, technical leader.',
-        },
+        }
       ],
     },
     {
