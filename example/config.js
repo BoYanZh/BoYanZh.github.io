@@ -18,7 +18,7 @@ module.exports = {
   excerptMaxLength: 500,
   birthday: 'Mar. 16, 2000',
   location: 'Shanghai, China',
-  email: 'bomingzh@sjtu.edu.cn',
+  email: 'boyanzh233@gmail.com',
   language: '中文, English',
   postsForArchivePage: 3,
   defaultLanguage: 'en',
