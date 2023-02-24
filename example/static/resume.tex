@@ -54,7 +54,7 @@
 % Sections formatting
 \titleformat{\section}{
   \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
@@ -122,10 +122,10 @@
       {Shanghai Jiao Tong University (UM-SJTU Joint Institute)}{Sept. 2018 - Aug. 2022}
       {BEng in Electrical and Computer Engineering (minor in Computer Science, \textbf{GPA 4.0/4.0})}{Shanghai, China}
           \resumeItemListStart
-            \resumeItem{Relevant Coursework: Intro to OS (A+), Methods and Tools for Big Data (A+), Intro to Crypto. (A)}
+            \resumeItem{Relevant Coursework: Intro to OS (A+), Methods and Tools for Big Data (A+), Data Structures and Algo. (A)}
             \resumeItem{\textbf{2020-2021 Undergraduate Excellent Scholarship}}
             \resumeItem{\textbf{Honors Research Program in the Undergraduate Research Course}}
-            \resumeItem{Outstanding Member of Technology Department UM-SJTU Joint Institute Student Union}
+            \resumeItem{Outstanding Member of Technology Department (as deputy director) UM-SJTU Joint Institute Student Union}
           \resumeItemListEnd
 
   \resumeSubHeaderListEnd
@@ -134,11 +134,13 @@
 \section{Experience}
   \resumeSubHeaderListStart
   \resumeSubHeader
-    {Software Engineer Intern}{Feb. 2022 - Jul. 2022}
-    {\href{https://naivesystems.com}{Naive Systems}}{Shanghai, China}
+    {Software Engineer (Intern to Full-Time)}{Feb. 2022 - Jul. 2022, Nov. 2022 - Present}
+    {\href{https://naivesystems.com}{Naive Systems, advisor Xiao Jia, Kevin Sun}}{Shanghai, China}
     \resumeItemListStart
-      \resumeItem{Take part in a code analyzer and relative DevSecOps products. Implement checkers of some guidelines in MISRA C, based on \textbf{Clang Static Analyzer, Libtooling, and Cppcheck}. Responsible for all checkers' tests.}
-      \resumeItem{Develop a VSCode extension to read protobuf analyzer results. Implement the i18n feature for checkers.}
+      \resumeItem{Take part in a static code analysis product. Implement checkers and test cases for many programming specifications, based on \textbf{Clang Static Analyzer, LibASTMatchers, Infer, and Cppcheck}, using C++ and Golang.}
+      \resumeItem{Check the correctness of the product on open source projects. Write scripts to run unit tests during CI.}
+      \resumeItem{Participate in development of a VSCode extension to read results. Implement the i18n feature for checkers.}
+      \resumeItem{File issues with detailed analysis on llvm project and infer with our own test cases.}
     \resumeItemListEnd
 
     \resumeSubHeader
@@ -154,24 +156,15 @@
       \resumeItemListStart
         \resumeItem{\textbf{Technical leader} of 2 Undergraduate Innovation Practice Programs. Build a risk control center for Shanghai Jiao Tong University School of Medicine, used by over 10 different management systems and over 100 faculties.}
         \resumeItem{Develop a cryptocurrency funding rate arbitrage system in async python to get \textbf{milli-second transaction time}.}
-        \resumeItem{Maintain a filling station hazard CV detection system based on \textbf{NVIDIA Jetson} and \textbf{lock-free queue}.}
       \resumeItemListEnd
 
     \resumeSubHeader
       {Teaching Assistant (Intro to OS, Intro to Comp.)}{Sep. 2020 - Dec. 2020, Sep. 2021 - Dec. 2021}
       {Shanghai Jiao Tong University, advisor Prof. Manuel Charlemagne}{Shanghai, China}
       \resumeItemListStart
-        \resumeItem{Host \textbf{exam review sessions} and \textbf{weekly lab sessions} for at most 100 students. Grade labs and homework.}
-        \resumeItem{Develop an automatic cast-to-cast grading script. Maintain servers for up to 150 students' usage.}
+        \resumeItem{Host \textbf{exam review sessions} and \textbf{weekly lab sessions} for at most 100 students. Grade labs and homework}
+        \resumeItem{Maintain online judge test cases and multiple servers for up to 150 students' usage.}
       \resumeItemListEnd
-
-    \resumeSubHeader
-      {Deputy Director}{Sep. 2018 - Jul. 2019}
-      {Technology Department UM-SJTU Joint Institute Student Union}{Shanghai, China}
-      \resumeItemListStart
-        \resumeItem{Build multimedia system and chatbot with PyQt5 for welcoming party. Write posts on WeChat official accounts.}
-      \resumeItemListEnd
-
 
     \resumeSubHeaderListEnd
 
@@ -180,22 +173,28 @@
 
     \resumeSubHeaderListStart
       \resumeProjectHeader
-        {\href{https://github.com/joint-online-judge}{\textbf{JOJ 2.0}} $|$ \emph{Python3, Cython, PostgreSQL, Redis, Celery, LakeFS, Docker, CGroupsV1, React.js}}{Mar. 2021 - Present}
+        {\href{https://github.com/alist-org/alist}{\textbf{AList (file list program, 21k stars on Github)}} $|$ \emph{Golang, GORM, Solid.js}}{Nov. 2022 - Present}
+        \resumeItemListStart
+          \resumeItem{\textbf{3rd main contributor} of the project. Contribute to multiple drivers and fix security vulnerability.}
+          \resumeItem{Implement the search feature. Take active part in the open source community on Github and Telegram.}
+        \resumeItemListEnd
+      \resumeProjectHeader
+        {\href{https://github.com/joint-online-judge}{\textbf{JOJ 2.0}} $|$ \emph{Python3, Golang, PostgreSQL, Redis, LakeFS, Docker, CGroupsV1, React.js}}{Mar. 2021 - Present}
         \resumeItemListStart
           \resumeItem{Develop an online judge system from scratch for various courses. Provide stable, secure, fast, well-documented online judge service with various integrations for \textbf{over 1000 students in the institute}.}
           \resumeItem{Build the judger's sandbox with \textbf{namespace and containerization} for isolation and measurement.}
         \resumeItemListEnd
       \resumeProjectHeader
-        {\href{https://github.com/SJTU-IPP-Firefighting}{\textbf{Intell. IoT Firefighting System}} $|$ \emph{Python3, Go, MongoDB, Docker, React.js, React Native}}{Mar. 2021 - Feb. 2022}
+        {\href{https://github.com/SJTU-IPP-Firefighting}{\textbf{Intell. IoT Firefighting System}} $|$ \emph{Python3, MongoDB, Docker, React.js, React Native}}{Mar. 2021 - Feb. 2022}
         \resumeItemListStart
           \resumeItem{Start from scratch, build a high perf. firefighting platform (Web + App) based on IoT data. Use an algorithm to detect potential hazards and report fire alarms with high accuracy in buildings to \textbf{save life and money}.}
           \resumeItem{Deploy the system on \textbf{the fire brigade of Shanghai Province}, connected with \textbf{over 7 million IoT devices}.}
         \resumeItemListEnd
       \resumeProjectHeader
-        {\href{https://gist.github.com/BoYanZh/fc4469c20fd6adf42c212114532aaac0}{\textbf{FOCS student system \& related tools}} $|$ \emph{Python3, Go, Node.js, Docker, Nginx, Certbot}}{Nov. 2018 - Present}
+        {\href{https://gist.github.com/BoYanZh/fc4469c20fd6adf42c212114532aaac0}{\textbf{FOCS student system \& related tools}} $|$ \emph{Python3, Golang, Node.js, Docker, Nginx, Certbot}}{Nov. 2018 - Present}
         \resumeItemListStart
           \resumeItem{Develop new features and maintain the online service and software, including online judge, self-service Git platform, CI platform for \textbf{over 300 students from 10 courses each term} to build, test, and grade their codes.}
-          \resumeItem{Build various tools to connect Canvas LMS, Online Judge, and Gitea together, which are widely used by students and teaching assistants in Joint Institute to save their time. Get \textbf{in total 60+ stars} on Github.}
+          \resumeItem{Build various tools to connect Canvas LMS, Online Judge, and Gitea together. Get \textbf{in total 60+ stars} on Github.}
         \resumeItemListEnd
     \resumeSubHeaderListEnd
 
@@ -205,10 +204,9 @@
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Languages}{: Python3, (modern) C++, C (Linux), Go, Typescript, Shell, \LaTeX} \\
-     \textbf{Frameworks}{: FastAPI, Django, Flask, React.js, PyTest, NumPy} \\
-     \textbf{Developer Tools}{: Git, Docker, Github, Drone.io, VSCode, Pre-commit} \\
-     \textbf{Data Management Tools}{: PostgreSQL, MySQL, MongoDB, Redis, RabbitMQ} \\
+     \textbf{Languages}{: Python3, Golang, (modern) C++, C (Linux), Typescript, Shell, \LaTeX} \\
+     \textbf{Frameworks}{: FastAPI, SQLAlchemy, Gin, Fiber, GORM, Django, React.js, PyTest, NumPy} \\
+     \textbf{Developer Tools}{: Git, Docker, Podman, Github Actions, Drone.io, VSCode, Pre-commit} \\
     }}
  \end{itemize}
 
