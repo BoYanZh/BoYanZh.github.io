@@ -109,10 +109,16 @@ module.exports = {
       position: 'left',
       data: [
         {
+          date: 'Nov. 2022 - Present',
+          title: 'Software Engineer',
+          location: 'Naive Systems',
+          description: 'Build a code analyzer and related DevSecOps products.',
+        },
+        {
           date: 'Feb. 2022 - Jul. 2022',
           title: 'Software Engineer Intern',
           location: 'Naive Systems',
-          description: 'Build a code analyzer and relative DevSecOps products.',
+          description: 'Build a code analyzer and related DevSecOps products.',
         },
         {
           date: 'June 2021 - Feb. 2022',
@@ -151,13 +157,13 @@ module.exports = {
           description: 'Advisor: Prof. Mian Li'
         },
         {
-          date: 'July 2021 – Sept. 2021',
+          date: 'July 2021 - Sept. 2021',
           title: 'Website Developer',
           location: 'Advanced Network Laboratory',
           description: 'Advisor: Prof. Xiaofeng Gao'
         },
         {
-          date: 'March 2019 – Dec. 2019',
+          date: 'March 2019 - Dec. 2019',
           title: 'Research Assistant',
           location: 'Institute of Media, Information, and Network',
           description: 'Advisor: Prof. Weiyao Lin'
@@ -169,18 +175,18 @@ module.exports = {
       position: 'right',
       data: [
         {
-          date: 'Sept. 2019 – Present',
+          date: 'Sept. 2019 - Present',
           title: 'Maintainer, Main Contributor',
           location: 'Fans Of Computer Science',
         },
         {
-          date: 'Sept. 2018 – July 2019',
+          date: 'Sept. 2018 - July 2019',
           title: 'Deputy Director',
           location:
             'Technology Department UM-SJTU Joint Institute Student Union',
         },
         {
-          date: 'Sept. 2019 - July 2019',
+          date: 'Sept. 2019 - July 2020',
           title: 'Member',
           location: 'Student Science, Technology and Innovation Association',
         },
@@ -188,7 +194,7 @@ module.exports = {
     },
     {
       title: 'Coursework',
-      position: 'left',
+      position: 'right',
       data: [
         {
           date: 'VE482',
@@ -226,6 +232,10 @@ module.exports = {
     },
   ],
   awards: [
+    {
+      date: 'Aug. 2022',
+      title: 'Honors Research Program in the Undergraduate Research Course'
+    },
     {
       date: 'Nov. 2021',
       title: '2020-2021 Undergraduate Excellent Scholarship',
