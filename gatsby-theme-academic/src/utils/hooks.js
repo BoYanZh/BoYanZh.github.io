@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { useState, useLayoutEffect } from 'react';
 
 /**
- * custom hoook to detect the window size of a broswer
+ * custom hook to detect the window size of a browser
  * @return {Array} [height, width ].
  */
 export const useWindowSize = () => {
