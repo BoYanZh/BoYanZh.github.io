@@ -91,8 +91,8 @@ module.exports = {
       title: 'Full Stack Development',
     },
     {
-      icon: 'network-wired',
-      title: 'Internet of Things',
+      icon: ['solid', 'infinity'],
+      title: 'DevOps',
     },
     {
       icon: ['fab', 'docker'],
