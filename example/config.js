@@ -91,7 +91,7 @@ module.exports = {
       title: 'Full Stack Development',
     },
     {
-      icon: 'infinity',
+      icon: 'terminal',
       title: 'DevOps',
     },
     {
