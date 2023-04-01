@@ -15,7 +15,7 @@ links:
 #     file: "./diretide.pdf"
   - name: "Github Repo"
     url: "https://github.com/BoYanZh/Canvas-Syncer"
-priority: 20
+priority: 5
 ---
 
 <!-- ## Title 1 -->

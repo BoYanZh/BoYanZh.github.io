@@ -15,7 +15,7 @@ links:
 #     file: "./diretide.pdf"
   - name: "Github Repo"
     url: "https://github.com/BoYanZh/QQ-Group-Repeater"
-priority: 20
+priority: 6
 ---
 
 <!-- ## Title 1 -->

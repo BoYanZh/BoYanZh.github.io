@@ -24,7 +24,7 @@ links:
     url: "https://github.com/BoYanZh/gitea"
   - name: "Joint Teapot Repo"
     url: "https://github.com/BoYanZh/Joint-Teapot"
-priority: 20
+priority: 4
 ---
 
 <!-- ## Title 1 -->

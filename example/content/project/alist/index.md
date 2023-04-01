@@ -17,7 +17,7 @@ links:
     url: "https://alist.nn.ci/"
   - name: "Github Repo"
     url: "https://github.com/alist-org/alist"
-priority: 30
+priority: 0
 ---
 
 <!-- ## Title 1 -->

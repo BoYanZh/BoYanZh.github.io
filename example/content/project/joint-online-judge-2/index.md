@@ -27,7 +27,7 @@ links:
     url: "https://github.com/joint-online-judge/horse"
   - name: "Judger Repo"
     url: "https://github.com/joint-online-judge/tiger"
-priority: 20
+priority: 1
 ---
 
 <!-- ## Title 1 -->

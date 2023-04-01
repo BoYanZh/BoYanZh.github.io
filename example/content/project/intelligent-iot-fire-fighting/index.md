@@ -25,7 +25,7 @@ links:
 #     file: "./diretide.pdf"
   - name: "Organization page"
     url: "https://github.com/SJTU-IPP-Firefighting"
-priority: 20
+priority: 3
 ---
 
 <!-- ## Title 1 -->

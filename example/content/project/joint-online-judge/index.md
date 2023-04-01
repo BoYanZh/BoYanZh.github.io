@@ -19,7 +19,7 @@ links:
     url: "https://github.com/joint-online-judge/cb4"
   - name: "JOJ Judger Repo"
     url: "https://github.com/joint-online-judge/jd4"
-priority: 20
+priority: 2
 ---
 
 <!-- ## Title 1 -->
