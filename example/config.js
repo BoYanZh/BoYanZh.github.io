@@ -13,7 +13,7 @@ module.exports = {
     'Get my coding statistics here since entering college: [![wakatime](https://wakatime.com/badge/user/8dcab400-e2d4-43ad-8a8f-7a94a34ea7b6.svg)](https://wakatime.com/@8dcab400-e2d4-43ad-8a8f-7a94a34ea7b6).',
   ],
   avatar: 'avatar.png',
-  professions: ['Undergraduate Student', 'Full-Stack Developer'],
+  professions: ['Graduate Student', 'Full-Stack Developer'],
   tocMaxDepth: 2,
   excerptMaxLength: 500,
   birthday: 'Mar. 16, 2000',
@@ -73,9 +73,15 @@ module.exports = {
   googleAnalyticTrackingId: process.env.GA_TRACKING_ID || 'UA-XXXXXXXXX-X',
   education: [
     {
+      date: 'Aug.2023 - Present',
+      icon: 'university',
+      title: 'MSc in Computer Science',
+      location: 'University of Georgia (School of Computing)',
+    },
+    {
       date: 'Sept. 2018 - Aug. 2022',
       icon: 'university',
-      title: 'B.S.E. in Electrical and Computer Engineering (minor in Computer Science)',
+      title: 'BEng in Electrical and Computer Engineering (minor in Computer Science)',
       location: 'Shanghai Jiao Tong University (UM-SJTU Joint Institute)',
     },
     {
@@ -109,7 +115,7 @@ module.exports = {
       position: 'left',
       data: [
         {
-          date: 'Nov. 2022 - Present',
+          date: 'Nov. 2022 - Jul. 2023',
           title: 'Software Engineer',
           location: 'Naive Systems',
           description: 'Build a code analyzer and related DevSecOps products.',
@@ -175,7 +181,7 @@ module.exports = {
       position: 'right',
       data: [
         {
-          date: 'Sept. 2019 - Present',
+          date: 'Nov. 2018 - Present',
           title: 'Maintainer, Main Contributor',
           location: 'Fans Of Computer Science',
         },
