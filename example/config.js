@@ -4,7 +4,7 @@ module.exports = {
   title: 'BoYanZh',
   description: 'Personal Website of BoYanZh',
   author: 'Boming ZHANG',
-  authorAlternative: '张泊明',
+  // authorAlternative: '张泊明',
   introduction: [
     'Hi there, I am BoYanZh (Boming Zhang). I am a software developer from China. 🇨🇳',
     'I am keen on writing high-quality, readable, and maintainable codes with the help of check tools. Also, automating the whole process from development to deployment with CI/CD is one of my interests.',
