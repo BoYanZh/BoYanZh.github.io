@@ -51,7 +51,7 @@ module.exports = {
       icon: ['fab', 'telegram'],
     },
     {
-      url: 'https://www.linkedin.com/in/boming-zhang-1aba46244/',
+      url: 'https://www.linkedin.com/in/bomingzh',
       icon: ['fab', 'linkedin'],
     },
     {
