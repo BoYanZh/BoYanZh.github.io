@@ -28,7 +28,7 @@ export default () => {
         {' style markdown'} */}
           {`Last Updated on ${buildTime}. `}
           {'Powered by '}
-          <a href="https://github.com/BoYanZh/greatest-gatsby-academic-template">
+          <a href="https://github.com/BoYanZh/BoYanZh.github.io">
             greatest-gatsby-academic-template
           </a>
           .
