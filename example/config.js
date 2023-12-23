@@ -73,7 +73,7 @@ module.exports = {
   googleAnalyticTrackingId: process.env.GA_TRACKING_ID || 'UA-XXXXXXXXX-X',
   education: [
     {
-      date: 'Aug.2023 - Present',
+      date: 'Aug. 2023 - Present',
       icon: 'university',
       title: 'MSc in Computer Science',
       location: 'University of Georgia (School of Computing)',

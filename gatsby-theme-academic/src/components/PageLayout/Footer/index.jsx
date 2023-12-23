@@ -27,9 +27,10 @@ export default () => {
         <a href="https://github.com/">GitHub</a>
         {' style markdown'} */}
           {`Last Updated on ${buildTime}. `}
+          <br/>
           {'Powered by '}
           <a href="https://github.com/BoYanZh/BoYanZh.github.io">
-            greatest-gatsby-academic-template
+            GPWTAU
           </a>
           .
         </Typography.Text>
