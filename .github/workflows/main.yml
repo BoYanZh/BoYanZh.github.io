@@ -43,6 +43,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: yarn
+      - run: yarn config set strict-ssl false
       - run: yarn
       - run: yarn workspace example build
       - name: Deploy to GitHub Pages
