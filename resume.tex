@@ -118,51 +118,9 @@
     \href{https://www.linkedin.com/in/bomingzh}{\underline{linkedin.com/in/bomingzh}}
 \end{center}
 
-\vspace{-15pt}
-\section{Summary of Qualifications}
-\resumeItemListStart
-  \setlength\itemsep{0em}
-  % \resumeItem{Experienced software engineer with a strong background in static code analysis and web development.}
-  % \resumeItem{Proficient in multiple programming languages, with a focus on building web applications and system software.}
-  % \resumeItem{Active contributor to open-source projects, demonstrating a commitment to collaborative development.}
-  \resumeItem{Experienced software engineer, skilled in static code analysis, bug detection, and full-stack development.}
-  \resumeItem{Active open-source contributor and innovative problem solver dedicated to delivering quality software solutions.}
-  \resumeItem{Proficient in building software from scratch, with the ability to architect, develop, and deploy independently.}
-\resumeItemListEnd
+% \vspace{-15pt}
 
-\vspace{-10pt}
-%------EDUCATION------
-\section{Education}
-  \resumeSubHeaderListStart
-    \resumeSubHeader
-      {University of Georgia (School of Computing)}{Aug. 2023 - Present}
-      {MSc in Computer Science}{Athens, GA}
-    \resumeSubHeader
-      {Shanghai Jiao Tong University (UM-SJTU Joint Institute, ABET acred.)}{Sept. 2018 - Aug. 2022}
-      {BEng in Electrical and Computer Engineering (minor in Computer Science, \textbf{GPA 4.0/4.0})}{Shanghai, China}
-          \resumeItemListStart
-            \resumeItem{Relevant Coursework: Intro to OS (A+), Methods and Tools for Big Data (A+), Data Structures and Algo. (A)}
-            \resumeItem{\textbf{2020-2021 Undergraduate Excellent Scholarship}}
-            \resumeItem{\textbf{Honors Research Program in the Undergraduate Research Course}}
-            \resumeItem{Outstanding Member of Technology Department (as deputy director) UM-SJTU Joint Institute Student Union}
-          \resumeItemListEnd
-  \resumeSubHeaderListEnd
-
-\vspace{-10pt}
-%------TECHNICAL SKILLS------
-\section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-  \setlength\itemsep{0em}
-    \small{
-      \setlength\itemsep{0em}
-      \item{
-     \textbf{Languages}{: Python3, Golang, (modern) C++, C (Linux), Shell, SQL, MQL, Typescript, \LaTeX} \\
-     \textbf{Frameworks}{: FastAPI, SQLAlchemy, Go Gin, Go Fiber, GORM, Django, React.js, PyTest, NumPy, Electron} \\
-     \textbf{Softwares}{: Git, Docker, Podman, PostgreSQL, MongoDB, Redis, Nginx, GitHub Actions, Drone.io, VSCode, Vim} \\
-    }}
- \end{itemize}
-
-\vspace{-15pt}
+% \vspace{-15pt}
 %------EXPERIENCE------
 \section{Experience}
   \resumeSubHeaderListStart
@@ -170,17 +128,19 @@
     {Software Engineer (Intern to Full-Time)}{Feb. 2022 - Jul. 2022, Nov. 2022 - Jul. 2023}
     {\href{https://naivesystems.com}{Naive Systems}, advisor Xiao Jia, Kevin Sun}{Shanghai, China}
     \resumeItemListStart
-      \resumeItem{Take part in developing a static code analysis product to detect potential bugs and hazards in the customers' code. \\Implement checkers and test cases for many programming specifications, like CWE, google cpp, and MISRA C, based on \textbf{Clang Static Analyzer, LibASTMatchers, and Cppcheck}, using C, C++ and Golang.}
-      \resumeItem{Participate in developing a VSCode extension to read results. Implement the i18n feature with Protobuf.}
-      \resumeItem{File issues with detailed analysis on \href{https://github.com/llvm/llvm-project/issues/60412}{llvm project}. Dig deep into the Clang Static Analyzer source code.}
+      \resumeItem{Develop a static code analysis product. Implement checkers and test cases for programming specifications based on \textbf{LLVM, and CppCheck}, utilizing \textbf{syntax trees, lexical analysis, and symbolic execution}.}
+      \resumeItem{Submit bug report with analysis on \href{https://github.com/llvm/llvm-project/issues/60412}{llvm-project}, which \textbf{reduces false-negative on 10\% translation units}.}
+      \resumeItem{Build multi-process unit test scripts. Boost the test time to \textbf{25x times faster} and detect 20+ false positive cases.}
+      \resumeItem{Develop a VSCode extension to read protobuf results. Implement the i18n feature with Protobuf.}
     \resumeItemListEnd
 
     \resumeSubHeader
       {Research \& Development Engineer Intern}{Jun. 2021 - Feb. 2022}
       {Shanghai Zhimian Weiye Technology, advisor Prof. Mian Li, Dr. Ruixiang Zheng}{Shanghai, China}
       \resumeItemListStart
-        \resumeItem{Build Intell. IoT Firefighting System project. Design the architecture, and work as \textbf{a full-stack developer}.}
-        \resumeItem{\textbf{Technical leader} of 2 Undergraduate Innovation Practice Programs. Both develop full-stack web applications.}
+        \resumeItem{Start from scratch, build a high perf. firefighting platform (Web + App) based on IoT data. Use FAHP algorithm to detect potential hazards and report \textbf{95\% less false fire alarms in milliseconds response time}.}
+        \resumeItem{Deploy the system on \textbf{the fire brigade of Shanghai Province}, connected with \textbf{over 7 million IoT devices}.}
+        \resumeItem{Technical leader of 2 Undergraduate Innovation Practice Programs, developing full-stack web applications.}
       \resumeItemListEnd
 
     % \resumeSubHeader
@@ -198,39 +158,72 @@
         \resumeItem{Maintain online judge test cases and multiple servers for up to 150 students as part of the FOCS student system.}
       \resumeItemListEnd
 
+    \resumeSubHeader
+    {Deputy Director}{Sep. 2018 - Aug. 2019}
+      {Technology Department UM-SJTU Joint Institute Student Union, Shanghai Jiao Tong University}{Shanghai, China}
+      \resumeItemListStart
+        \resumeItem{Build audience interaction multimedia system using PyQt5 for welcoming parties, used by over 300 students.}
+        \resumeItem{Hold workshops and write posts on WeChat about developing and tech every month, have in total 2k+ reads.}
+      \resumeItemListEnd
     \resumeSubHeaderListEnd
 
 %------PROJECTS------
-\vspace{-10pt}
+% \vspace{-10pt}
 \section{Projects}
     \resumeSubHeaderListStart
       \resumeProjectHeader
-        {\href{https://github.com/alist-org/alist}{\textbf{AList (Github 30.3k stars)}} $|$ \emph{Golang, Go Gin, GORM, Solid.js}}{Nov. 2022 - Present}
+        {\href{https://github.com/alist-org/alist}{\textbf{AList (Github 30.3k stars)}} $|$ \emph{Golang, Go Gin, GORM, Solid.js, WebDAV, SMB, S3, FTP}}{Nov. 2022 - Present}
         \resumeItemListStart
-          \resumeItem{Contribute to the open source project, a file list/WebDAV program as the \textbf{3rd main contributor}.}
-          \resumeItem{Implement and fix multiple storage drivers, analyze protocols and packets, and fix security vulnerabilities.}
-          \resumeItem{Implement the search feature. Take an active part in the open-source community on GitHub and Telegram.}
+          \resumeItem{\textbf{3rd main contributor} of the project, which provides unified API and WebDAV of multiple storage protocols and cloud storage services to let the users manage their files and share resources. Implement multiple storage drivers.}
+          % \resumeItem{Implement and fix multiple storage drivers, analyze protocols and packets, and fix security vulnerabilities.}
+          \resumeItem{Design and implement the search feature, which is \textbf{the most highly requested feature} by users for years.}
         \resumeItemListEnd
+        % {\href{https://github.com/SJTU-IPP-Firefighting}{\textbf{Intell. IoT Firefighting System}} $|$ \emph{Python3, MongoDB, Docker, React.js, React Native}}{Mar. 2021 - Feb. 2022}
       \resumeProjectHeader
-        {\href{https://github.com/SJTU-IPP-Firefighting}{\textbf{Intell. IoT Firefighting System}} $|$ \emph{Python3, MongoDB, Docker, React.js, React Native}}{Mar. 2021 - Feb. 2022}
+        {\href{https://github.com/joint-online-judge}{\textbf{JOJ 2.0}} $|$ \emph{Python3, Golang, PostgreSQL, Redis, LakeFS, Docker, CGroups, React.js}}{Mar. 2021 - Aug. 2022}
         \resumeItemListStart
-          \resumeItem{Start from scratch, build a high perf. firefighting platform (Web + App) based on IoT data. Use an algorithm to detect potential hazards and report fire alarms with high accuracy in buildings to \textbf{save life and money}.}
-          \resumeItem{Deploy the system on \textbf{the fire brigade of Shanghai Province}, connected with \textbf{over 7 million IoT devices}.}
-        \resumeItemListEnd
-      \resumeProjectHeader
-        {\href{https://github.com/joint-online-judge}{\textbf{JOJ 2.0}} $|$ \emph{Python3, Golang, PostgreSQL, Redis, LakeFS, Docker, CGroupsV1, React.js}}{Mar. 2021 - Aug. 2022}
-        \resumeItemListStart
-          \resumeItem{Develop an online judge system from scratch for various courses. Provide stable, secure, fast, well-documented online judge service with various integrations for \textbf{over 1000 students in the institute}.}
-          \resumeItem{Build the judger's sandbox with \textbf{namespace and containerization} for isolation and measurement.}
+          \resumeItem{Develop a distributed online judge system from scratch for various courses. Provide stable, secure, fast, well-documented online judge service with various integrations for \textbf{over 1000 students in the institute}.}
+          \resumeItem{Build the judger's sandbox with \textbf{namespace and containerization} for isolation and accurate measurement.}
         \resumeItemListEnd
       \resumeProjectHeader
         {\href{https://gist.github.com/BoYanZh/fc4469c20fd6adf42c212114532aaac0}{\textbf{FOCS student system \& related tools}} $|$ \emph{Python3, Golang, Node.js, Docker, Nginx, Certbot}}{Nov. 2018 - Present}
         \resumeItemListStart
           \resumeItem{Develop new features and tools. Maintain the online service and software, including online judge, self-service Git, and CI platform for \textbf{over 300 students from 10 courses each term} to build, test, and grade their codes.}
+          \resumeItem{Publish packages and scripts to provide CLI interface for automation. Have \textbf{200+ PyPI downloads per month}. \\}
+          \resumeItem{Integrate Git service and online judge using CI platform, improve the submission speed by 4x times faster.}
         \resumeItemListEnd
     \resumeSubHeaderListEnd
 
+%------TECHNICAL SKILLS------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+  \setlength\itemsep{0em}
+    \small{
+      \setlength\itemsep{0em}
+      \item{
+     \textbf{Languages}{: Python3, Golang, (modern) C++, C (Linux), Shell, SQL, MQL, Typescript, \LaTeX} \\
+     \textbf{Softwares}{: Git, Docker, Podman, PostgreSQL, MongoDB, Redis, Nginx, GitHub Actions, Drone.io, VSCode, Vim} \\
+     \textbf{Frameworks}{: FastAPI, SQLAlchemy, Go Gin, Go Fiber, GORM, Django, React.js, PyTest, NumPy, Electron} \\
+    }}
+ \end{itemize}
 
+% \vspace{-10pt}
+%------EDUCATION------
+\section{Education}
+  \resumeSubHeaderListStart
+    \resumeSubHeader
+      {University of Georgia (School of Computing)}{Aug. 2023 - Present}
+      {MSc in Computer Science}{Athens, GA}
+    \resumeSubHeader
+      {Shanghai Jiao Tong University (UM-SJTU Joint Institute, ABET acred.)}{Sept. 2018 - Aug. 2022}
+      {BEng in Electrical and Computer Engineering (minor in Computer Science, \textbf{GPA 4.0/4.0})}{Shanghai, China}
+          \resumeItemListStart
+            \resumeItem{Relevant Coursework: Intro to OS (A+), Methods and Tools for Big Data (A+), Data Structures and Algo. (A)}
+            \resumeItem{\textbf{2020-2021 Undergraduate Excellent Scholarship}}
+            % \resumeItem{\textbf{Honors Research Program in the Undergraduate Research Course}}
+            % \resumeItem{Outstanding Member of Technology Department (as deputy director) UM-SJTU Joint Institute Student Union}
+          \resumeItemListEnd
+  \resumeSubHeaderListEnd
 
 %----------------------
 \end{document}
