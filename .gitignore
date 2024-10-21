@@ -70,6 +70,6 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-/example/static/resume.*
-!/example/static/resume.tex
+/example/static/*resume.*
+!/example/static/*resume.tex
 /example/static/reference
