@@ -42,8 +42,8 @@ jobs:
         if: steps.cache-resume-pdf.outputs.cache-hit != 'true'
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: example/static/system_resume.tex
-          post_compile: "rm example/static/system_resume.tex && cp system_resume.pdf example/static/system_resume.pdf"
+          root_file: example/static/old_resume.tex
+          post_compile: "rm example/static/old_resume.tex && cp old_resume.pdf example/static/old_resume.pdf"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:

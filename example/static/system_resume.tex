@@ -13,12 +13,18 @@
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{verbatim}
 \usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
 \input{glyphtounicode}
-
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=[rgb]{0.6,0,0.6},
+    filecolor=[rgb]{0.6,0,0.6},
+    urlcolor=[rgb]{0.6,0,0.6},
+    citecolor=[rgb]{0.6,0,0.6}
+}
 
 %-----FONT OPTIONS-----
 % sans-serif
@@ -117,7 +123,7 @@
   \resumeSubHeaderListStart
   \resumeSubHeader
     {Project Contributor}{Jul. 2024 - Present}
-    {The University of Georgia, advisor Prof. Le Guan}{Athens, GA}
+    {The University of Georgia, advisor \href{https://guanle.org/}{Prof. Le Guan}}{Athens, GA}
     \resumeItemListStart
       \resumeItem{Developing an \textbf{LLVM pass plugin} for advanced fuzz testing on communication protocols (USB, Bluetooth) for ARM32 embedded devices.}
     \resumeItemListEnd
@@ -127,22 +133,22 @@
     \resumeItemListStart
       \resumeItem{Developed a static code analysis product using \textbf{LLVM}, focusing on system-level programming specifications.}
       \resumeItem{Implemented checkers utilizing \textbf{syntax trees, lexical analysis, and symbolic execution} for code analysis.}
-      \resumeItem{Contributed to \textbf{LLVM}, submitting a bug report that reduced false-negatives by 10\% in translation units.}
+      \resumeItem{Contributed to \textbf{LLVM}, submitting a \href{https://github.com/llvm/llvm-project/issues/60412}{bug report} that reduced false-negatives by 10\% in translation units.}
       \resumeItem{Optimized multi-process unit testing, achieving a \textbf{25x speedup} in test execution time.}
     \resumeItemListEnd
 
   \resumeSubHeader
-    {Research \& Development Engineer Intern}{Jun. 2021 - Feb. 2022}
-    {Shanghai Zhimian Weiye Technology, advisor Prof. Mian Li, Dr. Ruixiang Zheng}{Shanghai, China}
+    {Fullstack Development Engineer Intern}{Jun. 2021 - Feb. 2022}
+    {Shanghai Zhimian Weiye Technology, advisor \href{https://sites.ji.sjtu.edu.cn/ido/professor/}{Prof. Mian Li}, Dr. Ruixiang Zheng}{Shanghai, China}
     \resumeItemListStart
-      \resumeItem{Built a IoT firefighting platform \textbf{from scratch}, focusing on \textbf{real-time system responsiveness}.}
-      \resumeItem{With algorithm for efficient hazard detection, reducing false alarms by 95\% with \textbf{millisecond response times}.}
+      \resumeItem{Start from scratch, built a high perf. firefighting platform (Web + App) based on IoT data. Used FAHP algorithm to detect potential hazards and report \textbf{95\% less false fire alarms} in \textbf{milliseconds response time}.}
       \resumeItem{Scaled the system to handle data from \textbf{over 7 million IoT devices}, while keeping high availability.}
+      \resumeItem{Deployed the system on \textbf{the fire brigade of Shanghai Province}.}
     \resumeItemListEnd
 
   \resumeSubHeader
-    {Teaching Assistant (Intro to OS, Intro to Comp.)}{Sep. 2020 - Dec. 2020, Sep. 2021 - Dec. 2021}
-    {Shanghai Jiao Tong University, advisor Prof. Manuel Charlemagne}{Shanghai, China}
+    {Teaching Assistant (\href{https://www.ji.sjtu.edu.cn/academics/courses/courses-by-number/course-info/?id=444}{Intro to OS}, \href{https://www.ji.sjtu.edu.cn/academics/courses/courses-by-number/course-info/?id=74}{Intro to Computers and Programming})}{Fall 2020, Fall 2021}
+    {Shanghai Jiao Tong University, advisor \href{https://www.ji.sjtu.edu.cn/about/faculty-staff/faculty-directory/faculty-detail/76/}{Prof. Manuel Charlemagne}}{Shanghai, China}
     \resumeItemListStart
       \resumeItem{Conducted lab sessions on operating systems concepts, including process management, memory allocation.}
       \resumeItem{Maintain online judge test cases and multiple servers for up to 150 students as part of the FOCS student system.}
@@ -154,10 +160,8 @@
       \resumeProjectHeader
         {\href{https://github.com/joint-online-judge}{\textbf{Joint Online Judge}} $|$ \emph{Python3, Golang, PostgreSQL, Redis, Docker, CGroups, React.js}}{Mar. 2021 - Present}
         \resumeItemListStart
-        % \resumeItem{Develop and maintain a distributed online judge system from scratch for various courses. Provide stable, secure, fast, well-documented online judge service with various integrations for \textbf{over 1000 students in the institute}.}
-        %   \resumeItem{Implemented a secure sandbox environment using \textbf{Linux namespaces and containerization} for code execution and resource isolation.}
-          \resumeItem{\textbf{Led a team of 6 undergraduate students} to develop and maintain a distributed online judge system from scratch. Provide stable, secure, fast, well-documented online judge service with various integrations for \textbf{over 1000 students in the institute}.}
-          \resumeItem{Built secure sandbox using \textbf{Linux namespaces} and containerization for process isolation.}
+          \resumeItem{\textbf{Led a team of 6 undergraduate students} to develop and maintain a distributed online judge system. Provide stable, secure, fast, well-documented online judge service with various integrations for \textbf{over 1000 students}.}
+          \resumeItem{Built secure sandbox using \textbf{Linux namespaces and containerization} for process isolation.}
           \resumeItem{Established development workflows, coordinated feature implementations, and mentored team members on system design and best practices of software engineering.}
         \resumeItemListEnd
       \resumeProjectHeader
@@ -168,9 +172,9 @@
           \resumeItem{Analyzed low-level protocols and network packets to improve system performance and security.}
         \resumeItemListEnd
       \resumeProjectHeader
-        {\href{https://gist.github.com/BoYanZh/fc4469c20fd6adf42c212114532aaac0}{\textbf{FOCS student system \& related tools}} $|$ \emph{Python3, Golang, Node.js, Docker, Nginx}}{Nov. 2018 - Present}
+        {\href{https://gist.github.com/BoYanZh/fc4469c20fd6adf42c212114532aaac0}{\textbf{FOCS student system}} $|$ \emph{Python3, Golang, Node.js, Docker, Nginx}}{Nov. 2018 - Present}
         \resumeItemListStart
-          \resumeItem{Maintained a comprehensive academic platform including online judge, Git service with CI platform.}
+          \resumeItem{Maintained a comprehensive academic platform including online judge, Git service with CI platform for \textbf{over 300 students from 10 courses each term} to build, test, and grade their codes.}
           \resumeItem{Improving Git service and online judge integration with CI platform and scripts for 4x faster submissions.}
           \resumeItem{Developed CLI tools for system automation, garnering 200+ monthly downloads on PyPI.}
         \resumeItemListEnd
@@ -180,9 +184,8 @@
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{
       \item{
-     \textbf{Languages}{: C, C++, Python3, Golang, LLVM IR, Assembly (x86, ARM), Shell, SQL} \\
-     \textbf{Systems \& Tools}{: Linux, Git, Docker, Podman, LLVM, GDB, Valgrind, Wireshark, VMware} \\
-     \textbf{Concepts}{: Operating Systems, Computer Architecture, Distributed Systems, Networking Protocols, Concurrency} \\
+     \textbf{Languages}{: Python3, Golang, C, (moderm) C++, LLVM IR, Javascript, Assembly, Shell, SQL} \\
+     \textbf{Systems \& Tools}{: Linux, Git, Docker, LLVM, GDB, Valgrind, Wireshark} \\
      \textbf{Databases \& Services}{: PostgreSQL, MongoDB, Redis, Nginx, GitHub Actions, Drone.io}
     }}
  \end{itemize}
