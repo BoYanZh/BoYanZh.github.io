@@ -132,14 +132,13 @@
     {Project Contributor}{Jul. 2024 - Present}
     {The University of Georgia, advisor \href{https://guanle.org/}{Prof. Le Guan}}{Athens, GA}
     \resumeItemListStart
-      \resumeItem{Developing an \textbf{LLVM pass plugin} for advanced fuzz testing on communication protocols (USB, Bluetooth) for ARM32 embedded devices.}
+      \resumeItem{Developing an \textbf{LLVM pass plugin}, manipulating IR, for advanced fuzz testing on embeded device protocols.}
     \resumeItemListEnd
   \resumeSubHeader
     {Software Engineer (Intern, Full-Time)}{Feb. 2022 - Jul. 2022, Nov. 2022 - Jul. 2023}
     {\href{https://naivesystems.com}{Naive Systems}, advisor Xiao Jia, Kevin Sun}{Shanghai, China}
     \resumeItemListStart
-      \resumeItem{Developed a static code analysis product using \textbf{LLVM}, focusing on system-level programming specifications.}
-      \resumeItem{Implemented checkers utilizing \textbf{syntax trees, lexical analysis, and symbolic execution} for code analysis.}
+      \resumeItem{Developed a static code analysis product using \textbf{LLVM}, focusing on system-level programming specifications. Implemented \href{https://github.com/naivesystems/analyze}{100+ checkers} utilizing \textbf{syntax trees, lexical analysis, symbolic execution} for code analysis.}
       \resumeItem{Contributed to \textbf{LLVM}, submitting a \href{https://github.com/llvm/llvm-project/issues/60412}{bug report} that reduced false-negatives by 10\% in translation units.}
       \resumeItem{Optimized multi-process unit testing, achieving a \textbf{25x speedup} in test execution time.}
     \resumeItemListEnd
@@ -148,7 +147,7 @@
     {Full Stack Development Engineer Intern}{Jun. 2021 - Feb. 2022}
     {Shanghai Zhimian Weiye Technology, advisor \href{https://sites.ji.sjtu.edu.cn/ido/professor/}{Prof. Mian Li}, Dr. Ruixiang Zheng}{Shanghai, China}
     \resumeItemListStart
-      \resumeItem{Start from scratch, built a high perf. firefighting platform (Web + App) based on IoT data. Used FAHP algorithm to detect potential hazards and report \textbf{95\% less false fire alarms} in \textbf{milliseconds response time}.}
+      \resumeItem{Start from scratch, built \href{https://github.com/SJTU-IPP-Firefighting}{a high perfermance firefighting platform (Web + App)} based on IoT data. Used FAHP algorithm to detect potential hazards and report \textbf{95\% less false fire alarms} in \textbf{milliseconds response time}.}
       \resumeItem{Scaled the system to handle data from \textbf{over 7 million IoT devices}, while keeping high availability.}
       \resumeItem{Deployed the system on \textbf{the fire brigade of Shanghai Province}.}
     \resumeItemListEnd
@@ -157,8 +156,9 @@
     {Teaching Assistant (\href{https://www.ji.sjtu.edu.cn/academics/courses/courses-by-number/course-info/?id=444}{Intro to OS}, \href{https://www.ji.sjtu.edu.cn/academics/courses/courses-by-number/course-info/?id=74}{Intro to Computers and Programming})}{Fall 2020, Fall 2021}
     {Shanghai Jiao Tong University, advisor \href{https://www.ji.sjtu.edu.cn/about/faculty-staff/faculty-directory/faculty-detail/76/}{Prof. Manuel Charlemagne}}{Shanghai, China}
     \resumeItemListStart
-      \resumeItem{Conducted lab sessions on operating systems concepts, including process management, memory allocation.}
-      \resumeItem{Maintain online judge test cases and multiple servers for up to 150 students as part of the FOCS student system.}
+      \resumeItem{Conducted weekly lab sessions on operating systems concepts, including process management, memory allocation.}
+      % \resumeItem{Maintain online judge test cases and multiple servers for up to 150 students as part of the FOCS student system.}
+      \resumeItem{Resolved 200+ technical issues through office hours and online support channels.}
     \resumeItemListEnd
   \resumeSubHeaderListEnd
 
@@ -167,9 +167,9 @@
       \resumeProjectHeader
         {\href{https://github.com/joint-online-judge}{\textbf{Joint Online Judge}} $|$ \emph{Python3, Golang, PostgreSQL, Redis, Docker, CGroups, React.js}}{Mar. 2021 - Present}
         \resumeItemListStart
-          \resumeItem{\textbf{Led a team of 6 undergraduate students} to develop and maintain a distributed online judge system. Provide stable, secure, fast, well-documented online judge service with various integrations for \textbf{over 1000 students}.}
+          \resumeItem{\textbf{Led a team of 6 undergraduate students} to develop and maintain a distributed online judge system based on Gitea Actions. Provide online judge service for \textbf{1000+ students} and \textbf{10000+ submissions monthly}.}
           \resumeItem{Built secure sandbox using \textbf{Linux namespaces and containerization} for process isolation.}
-          \resumeItem{Established development workflows, coordinated feature implementations, and mentored team members on system design and best practices of software engineering.}
+          \resumeItem{Established workflows, coordinated feature implementations, and mentored team members on system design.}
         \resumeItemListEnd
       \resumeProjectHeader
         {\textbf{\href{https://github.com/alist-org/alist}{AList} (Github 42.3k stars)} $|$ \emph{Golang, Go Gin, GORM, Solid.js, WebDAV, SMB, S3, FTP}}{Nov. 2022 - May. 2023}
@@ -184,6 +184,7 @@
           \resumeItem{Maintained a comprehensive academic platform including online judge, Git service with CI platform for \textbf{over 300 students from 10 courses each term} to build, test, and grade their codes.}
           \resumeItem{Improving Git service and online judge integration with CI platform and scripts for 4x faster submissions.}
           \resumeItem{Developed CLI tools for system automation, garnering 200+ monthly downloads on PyPI.}
+          \resumeItem{Improved system uptime to 99.99\% by implementing automated health checks and failover mechanisms.}
         \resumeItemListEnd
     \resumeSubHeaderListEnd
 
@@ -191,9 +192,10 @@
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{
       \item{
-     \textbf{Languages}{: Python3, Golang, C, (moderm) C++, LLVM IR, Javascript, Assembly, Shell, SQL} \\
-     \textbf{Systems \& Tools}{: Linux, Git, Docker, LLVM, GDB, Valgrind, Wireshark} \\
-     \textbf{Databases \& Services}{: PostgreSQL, MongoDB, Redis, Nginx, GitHub Actions, Drone.io}
+     \textbf{Languages}{: Python3, Golang, C, (modern) C++, LLVM IR, JavaScript, Assembly, Shell, SQL} \\
+     \textbf{Systems \& Tools}{: Linux, Git, Docker, LLVM, GDB, Valgrind, Wireshark, Ghidra} \\
+     \textbf{Frameworks \& Libraries}{: Django, FastAPI, SQLAlchemy, Go Gin, Go Fiber, GORM, React.js, Protocol Buffers} \\
+     \textbf{Databases \& Services}{: PostgreSQL, MongoDB, Redis, Nginx, GitHub Actions, Drone.io, Jenkins}
     }}
  \end{itemize}
 
