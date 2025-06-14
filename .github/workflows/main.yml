@@ -38,12 +38,12 @@ jobs:
         with:
           root_file: example/static/resume.tex
           post_compile: "rm example/static/resume.tex && cp resume.pdf example/static/resume.pdf"
-      - name: Build system resume pdf
-        if: steps.cache-resume-pdf.outputs.cache-hit != 'true'
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: example/static/old_resume.tex
-          post_compile: "rm example/static/old_resume.tex && cp old_resume.pdf example/static/old_resume.pdf"
+      # - name: Build system resume pdf
+      #   if: steps.cache-resume-pdf.outputs.cache-hit != 'true'
+      #   uses: xu-cheng/latex-action@v2
+      #   with:
+      #     root_file: example/static/old_resume.tex
+      #     post_compile: "rm example/static/old_resume.tex && cp old_resume.pdf example/static/old_resume.pdf"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
