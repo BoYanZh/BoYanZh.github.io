@@ -6,14 +6,14 @@ module.exports = {
   author: 'Boming ZHANG',
   authorAlternative: 'BoYanZh',
   introduction: [
-    'Hi there, I am BoYanZh (Boming Zhang). I am a software developer from China. 🇨🇳',
+    'Hi there, I am BoYanZh (Boming Zhang). I am a software engineer at TikTok, based in San Jose, originally from 🇨🇳 China.',
     'I am keen on writing high-quality, readable, and maintainable codes with the help of check tools. Also, automating the whole process from development to deployment with CI/CD is one of my interests.',
     'I like to build software with real-world impact and is accessible by everyone and everywhere. So I have taken part in plenty of Web projects, working mainly on the backend side with `Python3` and `Go`. I am trying to dive deeper and deeper into the backend side.',
     'I have built lots of handy tools and platforms for my undergraduate institute. They mainly aim at making the life of students easier. Check this [Gist](https://gist.github.com/BoYanZh/fc4469c20fd6adf42c212114532aaac0) for a collection of useful tools built by other students and me!',
     'Get my coding statistics here since entering college: [![wakatime](https://wakatime.com/badge/user/8dcab400-e2d4-43ad-8a8f-7a94a34ea7b6.svg)](https://wakatime.com/@8dcab400-e2d4-43ad-8a8f-7a94a34ea7b6).',
   ],
   avatar: 'avatar.png',
-  professions: ['Graduate Student', 'Full-Stack Developer'],
+  professions: ['Graduate Student', 'Backend Engineer'],
   tocMaxDepth: 2,
   excerptMaxLength: 500,
   birthday: 'Mar. 16',
@@ -115,21 +115,27 @@ module.exports = {
       position: 'left',
       data: [
         {
+          date: 'Jul. 2025 - Now',
+          title: 'Backend Engineer',
+          location: 'TikTok @ San Jose',
+          description: 'Work on privacy and transparency products.'
+        },
+        {
           date: 'Nov. 2022 - Jul. 2023',
           title: 'Software Engineer',
-          location: 'Naive Systems',
+          location: 'Naive Systems @ Shanghai',
           description: 'Build a code analyzer and related DevSecOps products.',
         },
         {
           date: 'Feb. 2022 - Jul. 2022',
           title: 'Software Engineer Intern',
-          location: 'Naive Systems',
+          location: 'Naive Systems @ Shanghai',
           description: 'Build a code analyzer and related DevSecOps products.',
         },
         {
           date: 'June 2021 - Feb. 2022',
           title: 'Research & Development Engineer Intern',
-          location: 'Shanghai Zhimian Weiye Technology Co., Ltd.',
+          location: 'Shanghai Zhimian Weiye Technology Co., Ltd. @ Shanghai',
           description: 'Full-stack development engineer, technical leader.',
         }
       ],
