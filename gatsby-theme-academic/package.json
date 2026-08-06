@@ -60,7 +60,7 @@
     "hogan.js": "^3.0.2",
     "is-relative-url": "^3.0.0",
     "less": "^4.1.1",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "lunr": "^2.3.9",
     "moment": "^2.29.4",
     "path-browserify": "^1.0.1",
