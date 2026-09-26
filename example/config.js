@@ -71,6 +71,7 @@ module.exports = {
   },
   contactFormUrl: process.env.CONTACT_FORM_ENDPOINT || '',
   googleAnalyticTrackingId: process.env.GA_TRACKING_ID || 'UA-XXXXXXXXX-X',
+  ga4MeasurementId: process.env.GA4_MEASUREMENT_ID || 'G-6PPWQ4V73Q',
   education: [
     {
       date: 'Aug. 2023 - May. 2025',
