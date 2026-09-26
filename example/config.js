@@ -17,7 +17,7 @@ module.exports = {
   tocMaxDepth: 2,
   excerptMaxLength: 500,
   birthday: 'Mar. 16',
-  location: 'Athens, GA',
+  location: 'San Jose, CA',
   email: 'boyanzh233@gmail.com',
   language: '中文, English',
   postsForArchivePage: 3,
