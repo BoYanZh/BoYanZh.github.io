@@ -1,7 +1,6 @@
 module.exports = ({
   contentPath = 'content',
   author = '',
-  googleAnalyticTrackingId = 'UA-XXXXXXXXX-X',
   defaultLanguage = 'en',
   pages = {
     home: '/',
@@ -118,15 +117,6 @@ module.exports = ({
       },
     },
     {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: googleAnalyticTrackingId,
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: false,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-nprogress',
       options: {
         // Setting a color is optional.
@@ -234,7 +224,6 @@ module.exports = ({
       os: '',
     },
     contactFormUrl: '',
-    googleAnalyticTrackingId,
     education: [],
     interests: [],
     experience: [
