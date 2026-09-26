@@ -1,8 +1,16 @@
 const config = require('./config');
 
 const measurementId = config.ga4MeasurementId;
+let isInitialRoute = true;
 
 exports.onRouteUpdate = ({ location }) => {
+  // The standard GA4 config call records the initial page view. Only emit
+  // manual page_view events for subsequent Gatsby client-side navigations.
+  if (isInitialRoute) {
+    isInitialRoute = false;
+    return;
+  }
+
   if (
     !measurementId ||
     !measurementId.startsWith('G-') ||
