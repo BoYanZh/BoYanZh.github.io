@@ -66,8 +66,8 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-6pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+  \vspace{-8pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-8pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
@@ -85,7 +85,7 @@
     \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabular*}\vspace{-8pt}
 }
 
 \newcommand{\resumeSubSubHeader}[2]{
@@ -116,30 +116,36 @@
 \begin{document}
 
 \begin{center}
-    \textbf{\Huge Boming Zhang} \\ \vspace{1pt}
+    \textbf{\Huge Boming Zhang} \\ \vspace{4pt}
+    \normalsize Backend Software Engineer \\ \vspace{2pt}
     \small
-    Athens, GA $|$
-    (+1)706-363-5179 $|$
-    \href{mailto:boyanzh233@gmail.com}{boyanzh233@gmail.com} $|$
-    \href{https://boyanzh.site}{boyanzh.site} $|$
-    \href{https://github.com/BoYanZh}{github.com/BoYanZh} $|$
-    \href{https://www.linkedin.com/in/bomingzh}{linkedin.com/in/bomingzh}
+    San Jose, CA $|$
+    (706) 363-5179 $|$
+    \href{mailto:boyanzh233@gmail.com}{Email} $|$
+    \href{https://boyanzh.site}{Website} $|$
+    \href{https://github.com/BoYanZh}{GitHub} $|$
+    \href{https://www.linkedin.com/in/bomingzh}{LinkedIn}
 \end{center}
+\vspace{-16pt}
 
 \section{Experience}
   \resumeSubHeaderListStart
   \resumeSubHeader
-    {Project Contributor}{Jul. 2024 - May. 2025}
-    {The University of Georgia, advisor \href{https://guanle.org/}{Prof. Le Guan}}{Athens, GA}
+    {Backend Software Engineer}{Jul. 2025 - Present}
+    {\href{https://www.tiktok.com}{TikTok Inc.}}{San Jose, CA}
     \resumeItemListStart
-      \resumeItem{Developed an \textbf{LLVM pass plugin} and a \textbf{Python bytecode mutator}, for fuzz testing on embedded device.}
+      \resumeItem{Led design and delivery of a \textbf{privacy compliance platform} (self-designed data model, workflow engine, configurable notifications) achieving \textbf{100\% delivery success} and fully auditable trail.}
+      \resumeItem{Built \textbf{recommendation system infrastructure}: AB experiment platform for holdout studies, model migration pipeline (ERD through AB launch), and transparency controls API for regulatory compliance.}
+      \resumeItem{Led database schema redesign for a \textbf{research access platform}; delivered \textbf{time-based access-control}, a \textbf{rule-based query builder} (\textbf{\textasciitilde{}90\%} dev time reduction), and data upload flow (\textbf{30--40 hrs to 1--2 hrs} per request). Migrated services across cloud infrastructures (\textbf{5--20 days to 1--2 days} deployment).}
+      \resumeItem{Resolved \textbf{5 critical on-call incidents} on a high-traffic platform; built traffic monitoring and alert tooling (\textbf{hours to minutes}); executed a \textbf{zero-downtime service migration}.}
+      \resumeItem{Owned backend for \textbf{creator monetization} and \textbf{public safety alerts}: delivered improved donation flow via AB testing, root-caused alert delivery failures (\textbf{11 to 0}), and resolved \textbf{8+ latent production bugs} post-launch.}
     \resumeItemListEnd
+
   \resumeSubHeader
     {Software Engineer (Intern, Full-Time)}{Feb. 2022 - Jul. 2022, Nov. 2022 - Jul. 2023}
     {\href{https://naivesystems.com}{Naive Systems}, advisor Xiao Jia, Kevin Sun}{Shanghai, China}
     \resumeItemListStart
-      \resumeItem{Developed a static code analysis product using \textbf{LLVM}, focusing on system-level programming specifications. Implemented \href{https://github.com/naivesystems/analyze}{100+ checkers} utilizing \textbf{syntax trees, lexical analysis, symbolic execution} for code analysis.}
-      \resumeItem{Contributed to \textbf{LLVM}, submitting a \href{https://github.com/llvm/llvm-project/issues/60412}{bug report} that reduced false-negatives by 10\% in translation units.}
+      \resumeItem{Developed an \textbf{LLVM}-based static analysis product with \href{https://github.com/naivesystems/analyze}{100+ checkers} (\textbf{syntax trees, lexical analysis, symbolic execution}); contributed an \href{https://github.com/llvm/llvm-project/issues/60412}{LLVM bug report} (\textbf{10\% false-negative reduction}).}
       \resumeItem{Optimized multi-process unit testing during CI, achieving a \textbf{25x speedup} in test execution time.}
     \resumeItemListEnd
 
@@ -148,18 +154,10 @@
     {Shanghai Zhimian Weiye Technology, advisor \href{https://sites.ji.sjtu.edu.cn/ido/professor/}{Prof. Mian Li}, Dr. Ruixiang Zheng}{Shanghai, China}
     \resumeItemListStart
       \resumeItem{Initiated the development of \href{https://github.com/SJTU-IPP-Firefighting}{a high performance firefighting platform (Web + App)} based on IoT data. Used FAHP algorithm to detect potential hazards and report \textbf{95\% less false fire alarms} in \textbf{milliseconds response time}.}
-      \resumeItem{Scaled the system to handle data from \textbf{over 7M+ IoT devices}  with 99.99\% uptime and 10ms response time.}
-      \resumeItem{Deployed the system on \textbf{the fire brigade of Shanghai Province}, protecting 20M+ residents.}
+      \resumeItem{Scaled the system to \textbf{over 7M+ IoT devices} with 99.99\% uptime; deployed on \textbf{the fire brigade of Shanghai Province}, protecting 20M+ residents.}
     \resumeItemListEnd
 
-  \resumeSubHeader
-    {Teaching Assistant (\href{https://www.ji.sjtu.edu.cn/academics/courses/courses-by-number/course-info/?id=444}{Intro to OS}, \href{https://www.ji.sjtu.edu.cn/academics/courses/courses-by-number/course-info/?id=74}{Intro to Computers and Programming})}{Fall 2020, Fall 2021}
-    {Shanghai Jiao Tong University, advisor \href{https://www.ji.sjtu.edu.cn/about/faculty-staff/faculty-directory/faculty-detail/76/}{Prof. Manuel Charlemagne}}{Shanghai, China}
-    \resumeItemListStart
-      \resumeItem{Conducted weekly lab sessions on operating systems concepts, including process management, memory allocation.}
-      % \resumeItem{Maintain online judge test cases and multiple servers for up to 150 students as part of the FOCS student system.}
-      \resumeItem{Resolved 200+ technical issues through office hours and online support channels.}
-    \resumeItemListEnd
+
   \resumeSubHeaderListEnd
 
 \section{Projects}
@@ -169,22 +167,18 @@
         \resumeItemListStart
           \resumeItem{\textbf{Led a team of 10+ students} to develop and maintain \textbf{a distributed online judge system} with analytic tools. Provide online judge service for \textbf{1k+ students} and \textbf{10k+ submissions monthly}.}
           \resumeItem{Built secure sandbox using \textbf{Linux namespaces and containerization} for process isolation.}
-          \resumeItem{Established workflows, coordinated feature implementations, and mentored team members on system design.}
         \resumeItemListEnd
       \resumeProjectHeader
-        {\textbf{\href{https://github.com/AlistGo/alist}{AList} (Github 49.2k stars)} $|$ \emph{Go, Go Gin, GORM, Solid.js, WebDAV, SMB, S3, FTP}}{Nov. 2022 - May. 2023}
+        {\textbf{\href{https://github.com/AlistGo/alist}{AList} (Github 50k stars)} $|$ \emph{Go, Go Gin, GORM, Solid.js, WebDAV, SMB, S3, FTP}}{Nov. 2022 - May. 2023}
         \resumeItemListStart
           \resumeItem{\textbf{3rd main contributor}, focusing on implementing and optimizing \textbf{storage drivers for various protocols}.}
           \resumeItem{Designed and implemented a high-performance search feature, handling large-scale virtual file systems efficiently.}
-          \resumeItem{Analyzed low-level protocols and network packets to improve system performance and security.}
         \resumeItemListEnd
       \resumeProjectHeader
         {\href{https://gist.github.com/BoYanZh/fc4469c20fd6adf42c212114532aaac0}{\textbf{FOCS student system}} $|$ \emph{Python3, Go, Node.js, Docker, Nginx, Github Actions}}{Nov. 2018 - Present}
         \resumeItemListStart
           \resumeItem{Managed an academic platform with online judge, Git service, and CI for \textbf{2k+ students across 10 courses} to build, test, and grade code, while architecting and maintaining critical infrastructure.}
-          \resumeItem{Improved Git service and online judge integration with CI platform and scripts for 4x faster submissions.}
           \resumeItem{Developed CLI tools for system automation, garnering 200+ monthly downloads on PyPI.}
-          \resumeItem{Improved system uptime to 99.99\% by implementing automated health checks and failover mechanisms.}
         \resumeItemListEnd
     \resumeSubHeaderListEnd
 
@@ -193,9 +187,9 @@
     \small{
       \item{
      \textbf{Languages}{: Python3, Go (golang), C, (modern) C++, LLVM IR, JavaScript, Assembly, Shell, SQL} \\
-     \textbf{Systems \& Tools}{: Linux, Git, Docker, LLVM, GDB, Valgrind, Wireshark, Ghidra, GNU Make, CMake, Linux perf} \\
+     \textbf{Systems \& Tools}{: Linux, Git, Docker, LLVM, GDB, Valgrind, Wireshark, GNU Make, CMake, opencode, Cursor} \\
      \textbf{Frameworks \& Libraries}{: FastAPI, Django, SQLAlchemy, Go Gin, GORM, React.js, Svelte, Protocol Buffers} \\
-     \textbf{Databases \& Services}{: PostgreSQL, MongoDB, Redis, Nginx, GitHub Actions, Grafana, Drone.io, Jenkins}
+     \textbf{Databases \& Services}{: PostgreSQL, MongoDB, Redis, Nginx, GitHub Actions, Grafana, Jenkins}
     }}
  \end{itemize}
 
@@ -207,12 +201,12 @@
       \resumeItemListStart
         \resumeItem{Relevant Coursework: Software Engineering (A), Privacy-Preserving Data Analysis (A), Data Mining (A)}
       \resumeItemListEnd
+
     \resumeSubHeader
       {Shanghai Jiao Tong University (UM-SJTU Joint Institute, ABET acred.)}{Sept. 2018 - Aug. 2022}
       {BEng in Electrical and Computer Engineering (minor in Computer Science, \textbf{GPA 4.0/4.0})}{Shanghai, China}
       \resumeItemListStart
-        \resumeItem{Relevant Coursework: Operating Systems (A+), Computer Architecture (A), Data Structures and Algorithms (A)}
-        \resumeItem{\textbf{2020-2021 Undergraduate Excellent Scholarship}}
+        \resumeItem{\textbf{2020-2021 Undergraduate Excellent Scholarship}. Relevant Coursework: Operating Systems (A+), Computer Architecture (A), Data Structures and Algorithms (A)}
       \resumeItemListEnd
   \resumeSubHeaderListEnd
 
