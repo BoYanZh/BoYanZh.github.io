@@ -4,28 +4,40 @@ import { useState, useEffect } from 'react';
 
 const THEME_MODE = 'theme-mode';
 const getThemeMode = () => {
+  if (typeof window === 'undefined') return 'light';
+  // Set by the blocking init script in gatsby-ssr.js before first paint.
+  if (window.__themeMode === 'dark' || window.__themeMode === 'light') return window.__themeMode;
   const savedThemeMode = window.localStorage.getItem(THEME_MODE);
   if (savedThemeMode === 'dark' || savedThemeMode === 'light') return savedThemeMode;
   return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
 
-export const useTheme = () => {
-  const [themeMode, setThemeMode] = useState(getThemeMode());
-  const themeClassName = `rs-theme-${themeMode}`;
+const applyThemeClass = (mode) => {
+  const themeClassName = `rs-theme-${mode}`;
+  const otherClassName = `rs-theme-${mode === 'dark' ? 'light' : 'dark'}`;
+  window.document.documentElement.classList.remove(otherClassName);
+  window.document.documentElement.classList.add(themeClassName);
+  // Keep body in sync: existing styles/hooks target either ancestor.
+  window.document.body.classList.remove(otherClassName);
   window.document.body.classList.add(themeClassName);
+  window.__themeMode = mode;
+};
+
+export const useTheme = () => {
+  // Lazy initializer reads the pre-painted value, so the first client
+  // render already matches and no light->dark flip happens on hydration.
+  const [themeMode, setThemeMode] = useState(getThemeMode);
 
   useEffect(() => {
-    const initialMode = getThemeMode();
-    if (initialMode !== themeMode) {
-      const initialThemeClassName = `rs-theme-${initialMode}`;
-      window.localStorage.setItem(THEME_MODE, themeMode);
-      window.document.body.classList.remove(initialThemeClassName);
-      window.document.body.classList.add(themeClassName);
-      // window.location.reload();
-    }
+    applyThemeClass(themeMode);
   }, [themeMode]);
 
-  return [themeMode, setThemeMode];
+  const setAndPersistThemeMode = (mode) => {
+    window.localStorage.setItem(THEME_MODE, mode);
+    setThemeMode(mode);
+  };
+
+  return [themeMode, setAndPersistThemeMode];
 };
 
 /**
