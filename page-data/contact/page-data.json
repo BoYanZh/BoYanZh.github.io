@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---gatsby-theme-academic-src-pages-contact-index-jsx",
-    "path": "/contact/",
-    "result": {"pageContext":{"slug":"/contact/","langKey":"en"}},
-    "staticQueryHashes": ["3793747976","4097791827"]}
+{"componentChunkName":"component---gatsby-theme-academic-src-pages-contact-index-jsx","path":"/contact/","result":{"pageContext":{"slug":"/contact/","langKey":"en"}},"staticQueryHashes":["1260612473","1552981879","2158328490"],"slicesMap":{}}
