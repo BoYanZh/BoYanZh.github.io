@@ -43,13 +43,13 @@ ul.toc > li {
   }
 
   &.toc-debug a {
-    color: @purple-6;
+    color: @violet;
   }
 }
 
 .toc li > ul {
   display: none;
-  font-size: @font-size-sm;
+  font-size: @font-size-small;
   text-indent: 8px;
 }
 
@@ -59,7 +59,7 @@ ul.toc > li {
   margin-left: -1px;
   padding-left: 16px;
   overflow: hidden;
-  color: @site-text-color;
+  color: var(--rs-text-heading);
   white-space: nowrap;
   text-overflow: ellipsis;
   border-left: 1px solid transparent;
@@ -73,20 +73,16 @@ ul.toc > li {
     border-right: 1px solid transparent;
     border-left: none;
   }
-
-  //:hover {
-  //  color: @primary-color;
-  //}
 }
 
 .toc-current {
-  border-color: @primary-color !important;
+  border-color: var(--rs-text-active) !important;
   border-width: 2px !important;
 }
 
 .toc-active {
   font-weight: bold;
-  color: @primary-color !important;
+  color: var(--rs-text-active) !important;
 }
 
 
@@ -99,7 +95,7 @@ ul.toc > li {
     max-height: ~'calc(100vh - 16px)';
     overflow-x: hidden;
     overflow-y: auto;
-    background: #fff;
+    //background: #fff;
   }
   .ant-row-rtl & {
     right: auto;
@@ -112,7 +108,7 @@ ul.toc > li {
   right: 20px;
   bottom: 88px;
   .ant-affix {
-    background: @body-background;
+    //background: @body-background;
   }
   .ant-row-rtl & {
     right: auto;

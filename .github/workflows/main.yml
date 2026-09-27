@@ -16,40 +16,29 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 14.x ]
+        node-version: [ 22.x ]
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Cache resume pdf
-        id: cache-resume-pdf
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node modules
         uses: actions/cache@v4
         env:
-          cache-name: cache-resume-pdf
+          cache-name: cache-node-modules
         with:
-          path: example/static/resume.pdf
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/example/static/resume.tex') }}
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - name: Build resume pdf
-        if: steps.cache-resume-pdf.outputs.cache-hit != 'true'
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: example/static/resume.tex
-          post_compile: "rm example/static/resume.tex && cp resume.pdf example/static/resume.pdf"
-      # - name: Build system resume pdf
-      #   if: steps.cache-resume-pdf.outputs.cache-hit != 'true'
-      #   uses: xu-cheng/latex-action@v2
-      #   with:
-      #     root_file: example/static/old_resume.tex
-      #     post_compile: "rm example/static/old_resume.tex && cp old_resume.pdf example/static/old_resume.pdf"
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: yarn
-      - run: yarn config set strict-ssl false
+
+      - run: npm i -g yarn
       - run: yarn
       - run: yarn workspace example build
       - name: Deploy to GitHub Pages

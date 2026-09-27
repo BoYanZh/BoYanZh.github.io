@@ -1,4 +1,4 @@
-import { Col, Row } from 'antd';
+import { Col, FlexboxGrid } from 'rsuite';
 import { useStaticQuery, graphql } from 'gatsby';
 import _ from 'lodash';
 import React from 'react';
@@ -21,43 +21,50 @@ const SelectedProject = () => {
     }
     allMdx(
       filter: { 
-        fileAbsolutePath: { regex: "/project\/.*\/index\\.md$/" }
-        fields: { 
-          slug: { 
-            selected: { eq: true } 
-          } 
+        internal: {
+          contentFilePath: { regex: "/project\/.*\/index\\.mdx?$/" }
+        }
+        frontmatter: { 
+          selected: { eq: true } 
         }
       }
-      sort: { fields: [frontmatter___priority, frontmatter___title], order: ASC }
+      sort: [{frontmatter: {priority: ASC}}, {frontmatter: {title: ASC}}]
     ) {
       edges {
         node {
           frontmatter {
             cover {
               childImageSharp {
-                fluid(maxWidth: 320, maxHeight: 180, fit: CONTAIN, background: "rgba(0,0,0,0)") {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 320
+                  height: 180
+                  transformOptions: {
+                    fit: CONTAIN
+                  }
+                )
               }
             }
-            date
-            venue
-            authors
-            path
-            title
-            tags
-            excerpt
-            selected
-            priority
           }
-          fileAbsolutePath
           fields {
             slug {
+              date
+              venue
+              authors
+              path
+              title
+              tags
+              excerpt
+              selected
+              priority
               links {
                 name
                 url
               }
             }
+          }
+          internal {
+            contentFilePath
           }
         }
       }
@@ -70,15 +77,15 @@ const SelectedProject = () => {
   return (data.allMdx && data.allMdx.edges && data.allMdx.edges.length) ? (
     <div className={styles.homepageSection}>
       <h2 style={{ marginBottom: '1rem' }}>Selected Project</h2>
-      <Row gutter={[20, 20]}>
+      <FlexboxGrid className="spacing-grid">
         {data.allMdx &&
           data.allMdx.edges.map((val, key) => (
             // eslint-disable-next-line react/no-array-index-key
-            <Col key={key} xs={24} sm={24} md={24} lg={24}>
+            <FlexboxGrid.Item as={Col} xs={24} sm={24} md={24} lg={24}>
               <ProjectCard data={val} tagsMap={tagsMap} />
-            </Col>
+            </FlexboxGrid.Item>
           ))}
-      </Row>
+      </FlexboxGrid>
     </div>
   ) : (
     <></>

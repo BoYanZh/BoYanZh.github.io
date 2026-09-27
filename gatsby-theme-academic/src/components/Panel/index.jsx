@@ -1,13 +1,14 @@
-import {
-  Row, Col, Tag,
-} from 'antd';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import {
+  Row, Col, Grid, FlexboxGrid,
+} from 'rsuite';
 
 import CodeBox from '../CodeBox';
 import PostCard from '../PostCard';
 import ProjectCard from '../ProjectCard';
+import Tag from '../Tag';
 // import PostTag from '../PostTag';
 // import Utils from '../../utils/pageUtils';
 // import Statistics from '../../../content/statistics.json';
@@ -39,7 +40,7 @@ const Panel = (props) => {
     const color = isChecked ? tag.node.color : '';
     const handleTagClick = () => handleClick(tag.node.name);
     return (
-      <Col xs>
+      <Col key={tag.node.name}>
         <Tag color={color}>
           <a onClick={handleTagClick} onKeyPress={handleTagClick} role="button" tabIndex={0}>
             {tag.node.name}
@@ -51,32 +52,32 @@ const Panel = (props) => {
 
   if (data.allMdx) {
     data.allMdx.edges.forEach((val) => {
-      if (!val.node || !val.node.fields || !val.node.fields.slug
-        || !val.node.fields.slug.tags) {
+      // console.log(val.node);
+      if (!val.node || !val.node.frontmatter || !val.node.frontmatter.tags) {
         // eslint-disable-next-line no-param-reassign
         val.tags = new Set();
       } else {
         // eslint-disable-next-line no-param-reassign
-        val.tags = new Set(val.node.fields.slug.tags);
+        val.tags = new Set(val.node.frontmatter.tags);
       }
     });
   }
 
   return (
     <>
-      <Row gutter={[20, 20]}>
-        <Col xs={24} sm={24} md={24} lg={24}>
+      <FlexboxGrid className="spacing-grid">
+        <FlexboxGrid.Item as={Col} xs={24} sm={24} md={24} lg={24}>
           <CodeBox title="Filters">
-            <Row gutter={[0, 8]} align="middle">
-              <Col xs>
-                <h5 style={{ marginBottom: '0', marginRight: '10px' }}>
+            <Row gutter={8} align="middle" type="flex">
+              <Col>
+                <div style={{ marginBottom: '0', marginRight: '10px' }}>
                   Tags:
-                </h5>
+                </div>
               </Col>
               { tags.map(generateTag)}
             </Row>
           </CodeBox>
-        </Col>
+        </FlexboxGrid.Item>
         {
           data.allMdx && data.allMdx.edges.map((val, key) => {
             // eslint-disable-next-line no-restricted-syntax
@@ -86,20 +87,20 @@ const Panel = (props) => {
             if (isProject) {
               return (
                 // eslint-disable-next-line react/no-array-index-key
-                <Col key={key} xs={24} sm={24} md={24} lg={8}>
+                <FlexboxGrid.Item as={Col} key={key} xs={24} sm={24} md={24} lg={24}>
                   <ProjectCard data={val} tagsMap={tagsMap} />
-                </Col>
+                </FlexboxGrid.Item>
               );
             }
             return (
             // eslint-disable-next-line react/no-array-index-key
-              <Col key={key} xs={24} sm={24} md={24} lg={8}>
+              <FlexboxGrid.Item as={Col} key={key} xs={24} sm={24} md={24} lg={8}>
                 <PostCard data={val} tagsMap={tagsMap} />
-              </Col>
+              </FlexboxGrid.Item>
             );
           })
         }
-      </Row>
+      </FlexboxGrid>
     </>
   );
 };

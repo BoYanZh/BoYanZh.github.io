@@ -1,34 +1,28 @@
-import { Layout } from 'antd';
+import { Container } from 'rsuite';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Footer from '../../components/PageLayout/Footer';
-import Header from '../../components/PageLayout/Header';
-import SidebarWrapper from '../../components/PageLayout/Sidebar';
+// import Footer from '../../components/PageLayout/Footer';
+// import Header from '../../components/PageLayout/Header';
+// import SidebarWrapper from '../../components/PageLayout/Sidebar';
 import Panel from '../../components/Panel';
 import SEO from '../../components/Seo';
 
 const Posts = ({ data }) => (
-  <Layout className="outerPadding">
-    <Layout className="container">
-      <Header />
-      <SEO
-        title="Posts"
-        description="I like blogging about various web technologies and other stuff related to
+  <>
+    <SEO
+      title="Posts"
+      description="I like blogging about various web technologies and other stuff related to
           javascript and other trends like graphql, prisma etc. This blog expresses my views of various technologies
           and scenarios I have come across in realtime."
-        path="posts"
-      />
-      <SidebarWrapper>
-        <div className="marginTopTitle">
-          <h1 className="titleSeparate">Posts</h1>
-        </div>
-        <Panel type="posts" data={data} />
-        <Footer />
-      </SidebarWrapper>
-    </Layout>
-  </Layout>
+      path="posts"
+    />
+    <div className="marginTopTitle">
+      <h1 className="titleSeparate">Posts</h1>
+    </div>
+    <Panel type="posts" data={data} />
+  </>
 );
 
 Posts.propTypes = {
@@ -42,7 +36,7 @@ Posts.propTypes = {
 export const query = graphql`
   {
     allTag(
-      sort: { fields: [count], order: DESC },
+      sort: {count: DESC}
       filter: { posts: { eq: true } }
     ) {
       edges {
@@ -54,28 +48,41 @@ export const query = graphql`
       }
     }
     allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: {frontmatter: {date: DESC}}
       filter: {
-        fileAbsolutePath: { regex: "/posts\/.*\/index\\.md$/" }
+        internal: {
+          contentFilePath: { regex: "/posts\/.*\/index\\.mdx?$/" }
+        }
       }
     ) {
       edges {
         node {
           frontmatter {
-            date
-            path
-            title
-            tags
-            excerpt
             cover {
               childImageSharp {
-                fluid(maxWidth: 320, maxHeight: 180, fit: CONTAIN, background: "rgba(0,0,0,0)") {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 320
+                  height: 180
+                  transformOptions: {
+                    fit: CONTAIN
+                  }
+                )
               }
             }
           }
-          fileAbsolutePath
+          fields {
+            slug {
+              date
+              path
+              title
+              tags
+              excerpt
+            }
+          }
+          internal {
+            contentFilePath
+          }
         }
       }
     }

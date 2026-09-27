@@ -17,7 +17,7 @@ module.exports = {
   tocMaxDepth: 2,
   excerptMaxLength: 500,
   birthday: 'Mar. 16',
-  location: 'Athens, GA',
+  location: 'San Jose, CA',
   email: 'boyanzh233@gmail.com',
   language: '中文, English',
   postsForArchivePage: 3,
@@ -70,7 +70,7 @@ module.exports = {
     os: '84d9c631-f6c1-4553-a0cc-cc3634936846',
   },
   contactFormUrl: process.env.CONTACT_FORM_ENDPOINT || '',
-  googleAnalyticTrackingId: process.env.GA_TRACKING_ID || 'UA-XXXXXXXXX-X',
+  ga4MeasurementId: process.env.GA4_MEASUREMENT_ID || 'G-6PPWQ4V73Q',
   education: [
     {
       date: 'Aug. 2023 - May. 2025',

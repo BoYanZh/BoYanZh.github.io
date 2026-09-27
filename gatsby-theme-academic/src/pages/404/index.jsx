@@ -1,6 +1,7 @@
-import { Layout } from 'antd';
+import { Container } from 'rsuite';
 import { Link, graphql } from 'gatsby';
 import React from 'react';
+import { getSrc } from "gatsby-plugin-image"
 
 import Header from '../../components/PageLayout/Header';
 import { Sidebar404 } from '../../components/PageLayout/Sidebar';
@@ -11,23 +12,24 @@ export const query = graphql`
   {
     file(base: { eq: "404.png" }) {
       childImageSharp {
-        fluid(maxWidth: 500) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
+        gatsbyImageData(
+          layout: CONSTRAINED
+          width: 500
+        )
       }
     }
   }
 `;
 
 export default ({ data }) => (
-  <Layout className="outerPadding">
-    <Layout className="container">
+  <Container className="outerPadding">
+    <Container className="container">
       <Header />
       <Sidebar404>
         <>
           <div className={`${style.sidebar404Img} ${style.boxContent}`}>
             <img
-              src={data.file.childImageSharp.fluid.src}
+              src={getSrc(data.file)}
               width="100%"
               alt="404"
             />
@@ -49,6 +51,6 @@ export default ({ data }) => (
           </div>
         </>
       </Sidebar404>
-    </Layout>
-  </Layout>
+    </Container>
+  </Container>
 );

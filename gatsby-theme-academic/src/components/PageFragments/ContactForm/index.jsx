@@ -1,6 +1,6 @@
 import {
-  Col, Form, Input, Button, message,
-} from 'antd';
+  Col, Form, Input, Button,
+} from 'rsuite';
 import React from 'react';
 
 import { useSiteMetadata } from '../../../utils/hooks';
@@ -12,7 +12,7 @@ const validateMessages = {
   },
 };
 export default () => {
-  const [form] = Form.useForm();
+/*  const [form] = Form.useForm();
   const siteMetadata = useSiteMetadata();
   const onFinish = (data) => {
     const formData = new FormData();
@@ -25,16 +25,16 @@ export default () => {
 
     fetch(siteMetadata.contactFormUrl, { method: 'POST', body: formData })
       .then(() => {
-        message.success('Thank you for your kind response 🙂. Will get back to you.');
+        // message.success('Thank you for your kind response 🙂. Will get back to you.');
         form.resetFields();
       })
       // eslint-disable-next-line no-console
       .catch((error) => console.error('Error:', error));
-  };
+  };*/
 
   return (
     <Col sm={24} md={24} lg={12} className="widthFull">
-      <Form form={form} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+      {/*<Form form={form} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
         <Form.Item name={['name']} rules={[{ required: true }]}>
           <Input size="large" placeholder="Full Name *" />
         </Form.Item>
@@ -49,7 +49,7 @@ export default () => {
             SUBMIT
           </Button>
         </Form.Item>
-      </Form>
+      </Form>*/}
     </Col>
   );
 };

@@ -1,6 +1,32 @@
 /* eslint-disable import/prefer-default-export */
 import { graphql, useStaticQuery } from 'gatsby';
-import { useState, useLayoutEffect } from 'react';
+import { useState, useEffect } from 'react';
+
+const THEME_MODE = 'theme-mode';
+const getThemeMode = () => {
+  const savedThemeMode = window.localStorage.getItem(THEME_MODE);
+  if (savedThemeMode === 'dark' || savedThemeMode === 'light') return savedThemeMode;
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+export const useTheme = () => {
+  const [themeMode, setThemeMode] = useState(getThemeMode());
+  const themeClassName = `rs-theme-${themeMode}`;
+  window.document.body.classList.add(themeClassName);
+
+  useEffect(() => {
+    const initialMode = getThemeMode();
+    if (initialMode !== themeMode) {
+      const initialThemeClassName = `rs-theme-${initialMode}`;
+      window.localStorage.setItem(THEME_MODE, themeMode);
+      window.document.body.classList.remove(initialThemeClassName);
+      window.document.body.classList.add(themeClassName);
+      // window.location.reload();
+    }
+  }, [themeMode]);
+
+  return [themeMode, setThemeMode];
+};
 
 /**
  * custom hook to detect the window size of a browser
@@ -8,7 +34,7 @@ import { useState, useLayoutEffect } from 'react';
  */
 export const useWindowSize = () => {
   const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
+  useEffect(() => {
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight]);
     }

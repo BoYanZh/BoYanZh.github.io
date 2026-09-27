@@ -3,18 +3,20 @@ import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { getSrc } from "gatsby-plugin-image"
 
 /* App imports */
 import { useSiteMetadata } from '../../utils/hooks';
-import Utils from '../../utils/pageUtils';
+import Utils from '../../utils/pageUtils.mjs';
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
     file(name: { eq: "facebook-icon" }) {
       childImageSharp {
-        fixed(width: 600) {
-          ...GatsbyImageSharpFixed_noBase64
-        }
+        gatsbyImageData(
+          layout: FIXED
+          width: 600
+        )
       }
     }
   }
@@ -46,7 +48,7 @@ function SEO({
         );
         const metaImageUrl = Utils.resolveUrl(
           siteMetadata.siteUrl,
-          imageUrl || data.file.childImageSharp.fixed.src,
+          imageUrl || getSrc(data.file),
         );
 
         return (
@@ -73,6 +75,10 @@ function SEO({
                 { name: 'twitter:image:alt', content: description },
                 { name: 'twitter:site', content: siteMetadata.author },
                 { name: 'twitter:creator', content: siteMetadata.author },
+                /* HTTP no cache */
+                // { 'http-equiv': 'Cache-Control', content: 'no-cache, no-store, must-revalidate' },
+                // { 'http-equiv': 'Pragma', content: 'no-cache' },
+                // { 'http-equiv': 'Expires', content: '0' },
               ]
                 .concat(metaKeywords) // Keywords
                 .concat(meta || []) // Other provided metadata

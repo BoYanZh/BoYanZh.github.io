@@ -28,13 +28,13 @@ links:
 priority: 3
 ---
 
-<!-- ## Title 1 -->
+{/* ## Title 1 */}
 
-<!-- ### Preview
+{/* ### Preview
 
-[Preview](./preview.png) -->
+[Preview](./preview.png) */}
 
-<!-- ### Website
+{/* ### Website
 
 [Github](https://github.com/joint-online-judge)
 
@@ -42,4 +42,4 @@ priority: 3
 
 ## Title 3
 
-## Title 4 -->
+## Title 4 */}

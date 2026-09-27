@@ -3,19 +3,22 @@
 /* eslint-disable guard-for-in */
 
 /* Vendor imports */
-const crypto = require('crypto');
-const path = require('path');
+import * as crypto from 'crypto';
+import { createRequire } from 'module';
+import * as path from 'path';
 
-const execa = require('execa');
-const fs = require('fs-extra');
-const _ = require('lodash');
-const slash = require('slash');
-const nacl = require('tweetnacl');
-nacl.util = require('tweetnacl-util');
-// const isRelativeUrl = require('is-relative-url');
+import { $ as execa } from 'execa';
+import fs from 'fs-extra';
+import _ from 'lodash';
+import slash from 'slash';
+import nacl from 'tweetnacl';
+import naclUtil from 'tweetnacl-util';
+import readingTime from "reading-time"
 
-/* App imports */
-const utils = require('./src/utils/pageUtils');
+import utils from './src/utils/pageUtils.mjs';
+
+const require = createRequire(import.meta.url);
+
 
 const getGitInfo = () => {
   const gitHash = execa.sync('git', ['rev-parse', '--short', 'HEAD']).stdout;
@@ -23,7 +26,7 @@ const getGitInfo = () => {
     execa.sync('git', ['rev-list', 'HEAD', '--count']).stdout,
   );
   const gitDirty =
-    execa.sync('git', ['status', '-s', '-uall']).stdout.length > 0;
+        execa.sync('git', ['status', '-s', '-uall']).stdout.length > 0;
   return {
     hash: gitHash,
     commits: gitNumCommits,
@@ -53,11 +56,18 @@ const createTagPage = (options, createPage, tag, node) => {
   } else {
     tagPath = utils.resolvePageUrl(options.pages.tags, tag);
   }
+  const template = require.resolve('./src/templates/tags/index.jsx');
+  let component;
+  if (node && node.internal.contentFilePath) {
+    component = `${template}?__contentFilePath=${node.internal.contentFilePath}`;
+  } else {
+    component = template;
+  }
   createPage({
     path: tagPath,
-    component: require.resolve('./src/templates/tags/index.jsx'),
+    component,
     context: {
-      fileAbsolutePath: node ? node.fileAbsolutePath : '',
+      contentFilePath: node ? node.internal.contentFilePath : '',
       tag,
     },
   });
@@ -94,7 +104,7 @@ const getNodeByAbsolutePath = (absolutePath) => {
   return null;
 };
 
-exports.createPages = async ({
+export const createPages = async ({
   actions,
   getNode,
   graphql,
@@ -107,7 +117,7 @@ exports.createPages = async ({
 
   const result = await graphql(`
     {
-      allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+      allMdx(sort: {frontmatter: {date: DESC}}) {
         edges {
           node {
             body
@@ -127,7 +137,9 @@ exports.createPages = async ({
                 url
               }
             }
-            fileAbsolutePath
+            internal {
+              contentFilePath
+            }
             id
           }
         }
@@ -166,6 +178,8 @@ exports.createPages = async ({
   allMdx.edges.forEach(({ node }) => {
     const { frontmatter } = node;
 
+    // console.log(frontmatter);
+
     // utils.generateOmittedPostInfo(node);
     // Check path prefix of Tag
     if (frontmatter.path.indexOf(options.pages.tags) === 0) {
@@ -186,7 +200,7 @@ exports.createPages = async ({
     // Check path prefix of Post and Project
     if (
       frontmatter.path.indexOf(options.pages.posts) !== 0 &&
-      frontmatter.path.indexOf(options.pages.project) !== 0
+            frontmatter.path.indexOf(options.pages.project) !== 0
     ) {
       // eslint-disable-next-line no-throw-literal
       throw `Invalid path prefix: ${frontmatter.path}`;
@@ -203,7 +217,7 @@ exports.createPages = async ({
     data.selected = frontmatter.selected || false;
     data.priority = frontmatter.priority || 0;
     data.links = [];
-    data.commit = getCommitTime(node.fileAbsolutePath);
+    data.commit = getCommitTime(node.internal.contentFilePath);
     if (frontmatter.path.indexOf(options.pages.posts) === 0) {
       data.type = 'posts';
     } else if (frontmatter.path.indexOf(options.pages.project) === 0) {
@@ -213,14 +227,14 @@ exports.createPages = async ({
     // encrypt post with password
     if (frontmatter.password) {
       const nonce = nacl.randomBytes(nacl.secretbox.nonceLength);
-      const message = nacl.util.decodeUTF8(node.body);
-      const password = nacl.util.decodeUTF8(frontmatter.password);
+      const message = naclUtil.decodeUTF8(node.body);
+      const password = naclUtil.decodeUTF8(frontmatter.password);
       const key = nacl.hash(password)
         .slice(0, nacl.secretbox.keyLength);
       const htmlEncrypted = nacl.secretbox(message, nonce, key);
       data.html = '';
-      data.htmlEncrypted = nacl.util.encodeBase64(htmlEncrypted);
-      data.nonce = nacl.util.encodeBase64(nonce);
+      data.htmlEncrypted = naclUtil.encodeBase64(htmlEncrypted);
+      data.nonce = naclUtil.encodeBase64(nonce);
     } else {
       data.html = node.body;
       data.htmlEncrypted = '';
@@ -229,13 +243,16 @@ exports.createPages = async ({
 
     if (frontmatter.links) {
       for (const link of frontmatter.links) {
+        // console.log(link);
         if (link.name) {
           if (link.file) {
             const filePath = slash(
-              path.resolve(path.dirname(node.fileAbsolutePath), link.file),
+              path.resolve(path.dirname(node.internal.contentFilePath), link.file),
             );
+            // console.log(filePath);
             if (filePath in filePathMap) {
               const fileNode = filePathMap[filePath];
+              // console.log(fileNode);
               const { contentDigest } = fileNode.internal;
               const destFileDir = path.posix.join(
                 'public',
@@ -248,6 +265,7 @@ exports.createPages = async ({
                 contentDigest,
                 fileNode.base,
               );
+              console.log(filePath, urlFilePath);
               fs.ensureDirSync(destFileDir);
               fs.copyFileSync(fileNode.absolutePath, destFilePath);
               data.links.push({
@@ -266,17 +284,17 @@ exports.createPages = async ({
     }
 
     /* if (link.file && link.file.internal && link.file.base && link.file.absolutePath) {
-            const { contentDigest } = link.file.internal;
-            const destFileDir = path.posix.join('public', 'files', contentDigest);
-            const destFilePath = path.posix.join(destFileDir, link.file.base);
-            const urlFilePath = utils.resolveUrl('files', contentDigest, link.file.base);
-            fs.ensureDirSync(destFileDir);
-            fs.copyFileSync(link.file.absolutePath, destFilePath);
-            data.links.push({
-              name: link.name,
-              url: urlFilePath,
-            });
-          } */
+                const { contentDigest } = link.file.internal;
+                const destFileDir = path.posix.join('public', 'files', contentDigest);
+                const destFilePath = path.posix.join(destFileDir, link.file.base);
+                const urlFilePath = utils.resolveUrl('files', contentDigest, link.file.base);
+                fs.ensureDirSync(destFileDir);
+                fs.copyFileSync(link.file.absolutePath, destFilePath);
+                data.links.push({
+                  name: link.name,
+                  url: urlFilePath,
+                });
+              } */
 
     if (frontmatter.tags) {
       for (let i = 0; i < frontmatter.tags.length; i++) {
@@ -298,6 +316,8 @@ exports.createPages = async ({
       }
     }
 
+    // console.log(data);
+
     const internalNode = getNode(node.id);
     // console.log(node.id);
     // console.log(internalNode.internal);
@@ -306,22 +326,22 @@ exports.createPages = async ({
       name: 'slug',
       value: data,
     });
-
+    const template = require.resolve('./src/templates/post/post.jsx');
     createPage({
       path: frontmatter.path,
-      component: require.resolve('./src/templates/post/post.jsx'),
+      component: `${template}?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
-        fileAbsolutePath: node.fileAbsolutePath,
+        contentFilePath: node.internal.contentFilePath,
         postPath: frontmatter.path,
         translations: utils.getRelatedTranslations(options, node, allMdx.edges),
       },
     });
   });
 
-  // const regexForIndex = /index\.md$/;
+  // const regexForIndex = /index\.mdx?$/;
   // Posts in default language, excluded the translated versions
   // const defaultPosts = allMdx.edges
-  //   .filter(({ node: { fileAbsolutePath } }) => fileAbsolutePath.match(regexForIndex));
+  //   .filter(({ node: { internal: { contentFilePath } } }) => contentFilePath.match(regexForIndex));
 
   /* Tag pages */
   // const allTags = [];
@@ -373,7 +393,7 @@ exports.createPages = async ({
   return 1;
 };
 
-exports.onCreateNode = ({
+export const onCreateNode = ({
   node,
   getNode,
   actions,
@@ -384,57 +404,64 @@ exports.onCreateNode = ({
       mapAbsolutePathToNode.set(node.absolutePath, node);
     }
   }
+  if (node.internal.type === 'Mdx') {
+    createNodeField({
+      node,
+      name: 'timeToRead',
+      value: readingTime(node.body),
+    });
+  }
   /*  else if (node.internal.type === 'MarkdownRemark') {
-      const { frontmatter } = node;
-      const data = {};
-      data.title = frontmatter.title || '';
-      data.tags = frontmatter.tags || [];
-      data.date = frontmatter.date || '';
-      data.path = frontmatter.path;
-      data.excerpt = frontmatter.excerpt || '';
-      data.links = [];
-      if (frontmatter.links) {
-        for (const link of frontmatter.links) {
-          if (link.name) {
-            let href = '';
-            console.log(link.url);
-            if (
-              isRelativeUrl(link.url)
-              && getNode(node.parent).internal.type === 'File'
-            ) {
-              const linkPath = path.posix.join(
-                getNode(node.parent).dir,
-                link.url,
-              );
-              const fileNode = getNodeByAbsolutePath(linkPath);
-              console.log(linkPath, fileNode);
+        const { frontmatter } = node;
+        const data = {};
+        data.title = frontmatter.title || '';
+        data.tags = frontmatter.tags || [];
+        data.date = frontmatter.date || '';
+        data.path = frontmatter.path;
+        data.excerpt = frontmatter.excerpt || '';
+        data.links = [];
+        if (frontmatter.links) {
+          for (const link of frontmatter.links) {
+            if (link.name) {
+              let href = '';
+              console.log(link.url);
+              if (
+                isRelativeUrl(link.url)
+                && getNode(node.parent).internal.type === 'File'
+              ) {
+                const linkPath = path.posix.join(
+                  getNode(node.parent).dir,
+                  link.url,
+                );
+                const fileNode = getNodeByAbsolutePath(linkPath);
+                console.log(linkPath, fileNode);
+              }
+              // if (link.file) {
+              //   const linkPath = path.posix.join(
+              //     getNode(markdownNode.parent).dir,
+              //     link.url,
+              //   );
+              //   console.log(link.file);
+              // } else if (link.href) {
+              //   href = link.href;
+              // }
+              // data.links.push({
+              //   name: link.name,
+              //   href,
+              // });
             }
-            // if (link.file) {
-            //   const linkPath = path.posix.join(
-            //     getNode(markdownNode.parent).dir,
-            //     link.url,
-            //   );
-            //   console.log(link.file);
-            // } else if (link.href) {
-            //   href = link.href;
-            // }
-            // data.links.push({
-            //   name: link.name,
-            //   href,
-            // });
           }
         }
-      }
-      // console.log(node);
-      // createNodeField({
-      //   node,
-      //   name: 'slug',
-      //   value: data,
-      // });
-    } */
+        // console.log(node);
+        // createNodeField({
+        //   node,
+        //   name: 'slug',
+        //   value: data,
+        // });
+      } */
 };
 
-exports.createSchemaCustomization = async (
+export const createSchemaCustomization = async (
   {
     actions,
     schema,
@@ -485,6 +512,8 @@ exports.createSchemaCustomization = async (
       htmlEncrypted: String
       nonce: String
       priority: Int
+      timeToRead: Float @proxy(from: "fields.timeToRead.minutes")
+      wordCount: Int @proxy(from: "fields.timeToRead.words")
     }
     type Link {
       name: String!
@@ -499,6 +528,10 @@ exports.createSchemaCustomization = async (
       count: Int
       project: Boolean
       posts: Boolean
+    }
+    type SiteSiteMetadataAwards @dontInfer {
+      date: String
+      title: String
     }
     type SiteSiteMetadataSocial @dontInfer {
       url: String
@@ -594,23 +627,23 @@ exports.createSchemaCustomization = async (
   });
 
   /*  const fileDef = schema.buildObjectType({
-      name: 'File',
-      id: {
-        type: 'String!',
-        resolve(source, args, context, info) {
-          // For a more generic solution, you could pick the field value from
-          // `source[info.fieldName]`
-          if (source.id == null) {
-            return '';
-          }
-          return source.id;
+        name: 'File',
+        id: {
+          type: 'String!',
+          resolve(source, args, context, info) {
+            // For a more generic solution, you could pick the field value from
+            // `source[info.fieldName]`
+            if (source.id == null) {
+              return '';
+            }
+            return source.id;
+          },
         },
-      },
-    }); */
-  createTypes([MdxFrontmatterDef, typeDefs]);
+      }); */
+  createTypes([typeDefs, MdxFrontmatterDef]);
 };
 
-exports.onCreateWebpackConfig = ({
+export const onCreateWebpackConfig = ({
   stage,
   rules,
   loaders,

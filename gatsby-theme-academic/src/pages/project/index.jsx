@@ -1,4 +1,4 @@
-import { Layout } from 'antd';
+import { Container } from 'rsuite';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -10,25 +10,19 @@ import Panel from '../../components/Panel';
 import SEO from '../../components/Seo';
 
 const Project = ({ data }) => (
-  <Layout className="outerPadding">
-    <Layout className="container">
-      <Header />
-      <SEO
-        title="Project"
-        description="I like blogging about various web technologies and other stuff related to
+  <>
+    <SEO
+      title="Project"
+      description="I like blogging about various web technologies and other stuff related to
           javascript and other trends like graphql, prisma etc. This blog expresses my views of various technologies
           and scenarios I have come across in realtime."
-        path="project"
-      />
-      <SidebarWrapper>
-        <div className="marginTopTitle">
-          <h1 className="titleSeparate">Project</h1>
-        </div>
-        <Panel type="project" data={data} />
-        <Footer />
-      </SidebarWrapper>
-    </Layout>
-  </Layout>
+      path="project"
+    />
+    <div className="marginTopTitle">
+      <h1 className="titleSeparate">Project</h1>
+      <Panel type="project" data={data} />
+    </div>
+  </>
 );
 
 Project.propTypes = {
@@ -42,7 +36,7 @@ Project.propTypes = {
 export const query = graphql`
   {
     allTag(
-      sort: { fields: [count], order: DESC },
+      sort: {count: DESC},
       filter: { project: { eq: true } }
     ) {
       edges {
@@ -55,37 +49,46 @@ export const query = graphql`
     }
     allMdx(
       filter: { 
-        fileAbsolutePath: { regex: "/project\/.*\/index\\.md$/" }
+        internal: {
+          contentFilePath: { regex: "/project\/.*\/index\\.mdx?$/" }
+        }
       }
-      sort: { fields: [frontmatter___priority, frontmatter___title], order: ASC }
+      sort: [{frontmatter: {priority: ASC}}, {frontmatter: {title: ASC}}]
     ) {
       edges {
         node {
           frontmatter {
             cover {
               childImageSharp {
-                fluid(maxWidth: 320, maxHeight: 180, fit: CONTAIN, background: "rgba(0,0,0,0)") {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 320
+                  height: 180
+                  transformOptions: {
+                    fit: CONTAIN
+                  }
+                )
               }
             }
-            date
-            venue
-            authors
-            path
-            title
-            tags
-            excerpt
-            priority
           }
-          fileAbsolutePath
           fields {
             slug {
+              date
+              venue
+              authors
+              path
+              title
+              tags
+              excerpt
+              priority
               links {
                 name
                 url
               }
             }
+          }
+          internal {
+            contentFilePath
           }
         }
       }

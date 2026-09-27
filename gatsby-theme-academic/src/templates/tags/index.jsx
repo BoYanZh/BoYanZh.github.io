@@ -1,8 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 /* Vendor imports */
-import {
-  Layout, Row, Col,
-} from 'antd';
+import { Container, Row, Col } from 'rsuite';
 import { graphql } from 'gatsby';
 // import Img from 'gatsby-image';
 /* App imports */
@@ -16,7 +14,7 @@ import PostCard from '../../components/PostCard';
 // import Statistics from '../../../content/statistics.json';
 import ProjectCard from '../../components/ProjectCard';
 import SEO from '../../components/Seo';
-import Utils from '../../utils/pageUtils';
+import Utils from '../../utils/pageUtils.mjs';
 
 import * as style from './tags.module.less';
 
@@ -31,8 +29,8 @@ const TagPage = ({
   // const tagImage = data.allFile.edges.find((edge) => edge.node.name === tag).node
   //   .childImageSharp.fluid;
   const docs = data.allMdx.edges;
-  const posts = _.filter(docs, (doc) => doc.node.fields.slug.type === 'posts');
-  const project = _.filter(docs, (doc) => doc.node.fields.slug.type === 'project');
+  const posts = _.filter(docs, (doc) => doc.node.frontmatter.type === 'posts');
+  const project = _.filter(docs, (doc) => doc.node.frontmatter.type === 'project');
   const tags = data.allTag ? data.allTag.edges : [];
   const tagsMap = _.mapValues(_.keyBy(tags, (tag) => tag.node.name), 'node');
 
@@ -41,59 +39,52 @@ const TagPage = ({
   const tagDescription = tag ? tag.description : '';
 
   return (
-    <Layout className="outerPadding">
-      <Layout className="container">
-        <Header />
-        <SEO
-          title={tagName}
-          description={`All post about ${tagName}. ${tagDescription} `}
-          path={Utils.resolvePageUrl(tagPagePath, tag)}
-          keywords={[tagName]}
-        />
-        <SidebarWrapper>
-          <div className={`marginTopTitle ${style.tagsList}`}>
-            <h1 className="titleSeparate">
-              #
-              {tagName}
-            </h1>
-            {/* <div className={style.bannerImgContainer}> */}
-            {/*  <Img className={style.bannerImg} fluid={tagImage} alt={tagName} /> */}
-            {/* </div> */}
-            <h4 className="textCenter">
-              {tagDescription}
-            </h4>
-          </div>
-          {project.length > 0 ? (
-            <>
-              <h2>Project</h2>
-              <Row gutter={[20, 20]}>
-                {project.map((post, key) => (
-                // eslint-disable-next-line react/no-array-index-key
-                  <Col key={key} xs={24} sm={24} md={24} lg={24}>
-                    <ProjectCard data={post} tagsMap={tagsMap} />
-                  </Col>
-                ))}
-              </Row>
-              ,
-            </>
-          ) : null}
-          {posts.length > 0 ? (
-            <>
-              <h2>Posts</h2>
-              <Row gutter={[20, 20]}>
-                {posts.map((post, key) => (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <Col key={key} xs={24} sm={24} md={12} lg={8}>
-                    <PostCard data={post} tagsMap={tagsMap} />
-                  </Col>
-                ))}
-              </Row>
-              ,
-            </>
-          ) : null}
-        </SidebarWrapper>
-      </Layout>
-    </Layout>
+    <>
+      <SEO
+        title={tagName}
+        description={`All post about ${tagName}. ${tagDescription} `}
+        path={Utils.resolvePageUrl(tagPagePath, tag)}
+        keywords={[tagName]}
+      />
+      <div className={`marginTopTitle ${style.tagsList}`}>
+        <h1 className="titleSeparate">
+          #
+          {tagName}
+        </h1>
+        {/* <div className={style.bannerImgContainer}> */}
+        {/*  <Img className={style.bannerImg} fluid={tagImage} alt={tagName} /> */}
+        {/* </div> */}
+        <h4 className="textCenter">
+          {tagDescription}
+        </h4>
+      </div>
+      {project.length > 0 ? (
+        <>
+          <h2>Project</h2>
+          <Row gutter={[20, 20]} type="flex">
+            {project.map((post, key) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <Col key={key} xs={24} sm={24} md={24} lg={24}>
+                <ProjectCard data={post} tagsMap={tagsMap} />
+              </Col>
+            ))}
+          </Row>
+        </>
+      ) : null}
+      {posts.length > 0 ? (
+        <>
+          <h2>Posts</h2>
+          <Row gutter={[20, 20]} type="flex">
+            {posts.map((post, key) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <Col key={key} xs={24} sm={24} md={12} lg={8}>
+                <PostCard data={post} tagsMap={tagsMap} />
+              </Col>
+            ))}
+          </Row>
+        </>
+      ) : null}
+    </>
   );
 };
 
@@ -120,7 +111,7 @@ TagPage.propTypes = {
           node: PropTypes.shape({
             name: PropTypes.string.isRequired,
             childImageSharp: PropTypes.shape({
-              fluid: PropTypes.object.isRequired,
+              gatsbyImageData: PropTypes.object.isRequired,
             }).isRequired,
           }).isRequired,
         }),
@@ -146,28 +137,29 @@ export const pageQuery = graphql`
     }
     allMdx(
       filter: {
-        fields: { slug: { tags: { in: [$tag] } } }
-        fileAbsolutePath: { regex: "/index.md$/" }
+        frontmatter: { tags: { in: [$tag] } } 
+        internal: {
+          contentFilePath: { regex: "/index.mdx?$/" }
+        }
       }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: {frontmatter: {date: DESC}}
     ) {
       edges {
         node {
           frontmatter {
             cover {
               childImageSharp {
-                fluid(maxWidth: 320, maxHeight: 180, fit: CONTAIN, background: "rgba(0,0,0,0)") {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 320
+                  height: 180
+                  transformOptions: {
+                    fit: CONTAIN
+                  }
+                )
               }
             }
-            date
-            venue
-            authors
-            path
-            title
-            tags
-            excerpt
+            
           }
           fields {
             slug {
@@ -175,6 +167,13 @@ export const pageQuery = graphql`
                 name
                 url
               }
+              date
+              venue
+              authors
+              path
+              title
+              tags
+              excerpt
               type
             }
           }
@@ -186,9 +185,10 @@ export const pageQuery = graphql`
         node {
           name
           childImageSharp {
-            fluid(maxHeight: 600) {
-              ...GatsbyImageSharpFluid_tracedSVG
-            }
+            gatsbyImageData(
+              layout: CONSTRAINED
+              width: 600
+            )
           }
         }
       }
